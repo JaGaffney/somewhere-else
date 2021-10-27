@@ -1,0 +1,28 @@
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    transition-delay: 0ms !important;
+  }
+}
+
+@supports (-moz-appearance: none) {
+  body::before {
+    z-index: -1;
+  }
+  body {
+    background-image: linear-gradient(
+      135deg,
+      var(--violet100) 10%,
+      var(--violet300) 100%
+    );
+  }
+
+  .main-panel {
+    background: var(--violet700);
+  }
+}

@@ -1,0 +1,21 @@
+@media only screen and (max-width: 1500px) {
+}
+
+@media only screen and (max-width: 1200px) {
+}
+
+@media only screen and (max-width: 800px) {
+  .main-panel {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+}
+
+@media only screen and (max-width: 450px) {
+  .main-panel {
+    padding: 2rem 0;
+  }
+}

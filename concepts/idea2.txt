@@ -1,0 +1,52 @@
+GENERAL
+#   everything is cat based
+#   stamina (mp) based system for combat
+#   can idle or interact with combat, idle is slower but you can afk it
+
+SKILLS
+#   skills have 2 categorys, a gatherthing and a production side
+#   you make more money by gathering then producing hte product and selling it then just selling raw
+#   skills have a toggle based talent tree
+
+SKILLS (cont)
+    Melee, range, mage,
+all uses -  Health, Defence, stamina
+1.  Bushcraft - woodcutting + fletching
+2.  Prowling - fishing (more food) + hunting (less food but secondarys) (no need for cooking as cats eat raw food)
+3.  metalsmith   - mining + smithing
+4.  quartermaster   - slayer (kill monsters) + quests (hand in items, could also be from monsters)
+5.  way of the land  -  botanist + farming
+6.  cat burglar -   thieving (gain items) + tomb raiding
+7.  class utlity (scales based on skill level)   - utility magic + utlity melee (guard missions) + utiltiy range (hunting)
+8.  divinitation - (egypt cat god + protection) + (shadow cat)dark prayer (do more dmg in exchange for hp)
+###9.  exploring - cat digging - tomb raiding (gives bonuses to stamina)##
+
+COMAT
+#   you gain an arcana for each skills
+#   you have your own arcana skill page where you assign yoour talents nad build your deck
+#   in combat you draw cards and can use the arcana spell effect during combat
+#   passives could always work as they trigger at start of combat
+#   combat is turn based
+
+or
+
+#   you gain passives(actives) from skills that you can equip to your combat (max 4) that enhance your combat
+    abilities
+
+#   skills cost stamina to use and gear + arcaba w/e can increase stamind regen
+#   you can set a skill to idle but if you run out stamina it will just auto attack and try and use that spell when it can
+
+OTHER
+#   combat log 
+    kill somethnig in x secondarys
+    kill something without eating
+#   abilities unlocked from dungeons if you have the requied level
+
+STORY
+#   a house cat thinks its doing all this stuff but its just its imagination
+
+
+MEMEs
+#   Do you wear your platelegs like this /|```|\ or like this /\
+#   Cat cash (money)
+#   Cat cache (bank_)

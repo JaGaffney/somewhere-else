@@ -1,0 +1,125 @@
+:root {
+  --dark: black;
+  --light: white;
+
+  --gray100: #f7fafc;
+  --gray200: #edf2f7;
+  --gray300: #e2e8f0;
+  --gray400: #cbd5e0;
+  --gray500: #a0aec0;
+  --gray600: #718096;
+  --gray700: #4a5568;
+  --gray800: #2c384b;
+  --gray900: #181e2a;
+
+  --blue50: #eff6ff;
+  --blue100: #ebf8ff;
+  --blue200: #bee3f8;
+  --blue300: #90cdf4;
+  --blue400: #63b3ed;
+  --blue500: #4299e1;
+  --blue600: #3283ce;
+  --blue680: #2b79bd;
+  --blue700: #296bb1;
+  --blue800: #2c5282;
+  --blue900: #2a4365;
+
+  --green50: #f0fdf4;
+  --green100: #d1fae5;
+  --green200: #a7f3d0;
+  --green300: #6ee7b7;
+  --green400: #34d399;
+  --green500: #10b981;
+  --green600: #059669;
+  --green700: #047857;
+  --green800: #065f46;
+  --green900: #064e3b;
+
+  --teal50: #f0fdfa;
+  --teal100: #ccfbf1;
+  --teal200: #99f6e4;
+  --teal300: #5eead4;
+  --teal400: #2dd4bf;
+  --teal500: #14b8a6;
+  --teal600: #0d9488;
+  --teal700: #0f766e;
+  --teal800: #115e59;
+  --teal900: #134e4a;
+
+  --amber50: #fffbeb;
+  --amber100: #fef3c7;
+  --amber200: #fde68a;
+  --amber300: #fcd34d;
+  --amber400: #fbbf24;
+  --amber500: #f59e0b;
+  --amber600: #d97706;
+  --amber700: #b45309;
+  --amber800: #92400e;
+  --amber900: #78350f;
+
+  --violet50: #f5f3ff;
+  --violet100: #ede9fe;
+  --violet200: #ddd6fe;
+  --violet300: #c4b5fd;
+  --violet400: #a78bfa;
+  --violet500: #8b5cf6;
+  --violet600: #7c3aed;
+  --violet700: #6d28d9;
+  --violet800: #5b21b6;
+  --violet900: #4c1d95;
+
+  --red50: #fbf6f6;
+  --red100: #fee2e2;
+  --red200: #fecaca;
+  --red300: #fca5a5;
+  --red400: #f87171;
+  --red500: #ef4444;
+  --red600: #dc2626;
+  --red700: #b91c1c;
+  --red800: #991b1b;
+  --red900: #7f1d1d;
+
+  --shadow100: 0 2px 4px -2px rgba(50, 50, 93, 0.25),
+    0 4px 8px -4px rgba(0, 0, 0, 0.3), 0 -3px 5px -3px rgba(0, 0, 0, 0.025);
+  --shadow500: 0 11px 25px -5px rgba(50, 50, 93, 0.25),
+    0 6px 14px -8px rgba(0, 0, 0, 0.3), 0 -6px 14px -6px rgba(0, 0, 0, 0.025);
+  --shadow900: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+
+  // --dominant: var(--green);
+  --accent: var(--amber400);
+  // --third: var(--gold);
+  --background-main: var(--gray200);
+}
+
+body {
+  background: var(--gray100);
+  background: -webkit-linear-gradient(
+    to bottom,
+    var(--gray100),
+    var(--gray200)
+  );
+  background: linear-gradient(to bottom, var(--gray100), var(--gray200));
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

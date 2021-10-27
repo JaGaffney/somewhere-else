@@ -1,0 +1,44 @@
+GENERAL
+# focus on progression over everything else
+# each skill has an "arcana" card that you can use for benefits (could run out of charges) this could be the talent tree system
+    but tied to each skill
+# you can do all combat styles but you could have like a tierd unlock system at teh start but once you unlock mage yuo can just do it
+    as long as you have the mats or skill
+
+
+
+SKILLS
+#   skills a broken down into 2 caterogys but have the 1 skills exp, helps trim down shit skills but still
+    makes them worthwhile to level
+    woodcutting has 
+        gathering - getting wood
+        crafting - fletching bows arrows etc
+
+#   skills have direct effect into combat
+        kind of like melvor mastery but you have to decide
+            woodcutting could have stuff like  
+                increased range dmg due to making better bows
+                gather wood faster
+                wood burns longer etc
+                even direct spells like wood style jutsu stuff like entangle or slows
+
+#   the "arcana" thing would be another exp tied to the skill
+        when you fish with the leveling arcana bit you dont get fish but arana increases in level
+        you get faster exp to level arcana if you have the skil lhigher level than it but you dont have to
+        the benefit of leveling the main skill is to keep the drops as well as unlock new tiers of exp
+
+COMAT
+#   has melee, range, magic which could have sub categorys or just have the option of swtiching gear
+#   you use the arcanas in combat either for buffs or direct damage
+#   combat is more action based by requiring you use skills, you cna also afk it but it would be slower and not work out for high
+    level monster or areas
+
+
+OTHER
+#   no need to have cloud system just save everything local, can even make it desktop
+#   world map that takes you to new areas that costs resources early on but later on you can even make money traeveling
+        such as if your have high melee you can be a guards
+        mages can teleport
+        rangers can travese the wilderness
+#   could have mini events every few hours that increase exp in certain skills so if you are playing you get a benefit but only minor 
+    so not forced to keep playing

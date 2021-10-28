@@ -4,7 +4,8 @@ import thunk from "redux-thunk"
 
 const initialState = {
   data: [],
-  activeSkill: null
+  activeSkill: null,
+  activeAction: null,
 }
 
 const reducer = (state, action) => {
@@ -13,6 +14,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         activeSkill: action.payload
+      }
+    case ("ACTIVE_ACTION"):
+      return {
+        ...state,
+        activeAction: action.payload
       }
     default:
       return state

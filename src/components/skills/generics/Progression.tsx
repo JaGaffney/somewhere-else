@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { FiClock } from "react-icons/fi";
 import { BsTreeFill } from "react-icons/bs";
 
-
+import { getSkillDataById } from "../../actions/api"
 
 export const Progression = (props) => {
+    const [progData, setProgData] = useState(null)
+
+    useEffect(() => {
+        if (props.activeAction !== null) {
+            const returnData = getSkillDataById(props.activeAction)
+            setProgData(returnData)
+        }
+
+    }, [props.activeAction])
+
     return (
         <div className="progression">
             <div className="progression__container">
                 <BsTreeFill className="progression__icon" />
-                <span className="progression__name">Oak Tree</span>
+                <span className="progression__name">{progData && progData.name}</span>
             </div>
             <div className="progression__details">
                 <span style={{ width: "100%" }}>50xp</span>
@@ -24,7 +34,7 @@ export const Progression = (props) => {
 
 
 const mapStateToProps = (state) => ({
-
+    activeAction: state.activeAction
 })
 
 const mapDispatchToProps = {

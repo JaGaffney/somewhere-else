@@ -1,19 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Progression from "./Progression"
-
 import { Gi3DHammer } from "react-icons/gi";
 
-export const Craft = (props) => {
+export const Production = (props) => {
     return (
-        <div className="actions__craft">
+        <div className="actions__generic actions__production">
             <div className="actions__gather actions__title">
                 <Gi3DHammer />
                 <span>{props.type}</span>
             </div>
-
-            <Progression />
         </div>
     )
 }
@@ -28,4 +24,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Craft)
+export default connect(mapStateToProps, mapDispatchToProps)(Production)

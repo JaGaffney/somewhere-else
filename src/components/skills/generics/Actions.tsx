@@ -2,13 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Gather from "./Gather"
-import Craft from "./Craft"
+import Production from "./Production"
 
 export const Actions = (props) => {
     return (
         <div className="actions">
-            <Gather type={props.gather} />
-            <Craft type={props.crafting} />
+
+            <Gather type={props.gather} skillData={props.skillData} />
+            <Production type={props.production} />
         </div>
     )
 }

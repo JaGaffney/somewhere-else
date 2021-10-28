@@ -4,14 +4,17 @@ import { connect } from 'react-redux'
 import EXP from "./generics/EXP"
 import Talents from "./generics/Talents"
 import Actions from "./generics/Actions"
+import Progression from "./generics/Progression"
 
+import { BUSHCRAFT } from "../types/skills"
 
 export const Bushcraft = (props) => {
     return (
         <div>
             <EXP />
             <Talents />
-            <Actions gather={"woodsman"} crafting={"fletcher"} />
+            <Progression />
+            <Actions gather={"woodsman"} production={"fletcher"} skillData={BUSHCRAFT} />
         </div>
     )
 }

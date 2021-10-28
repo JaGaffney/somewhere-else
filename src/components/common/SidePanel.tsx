@@ -22,35 +22,35 @@ export const SidePanel = (props) => {
 
 
     return (
-        <div className="sidepanel__container">
+        <div className="sidepanel__wrapper">
+            <div className="sidepanel__container">
 
-            <div className="sidepanel__skill">
-                <span className="sidepanel__skill-title"></span>
-                <SkillPanel skillName={"cash"} skillLevel={69420} skillLevelTotal={"gp"} seperator={" "} icon={false} />
-                <SkillPanel skillName={"cache"} skillLevel={100} skillLevelTotal={120} seperator={" / "} />
+                <div className="sidepanel__skill">
+                    <span className="sidepanel__skill-title"></span>
+                    <SkillPanel skillName={"cash"} skillLevel={69420} skillLevelTotal={"gp"} seperator={" "} icon={false} />
+                    <SkillPanel skillName={"cache"} skillLevel={100} skillLevelTotal={120} seperator={" / "} />
+                </div>
+
+                <div className="sidepanel__skill">
+                    <span className="sidepanel__skill-title">Combat</span>
+                    {tempCombatSklls.map((i, k) => <SkillPanel key={k} skillName={i} skillLevel={69} skillLevelTotal={99} seperator={" / "} />)}
+                </div>
+
+                <div className="sidepanel__skill">
+                    <span className="sidepanel__skill-title">Non-Combat</span>
+                    {tempNonCombatSklls.map((i, k) => <SkillPanel key={k} skillName={i} skillLevel={69} skillLevelTotal={99} seperator={" / "} />)}
+                </div>
+
+                <div className="sidepanel__skill">
+                    <span className="sidepanel__skill-title">Logs</span>
+                    {logs.map((i, k) => <SkillPanel key={k} skillName={i} />)}
+                </div>
+
+                <div className="sidepanel__skill">
+                    <span className="sidepanel__skill-title">Other</span>
+                    {other.map((i, k) => <SkillPanel key={k} skillName={i} />)}
+                </div>
             </div>
-
-            <div className="sidepanel__skill">
-                <span className="sidepanel__skill-title">Combat</span>
-                {tempCombatSklls.map((i, k) => <SkillPanel key={k} skillName={i} skillLevel={69} skillLevelTotal={99} seperator={" / "} />)}
-            </div>
-
-            <div className="sidepanel__skill">
-                <span className="sidepanel__skill-title">Non-Combat</span>
-                {tempNonCombatSklls.map((i, k) => <SkillPanel key={k} skillName={i} skillLevel={69} skillLevelTotal={99} seperator={" / "} />)}
-            </div>
-
-            <div className="sidepanel__skill">
-                <span className="sidepanel__skill-title">Logs</span>
-                {logs.map((i, k) => <SkillPanel key={k} skillName={i} />)}
-            </div>
-
-            <div className="sidepanel__skill">
-                <span className="sidepanel__skill-title">Other</span>
-                {other.map((i, k) => <SkillPanel key={k} skillName={i} />)}
-            </div>
-
-
         </div>
     )
 }

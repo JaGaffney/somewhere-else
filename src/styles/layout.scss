@@ -26,7 +26,7 @@ main {
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: 13% 1fr;
+  grid-template-columns: 14% 1fr;
   grid-template-rows: 3rem 1fr;
 }
 .header__container {
@@ -34,7 +34,7 @@ main {
   grid-column: 1 / -1;
   grid-row: 1;
   display: grid;
-  grid-template-columns: 13% 1fr;
+  grid-template-columns: 14% 1fr;
   &-title {
     display: flex;
     align-items: center;
@@ -49,11 +49,38 @@ main {
     padding: 0 1rem;
   }
 }
-.sidepanel__container {
-  background: var(--gray800);
+.sidepanel__wrapper {
   grid-column: 1;
   grid-row: 2;
+  background: var(--gray800);
   box-sizing: var(--shadow900);
+}
+.sidepanel__container {
+  overflow-y: hidden;
+  height: calc(100vh + 5rem);
+  border-right: solid 6px transparent;
+  &:hover {
+    overflow-y: scroll;
+    border-right: none;
+  }
+  /* width */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: var(--blue700);
+    border-radius: 10px;
+  }
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--blue800);
+  }
 }
 .game__container {
   border-radius: 5px;
@@ -125,8 +152,7 @@ main {
   flex-wrap: nowrap;
   justify-content: space-between;
   gap: 3rem;
-  &__craft,
-  &__gather {
+  &__generic {
     background: var(--gray800);
     box-sizing: var(--shadow900);
     width: 50%;
@@ -155,14 +181,12 @@ main {
   }
 }
 .progression {
-  width: 60%;
-  padding: 1rem;
+  width: 100%;
   display: flex;
   margin: 1rem auto;
   gap: 1rem;
   justify-content: space-between;
-  background: var(--gray700);
-  border-radius: 10px;
+  background: var(--gray800);
   box-shadow: var(--shadow500);
   &__container {
     display: flex;
@@ -191,6 +215,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
+  margin-top: 2rem;
 }
 .action__item {
   display: flex;
@@ -201,7 +226,7 @@ main {
   border-radius: 10px;
   transform: scale(90%);
   transition: transform 0.2s;
-  width: 9rem;
+  width: 11rem;
   height: fit-content;
   background: var(--gray900);
   color: var(--gray200);

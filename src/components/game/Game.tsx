@@ -5,9 +5,9 @@ import Bushcraft from "../skills/Bushcraft"
 
 export const Game = (props) => {
     return (
-        <div className="game__container">
+        <section className="game__container">
             {props.activeSkill === "bushcraft" && <Bushcraft />}
-        </div>
+        </section>
     )
 }
 

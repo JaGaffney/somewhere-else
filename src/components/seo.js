@@ -34,7 +34,7 @@ function SEO({ description, lang, meta, title }) {
       }}
       title={title}
       titleTemplate={
-        title === "enter title here" ? "" : `enter title here - %s`
+        title === "Somewhere Else"
       }
       meta={[
         {

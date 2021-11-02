@@ -1,0 +1,20 @@
+.header__container {
+  background: var(--violet800);
+  grid-column: 1 / -1;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: 14% 1fr;
+  &-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &-info {
+    text-transform: capitalize;
+    grid-column: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+}

@@ -22,7 +22,7 @@ export const SidePanel = (props) => {
 
 
     return (
-        <div className="sidepanel__wrapper">
+        <aside className="sidepanel__wrapper">
             <div className="sidepanel__container">
 
                 <div className="sidepanel__skill">
@@ -51,7 +51,7 @@ export const SidePanel = (props) => {
                     {other.map((i, k) => <SkillPanel key={k} skillName={i} />)}
                 </div>
             </div>
-        </div>
+        </aside>
     )
 }
 

@@ -5,8 +5,11 @@ import SkillPanel from './SkillPanel'
 
 export const SidePanel = (props) => {
 
+    const tempCombatClasses = [
+        "warrior", "archer", "magician"
+    ]
     const tempCombatSklls = [
-        "melee", "range", "magic", "health", "stamina", "divination"
+        "health", "defence", "stamina", "divination"
     ]
     const tempNonCombatSklls = [
         "bushcraft", "Prowling", "metalwork", "quartermaster", "way of the land", "cat burglar", "combat craft"
@@ -31,6 +34,10 @@ export const SidePanel = (props) => {
                     <SkillPanel skillName={"cache"} skillLevel={100} skillLevelTotal={120} seperator={" / "} />
                 </div>
 
+                <div className="sidepanel__skill">
+                    <span className="sidepanel__skill-title">Classes</span>
+                    {tempCombatClasses.map((i, k) => <SkillPanel key={k} skillName={i} skillLevel={69} skillLevelTotal={99} seperator={" / "} />)}
+                </div>
                 <div className="sidepanel__skill">
                     <span className="sidepanel__skill-title">Combat</span>
                     {tempCombatSklls.map((i, k) => <SkillPanel key={k} skillName={i} skillLevel={69} skillLevelTotal={99} seperator={" / "} />)}

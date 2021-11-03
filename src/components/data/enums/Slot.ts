@@ -6,7 +6,7 @@ export enum Slot {
   Feet = "FEET",
   Hands = "HANDS",
   Neck = "NECK",
-  Ring = "RING",
+  Tail = "TAIL",
   Back = "BACK",
   Trinket = "TRINKET",
   MainHand = "MAIN_HAND",

@@ -2,34 +2,15 @@ import { createStore as reduxCreateStore, applyMiddleware } from "redux"
 import { composeWithDevTools } from "redux-devtools-extension"
 import thunk from "redux-thunk"
 
-const initialState = {
-  data: [],
-  activeSkill: null,
-  activeAction: null,
-}
+import rootReducer from "../components/reducers" 
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case ("ACTIVE_SKILL"):
-      return {
-        ...state,
-        activeSkill: action.payload
-      }
-    case ("ACTIVE_ACTION"):
-      return {
-        ...state,
-        activeAction: action.payload
-      }
-    default:
-      return state
-  }
-}
+const initialState = {}
 
 const middleware = [thunk]
 
 const createStore = () =>
   reduxCreateStore(
-    reducer,
+    rootReducer,
     initialState,
     composeWithDevTools(applyMiddleware(...middleware))
   )

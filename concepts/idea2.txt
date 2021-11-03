@@ -9,7 +9,7 @@ SKILLS
 #   skills have a toggle based talent tree
 
 SKILLS (cont)
-    Melee, range, mage,
+    Melee (Warrior), range (Ranger), mage (Magician),
 all uses -  Health, Defence, stamina
 1.  Bushcraft - woodcutting + fletching
 2.  Prowling - fishing (more food) + hunting (less food but secondarys) (no need for cooking as cats eat raw food)

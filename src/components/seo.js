@@ -33,8 +33,7 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={
-        title === "Somewhere Else"
+      titleTemplate={ "Somewhere Else"
       }
       meta={[
         {

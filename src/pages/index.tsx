@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
+import { loadSkills } from "../components/actions/startup"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -16,9 +17,9 @@ const IndexPage = props => {
   useEffect(() => {
     const itemData = new ItemData()
     const skillData = new SkillData()
-    console.log(itemData)
-    console.log(skillData)
-    console.log(skillData.getNoncombatSkillById("SKILL_BUSHCRAFT"))
+
+    props.loadSkills(skillData)
+
   }, [])
 
 
@@ -37,4 +38,9 @@ const mapStateToProps = ({ data }) => {
   return { data }
 }
 
-export default connect(mapStateToProps)(IndexPage)
+const mapDispatchToProps = {
+  loadSkills
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(IndexPage)
+

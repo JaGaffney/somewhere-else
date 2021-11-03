@@ -24,10 +24,18 @@ export class SkillData {
       "",
       bushcraft
     )
-    this.noncombatSkill["SKILL_BUSHCRAFT"] = skillBushcraft
+    this.noncombatSkill["bushcraft"] = skillBushcraft
   }
 
-  getNoncombatSkillById(id: string) {
-    return this.noncombatSkill[id]
+  getAllNoncombatSkills() {
+    const noncombatSkillList = []
+    for (const skill in this.noncombatSkill) {
+      noncombatSkillList.push(this.noncombatSkill[skill].name)
+    }
+    return noncombatSkillList
+  }
+
+  getNoncombatSkillByName(name: string) {
+    return this.noncombatSkill[name]
   }
 }

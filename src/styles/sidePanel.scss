@@ -7,6 +7,7 @@
 .sidepanel__container {
   overflow-y: hidden;
   height: calc(100vh + 5rem);
+  min-height: 50rem;
   border-right: solid 6px transparent;
   &:hover {
     overflow-y: scroll;

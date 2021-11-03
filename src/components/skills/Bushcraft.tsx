@@ -9,6 +9,7 @@ import Progression from "./generics/Progression"
 import { BUSHCRAFT } from "../types/skills"
 
 export const Bushcraft = (props) => {
+    console.log("got here")
     return (
         <div>
             <EXP />

@@ -2,11 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Bushcraft from "../skills/Bushcraft"
+import Noncombat from "../skills/Noncombat"
 
 export const Game = (props) => {
     return (
         <section className="game__container">
-            {props.activeSkill === "bushcraft" && <Bushcraft />}
+            {props.activeSkill === "bushcraft" && <Noncombat />}
         </section>
     )
 }
@@ -14,7 +15,7 @@ export const Game = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    activeSkill: state.activeSkill
+    activeSkill: state.skills.activeSkill
 })
 
 const mapDispatchToProps = {

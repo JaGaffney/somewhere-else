@@ -4,18 +4,8 @@ import { connect } from 'react-redux'
 import { FiClock } from "react-icons/fi";
 import { BsTreeFill } from "react-icons/bs";
 
-import { getSkillDataById } from "../../actions/api"
-
 export const Progression = (props) => {
     const [progData, setProgData] = useState(null)
-
-    useEffect(() => {
-        if (props.activeAction !== null) {
-            const returnData = getSkillDataById(props.activeAction)
-            setProgData(returnData)
-        }
-
-    }, [props.activeAction])
 
     return (
         <div className="progression">

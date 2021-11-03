@@ -6,6 +6,7 @@ import Item from "./Item"
 import { GiFullMetalBucketHandle } from "react-icons/gi";
 
 export const Gather = (props) => {
+    console.log(props.skillData)
     return (
         <div className="actions__generic actions__gather">
             <div className="actions__gather actions__title">

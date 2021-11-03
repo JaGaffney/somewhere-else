@@ -9,7 +9,7 @@ export const Actions = (props) => {
         <div className="actions">
 
             <Gather type={props.gather} skillData={props.skillData} />
-            <Production type={props.production} />
+            <Production type={props.production} skillData={props.skillData} />
         </div>
     )
 }

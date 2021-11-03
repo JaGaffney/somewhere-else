@@ -6,6 +6,11 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case "LOAD_SKILLS":
+      return {
+        ...state,
+        skillData: action.payload,
+      }
     case "ACTIVE_SKILL":
       return {
         ...state,

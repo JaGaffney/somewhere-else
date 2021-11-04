@@ -11,4 +11,5 @@ export enum Slot {
   Trinket = "TRINKET",
   MainHand = "MAIN_HAND",
   OffHand = "OFF_HAND",
+  TwoHanded = "TWO_HANDED",
 }

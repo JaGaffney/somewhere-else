@@ -1,7 +1,7 @@
 import { NonCombatSkill } from "./skills/NonCombatSkill"
 
 // seed data
-import { bushcraft } from "./seed/skillSeed"
+import { bushcraft, metalwork } from "./seed/skillSeed"
 
 // on loads creates all of the ingame data.
 // such as skills, items, exp etc
@@ -17,14 +17,31 @@ export class SkillData {
   createClassSkills() {}
   createCombatSkills() {}
   createNoncombatSkills() {
-    const skillBushcraft = new NonCombatSkill(
+    this.buildNonCombatSkill(
       "bushcraft",
       "woodcutting",
       "fletching",
       "",
       bushcraft
     )
-    this.noncombatSkill["bushcraft"] = skillBushcraft
+    this.buildNonCombatSkill("metalwork", "mining", "smithing", "", metalwork)
+  }
+
+  buildNonCombatSkill(name, gathering, production, icon, seed) {
+    const skillCreate = new NonCombatSkill(
+      name,
+      gathering,
+      production,
+      icon,
+      seed
+    )
+    this.noncombatSkill[name] = skillCreate
+  }
+
+  getAllSkills() {
+    const skillList = []
+
+    return skillList
   }
 
   getAllNoncombatSkills() {

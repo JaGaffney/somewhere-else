@@ -1,13 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Bushcraft from "../skills/Bushcraft"
 import Noncombat from "../skills/Noncombat"
 
 export const Game = (props) => {
     return (
         <section className="game__container">
-            {props.activeSkill === "bushcraft" && <Noncombat />}
+            {props.activeSkill === "bushcraft" || props.activeSkill === "metalwork" && <Noncombat />}
         </section>
     )
 }

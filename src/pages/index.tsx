@@ -12,13 +12,17 @@ import Structure from "../components/game/Structure"
 
 import { ItemData } from "../components/data/ItemData"
 import { SkillData } from "../components/data/SkillData"
+import { PlayerData } from "../components/data/PlayerData"
 
 const IndexPage = props => {
   useEffect(() => {
     const itemData = new ItemData()
     const skillData = new SkillData()
+    const skillNames = skillData.getAllNoncombatSkills()
+    const playerData = new PlayerData(skillNames)
 
     props.loadSkills(skillData)
+
 
   }, [])
 

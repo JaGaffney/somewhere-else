@@ -8,6 +8,9 @@ export const Header = (props) => {
             case ("bushcraft"): {
                 return "var(--green700)";
             }
+            case ("metalwork"): {
+                return "var(--gray600)";
+            }
             default:
                 return "inherit"
         }
@@ -27,7 +30,7 @@ export const Header = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    activeSkill: state.activeSkill
+    activeSkill: state.skills.activeSkill
 })
 
 const mapDispatchToProps = {

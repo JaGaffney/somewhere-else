@@ -7,8 +7,8 @@ import { ProductionAction } from "./ProductionAction"
 export class NonCombatSkill extends Skill {
   gatheringName: string
   productionName: string
-  production: Array<ProductionAction> = []
-  gathering: Array<SkillAction> = []
+  production: Map<string, ProductionAction> = new Map()
+  gathering: Map<string, SkillAction> = new Map()
 
   constructor(
     name: string,
@@ -24,7 +24,7 @@ export class NonCombatSkill extends Skill {
     this.createProductionData(seedData.production)
   }
 
-  createProductionData(productionData) {
+  createProductionData(productionData: object): void {
     for (const key in productionData) {
       const val = productionData[key]
       const action = new ProductionAction(
@@ -36,11 +36,12 @@ export class NonCombatSkill extends Skill {
         val.itemsRecieved,
         val.itemsRequired
       )
-      this.production.push(action)
+      let id = `${this.productionName}_${val.name}`
+      this.production[id] = action
     }
   }
 
-  createGatheringData(gatheringData) {
+  createGatheringData(gatheringData: object): void {
     for (const key in gatheringData) {
       const val = gatheringData[key]
       const action = new SkillAction(
@@ -51,9 +52,8 @@ export class NonCombatSkill extends Skill {
         val.icon,
         val.itemsRecieved
       )
-      this.gathering.push(action)
+      let id = `${this.gatheringName}_${val.name}`
+      this.gathering[id] = action
     }
   }
-
-  createRecipes() {}
 }

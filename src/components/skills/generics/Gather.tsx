@@ -16,6 +16,7 @@ export const Gather = (props) => {
 
             <div className="actions__items">
                 {Object.keys(props.skillData.gathering).map((i, k) => {
+                    console.log(props.skillData.gathering)
                     return (
                         <Item key={k} data={props.skillData.gathering[i]} id={i} />
                     )

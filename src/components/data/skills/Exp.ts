@@ -1,4 +1,4 @@
-export interface EXP {
+export class EXP {
   1: 0
   2: 100
   3: 300
@@ -9,4 +9,6 @@ export interface EXP {
   8: 5000
   9: 7200
   10: 10000
+
+  constructor() {}
 }

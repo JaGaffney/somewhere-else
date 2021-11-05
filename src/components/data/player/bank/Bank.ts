@@ -6,9 +6,25 @@ export class Bank {
 
   constructor() {}
 
-  findIteminBank(itemId) {}
+  getBankSpace(): number {
+    return this.bankSpace
+  }
+  setBankSpace(value: number): void {
+    this.bankSpace = value
+  }
 
-  addItemtoBank(itemId) {}
+  findItemInBank(itemId: number) {
+    return this.bankItems[itemId]
+  }
 
-  removeItemfromBank(itemId) {}
+  addItemtoBank(itemId: number, qty: number) {
+    // might need a better check
+    let currentVal = this.findItemInBank(itemId)
+    if (currentVal === undefined) {
+      currentVal = 0
+    }
+    this.bankItems[itemId] = currentVal + qty
+  }
+
+  removeItemfromBank(itemId: number, qty: number) {}
 }

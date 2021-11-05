@@ -4,3 +4,9 @@ export const loadSkills = data => dispatch => {
     payload: data,
   })
 }
+export const loadPlayer = data => dispatch => {
+  return dispatch({
+    type: "LOAD_PLAYER",
+    payload: data,
+  })
+}

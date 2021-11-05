@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
-import { loadSkills } from "../components/actions/startup"
+import { loadSkills, loadPlayer } from "../components/actions/startup"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -14,14 +14,25 @@ import { ItemData } from "../components/data/ItemData"
 import { SkillData } from "../components/data/SkillData"
 import { PlayerData } from "../components/data/PlayerData"
 
+import { playerSeed } from "../components/data/seed/playerSeed"
+
 const IndexPage = props => {
   useEffect(() => {
+    // NOTE: should be a loader somewhere else maybe inside redux
+    // creates all items in the game
     const itemData = new ItemData()
+
+    // creates all skill data not pertaining to the player
     const skillData = new SkillData()
     const skillNames = skillData.getAllNoncombatSkills()
-    const playerData = new PlayerData(skillNames)
 
+    // creates the default player with no data
+    const playerData = new PlayerData(skillNames)
+    playerData.loadPlayerData(playerSeed)
+
+    // loads data into redux
     props.loadSkills(skillData)
+    props.loadPlayer(playerData)
 
 
   }, [])
@@ -43,7 +54,7 @@ const mapStateToProps = ({ data }) => {
 }
 
 const mapDispatchToProps = {
-  loadSkills
+  loadSkills, loadPlayer
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(IndexPage)

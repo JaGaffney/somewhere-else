@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import SkillPanel from './SkillPanel'
+import NonSkillPanel from "./NonSkillPanel"
 
 export const SidePanel = (props) => {
     const tempCombatClasses = [
@@ -26,26 +27,22 @@ export const SidePanel = (props) => {
         <aside className="sidepanel__wrapper">
             <div className="sidepanel__container">
 
-                <div className="sidepanel__skill">
-                    <span className="sidepanel__skill-title"></span>
-                    <SkillPanel skillName={"cash"} skillLevel={69420} skillLevelTotal={"gp"} seperator={" "} icon={false} />
-                    <SkillPanel skillName={"cache"} skillLevel={100} skillLevelTotal={120} seperator={" / "} />
-                </div>
+                <NonSkillPanel />
 
                 <div className="sidepanel__skill">
                     <span className="sidepanel__skill-title">Classes</span>
-                    {tempCombatClasses.map((i, k) => <SkillPanel key={k} skillName={i} skillLevel={69} skillLevelTotal={99} seperator={" / "} />)}
+                    {tempCombatClasses.map((i, k) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} />)}
                 </div>
 
                 <div className="sidepanel__skill">
-                    <span className="sidepanel__skill-title">Combat</span>
-                    {tempCombatSklls.map((i, k) => <SkillPanel key={k} skillName={i} skillLevel={69} skillLevelTotal={99} seperator={" / "} />)}
+                    <span className="sidepanel__skill-title">Status</span>
+                    {tempCombatSklls.map((i, k) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} />)}
                 </div>
 
                 {props.skills.length !== 0 &&
                     <div className="sidepanel__skill">
                         <span className="sidepanel__skill-title">Non-Combat</span>
-                        {props.skills.getAllNoncombatSkills().map((i, k) => <SkillPanel key={k} skillName={i} skillLevel={69} skillLevelTotal={99} seperator={" / "} />)}
+                        {props.skills.getAllNoncombatSkills().map((i, k) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} />)}
                     </div>
                 }
 

@@ -30,6 +30,7 @@ const IndexPage = props => {
     const playerData = new PlayerData(skillNames)
     playerData.loadPlayerData(playerSeed)
 
+    console.log(playerData.levelChecker.getLevelFromExp(playerData.skillExp.getCurrentExp("bushcraft")))
     // loads data into redux
     props.loadSkills(skillData)
     props.loadPlayer(playerData)

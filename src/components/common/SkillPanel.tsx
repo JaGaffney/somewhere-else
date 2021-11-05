@@ -9,8 +9,10 @@ export const SkillPanel = (props) => {
     return (
         <div className="skillpanel" onClick={() => props.setActiveSkill(props.skillName)}>
             <span className="skillpanel__icon">{props.icon ? props.icon : <GiCoins />}</span>
-            <span className="skillpanel__name">{props.skillName}</span>
-            <span className="skillpanel__level">{props.skillLevel}{props.seperator}{props.skillLevelTotal}</span>
+            <span className={`skillpanel__name ${props.activeSkill === props.skillName ? "skillpanel__name-active" : null}`}>{props.skillName}</span>
+            {props.playerData.length !== 0 && (
+                <span className="skillpanel__level">{props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(props.skillName))}{props.seperator}{props.skillLevelTotal}</span>
+            )}
         </div>
     )
 }
@@ -18,7 +20,8 @@ export const SkillPanel = (props) => {
 
 
 const mapStateToProps = (state) => ({
-
+    playerData: state.player.playerData,
+    activeSkill: state.skills.activeSkill
 })
 
 const mapDispatchToProps = {

@@ -3,12 +3,14 @@ import { Bank } from "./player/bank/Bank"
 import { SkillEXP } from "./player/SkillExp"
 import { Passives } from "./player/Passives"
 import { Inventory } from "./player/Inventory"
+import { EXP } from "./player/Exp"
 
 export class PlayerData {
   playerBank: Bank
   skillExp: SkillEXP
   passives: Passives
   inventory: Inventory
+  levelChecker: EXP = new EXP()
 
   constructor(skillNames: Array<string>) {
     this.createBank()
@@ -40,14 +42,16 @@ export class PlayerData {
     this.loadInventory(data.inventory)
     this.loadPassives(data.passives)
   }
+
   // loads from local storage
   loadSkillEXP(skillData): void {
     for (const skill in skillData) {
-      this.skillExp[skill] = skillData[skill]
+      this.skillExp.skillExp[skill] = skillData[skill]
     }
   }
   loadBank(bankData): void {
     this.playerBank.setBankSpace(bankData.bankSpace)
+    this.playerBank.setCoins(bankData.coins)
 
     for (const item in bankData.bankItems) {
       this.playerBank.addItemtoBank(

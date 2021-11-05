@@ -7,15 +7,19 @@ export class SkillEXP {
 
   createBaseSkills(skillNames: Array<string>): void {
     for (const i in skillNames) {
-      this.skillExp[skillNames[i]] = 0
+      this.setCurrentExp(skillNames[i], 0)
     }
   }
 
-  getCurrentExp(skillName: string): Map<string, number> {
+  getCurrentExp(skillName: string): number {
     return this.skillExp[skillName]
   }
 
   setCurrentExp(skillName: string, increase: number): void {
-    this.skillExp[skillName] += increase
+    let currentVal = this.skillExp[skillName]
+    if (currentVal === undefined) {
+      currentVal = 0
+    }
+    this.skillExp[skillName] = currentVal + increase
   }
 }

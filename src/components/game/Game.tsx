@@ -4,9 +4,19 @@ import { connect } from 'react-redux'
 import Noncombat from "../skills/Noncombat"
 
 export const Game = (props) => {
+    const LoadComponent = () => {
+        switch (props.activeSkill) {
+            case ("bushcraft"):
+            case ("metalwork"):
+                return <Noncombat />
+            default:
+                return null
+        }
+    }
+
     return (
         <section className="game__container">
-            {props.activeSkill === "bushcraft" || props.activeSkill === "metalwork" && <Noncombat />}
+            <LoadComponent />
         </section>
     )
 }

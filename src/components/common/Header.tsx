@@ -5,6 +5,12 @@ export const Header = (props) => {
 
     const getColor = () => {
         switch (props.activeSkill) {
+            case ("shop"): {
+                return "var(--amber500)";
+            }
+            case ("bank"): {
+                return "var(--amber800)";
+            }
             case ("bushcraft"): {
                 return "var(--green700)";
             }

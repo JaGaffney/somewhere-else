@@ -11,11 +11,17 @@ export const playerSeed = {
         qty: 10,
         bankLocation: 0,
       },
+      3: {
+        itemId: 100004,
+        qty: 10,
+        bankLocation: 0,
+      },
     },
     bankSpace: 65,
+    coins: 65000,
   },
   skillExp: {
-    bushcraft: 900,
+    bushcraft: 1900,
     metalwork: 502,
   },
   passives: {

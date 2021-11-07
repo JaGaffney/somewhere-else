@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 export const Header = (props) => {
 
     const getColor = () => {
-        switch (props.activeSkill) {
+        switch (props.activePage) {
             case ("shop"): {
                 return "var(--amber500)";
             }
@@ -26,7 +26,7 @@ export const Header = (props) => {
         <div className="header__container">
             <div className="header__container-title"><span>Somewhere else</span></div>
             <div className="header__container-info" style={{ background: getColor() }}>
-                <span>{props.activeSkill}</span>
+                <span>{props.activePage}</span>
                 <span>Charcter info</span>
             </div>
 
@@ -36,7 +36,7 @@ export const Header = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    activeSkill: state.skills.activeSkill
+    activePage: state.skills.activePage
 })
 
 const mapDispatchToProps = {

@@ -12,7 +12,7 @@ export const SidePanel = (props) => {
         "health", "defence", "stamina", "divination"
     ]
     const tempNonCombatSklls = [
-        "bushcraft", "Prowling", "metalwork", "quartermaster", "way of the land", "cat burglar", "combat craft"
+        "bushcraft", "Prowling", "metalwork", "quartermaster", "way of the land", "cat burglar", "botanist"
     ]
 
     const logs = [

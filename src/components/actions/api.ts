@@ -1,7 +1,7 @@
-export const setActiveSkill = (activeSkill: string) => dispatch => {
+export const setActivePage = (activePage: string) => dispatch => {
   return dispatch({
-    type: "ACTIVE_SKILL",
-    payload: activeSkill,
+    type: "ACTIVE_PAGE",
+    payload: activePage,
   })
 }
 export const setActiveAction = activeAction => dispatch => {

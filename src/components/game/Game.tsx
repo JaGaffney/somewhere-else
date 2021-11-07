@@ -1,14 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Noncombat from "../skills/Noncombat"
+import Noncombat from "./skills/Noncombat"
+import Playerbank from "./player/Playerbank"
 
 export const Game = (props) => {
     const LoadComponent = () => {
-        switch (props.activeSkill) {
+        switch (props.activePage) {
             case ("bushcraft"):
             case ("metalwork"):
                 return <Noncombat />
+            case ("bank"):
+                return <Playerbank />
             default:
                 return null
         }
@@ -24,7 +27,7 @@ export const Game = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    activeSkill: state.skills.activeSkill
+    activePage: state.skills.activePage
 })
 
 const mapDispatchToProps = {

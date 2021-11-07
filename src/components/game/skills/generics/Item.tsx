@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setActiveAction } from "../../actions/api"
+import { setActiveAction } from "../../../actions/api"
 
 import { FiAlertTriangle } from "react-icons/fi";
 import { FiClock } from "react-icons/fi";

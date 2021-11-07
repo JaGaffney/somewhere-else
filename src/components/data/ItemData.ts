@@ -6,8 +6,8 @@ import { equipmentSeed } from "./seed/equipmentSeed"
 
 // on loads creates all of the items in game data.
 export class ItemData {
-  generic: Array<Generic> = []
-  equipment: Array<Equipment> = []
+  generic: Map<number, Generic> = new Map()
+  equipment: Map<number, Equipment> = new Map()
 
   constructor() {
     this.createUseableItems()
@@ -16,9 +16,9 @@ export class ItemData {
 
   createUseableItems() {
     for (const key in itemSeed) {
-      this.generic.push(
+      this.generic.set(
+        itemSeed[key].id,
         new Generic(
-          itemSeed[key].id,
           itemSeed[key].name,
           itemSeed[key].price,
           itemSeed[key].rarity,
@@ -30,9 +30,9 @@ export class ItemData {
 
   createEquipmentItems() {
     for (const key in equipmentSeed) {
-      this.equipment.push(
+      this.equipment.set(
+        equipmentSeed[key].id,
         new Equipment(
-          equipmentSeed[key].id,
           equipmentSeed[key].name,
           equipmentSeed[key].price,
           equipmentSeed[key].rarity,
@@ -45,4 +45,6 @@ export class ItemData {
       )
     }
   }
+
+  getItemById(id) {}
 }

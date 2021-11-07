@@ -143,4 +143,28 @@ export const equipmentSeed = [
     },
     effect: "30% block chance",
   },
+  {
+    id: 20006,
+    name: "bamboo spear",
+    price: 10,
+    rarity: "COMMON",
+    requirementLevel: 1,
+    requirementStyle: "MELEE",
+    slot: "TWO_HANDED",
+    equipmentStats: {
+      attack: {
+        melee: 15,
+        range: 5,
+        mage: -5,
+      },
+      defence: {
+        melee: 0,
+        range: 0,
+        mage: 0,
+      },
+      weight: 2,
+      speed: 3000,
+    },
+    effect: "",
+  },
 ]

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setActiveSkill } from '../actions/api';
+import { setActivePage } from '../actions/api';
 
 import { GiCoins } from "react-icons/gi";
 import { FaPiggyBank } from "react-icons/fa";
@@ -11,7 +11,7 @@ export const NonSkillPanel = (props) => {
         <div className="sidepanel__skill">
             <span className="sidepanel__skill-title"></span>
 
-            <div className="skillpanel" onClick={() => props.setActiveSkill("shop")}>
+            <div className="skillpanel" onClick={() => props.setActivePage("shop")}>
                 <span className="skillpanel__icon"><GiCoins /></span>
                 <span className="skillpanel__name">Shop</span>
                 {props.playerData.length !== 0 && (
@@ -19,7 +19,7 @@ export const NonSkillPanel = (props) => {
                 )}
             </div>
 
-            <div className="skillpanel" onClick={() => props.setActiveSkill("bank")}>
+            <div className="skillpanel" onClick={() => props.setActivePage("bank")}>
                 <span className="skillpanel__icon"><FaPiggyBank /></span>
                 <span className="skillpanel__name">Bank</span>
                 {props.playerData.length !== 0 && (
@@ -38,7 +38,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    setActiveSkill
+    setActivePage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NonSkillPanel)

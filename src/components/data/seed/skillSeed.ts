@@ -30,6 +30,15 @@ export const bushcraft = {
       ],
       itemsRecieved: [{ id: 10001, qty: 1 }],
     },
+    {
+      name: "bamboo spear",
+      level: 1,
+      exp: 25,
+      time: 5.0,
+      icon: "",
+      itemsRequired: [{ id: 10001, qty: 1 }],
+      itemsRecieved: [{ id: 20006, qty: 1 }],
+    },
   ],
 }
 

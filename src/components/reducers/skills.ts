@@ -1,6 +1,6 @@
 const initialState = {
   skillData: [],
-  activeSkill: null,
+  activePage: null,
   activeAction: null,
 }
 
@@ -11,10 +11,10 @@ export default function (state = initialState, action) {
         ...state,
         skillData: action.payload,
       }
-    case "ACTIVE_SKILL":
+    case "ACTIVE_PAGE":
       return {
         ...state,
-        activeSkill: action.payload,
+        activePage: action.payload,
       }
     case "ACTIVE_ACTION":
       return {

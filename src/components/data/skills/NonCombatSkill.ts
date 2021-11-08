@@ -36,7 +36,7 @@ export class NonCombatSkill extends Skill {
         val.itemsRecieved,
         val.itemsRequired
       )
-      let id = `${this.productionName}_${val.name}`
+      let id = `p_${val.name}`
       this.production[id] = action
     }
   }
@@ -52,8 +52,17 @@ export class NonCombatSkill extends Skill {
         val.icon,
         val.itemsRecieved
       )
-      let id = `${this.gatheringName}_${val.name}`
+      let id = `g_${val.name}`
       this.gathering[id] = action
+    }
+  }
+
+  getItemDataBySkillId(skillId: string) {
+    let type = skillId.charAt(0)
+    if (type === "p") {
+      return this.production[skillId]
+    } else if (type === "g") {
+      return this.gathering[skillId]
     }
   }
 }

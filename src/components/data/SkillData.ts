@@ -55,4 +55,8 @@ export class SkillData {
   getNoncombatSkillByName(name: string) {
     return this.noncombatSkill[name]
   }
+
+  getItemIdBySkillId(skillName: string, actionID: string) {
+    return this.noncombatSkill[skillName].getItemDataBySkillId(actionID)
+  }
 }

@@ -4,7 +4,7 @@ export const setActivePage = (activePage: string) => dispatch => {
     payload: activePage,
   })
 }
-export const setActiveAction = activeAction => dispatch => {
+export const setActiveAction = (activeAction: string) => dispatch => {
   return dispatch({
     type: "ACTIVE_ACTION",
     payload: activeAction,

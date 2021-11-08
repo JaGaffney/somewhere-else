@@ -46,5 +46,10 @@ export class ItemData {
     }
   }
 
-  getItemById(id) {}
+  getItemById(id) {
+    if (id > 20000) {
+      return this.equipment.get(id)
+    }
+    return this.generic.get(id)
+  }
 }

@@ -6,9 +6,6 @@ import { FiAlertTriangle } from "react-icons/fi";
 import { FiClock } from "react-icons/fi";
 
 export const Item = (props) => {
-    console.log(props.id)
-
-
     const setActiveActionData = () => {
         const data = {
             id: props.id,

@@ -2,17 +2,17 @@ export const playerSeed = {
   bank: {
     bankItems: {
       1: {
-        itemId: 100001,
+        itemId: 10001,
         qty: 5,
         bankLocation: 0,
       },
       2: {
-        itemId: 100005,
+        itemId: 10005,
         qty: 10,
         bankLocation: 0,
       },
       3: {
-        itemId: 100004,
+        itemId: 10004,
         qty: 10,
         bankLocation: 0,
       },

@@ -19,7 +19,7 @@ const IndexPage = props => {
     // NOTE: should be a loader somewhere else maybe inside redux
     // creates all items in the game
     const itemData = new ItemData()
-
+    console.log(itemData)
     // creates all skill data not pertaining to the player
     const skillData = new SkillData()
     const skillNames = skillData.getAllNoncombatSkills()
@@ -32,8 +32,6 @@ const IndexPage = props => {
     props.loadSkills(skillData)
     props.loadItems(itemData)
     props.loadPlayer(playerData)
-
-
   }, [])
 
 

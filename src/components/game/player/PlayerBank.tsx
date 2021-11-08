@@ -17,9 +17,8 @@ export const PlayerBank = (props) => {
             </div>
             <div className="bank__container">
                 {[...props.playerData.playerBank.bankItems.keys()].map((i, k) => {
-                    console.log(props.playerData.playerBank.bankItems.get(i))
                     return (
-                        <p key={k}>id: {i} qty: {props.playerData.playerBank.bankItems.get(i)}</p>
+                        <p key={k}>id: {i} qty: {props.playerData.playerBank.bankItems.get(i).qty}</p>
                     )
 
                 })}

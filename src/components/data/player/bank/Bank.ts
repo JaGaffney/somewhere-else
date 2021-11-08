@@ -24,15 +24,20 @@ export class Bank {
     return this.bankItems.size
   }
   findItemInBank(itemId: number) {
-    return this.bankItems[itemId]
+    return this.bankItems.get(itemId)
   }
+
   addItemtoBank(itemId: number, qty: number) {
+    console.log(itemId, qty)
     // might need a better check
+
     let currentVal = this.findItemInBank(itemId)
     if (currentVal === undefined) {
-      currentVal = 0
+      let newItem = new Bankslot(qty, 0)
+      this.bankItems.set(itemId, newItem)
+    } else {
+      this.bankItems.set(itemId, new Bankslot(currentVal.qty + qty, 0))
     }
-    this.bankItems.set(itemId, currentVal + qty)
   }
 
   removeItemfromBank(itemId: number, qty: number) {}

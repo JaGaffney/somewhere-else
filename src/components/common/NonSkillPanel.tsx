@@ -11,21 +11,21 @@ export const NonSkillPanel = (props) => {
         <div className="sidepanel__skill">
             <span className="sidepanel__skill-title"></span>
 
-            <div className="skillpanel" onClick={() => props.setActivePage("shop")}>
+            <button className="skillpanel" onClick={() => props.setActivePage("shop")}>
                 <span className="skillpanel__icon"><GiCoins /></span>
-                <span className="skillpanel__name">Shop</span>
+                <span className={`skillpanel__name ${props.activePage === "shop" ? "skillpanel__name-active" : null}`}>Shop</span>
                 {props.playerData.length !== 0 && (
                     <span className="skillpanel__level">{props.playerData.playerBank.getCoins()} GP</span>
                 )}
-            </div>
+            </button>
 
-            <div className="skillpanel" onClick={() => props.setActivePage("bank")}>
+            <button className="skillpanel" onClick={() => props.setActivePage("bank")}>
                 <span className="skillpanel__icon"><FaPiggyBank /></span>
-                <span className="skillpanel__name">Bank</span>
+                <span className={`skillpanel__name ${props.activePage === "bank" ? "skillpanel__name-active" : null}`}>Bank</span>
                 {props.playerData.length !== 0 && (
                     <span className="skillpanel__level">{props.playerData.playerBank.totalItemsInBank()}{props.seperator} / {props.playerData.playerBank.getBankSpace()}</span>
                 )}
-            </div>
+            </button>
 
         </div>
     )
@@ -34,7 +34,8 @@ export const NonSkillPanel = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    playerData: state.player.playerData
+    playerData: state.player.playerData,
+    activePage: state.skills.activePage
 })
 
 const mapDispatchToProps = {

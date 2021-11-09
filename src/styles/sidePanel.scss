@@ -9,6 +9,7 @@
   height: calc(100vh + 5rem);
   min-height: 50rem;
   border-right: solid 6px transparent;
+  overflow-x: hidden;
   &:hover {
     overflow-y: scroll;
     border-right: none;
@@ -56,6 +57,13 @@
   font-size: 0.9rem;
   padding: 0.3rem 1rem;
   cursor: pointer;
+  border: none;
+  border-bottom: solid 3px transparent;
+  outline: none;
+  width: 90%;
+  background: var(--gray800);
+  color: var(--gray100);
+
   &__icon {
     font-size: 1.5rem;
   }
@@ -71,6 +79,9 @@
   &:hover {
     background: var(--gray700);
     box-shadow: var(--shadow500);
+  }
+  &:focus {
+    border-bottom: solid 3px var(--green500);
   }
 }
 .skillpanel__name-active {

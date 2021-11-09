@@ -7,13 +7,13 @@ import { GiCoins } from "react-icons/gi";
 
 export const SkillPanel = (props) => {
     return (
-        <div className="skillpanel" onClick={() => props.setActivePage(props.skillName)}>
+        <button className="skillpanel" onClick={() => props.setActivePage(props.skillName)}>
             <span className="skillpanel__icon">{props.icon ? props.icon : <GiCoins />}</span>
             <span className={`skillpanel__name ${props.activePage === props.skillName ? "skillpanel__name-active" : null}`}>{props.skillName}</span>
             {props.playerData.length !== 0 && (
                 <span className="skillpanel__level">{props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(props.skillName))}{props.seperator}{props.skillLevelTotal}</span>
             )}
-        </div>
+        </button>
     )
 }
 

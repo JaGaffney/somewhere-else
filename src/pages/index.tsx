@@ -8,18 +8,22 @@ import SEO from "../components/seo"
 import Landing from "../components/landing/Landing"
 import Structure from "../components/game/Structure"
 
+// data classes
 import { ItemData } from "../components/data/ItemData"
 import { SkillData } from "../components/data/SkillData"
 import { PlayerData } from "../components/data/PlayerData"
 
+// this will be loaded from local storage
 import { playerSeed } from "../components/data/seed/playerSeed"
+
+// Game engine
+import { GameEngine } from "../components/data/GameEngine"
 
 const IndexPage = props => {
   useEffect(() => {
     // NOTE: should be a loader somewhere else maybe inside redux
     // creates all items in the game
     const itemData = new ItemData()
-    console.log(itemData)
     // creates all skill data not pertaining to the player
     const skillData = new SkillData()
     const skillNames = skillData.getAllNoncombatSkills()
@@ -32,7 +36,20 @@ const IndexPage = props => {
     props.loadSkills(skillData)
     props.loadItems(itemData)
     props.loadPlayer(playerData)
+
+    // game engine tick
+    // on load will use old data
+    let intialtime = new Date().getTime()
+
+    const gameEngine = new GameEngine(intialtime)
+    gameEngine.setTimeToComplete(0)
+
+    // start game
+    gameEngine.gameTick()
   }, [])
+
+
+
 
 
   return (
@@ -46,9 +63,10 @@ const IndexPage = props => {
   )
 }
 
-const mapStateToProps = ({ data }) => {
-  return { data }
-}
+const mapStateToProps = (state) => ({
+
+})
+
 
 const mapDispatchToProps = {
   loadSkills, loadItems, loadPlayer

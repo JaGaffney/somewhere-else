@@ -20,6 +20,7 @@ export class Equipment extends Item {
   constructor(
     name: string,
     price: number,
+    description: string,
     rarity: string,
     requirementLevel: number,
     requirementStyle: string,
@@ -27,7 +28,7 @@ export class Equipment extends Item {
     equipmentStats: IEquipmentStats,
     effect: string
   ) {
-    super(name, price, enumFromValue(rarity, Rarity))
+    super(name, price, description, enumFromValue(rarity, Rarity))
     this.requirementLevel = requirementLevel
     this.requirementStyle = enumFromValue(requirementStyle, RequirementStyle)
     this.slot = enumFromValue(slot, Slot)

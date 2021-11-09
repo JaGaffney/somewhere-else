@@ -21,6 +21,7 @@ export class ItemData {
         new Generic(
           itemSeed[key].name,
           itemSeed[key].price,
+          itemSeed[key].description,
           itemSeed[key].rarity,
           itemSeed[key].consumeable
         )
@@ -35,6 +36,7 @@ export class ItemData {
         new Equipment(
           equipmentSeed[key].name,
           equipmentSeed[key].price,
+          itemSeed[key].description,
           equipmentSeed[key].rarity,
           equipmentSeed[key].requirementLevel,
           equipmentSeed[key].requirementStyle,
@@ -49,7 +51,8 @@ export class ItemData {
   getItemById(id) {
     if (id > 20000) {
       return this.equipment.get(id)
+    } else {
+      return this.generic.get(id)
     }
-    return this.generic.get(id)
   }
 }

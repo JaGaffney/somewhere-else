@@ -39,14 +39,34 @@ const IndexPage = props => {
 
     // game engine tick
     // on load will use old data
-    let intialtime = new Date().getTime()
+    // let intialtime = new Date().getTime()
 
-    const gameEngine = new GameEngine(intialtime)
-    gameEngine.setTimeToComplete(0)
+    // const gameEngine = new GameEngine(intialtime)
+    // gameEngine.setTimeToComplete(0)
 
-    // start game
-    gameEngine.gameTick()
+    // // start game
+    // gameEngine.gameTick()
   }, [])
+
+  useEffect(() => {
+    const intervalRefresh = setInterval(() => {
+
+      let currentTime = new Date().valueOf()
+
+      for (const current in props.actionTime) {
+        let previousTime = props.actionTime[current].startTime
+        let deltaTime = currentTime - previousTime
+
+        if (deltaTime > props.actionTime[current].timeToComplete * 1000) {
+          console.log("//// ACTION FIN")
+
+        }
+
+      }
+    }, 1000);
+    return () => clearInterval(intervalRefresh);
+  }, []);
+
 
 
 
@@ -64,7 +84,7 @@ const IndexPage = props => {
 }
 
 const mapStateToProps = (state) => ({
-
+  actionTime: state.player.actionTime
 })
 
 

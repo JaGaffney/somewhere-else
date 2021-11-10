@@ -12,7 +12,7 @@ export const bushcraft = {
       name: "ash tree",
       level: 10,
       exp: 25,
-      time: 5.0,
+      time: 10.0,
       icon: "",
       itemsRecieved: [{ id: 10002, qty: 1 }],
     },

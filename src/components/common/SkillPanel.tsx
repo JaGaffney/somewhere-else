@@ -21,7 +21,7 @@ export const SkillPanel = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
-    activePage: state.skills.activePage
+    activePage: state.player.activePage
 })
 
 const mapDispatchToProps = {

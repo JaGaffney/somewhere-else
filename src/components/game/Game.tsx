@@ -27,7 +27,7 @@ export const Game = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    activePage: state.skills.activePage
+    activePage: state.player.activePage
 })
 
 const mapDispatchToProps = {

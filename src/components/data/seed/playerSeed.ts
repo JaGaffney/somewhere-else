@@ -1,5 +1,5 @@
 export const playerSeed = {
-  bank: {
+  playerBank: {
     bankItems: {
       1: {
         itemId: 10001,

@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
-export const PlayerBank = (props) => {
+import BankItem from "./BankItem"
 
+export const PlayerBank = (props) => {
     const [activeBankItem, setActiveBankItem] = useState(null)
+    const [playerBank, setPlayerBank] = useState(null)
 
     const bankItemHandler = (itemData) => {
         setActiveBankItem(itemData)
     }
 
-    console.log(activeBankItem)
+    useEffect(() => {
+        setPlayerBank(props.playerData.playerBank)
+    }, [props.playerData.playerBank.bankItems])
+
     return (
         <div className="game__normal">
             <div className="bank__info">
@@ -17,16 +22,15 @@ export const PlayerBank = (props) => {
                 <span>Bank Value 69 gp</span>
             </div>
             <div className="bank__container">
-                <div className="bank__items">
-                    {[...props.playerData.playerBank.bankItems.keys()].map((id, k) => {
-                        return (
-                            <button className="bank__items-singleItem" key={k} onClick={() => bankItemHandler(props.itemData.getItemById(id))}>
-                                <span className="bank__items-image">{id}</span>
-                                <span className="bank__items-name">{props.itemData.getItemById(id).name}</span>
-                                <span className="bank__items-qty"><span className="bank__items-qty-inner">{props.playerData.playerBank.bankItems.get(id).qty}</span></span>
-                            </button>)
-                    })}
-                </div>
+                {playerBank !== null && (
+                    <div className="bank__items">
+                        {[...playerBank.bankItems.keys()].map((id, k) => {
+                            return (
+                                <BankItem key={k} id={id} name={props.itemData.getItemById(id).name} qty={playerBank.bankItems.get(id).qty} itemData={props.itemData.getItemById(id)} handler={bankItemHandler} />
+                            )
+                        })}
+                    </div>
+                )}
                 <div className="bank__details">
                     {activeBankItem && (
                         <div>
@@ -37,7 +41,6 @@ export const PlayerBank = (props) => {
                                 <span>qty</span>
                             </div>
                         </div>
-
                     )}
                 </div>
             </div>

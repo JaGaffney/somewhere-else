@@ -19,16 +19,15 @@ export const setActivePage = (activePage: string) => dispatch => {
     payload: activePage,
   })
 }
-export const setActiveAction = (activeAction: string) => dispatch => {
-  return dispatch({
-    type: "ACTIVE_ACTION",
-    payload: activeAction,
-  })
-}
 
-export const setActionTime = (name, type, value) => dispatch => {
+export const setActionTime = (
+  name: string,
+  type: boolean,
+  value: number,
+  data: object
+) => dispatch => {
   return dispatch({
     type: "START_ACTION",
-    payload: [name, type, value],
+    payload: [name, type, value, data],
   })
 }

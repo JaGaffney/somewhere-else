@@ -34,7 +34,7 @@ export const Noncombat = (props) => {
 
 const mapStateToProps = (state) => ({
     skills: state.skills.skillData,
-    activePage: state.skills.activePage
+    activePage: state.player.activePage
 })
 
 const mapDispatchToProps = {

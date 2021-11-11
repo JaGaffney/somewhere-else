@@ -4,32 +4,14 @@ import { connect } from 'react-redux'
 import { FiClock } from "react-icons/fi";
 import { BsTreeFill } from "react-icons/bs";
 
-import { startGameEngine } from "../../../actions/api"
-
 export const Progression = (props) => {
-
-    const testLoad = () => {
-        const activeData = props.skillData.getItemIdBySkillId(props.activePage, props.activeAction.id)
-
-        if (activeData.itemsReceived.length > 0) {
-            for (const item in activeData.itemsReceived) {
-                props.playerData.playerBank.addItemtoBank(activeData.itemsReceived[item].id, activeData.itemsReceived[item].qty)
-            }
-        }
-        const game = startGameEngine(props.activeAction.time)
-
-
-    }
-
-
-
     return (
         <div className="progression">
             <div className="progression__container">
                 <BsTreeFill className="progression__icon" />
                 <span className="progression__name">{props.activeAction && props.activeAction.name}</span>
             </div>
-            <button onClick={() => testLoad()}>Click me</button>
+
             <div className="progression__details">
                 <span style={{ width: "100%" }}>{props.activeAction && props.activeAction.exp}xp</span>
                 <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}><FiClock /> {props.activeAction && props.activeAction.time} seconds</span>

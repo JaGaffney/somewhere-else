@@ -19,53 +19,64 @@ export class PlayerData {
     this.createInventory()
   }
 
-  createSkills(skillNames: Array<string>): void {
+  private createSkills(skillNames: Array<string>): void {
     this.skillExp = new SkillEXP(skillNames)
   }
 
-  createBank(): void {
+  private createBank(): void {
     this.playerBank = new Bank()
   }
 
-  createInventory(): void {
+  private createInventory(): void {
     this.inventory = new Inventory()
   }
 
-  createPassives(): void {
+  private createPassives(): void {
     this.passives = new Passives()
   }
 
+  // getters
+  public getSkillExp(skillName: string): number {
+    return this.skillExp.skillExp[skillName]
+  }
+
   // setters
+  public setSkillExp(skillName: string, amount: number): void {
+    this.skillExp.skillExp[skillName] =
+      this.skillExp.skillExp[skillName] + amount
+  }
+
   loadPlayerData(data) {
+    console.log(data)
     this.loadSkillEXP(data.skillExp)
-    this.loadBank(data.bank)
+    this.loadBank(data.playerBank)
     this.loadInventory(data.inventory)
     this.loadPassives(data.passives)
   }
 
   // loads from local storage
-  loadSkillEXP(skillData): void {
+  private loadSkillEXP(skillData): void {
     for (const skill in skillData) {
       this.skillExp.skillExp[skill] = skillData[skill]
     }
   }
-  loadBank(bankData): void {
+
+  private loadBank(bankData): void {
     this.playerBank.setBankSpace(bankData.bankSpace)
     this.playerBank.setCoins(bankData.coins)
 
-    for (const item in bankData.bankItems) {
-      this.playerBank.addItemtoBank(
-        bankData.bankItems[item].itemId,
-        bankData.bankItems[item].qty
-      )
-    }
+    let deserialized = new Map(JSON.parse(bankData.bankItems))
+    deserialized.forEach((k: any, v: any) => {
+      this.playerBank.addItemtoBank(v, k.qty)
+    })
   }
-  loadInventory(inventoryData) {
+
+  private loadInventory(inventoryData) {
     for (const slot in inventoryData) {
       this.inventory.setEquippedItem(slot, inventoryData[slot])
     }
   }
-  loadPassives(passiveData) {
+  private loadPassives(passiveData) {
     for (const name in passiveData.unlockedPassives) {
       this.passives.addNewUnlockedPassive(name)
     }

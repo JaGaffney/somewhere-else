@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { setActiveAction, setActionTime } from "../../../actions/api"
+import { setActionTime } from "../../../actions/api"
 
 import { FiAlertTriangle } from "react-icons/fi";
 import { FiClock } from "react-icons/fi";
@@ -8,14 +8,11 @@ import { FiClock } from "react-icons/fi";
 export const Item = (props) => {
     const [update, setUpdate] = useState(false)
     const setActiveActionData = () => {
+        const page = props.activePage
         const data = {
             id: props.id,
-            name: props.data.name,
-            level: props.data.level,
-            exp: props.data.exp,
-            time: props.data.time
+            skill: page
         }
-        props.setActiveAction(data)
 
         if (update === false) {
             setUpdate(true)
@@ -23,7 +20,7 @@ export const Item = (props) => {
             setUpdate(false)
         }
 
-        props.setActionTime(props.data.name, !update, props.data.time)
+        props.setActionTime(props.data.name, !update, props.data.time, data)
     }
 
 
@@ -41,10 +38,11 @@ export const Item = (props) => {
 
 const mapStateToProps = (state) => ({
     counter: state.player.counter,
+    activePage: state.player.activePage
 })
 
 const mapDispatchToProps = {
-    setActiveAction, setActionTime
+    setActionTime
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Item)

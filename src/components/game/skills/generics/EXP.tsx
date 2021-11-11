@@ -6,11 +6,12 @@ export const EXP = (props) => {
         <div className="exp">
             <div className="exp__level">
                 <span>Level</span>
-                <span>52 / 99{props.level}</span>
+
+                <span>{props.playerData.levelChecker.getLevelFromExp(props.playerData.getSkillExp(props.activePage))} / 99</span>
             </div>
             <div className="exp__progressbar"></div>
             <div className="exp__required">
-                <span>14000</span>
+                <span>{props.playerData.getSkillExp(props.activePage)}</span>
                 <span>21000</span>
             </div>
         </div>
@@ -20,7 +21,8 @@ export const EXP = (props) => {
 
 
 const mapStateToProps = (state) => ({
-
+    playerData: state.player.playerData,
+    activePage: state.player.activePage
 })
 
 const mapDispatchToProps = {

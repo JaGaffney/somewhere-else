@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import { loadSkills, loadItems, loadPlayer, allDataLoaded, saveAllDataToLocalStorage, onLoadDataFromLocalStorage } from "../components/actions/startup"
-import { setActionTime } from "../components/actions/api"
+import { setActionTime, setDeltaTime, resetActionTime } from "../components/actions/api"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -49,15 +49,23 @@ const IndexPage = props => {
       saveAllDataToLocalStorage(props.playerData)
 
       let currentTime = new Date().valueOf()
+      let previousTime = 0
+      let deltaTime = 0
+
+      console.log(props.actionTime)
       for (const current in props.actionTime) {
         const actionData = props.actionTime[current]
-        let previousTime = actionData.startTime
-        let deltaTime = currentTime - previousTime
+        previousTime = actionData.startTime
+        deltaTime = currentTime - previousTime
         let actionTimeInMs = actionData.timeToComplete * 1000
+
+        if (deltaTime < actionData.timeToComplete * 1000) {
+          props.setDeltaTime(Math.floor(deltaTime / 1000))
+        }
+
 
         if (deltaTime > actionTimeInMs) {
           // check if required level
-
 
           const amount = Math.floor(deltaTime / actionTimeInMs)
           const id = actionData.data.id
@@ -73,9 +81,7 @@ const IndexPage = props => {
           handleExp(activeData, amount, skill)
 
           // reset value to current time
-          handleReset(skill, id, actionData.timeToComplete, current)
-
-
+          props.resetActionTime()
         }
       }
 
@@ -94,10 +100,6 @@ const IndexPage = props => {
 
   const handleExp = (activeData, amount: number, skill: "string") => {
     props.playerData.setSkillExp(skill, activeData.exp * amount)
-  }
-
-  const handleReset = (skill: string, id, time: number, name: string) => {
-    props.setActionTime(name, true, time, { id, skill })
   }
 
   return (
@@ -120,7 +122,7 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = {
-  loadSkills, loadItems, loadPlayer, allDataLoaded, setActionTime
+  loadSkills, loadItems, loadPlayer, allDataLoaded, setActionTime, setDeltaTime, resetActionTime
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(IndexPage)

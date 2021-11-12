@@ -53,9 +53,7 @@
   justify-content: space-between;
   gap: 3rem;
   &__generic {
-    background: var(--gray800);
-    box-sizing: var(--shadow900);
-    width: 50%;
+    width: 100%;
     border-radius: 0 0 10px 10px;
   }
   &__title {
@@ -85,47 +83,60 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: space-evenly;
+  gap: 3rem;
   margin-top: 2rem;
 }
 .action__item {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   font-size: 1rem;
   padding: 2rem;
   border-radius: 10px;
-  transform: scale(90%);
   transition: transform 0.2s;
-  width: 11rem;
-  height: fit-content;
-  background: var(--gray900);
+  width: 13rem;
+  height: 18rem;
+  background: var(--gray800);
   color: var(--gray200);
   box-shadow: var(--shadow500);
   cursor: pointer;
   &:hover {
-    transform: scale(100%);
+    transform: scale(95%);
     box-shadow: var(--shadow900);
   }
   &-icon {
-    width: 2rem;
-    height: 2rem;
-    font-size: 2rem;
+    width: 6rem;
+    height: 6rem;
+    background: var(--gray900);
+    border-radius: 50% 25%;
+    padding: 0;
+  }
+  &-content {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
   }
   &-name {
-    text-align: center;
     padding: 0.4rem 0;
     width: 100%;
     text-transform: uppercase;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+  }
+  &-level {
+    padding: 0.4rem 0;
+    width: 100%;
+    font-size: 1rem;
   }
   &-details {
     width: 100%;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-transform: uppercase;
     gap: 0.2rem;
   }
 }
@@ -191,16 +202,12 @@
     }
   }
   &-image {
-    // Temp until we have images
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    // end temp
     height: 2.5rem;
     width: 100%;
     background: var(--gray700);
     border-radius: 10px 10px 0 0;
+    margin: 0;
+    padding: 0.2rem;
   }
   &-name {
     width: 100%;

@@ -25,8 +25,16 @@ export const PlayerBank = (props) => {
                 {playerBank !== null && (
                     <div className="bank__items">
                         {[...playerBank.bankItems.keys()].map((id, k) => {
+                            const data = props.itemData.getItemById(id)
                             return (
-                                <BankItem key={k} id={id} name={props.itemData.getItemById(id).name} qty={playerBank.bankItems.get(id).qty} itemData={props.itemData.getItemById(id)} handler={bankItemHandler} />
+                                <BankItem
+                                    key={k}
+                                    id={id}
+                                    name={data.name}
+                                    icon={data.icon}
+                                    qty={playerBank.bankItems.get(id).qty}
+                                    itemData={data}
+                                    handler={bankItemHandler} />
                             )
                         })}
                     </div>

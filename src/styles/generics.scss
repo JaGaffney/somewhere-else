@@ -21,7 +21,23 @@
     height: 1rem;
     width: 100%;
     border-radius: 10px;
-    background: var(--green700);
+    background: var(--green800);
+    position: relative;
+    z-index: 1;
+    &-inner {
+      z-index: 2;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 1rem;
+      width: 100%;
+      border-radius: 10px;
+      background: var(--green500);
+      transform: scaleX(0);
+      transform-origin: top left;
+      transition: transform 0.3s ease-in;
+      will-change: transform;
+    }
   }
   &__required {
     padding: 1rem;

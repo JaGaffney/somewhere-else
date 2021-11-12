@@ -3,6 +3,7 @@ const initialState = {
   activePage: null,
   actionTime: {},
   allDataLoaded: false,
+  deltaTime: 0,
 }
 
 const actionTimeHandler = (actionTime, payload) => {
@@ -12,6 +13,7 @@ const actionTimeHandler = (actionTime, payload) => {
   let data = payload[3]
 
   if (type === true) {
+    actionTime = {}
     actionTime[name] = {
       startTime: new Date().valueOf(),
       timeToComplete: value,
@@ -34,7 +36,14 @@ export default function (state = initialState, action) {
     case "START_ACTION":
       return {
         ...state,
+        deltaTime: 0,
         actionTime: actionTimeHandler(state.actionTime, action.payload),
+      }
+    case "STOP_ACTION":
+      return {
+        ...state,
+        actionTime: {},
+        deltaTime: 0,
       }
     case "ACTIVE_PAGE":
       return {
@@ -45,6 +54,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         allDataLoaded: action.payload,
+      }
+    case "SET_DELTA_TIME":
+      return {
+        ...state,
+        deltaTime: action.payload,
       }
     default:
       return state

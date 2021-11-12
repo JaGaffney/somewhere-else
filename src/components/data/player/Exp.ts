@@ -10,6 +10,7 @@ export class EXP {
     8: 5000,
     9: 7200,
     10: 10000,
+    99: 100000000,
   }
 
   getLevelFromExp(exp: number): number {
@@ -20,5 +21,15 @@ export class EXP {
       }
     }
     return lvl
+  }
+
+  getNextLevelFromExp(exp: number): number {
+    let currentLevel = this.getLevelFromExp(exp)
+    let val = currentLevel + 1
+    if (val < 100) {
+      return this.level[val]
+    } else {
+      return this.level[99]
+    }
   }
 }

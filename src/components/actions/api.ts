@@ -1,18 +1,3 @@
-import { GameEngine } from "../data/GameEngine"
-
-export const startGameEngine = actionTime => {
-  let intialtime = new Date().getTime()
-
-  const gameEngine = new GameEngine(intialtime)
-  gameEngine.setTimeToComplete(actionTime)
-
-  // start game
-  console.log("//////////////before")
-  const createAction = gameEngine.gameTick()
-  console.log(createAction)
-  console.log("//////////////after")
-}
-
 export const setActivePage = (activePage: string) => dispatch => {
   return dispatch({
     type: "ACTIVE_PAGE",
@@ -29,5 +14,17 @@ export const setActionTime = (
   return dispatch({
     type: "START_ACTION",
     payload: [name, type, value, data],
+  })
+}
+
+export const resetActionTime = () => dispatch => {
+  return dispatch({
+    type: "STOP_ACTION",
+  })
+}
+export const setDeltaTime = (deltatime: number) => dispatch => {
+  return dispatch({
+    type: "SET_DELTA_TIME",
+    payload: deltatime,
   })
 }

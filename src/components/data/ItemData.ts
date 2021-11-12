@@ -21,6 +21,7 @@ export class ItemData {
         new Generic(
           itemSeed[key].name,
           itemSeed[key].price,
+          itemSeed[key].icon,
           itemSeed[key].description,
           itemSeed[key].rarity,
           itemSeed[key].consumeable

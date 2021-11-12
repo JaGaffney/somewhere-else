@@ -7,11 +7,12 @@ export class Generic extends Item {
   constructor(
     name: string,
     price: number,
+    icon: any,
     description: string,
     rarity: string,
     consumeable: boolean
   ) {
-    super(name, price, description, rarity)
+    super(name, price, icon, description, rarity)
     this.consumeable = consumeable
   }
 }

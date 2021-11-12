@@ -6,17 +6,20 @@ import { enumFromValue } from "../enums/enumFromValue"
 export abstract class Item {
   name: string
   price: number
+  icon: any
   description: string
   rarity: Rarity
 
   constructor(
     name: string,
     price: number,
+    icon: any,
     description: string,
     rarity: string
   ) {
     this.name = name
     this.price = price
+    this.icon = icon
     this.description = description
     this.rarity = enumFromValue(rarity, Rarity)
   }

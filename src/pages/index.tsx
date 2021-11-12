@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { connect } from "react-redux"
 import { loadSkills, loadItems, loadPlayer, allDataLoaded, saveAllDataToLocalStorage, onLoadDataFromLocalStorage } from "../components/actions/startup"
-import { setActionTime, setDeltaTime, resetActionTime } from "../components/actions/api"
+import { setDeltaTime, resetActionTime, setActionTime } from "../components/actions/api"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -29,12 +29,10 @@ const IndexPage = props => {
     // creates the default player with no data
     const playerData = new PlayerData(skillNames)
     const dataFromStorage = onLoadDataFromLocalStorage()
-    console.log(dataFromStorage)
+
     if (dataFromStorage !== null) {
       playerData.loadPlayerData(dataFromStorage)
     }
-
-
     // loads data into redux
     props.loadSkills(skillData)
     props.loadItems(itemData)
@@ -46,13 +44,10 @@ const IndexPage = props => {
 
   useEffect(() => {
     const intervalRefresh = setInterval(() => {
-      saveAllDataToLocalStorage(props.playerData)
-
       let currentTime = new Date().valueOf()
       let previousTime = 0
       let deltaTime = 0
 
-      console.log(props.actionTime)
       for (const current in props.actionTime) {
         const actionData = props.actionTime[current]
         previousTime = actionData.startTime
@@ -60,9 +55,8 @@ const IndexPage = props => {
         let actionTimeInMs = actionData.timeToComplete * 1000
 
         if (deltaTime < actionData.timeToComplete * 1000) {
-          props.setDeltaTime(Math.floor(deltaTime / 1000))
+          props.setDeltaTime(Math.round(deltaTime / 1000))
         }
-
 
         if (deltaTime > actionTimeInMs) {
           // check if required level
@@ -81,13 +75,20 @@ const IndexPage = props => {
           handleExp(activeData, amount, skill)
 
           // reset value to current time
-          props.resetActionTime()
+          handleReset(skill, id, actionData.timeToComplete, current)
         }
       }
 
+      // save every 10 seconds
+      if (currentTime % 10 < 0.5) {
+        console.log("SAVING")
+        // saveAllDataToLocalStorage(props.playerData)
+      }
+
+
     }, 1000);
     return () => clearInterval(intervalRefresh);
-  }, [props.skillData]);
+  }, [props.skillData, props.actionTime]);
 
   const handleBank = (activeData, amount: number) => {
     if (activeData.itemsReceived.length > 0) {
@@ -100,6 +101,11 @@ const IndexPage = props => {
 
   const handleExp = (activeData, amount: number, skill: "string") => {
     props.playerData.setSkillExp(skill, activeData.exp * amount)
+  }
+
+  const handleReset = (skill: string, id, time: number, name: string) => {
+    props.resetActionTime()
+    props.setActionTime(name, time, { id, skill })
   }
 
   return (
@@ -122,7 +128,7 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = {
-  loadSkills, loadItems, loadPlayer, allDataLoaded, setActionTime, setDeltaTime, resetActionTime
+  loadSkills, loadItems, loadPlayer, allDataLoaded, setDeltaTime, resetActionTime, setActionTime
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(IndexPage)

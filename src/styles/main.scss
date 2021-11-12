@@ -16,30 +16,43 @@
 
 .progression {
   width: 100%;
-  display: flex;
-  margin: 1rem auto;
-  gap: 1rem;
-  justify-content: space-between;
   background: var(--gray800);
   box-shadow: var(--shadow500);
+  border-radius: 0 0 10px 10px;
   &__container {
+    width: 100%;
+    margin: 0 auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    align-items: flex-start;
+    flex-direction: column;
   }
-  &__icon {
+  &__body {
+    display: flex;
     padding: 1rem;
-    height: 4rem;
-    width: 4rem;
-    background: var(--gray800);
-    border-radius: 50%;
-  }
-  &__details {
-    font-size: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-evenly;
+    &-icon {
+      width: 5rem;
+      height: 5rem;
+      background: var(--gray900);
+      border-radius: 50% 25%;
+      padding: 0;
+      margin: 0;
+    }
+    &-details {
+      margin-left: 5rem;
+      font-size: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-evenly;
+    }
+    &-name {
+      width: 100%;
+      text-transform: capitalize;
+      font-size: 1.2rem;
+    }
+    &-data {
+      width: 100%;
+      font-size: 1rem;
+    }
   }
 }
 

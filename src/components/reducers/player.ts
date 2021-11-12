@@ -8,19 +8,13 @@ const initialState = {
 
 const actionTimeHandler = (actionTime, payload) => {
   let name = payload[0]
-  let type = payload[1]
-  let value = payload[2]
-  let data = payload[3]
+  let value = payload[1]
+  let data = payload[2]
 
-  if (type === true) {
-    actionTime = {}
-    actionTime[name] = {
-      startTime: new Date().valueOf(),
-      timeToComplete: value,
-      data,
-    }
-  } else if (type === false) {
-    actionTime = {}
+  actionTime[name] = {
+    startTime: new Date().valueOf(),
+    timeToComplete: value,
+    data,
   }
 
   return actionTime

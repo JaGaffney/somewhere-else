@@ -1,24 +1,20 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { setActionTime } from "../../../actions/api"
+import { setActionTime, resetActionTime } from "../../../actions/api"
 
 import { FiClock } from "react-icons/fi";
 
 export const Item = (props) => {
-    const [update, setUpdate] = useState(false)
-
     const setActiveActionData = () => {
+        props.resetActionTime()
         const page = props.activePage
         const data = {
             id: props.id,
             skill: page
         }
-        if (update === false) {
-            setUpdate(true)
-        } else {
-            setUpdate(false)
-        }
-        props.setActionTime(props.data.name, !update, props.data.time, data)
+
+        props.setActionTime(props.data.name, props.data.time, data)
+
     }
 
     return (
@@ -42,7 +38,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    setActionTime
+    setActionTime, resetActionTime
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Item)

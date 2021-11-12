@@ -18,7 +18,7 @@ export const Item = (props) => {
     }
 
     return (
-        <div className="action__item" onClick={() => setActiveActionData()}>
+        <button className="action__item" onClick={() => setActiveActionData()}>
             <div className="action__item-icon"><img src={props.data.icon} /></div>
             <div className="action__item-content">
                 <span className="action__item-name">{props.data.name}</span>
@@ -26,7 +26,7 @@ export const Item = (props) => {
                 <span className="action__item-details">{props.data.exp} xp</span>
                 <span className="action__item-details"><FiClock /> {props.data.time} seconds</span>
             </div>
-        </div>
+        </button>
     )
 }
 

@@ -61,7 +61,7 @@ const IndexPage = props => {
         if (deltaTime > actionTimeInMs) {
           // check if required level
 
-          const amount = Math.floor(deltaTime / actionTimeInMs)
+          const amount = Math.round(deltaTime / actionTimeInMs)
           const id = actionData.data.id
           const skill = actionData.data.skill
           const activeData = props.skillData.getItemIdBySkillId(skill, id)

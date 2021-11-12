@@ -25,21 +25,25 @@ export const Progression = (props) => {
 
     return (
         <div className="progression">
-            {activeData && (
-                <div className="progression__container">
-                    <div className="progression__body">
-                        <img className="progression__body-icon" src={activeData.icon} />
-                        <div className="progression__body-details">
-                            <span className="progression__body-name">{activeData.name}</span>
-                            <span className="progression__body-data">{activeData.exp} xp</span>
-                            <span className="progression__body-data"><FiClock /> {activeData.time} seconds</span>
-                        </div>
+
+            <div className="progression__container">
+                <div className="progression__body">
+
+                    {activeData && <img className="progression__body-icon" src={activeData.icon} />}
+
+                    <div className="progression__body-details">
+                        <span className="progression__body-name">{activeData && activeData.name}</span>
+                        {activeData && <span className="progression__body-data">{activeData.exp} xp</span>}
+                        {activeData && <span className="progression__body-data"><FiClock /> {activeData.time} seconds</span>}
                     </div>
-                    <div className="exp__progressbar">
-                        <div className="exp__progressbar-inner" style={{ transform: `scaleX(${normalize(props.deltaTime, activeData.time)}%)` }}></div>
-                    </div>
+
                 </div>
-            )}
+
+                <div className="exp__progressbar">
+                    <div className="exp__progressbar-inner" style={{ transform: `scaleX(${activeData && normalize(props.deltaTime, activeData.time)}%)` }}></div>
+                </div>
+            </div>
+
         </div >
     )
 }

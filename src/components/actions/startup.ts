@@ -16,6 +16,7 @@ export const loadPlayer = data => dispatch => {
     payload: data,
   })
 }
+
 export const allDataLoaded = () => dispatch => {
   return dispatch({
     type: "ALL_DATA_LOADED",
@@ -43,12 +44,10 @@ export const onLoadDataFromLocalStorage = () => {
   }
 }
 
-export const saveAllDataToLocalStorage = ({
-  playerBank,
-  skillExp,
-  passives,
-  inventory,
-}) => {
+export const saveAllDataToLocalStorage = (
+  { playerBank, skillExp, passives, inventory },
+  actionTime
+) => {
   const playerData = {
     ...playerBank,
     bankItems: JSON.stringify([...playerBank.bankItems]),
@@ -60,6 +59,7 @@ export const saveAllDataToLocalStorage = ({
     playerBank: playerData,
     passives,
     inventory,
+    actionTime,
   }
   localStorageSave(data)
 }

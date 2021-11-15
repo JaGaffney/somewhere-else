@@ -47,7 +47,6 @@ export class PlayerData {
   }
 
   loadPlayerData(data) {
-    console.log(data)
     this.loadSkillEXP(data.skillExp)
     this.loadBank(data.playerBank)
     this.loadInventory(data.inventory)

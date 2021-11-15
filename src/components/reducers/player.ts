@@ -9,10 +9,18 @@ const initialState = {
 const actionTimeHandler = (actionTime, payload) => {
   let name = payload[0]
   let value = payload[1]
-  let data = payload[2]
+  let oldTime = payload[2]
+  let data = payload[3]
+
+  let newTime = null
+  if (oldTime !== null) {
+    newTime = oldTime
+  } else {
+    newTime = new Date().valueOf()
+  }
 
   actionTime[name] = {
-    startTime: new Date().valueOf(),
+    startTime: newTime,
     timeToComplete: value,
     data,
   }

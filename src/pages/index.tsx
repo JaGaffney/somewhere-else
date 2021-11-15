@@ -15,7 +15,7 @@ import { SkillData } from "../components/data/SkillData"
 import { PlayerData } from "../components/data/PlayerData"
 
 // this will be loaded from local storage
-import { playerSeed } from "../components/data/seed/playerSeed"
+import backgroundImage from "../images/background/cat.jpg"
 
 const IndexPage = props => {
   useEffect(() => {
@@ -38,57 +38,77 @@ const IndexPage = props => {
     props.loadItems(itemData)
     props.loadPlayer(playerData)
 
+    // pass in skill data
+    // actionTimeHandler(, dataFromStorage.actionTime, skillData)
+    if (dataFromStorage !== null) {
+      for (const current in dataFromStorage.actionTime) {
+        const actionData = dataFromStorage.actionTime[current]
+
+        const id = actionData.data.id
+        const skill = actionData.data.skill
+        const time = actionData.timeToComplete
+        const startTime = actionData.startTime
+        props.setActionTime(current, time, startTime, { id, skill })
+      }
+    }
     // add check if data fails to load
     props.allDataLoaded()
   }, [])
 
+
+
+  const actionTimeHandler = (currentTime, data, skillData) => {
+    let previousTime = 0
+    let deltaTime = 0
+
+    for (const current in data) {
+      const actionData = data[current]
+      previousTime = actionData.startTime
+      deltaTime = currentTime - previousTime
+      let actionTimeInMs = actionData.timeToComplete * 1000
+
+      if (deltaTime < actionData.timeToComplete * 1000) {
+        props.setDeltaTime(Math.round(deltaTime / 1000))
+      }
+
+      if (deltaTime > actionTimeInMs) {
+        // check if required level
+
+        const amount = Math.round(deltaTime / actionTimeInMs)
+        const id = actionData.data.id
+        const skill = actionData.data.skill
+        const activeData = skillData.getItemIdBySkillId(skill, id)
+
+        // add items to bank
+        handleBank(activeData, amount)
+
+        // take items from bank if applicable
+
+        // add exp
+        handleExp(activeData, amount, skill)
+
+        // reset value to current time
+        handleReset(skill, id, actionData.timeToComplete, current)
+      }
+    }
+  }
+
   useEffect(() => {
     const intervalRefresh = setInterval(() => {
+
       let currentTime = new Date().valueOf()
-      let previousTime = 0
-      let deltaTime = 0
-
-      for (const current in props.actionTime) {
-        const actionData = props.actionTime[current]
-        previousTime = actionData.startTime
-        deltaTime = currentTime - previousTime
-        let actionTimeInMs = actionData.timeToComplete * 1000
-
-        if (deltaTime < actionData.timeToComplete * 1000) {
-          props.setDeltaTime(Math.round(deltaTime / 1000))
-        }
-
-        if (deltaTime > actionTimeInMs) {
-          // check if required level
-
-          const amount = Math.round(deltaTime / actionTimeInMs)
-          const id = actionData.data.id
-          const skill = actionData.data.skill
-          const activeData = props.skillData.getItemIdBySkillId(skill, id)
-
-          // add items to bank
-          handleBank(activeData, amount)
-
-          // take items from bank if applicable
-
-          // add exp
-          handleExp(activeData, amount, skill)
-
-          // reset value to current time
-          handleReset(skill, id, actionData.timeToComplete, current)
-        }
-      }
+      actionTimeHandler(currentTime, props.actionTime, props.skillData)
 
       // save every 10 seconds
       if (currentTime % 10 < 0.5) {
         console.log("SAVING")
-        // saveAllDataToLocalStorage(props.playerData)
+        saveAllDataToLocalStorage(props.playerData, props.actionTime)
       }
-
 
     }, 1000);
     return () => clearInterval(intervalRefresh);
   }, [props.skillData, props.actionTime]);
+
 
   const handleBank = (activeData, amount: number) => {
     if (activeData.itemsReceived.length > 0) {
@@ -105,13 +125,13 @@ const IndexPage = props => {
 
   const handleReset = (skill: string, id, time: number, name: string) => {
     props.resetActionTime()
-    props.setActionTime(name, time, { id, skill })
+    props.setActionTime(name, time, null, { id, skill })
   }
 
   return (
     <Layout>
       <SEO title="somewhere else" />
-      <section className="main-panel">
+      <section className="main-panel" style={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
         {/* <Landing /> */}
         <Structure />
       </section>

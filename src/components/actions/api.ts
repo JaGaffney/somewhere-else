@@ -8,12 +8,13 @@ export const setActivePage = (activePage: string) => dispatch => {
 export const setActionTime = (
   name: string,
   type: boolean,
+  oldTime: any,
   value: number,
   data: object
 ) => dispatch => {
   return dispatch({
     type: "START_ACTION",
-    payload: [name, type, value, data],
+    payload: [name, type, oldTime, value, data],
   })
 }
 

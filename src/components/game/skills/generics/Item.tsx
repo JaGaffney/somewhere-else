@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { setActionTime, resetActionTime } from "../../../actions/api"
 
@@ -13,7 +13,7 @@ export const Item = (props) => {
             skill: page
         }
 
-        props.setActionTime(props.data.name, props.data.time, data)
+        props.setActionTime(props.data.name, props.data.time, null, data)
 
     }
 

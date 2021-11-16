@@ -37,5 +37,14 @@ export class Bank {
     }
   }
 
-  removeItemfromBank(itemId: number, qty: number) {}
+  // might work
+  removeItemfromBank(itemId: number, qty: number) {
+    let currentVal = this.findItemInBank(itemId)
+    if (currentVal !== undefined) {
+      currentVal.qty -= qty
+    }
+    if (currentVal.qty === 0) {
+      this.bankItems[itemId].delete()
+    }
+  }
 }

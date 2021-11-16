@@ -15,6 +15,7 @@ import { SkillData } from "../components/data/SkillData"
 import { PlayerData } from "../components/data/PlayerData"
 
 // this will be loaded from local storage
+// @ts-ignore
 import backgroundImage from "../images/background/cat.jpg"
 
 const IndexPage = props => {
@@ -38,8 +39,6 @@ const IndexPage = props => {
     props.loadItems(itemData)
     props.loadPlayer(playerData)
 
-    // pass in skill data
-    // actionTimeHandler(, dataFromStorage.actionTime, skillData)
     if (dataFromStorage !== null) {
       for (const current in dataFromStorage.actionTime) {
         const actionData = dataFromStorage.actionTime[current]
@@ -51,6 +50,7 @@ const IndexPage = props => {
         props.setActionTime(current, time, startTime, { id, skill })
       }
     }
+
     // add check if data fails to load
     props.allDataLoaded()
   }, [])
@@ -80,9 +80,10 @@ const IndexPage = props => {
         const activeData = skillData.getItemIdBySkillId(skill, id)
 
         // add items to bank
-        handleBank(activeData, amount)
-
+        handleAddToBank(activeData, amount)
+        console.log(activeData)
         // take items from bank if applicable
+        // handleRemoveFromBank(activeData, amount)
 
         // add exp
         handleExp(activeData, amount, skill)
@@ -94,15 +95,17 @@ const IndexPage = props => {
   }
 
   useEffect(() => {
+    let timer = 0
     const intervalRefresh = setInterval(() => {
+      timer++
 
       let currentTime = new Date().valueOf()
       actionTimeHandler(currentTime, props.actionTime, props.skillData)
 
-      // save every 10 seconds
-      if (currentTime % 10 < 0.5) {
+      if (timer > 20) {
         console.log("SAVING")
         saveAllDataToLocalStorage(props.playerData, props.actionTime)
+        timer = 0
       }
 
     }, 1000);
@@ -110,7 +113,7 @@ const IndexPage = props => {
   }, [props.skillData, props.actionTime]);
 
 
-  const handleBank = (activeData, amount: number) => {
+  const handleAddToBank = (activeData, amount: number) => {
     if (activeData.itemsReceived.length > 0) {
       for (const item in activeData.itemsReceived) {
         const qty = activeData.itemsReceived[item].qty * amount
@@ -119,10 +122,19 @@ const IndexPage = props => {
     }
   }
 
+  const handleRemoveFromBank = (activeData, amount: number) => {
+    if (activeData.itemsRequired.length > 0) {
+      for (const item in activeData.itemsRequired) {
+        const qty = activeData.itemsRequired[item].qty * amount
+        props.playerData.playerBank.removeItemfromBank(activeData.itemsReceived[item].id, qty)
+      }
+    }
+  }
+
+
   const handleExp = (activeData, amount: number, skill: "string") => {
     props.playerData.setSkillExp(skill, activeData.exp * amount)
   }
-
   const handleReset = (skill: string, id, time: number, name: string) => {
     props.resetActionTime()
     props.setActionTime(name, time, null, { id, skill })

@@ -1,4 +1,4 @@
-import { NonCombatSkill } from "./skills/NonCombatSkill"
+import { GatheringSkill } from "./skills/GatheringSkill"
 
 // seed data
 import { bushcraft, metalwork } from "./seed/skillSeed"
@@ -6,57 +6,47 @@ import { bushcraft, metalwork } from "./seed/skillSeed"
 // on loads creates all of the ingame data.
 // such as skills, items, exp etc
 export class SkillData {
-  classSkill: Map<string, NonCombatSkill> = new Map()
-  combatSkill: Map<string, NonCombatSkill> = new Map()
-  noncombatSkill: Map<string, NonCombatSkill> = new Map()
+  classSkill: Map<string, GatheringSkill> = new Map()
+  combatSkill: Map<string, GatheringSkill> = new Map()
+  gatheringSkill: Map<string, GatheringSkill> = new Map()
+  productionSkill: Map<string, GatheringSkill> = new Map()
 
   constructor() {
-    this.createNoncombatSkills()
+    this.createGatheringSkills()
   }
 
   createClassSkills() {}
   createCombatSkills() {}
-  createNoncombatSkills() {
-    this.buildNonCombatSkill(
-      "bushcraft",
-      "woodcutting",
-      "fletching",
-      "",
-      bushcraft
-    )
-    this.buildNonCombatSkill("metalwork", "mining", "smithing", "", metalwork)
+  createProductionSkills() {}
+
+  createGatheringSkills() {
+    this.buildGatheringSkill("bushcraft", "", bushcraft) // woodcutting, bushcraft
+    this.buildGatheringSkill("metalwork", "", metalwork)
   }
 
-  buildNonCombatSkill(name, gathering, production, icon, seed) {
-    const skillCreate = new NonCombatSkill(
-      name,
-      gathering,
-      production,
-      icon,
-      seed
-    )
-    this.noncombatSkill[name] = skillCreate
+  buildGatheringSkill(name: string, icon, seed) {
+    const skillCreate = new GatheringSkill(name, icon, seed)
+    this.gatheringSkill[name] = skillCreate
   }
 
   getAllSkills() {
     const skillList = []
-
     return skillList
   }
 
   getAllNoncombatSkills() {
     const noncombatSkillList = []
-    for (const skill in this.noncombatSkill) {
-      noncombatSkillList.push(this.noncombatSkill[skill].name)
+    for (const skill in this.gatheringSkill) {
+      noncombatSkillList.push(this.gatheringSkill[skill].name)
     }
     return noncombatSkillList
   }
 
   getNoncombatSkillByName(name: string) {
-    return this.noncombatSkill[name]
+    return this.gatheringSkill[name]
   }
 
   getItemIdBySkillId(skillName: string, actionID: string) {
-    return this.noncombatSkill[skillName].getItemDataBySkillId(actionID)
+    return this.gatheringSkill[skillName].getItemDataBySkillId(actionID)
   }
 }

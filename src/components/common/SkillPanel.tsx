@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { setActivePage } from '../actions/api';
 
@@ -6,6 +6,9 @@ import { GiCoins } from "react-icons/gi";
 
 
 export const SkillPanel = (props) => {
+    useEffect(() => {
+    }, [props.playerUpdated])
+
     return (
         <button className="skillpanel" onClick={() => props.setActivePage(props.skillName)}>
             <span className="skillpanel__icon">{props.icon ? props.icon : <GiCoins />}</span>
@@ -21,7 +24,8 @@ export const SkillPanel = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
-    activePage: state.player.activePage
+    activePage: state.player.activePage,
+    playerUpdated: state.player.playerUpdated
 })
 
 const mapDispatchToProps = {

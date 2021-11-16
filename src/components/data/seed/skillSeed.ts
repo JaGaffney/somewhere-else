@@ -167,7 +167,7 @@ export const metalwork = [
   {
     name: "silver",
     level: 40,
-    exp: 5,
+    exp: 500,
     time: 1.0,
     icon: silver,
     itemsRecieved: [

@@ -6,7 +6,7 @@ export const EXP = (props) => {
 
     useEffect(() => {
         setPercentage(props.playerData.getSkillExp(props.activePage) / props.playerData.levelChecker.getNextLevelFromExp(props.playerData.getSkillExp(props.activePage)) * 100)
-    }, [props.playerData.getSkillExp(props.activePage)])
+    }, [props.playerData.getSkillExp(props.activePage), props.playerUpdated])
 
     return (
         <div className="exp">
@@ -29,7 +29,8 @@ export const EXP = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
-    activePage: state.player.activePage
+    activePage: state.player.activePage,
+    playerUpdated: state.player.playerUpdated
 })
 
 const mapDispatchToProps = {

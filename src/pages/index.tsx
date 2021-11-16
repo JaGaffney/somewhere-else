@@ -81,7 +81,7 @@ const IndexPage = props => {
 
         // add items to bank
         handleAddToBank(activeData, amount)
-        console.log(activeData)
+
         // take items from bank if applicable
         // handleRemoveFromBank(activeData, amount)
 

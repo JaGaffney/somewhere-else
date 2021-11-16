@@ -5,15 +5,13 @@ import BankItem from "./BankItem"
 
 export const PlayerBank = (props) => {
     const [activeBankItem, setActiveBankItem] = useState(null)
-    const [playerBank, setPlayerBank] = useState(null)
 
     const bankItemHandler = (itemData) => {
         setActiveBankItem(itemData)
     }
 
     useEffect(() => {
-        setPlayerBank(props.playerData.playerBank)
-    }, [props.playerData.playerBank.bankItems])
+    }, [props.playerData.playerBank.bankItems, props.playerUpdated])
 
     return (
         <div className="game__normal">
@@ -22,9 +20,9 @@ export const PlayerBank = (props) => {
                 <span>Bank Value 69 gp</span>
             </div>
             <div className="bank__container">
-                {playerBank !== null && (
+                {props.playerData.playerBank !== null && (
                     <div className="bank__items">
-                        {[...playerBank.bankItems.keys()].map((id, k) => {
+                        {[...props.playerData.playerBank.bankItems.keys()].map((id, k) => {
                             const data = props.itemData.getItemById(id)
                             return (
                                 <BankItem
@@ -32,7 +30,7 @@ export const PlayerBank = (props) => {
                                     id={id}
                                     name={data.name}
                                     icon={data.icon}
-                                    qty={playerBank.bankItems.get(id).qty}
+                                    qty={props.playerData.playerBank.bankItems.get(id).qty}
                                     itemData={data}
                                     handler={bankItemHandler} />
                             )
@@ -61,7 +59,8 @@ export const PlayerBank = (props) => {
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
     itemData: state.items.itemData,
-    activePage: state.skills.activePage
+    activePage: state.skills.activePage,
+    playerUpdated: state.player.playerUpdated
 })
 
 const mapDispatchToProps = {

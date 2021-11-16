@@ -4,6 +4,7 @@ const initialState = {
   actionTime: {},
   allDataLoaded: false,
   deltaTime: 0,
+  playerUpdated: false,
 }
 
 const actionTimeHandler = (actionTime, payload) => {
@@ -40,12 +41,14 @@ export default function (state = initialState, action) {
         ...state,
         deltaTime: 0,
         actionTime: actionTimeHandler(state.actionTime, action.payload),
+        playerUpdated: !state.playerUpdated,
       }
     case "STOP_ACTION":
       return {
         ...state,
         actionTime: {},
         deltaTime: 0,
+        playerUpdated: !state.playerUpdated,
       }
     case "ACTIVE_PAGE":
       return {

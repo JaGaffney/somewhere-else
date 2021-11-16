@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { setActivePage } from '../actions/api';
 
@@ -7,6 +7,10 @@ import { FaPiggyBank } from "react-icons/fa";
 
 
 export const NonSkillPanel = (props) => {
+
+    useEffect(() => {
+    }, [props.playerUpdated])
+
     return (
         <div className="sidepanel__skill">
             <span className="sidepanel__skill-title"></span>
@@ -35,7 +39,8 @@ export const NonSkillPanel = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
-    activePage: state.skills.activePage
+    activePage: state.skills.activePage,
+    playerUpdated: state.player.playerUpdated
 })
 
 const mapDispatchToProps = {

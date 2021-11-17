@@ -2,10 +2,14 @@
 // such as base total exp required, breakdowns for levels, what levels passives become avaiable etc
 export abstract class Skill {
   name: string
-  icon: string
+  icon: any
 
-  constructor(name: string, icon: string) {
+  constructor(name: string, icon: any) {
     this.name = name
     this.icon = icon
+  }
+
+  getIcon() {
+    return this.icon
   }
 }

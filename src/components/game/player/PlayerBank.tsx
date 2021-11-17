@@ -22,19 +22,21 @@ export const PlayerBank = (props) => {
             <div className="bank__container">
                 {props.playerData.playerBank !== null && (
                     <div className="bank__items">
-                        {[...props.playerData.playerBank.bankItems.keys()].map((id, k) => {
-                            const data = props.itemData.getItemById(id)
-                            return (
-                                <BankItem
-                                    key={k}
-                                    id={id}
-                                    name={data.name}
-                                    icon={data.icon}
-                                    qty={props.playerData.playerBank.bankItems.get(id).qty}
-                                    itemData={data}
-                                    handler={bankItemHandler} />
-                            )
-                        })}
+                        <div className="bank__items-inner">
+                            {[...props.playerData.playerBank.bankItems.keys()].map((id, k) => {
+                                const data = props.itemData.getItemById(id)
+                                return (
+                                    <BankItem
+                                        key={k}
+                                        id={id}
+                                        name={data.name}
+                                        icon={data.icon}
+                                        qty={props.playerData.playerBank.bankItems.get(id).qty}
+                                        itemData={data}
+                                        handler={bankItemHandler} />
+                                )
+                            })}
+                        </div>
                     </div>
                 )}
                 <div className="bank__details">

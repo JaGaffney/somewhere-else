@@ -50,9 +50,9 @@
 .skillpanel {
   margin: 0.3rem 0;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: nowrap;
-  justify-content: flex-start;
   gap: 0.5rem;
   font-size: 0.9rem;
   padding: 0.3rem 1rem;
@@ -65,7 +65,8 @@
   color: var(--gray100);
 
   &__icon {
-    font-size: 1.5rem;
+    height: 1.8rem;
+    margin: 0;
   }
   &__name {
     text-transform: capitalize;

@@ -3,6 +3,12 @@ import { GatheringSkill } from "./skills/GatheringSkill"
 // seed data
 import { bushcraft, metalwork } from "./seed/skillSeed"
 
+// non-combat
+// @ts-expect-error
+import BUSHCRAFT from "../../images/sidepanel/bushcraft.svg"
+// @ts-expect-error
+import METALWORK from "../../images/sidepanel/metalwork.svg"
+
 // on loads creates all of the ingame data.
 // such as skills, items, exp etc
 export class SkillData {
@@ -20,8 +26,8 @@ export class SkillData {
   createProductionSkills() {}
 
   createGatheringSkills() {
-    this.buildGatheringSkill("bushcraft", "", bushcraft) // woodcutting, bushcraft
-    this.buildGatheringSkill("metalwork", "", metalwork)
+    this.buildGatheringSkill("bushcraft", BUSHCRAFT, bushcraft) // woodcutting, bushcraft
+    this.buildGatheringSkill("metalwork", METALWORK, metalwork)
   }
 
   buildGatheringSkill(name: string, icon, seed) {
@@ -46,7 +52,11 @@ export class SkillData {
     return this.gatheringSkill[name]
   }
 
-  getItemIdBySkillId(skillName: string, actionID: string) {
-    return this.gatheringSkill[skillName].getItemDataBySkillId(actionID)
+  getSkillIconByName(name: string) {
+    return this.gatheringSkill[name].getIcon()
+  }
+
+  getItemIdBySkillId(name: string, actionID: string) {
+    return this.gatheringSkill[name].getItemDataBySkillId(actionID)
   }
 }

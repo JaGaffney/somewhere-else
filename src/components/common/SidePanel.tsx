@@ -17,7 +17,6 @@ import STAMINA from "../../images/sidepanel/stamina.svg"
 import DIVI from "../../images/sidepanel/divination.svg"
 
 
-
 // logs
 import COLLECTION from "../../images/sidepanel/collectionLog.svg"
 import COMBAT from "../../images/sidepanel/combatLog.svg"

@@ -8,7 +8,6 @@ export class GatheringSkill extends Skill {
 
   constructor(name: string, icon: string, seedData: Array<object>) {
     super(name, icon)
-    console.log(seedData)
     this.createGatheringData(seedData)
   }
 

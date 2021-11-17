@@ -6,7 +6,7 @@
 }
 .sidepanel__container {
   overflow-y: hidden;
-  height: calc(100vh + 5rem);
+  height: calc(100% - 5rem);
   min-height: 50rem;
   border-right: solid 6px transparent;
   overflow-x: hidden;

@@ -37,7 +37,8 @@ export class ItemData {
         new Equipment(
           equipmentSeed[key].name,
           equipmentSeed[key].price,
-          itemSeed[key].description,
+          equipmentSeed[key].icon,
+          equipmentSeed[key].description,
           equipmentSeed[key].rarity,
           equipmentSeed[key].requirementLevel,
           equipmentSeed[key].requirementStyle,

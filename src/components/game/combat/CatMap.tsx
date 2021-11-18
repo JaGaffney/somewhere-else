@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
+// @ts-expect-error
+import backgroundImage from "../../../images/combat/map.jpg"
+
 export const CatMap = (props) => {
     const [areaInfo, setAreaInfo] = useState(null)
     console.log(props.enemies)
@@ -48,7 +51,7 @@ export const CatMap = (props) => {
 
     return (
         <div className="map__container">
-            <div className="map__map">
+            <div className="map__map" style={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "no-repeat" }}>
                 {mapData.map((i, k) => {
                     return (
                         <button

@@ -47,11 +47,11 @@
   gap: 2rem;
   display: flex;
   flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .map__map {
-  width: 40rem;
-  height: 40rem;
+  width: 45%;
   display: grid;
   gap: 0.1rem;
   background: var(--blue700);
@@ -59,7 +59,8 @@
   grid-template-rows: repeat(20, 1fr);
   border-radius: 20px;
   box-shadow: var(--shadow900);
-
+  background-position: left center;
+  background-size: contain;
   &-item {
     cursor: pointer;
     box-shadow: var(--shadow500);
@@ -73,6 +74,10 @@
   }
 }
 
+.map__info {
+  width: 50%;
+}
+
 .map__enemy {
   display: flex;
   flex-wrap: wrap;
@@ -82,7 +87,6 @@
   padding: 1rem;
   margin: 0.8rem 0;
   width: fit-content;
-  position: relative;
   &-image {
     height: 4rem;
     width: 4rem;

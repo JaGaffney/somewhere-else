@@ -1,4 +1,4 @@
-import { Generic } from "./items/Generic"
+import { Consumable } from "./items/Consumable"
 import { Equipment } from "./items/Equipment"
 
 import { itemSeed } from "./seed/itemSeed"
@@ -6,7 +6,7 @@ import { equipmentSeed } from "./seed/equipmentSeed"
 
 // on loads creates all of the items in game data.
 export class ItemData {
-  generic: Map<number, Generic> = new Map()
+  consumable: Map<number, Consumable> = new Map()
   equipment: Map<number, Equipment> = new Map()
 
   constructor() {
@@ -16,9 +16,9 @@ export class ItemData {
 
   createUseableItems() {
     for (const key in itemSeed) {
-      this.generic.set(
+      this.consumable.set(
         itemSeed[key].id,
-        new Generic(
+        new Consumable(
           itemSeed[key].name,
           itemSeed[key].price,
           itemSeed[key].icon,
@@ -54,7 +54,7 @@ export class ItemData {
     if (id > 20000) {
       return this.equipment.get(id)
     } else {
-      return this.generic.get(id)
+      return this.consumable.get(id)
     }
   }
 }

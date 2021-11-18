@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import { loadSkills, loadItems, loadPlayer, allDataLoaded, saveAllDataToLocalStorage, onLoadDataFromLocalStorage } from "../components/actions/startup"
 import { setDeltaTime, resetActionTime, setActionTime } from "../components/actions/api"
@@ -19,6 +19,8 @@ import { PlayerData } from "../components/data/PlayerData"
 import backgroundImage from "../images/background/cat.jpg"
 
 const IndexPage = props => {
+  const [timer, setTimer] = useState(1)
+
   useEffect(() => {
     // NOTE: should be a loader somewhere else maybe inside redux
     // creates all items in the game
@@ -95,17 +97,18 @@ const IndexPage = props => {
   }
 
   useEffect(() => {
-    let timer = 0
+
     const intervalRefresh = setInterval(() => {
-      timer++
+      console.log(timer)
+      setTimer(timer + 1)
 
       let currentTime = new Date().valueOf()
       actionTimeHandler(currentTime, props.actionTime, props.skillData)
 
-      if (timer > 20) {
+      if (timer > 10) {
         console.log("SAVING")
         saveAllDataToLocalStorage(props.playerData, props.actionTime)
-        timer = 0
+        setTimer(0)
       }
 
     }, 1000);
@@ -115,9 +118,11 @@ const IndexPage = props => {
 
   const handleAddToBank = (activeData, amount: number) => {
     if (activeData.itemsReceived.length > 0) {
-      for (const item in activeData.itemsReceived) {
-        const qty = activeData.itemsReceived[item].qty * amount
-        props.playerData.playerBank.addItemtoBank(activeData.itemsReceived[item].id, qty)
+      for (const value in activeData.itemsReceived) {
+        const qty = activeData.itemsReceived[value].qty * amount
+        const id = activeData.itemsReceived[value].id
+        const item = props.itemData.getItemById(id)
+        props.playerData.playerBank.addItemtoBank(id, qty, item)
       }
     }
   }
@@ -156,6 +161,7 @@ const mapStateToProps = (state) => ({
   allDataLoaded: state.player.allDataLoaded,
   playerData: state.player.playerData,
   skillData: state.skills.skillData,
+  itemData: state.items.itemData
 })
 
 

@@ -65,6 +65,7 @@ export const saveAllDataToLocalStorage = (
 }
 
 const localStorageSave = data => {
+  console.log("working?")
   if (typeof window !== "undefined") {
     localStorage.setItem("data", JSON.stringify(data))
   }

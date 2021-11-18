@@ -66,7 +66,7 @@ export class PlayerData {
 
     let deserialized = new Map(JSON.parse(bankData.bankItems))
     deserialized.forEach((k: any, v: any) => {
-      this.playerBank.addItemtoBank(v, k.qty)
+      this.playerBank.addItemtoBank(v, k.qty, k.item)
     })
   }
 

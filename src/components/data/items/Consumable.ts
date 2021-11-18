@@ -1,8 +1,8 @@
 import { Item } from "./Item"
 
 // on loads creates all of the items in game data.
-export class Generic extends Item {
-  consumeable: boolean
+export class Consumable extends Item {
+  consumable: boolean
 
   constructor(
     name: string,
@@ -10,9 +10,9 @@ export class Generic extends Item {
     icon: any,
     description: string,
     rarity: string,
-    consumeable: boolean
+    consumable: boolean
   ) {
     super(name, price, icon, description, rarity)
-    this.consumeable = consumeable
+    this.consumable = consumable
   }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
-import { loadSkills, loadItems, loadPlayer, allDataLoaded, saveAllDataToLocalStorage, onLoadDataFromLocalStorage } from "../components/actions/startup"
+import { loadSkills, loadItems, loadEnemies, loadPlayer, allDataLoaded, saveAllDataToLocalStorage, onLoadDataFromLocalStorage } from "../components/actions/startup"
 import { setDeltaTime, resetActionTime, setActionTime } from "../components/actions/api"
 
 import Layout from "../components/layout"
@@ -12,6 +12,7 @@ import Structure from "../components/game/Structure"
 // data classes
 import { ItemData } from "../components/data/ItemData"
 import { SkillData } from "../components/data/SkillData"
+import { EnemyData } from "../components/data/EnemyData"
 import { PlayerData } from "../components/data/PlayerData"
 
 // this will be loaded from local storage
@@ -26,9 +27,12 @@ const IndexPage = props => {
     // NOTE: should be a loader somewhere else maybe inside redux
     // creates all items in the game
     const itemData = new ItemData()
+
     // creates all skill data not pertaining to the player
     const skillData = new SkillData()
     const skillNames = skillData.getAllNoncombatSkills()
+
+    const enemyData = new EnemyData()
 
     // creates the default player with no data
     const playerData = new PlayerData(skillNames)
@@ -40,6 +44,7 @@ const IndexPage = props => {
     // loads data into redux
     props.loadSkills(skillData)
     props.loadItems(itemData)
+    props.loadEnemies(enemyData)
     props.loadPlayer(playerData)
 
     if (dataFromStorage !== null) {
@@ -164,7 +169,7 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = {
-  loadSkills, loadItems, loadPlayer, allDataLoaded, setDeltaTime, resetActionTime, setActionTime
+  loadSkills, loadItems, loadEnemies, loadPlayer, allDataLoaded, setDeltaTime, resetActionTime, setActionTime
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(IndexPage)

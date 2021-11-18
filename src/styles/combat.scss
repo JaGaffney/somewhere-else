@@ -1,0 +1,124 @@
+// COMBAT
+.combat__info {
+  height: 3rem;
+  gap: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    width: 33%;
+    padding: 1rem 2rem;
+    border-radius: 10px 10px 0 0;
+    background: var(--gray800);
+    box-sizing: var(--shadow900);
+    height: 3rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+  span {
+    margin-left: 0.5rem;
+    color: var(--gray100);
+  }
+  img {
+    margin: 0;
+    height: 4rem;
+  }
+}
+.combat__container {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  margin: 0.8rem 0;
+  min-height: 80%;
+  margin-top: 1.5rem;
+}
+
+.map__container {
+  background: var(--gray800);
+  box-shadow: var(--shadow900);
+  width: 100%;
+  padding: 2rem;
+  gap: 2rem;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.map__map {
+  width: 40rem;
+  height: 40rem;
+  display: grid;
+  gap: 0.1rem;
+  background: var(--blue700);
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  border-radius: 20px;
+  box-shadow: var(--shadow900);
+
+  &-item {
+    cursor: pointer;
+    box-shadow: var(--shadow500);
+    background: red;
+    border: none;
+    border-radius: 8px;
+    &:hover,
+    &:focus {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.map__enemy {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border-radius: 10px;
+  background: var(--gray900);
+  padding: 1rem;
+  margin: 0.8rem 0;
+  width: fit-content;
+  position: relative;
+  &-image {
+    height: 4rem;
+    width: 4rem;
+    margin: 0;
+  }
+  &-info {
+    text-transform: capitalize;
+    h3 {
+      margin-bottom: 0.8rem;
+    }
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+  &-stats {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  &-statValue {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    img {
+      height: 2rem;
+      width: 2rem;
+      margin: 0;
+    }
+  }
+  &-fight {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+}

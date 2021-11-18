@@ -12,6 +12,7 @@ export class PlayerData {
   inventory: Inventory
   levelChecker: EXP = new EXP()
 
+  // creates the player with no data inside
   constructor(skillNames: Array<string>) {
     this.createBank()
     this.createSkills(skillNames)
@@ -46,6 +47,7 @@ export class PlayerData {
       this.skillExp.skillExp[skillName] + amount
   }
 
+  // loads data once player is created
   loadPlayerData(data, itemData) {
     this.loadSkillEXP(data.skillExp)
     this.loadBank(data.playerBank, itemData)

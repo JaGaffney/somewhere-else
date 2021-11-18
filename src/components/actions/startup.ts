@@ -10,6 +10,12 @@ export const loadItems = data => dispatch => {
     payload: data,
   })
 }
+export const loadEnemies = data => dispatch => {
+  return dispatch({
+    type: "LOAD_ENEMIES",
+    payload: data,
+  })
+}
 export const loadPlayer = data => dispatch => {
   return dispatch({
     type: "LOAD_PLAYER",

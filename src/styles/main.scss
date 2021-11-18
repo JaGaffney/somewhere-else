@@ -167,14 +167,13 @@
 .game__normal {
   width: 100%;
   height: 100%;
-
   margin: 0.8rem 0;
 }
 
 // BANK
 .bank__info {
   background: var(--gray800);
-  box-sizing: var(--shadow900);
+  box-shadow: var(--shadow900);
   height: 2rem;
   padding: 1rem 2rem;
   display: flex;

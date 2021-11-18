@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import Noncombat from "./skills/Noncombat"
 import Playerbank from "./player/Playerbank"
+import Combat from "./combat/Combat"
 
 export const Game = (props) => {
     const LoadComponent = () => {
@@ -12,6 +13,8 @@ export const Game = (props) => {
                 return <Noncombat />
             case ("bank"):
                 return <Playerbank />
+            case ("combat"):
+                return <Combat />
             default:
                 return null
         }

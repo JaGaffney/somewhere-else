@@ -19,7 +19,8 @@ import { PlayerData } from "../components/data/PlayerData"
 import backgroundImage from "../images/background/cat.jpg"
 
 const IndexPage = props => {
-  const [timer, setTimer] = useState(1)
+  const [timer, setTimer] = useState(0)
+  const updateTime = () => setTimer(timer + 1)
 
   useEffect(() => {
     // NOTE: should be a loader somewhere else maybe inside redux
@@ -96,15 +97,12 @@ const IndexPage = props => {
     }
   }
 
+
   useEffect(() => {
-
     const intervalRefresh = setInterval(() => {
-      console.log(timer)
-      setTimer(timer + 1)
-
+      updateTime()
       let currentTime = new Date().valueOf()
       actionTimeHandler(currentTime, props.actionTime, props.skillData)
-
       if (timer > 10) {
         console.log("SAVING")
         saveAllDataToLocalStorage(props.playerData, props.actionTime)
@@ -113,7 +111,7 @@ const IndexPage = props => {
 
     }, 1000);
     return () => clearInterval(intervalRefresh);
-  }, [props.skillData, props.actionTime]);
+  }, [props.skillData, props.actionTime, timer]);
 
 
   const handleAddToBank = (activeData, amount: number) => {

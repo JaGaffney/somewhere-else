@@ -1,20 +1,36 @@
 import { Consumable } from "./items/Consumable"
 import { Equipment } from "./items/Equipment"
+import { Item } from "./items/Item"
 
 import { itemSeed } from "./seed/itemSeed"
 import { equipmentSeed } from "./seed/equipmentSeed"
 
 // on loads creates all of the items in game data.
 export class ItemData {
+  generic: Map<number, Item> = new Map()
   consumable: Map<number, Consumable> = new Map()
   equipment: Map<number, Equipment> = new Map()
 
   constructor() {
-    this.createUseableItems()
+    this.createConsumableItems()
     this.createEquipmentItems()
   }
 
-  createUseableItems() {
+  createItems() {
+    for (const key in itemSeed) {
+      this.generic.set(
+        itemSeed[key].id,
+        new Item(
+          itemSeed[key].name,
+          itemSeed[key].price,
+          itemSeed[key].icon,
+          itemSeed[key].description,
+          itemSeed[key].rarity
+        )
+      )
+    }
+  }
+  createConsumableItems() {
     for (const key in itemSeed) {
       this.consumable.set(
         itemSeed[key].id,
@@ -51,10 +67,16 @@ export class ItemData {
   }
 
   getItemById(id) {
-    if (id > 20000) {
-      return this.equipment.get(id)
-    } else {
-      return this.consumable.get(id)
+    let value = Math.floor(id / 10000)
+    switch (value) {
+      case 1:
+        return this.generic.get(id)
+      case 2:
+        return this.equipment.get(id)
+      case 3:
+        return this.consumable.get(id)
+      default:
+        return null
     }
   }
 }

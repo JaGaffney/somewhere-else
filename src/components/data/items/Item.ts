@@ -3,7 +3,7 @@ import { enumFromValue } from "../enums/enumFromValue"
 
 // the base class that all items inherit from that contains all the data that is relevant to all items
 // regardless of what type they are
-export abstract class Item {
+export class Item {
   name: string
   price: number
   icon: any

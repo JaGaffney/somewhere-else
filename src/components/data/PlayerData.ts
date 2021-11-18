@@ -46,9 +46,9 @@ export class PlayerData {
       this.skillExp.skillExp[skillName] + amount
   }
 
-  loadPlayerData(data) {
+  loadPlayerData(data, itemData) {
     this.loadSkillEXP(data.skillExp)
-    this.loadBank(data.playerBank)
+    this.loadBank(data.playerBank, itemData)
     this.loadInventory(data.inventory)
     this.loadPassives(data.passives)
   }
@@ -60,13 +60,14 @@ export class PlayerData {
     }
   }
 
-  private loadBank(bankData): void {
+  private loadBank(bankData, itemData): void {
     this.playerBank.setBankSpace(bankData.bankSpace)
     this.playerBank.setCoins(bankData.coins)
 
     let deserialized = new Map(JSON.parse(bankData.bankItems))
     deserialized.forEach((k: any, v: any) => {
-      this.playerBank.addItemtoBank(v, k.qty, k.item)
+      let item = itemData.getItemById(v)
+      this.playerBank.addItemtoBank(v, k.qty, item)
     })
   }
 

@@ -12,6 +12,7 @@ export class ItemData {
   equipment: Map<number, Equipment> = new Map()
 
   constructor() {
+    this.createItems()
     this.createConsumableItems()
     this.createEquipmentItems()
   }

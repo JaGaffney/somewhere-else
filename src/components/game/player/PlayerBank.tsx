@@ -33,7 +33,6 @@ export const PlayerBank = (props) => {
 
     const onSellHandler = (amount: number) => {
         if (amount <= activeQty) {
-            console.log("selling: " + amount + " for:" + amount * activeBankItem.price)
             props.playerData.playerBank.sellItemFromBank(activeID, amount, activeBankItem.price)
         }
     }

@@ -35,7 +35,7 @@ const IndexPage = props => {
     const dataFromStorage = onLoadDataFromLocalStorage()
 
     if (dataFromStorage !== null) {
-      playerData.loadPlayerData(dataFromStorage)
+      playerData.loadPlayerData(dataFromStorage, itemData)
     }
     // loads data into redux
     props.loadSkills(skillData)

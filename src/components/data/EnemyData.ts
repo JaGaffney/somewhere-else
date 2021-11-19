@@ -6,11 +6,12 @@ import { enemySeed } from "./seed/enemySeed"
 export class EnemyData {
   enemies: Map<number, Enemy> = new Map()
 
-  constructor() {
-    this.createEnemies()
+  constructor(attackData) {
+    this.createEnemies(attackData)
   }
 
-  createEnemies() {
+  createEnemies(attackData) {
+    // add the attacks from here
     for (const key in enemySeed) {
       this.enemies.set(
         enemySeed[key].id,

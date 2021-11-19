@@ -3,6 +3,7 @@ import { Bank } from "./player/bank/Bank"
 import { SkillEXP } from "./player/SkillExp"
 import { Passives } from "./player/Passives"
 import { Inventory } from "./player/Inventory"
+import { Status, StatusValues } from "./player/Status"
 import { EXP } from "./player/Exp"
 
 export class PlayerData {
@@ -10,6 +11,7 @@ export class PlayerData {
   skillExp: SkillEXP
   passives: Passives
   inventory: Inventory
+  status: Status
   levelChecker: EXP = new EXP()
 
   // creates the player with no data inside
@@ -17,6 +19,7 @@ export class PlayerData {
     this.createBank()
     this.createSkills(skillNames)
     this.createPassives()
+    this.createStatus()
     this.createInventory()
   }
 
@@ -28,12 +31,16 @@ export class PlayerData {
     this.playerBank = new Bank()
   }
 
+  private createPassives(): void {
+    this.passives = new Passives()
+  }
+
   private createInventory(): void {
     this.inventory = new Inventory()
   }
 
-  private createPassives(): void {
-    this.passives = new Passives()
+  private createStatus(): void {
+    this.status = new Status()
   }
 
   // getters
@@ -53,6 +60,7 @@ export class PlayerData {
     this.loadBank(data.playerBank, itemData)
     this.loadInventory(data.inventory)
     this.loadPassives(data.passives)
+    this.loadStatus(data.status)
   }
 
   // loads from local storage
@@ -88,5 +96,17 @@ export class PlayerData {
         passiveData.equippedPassives[location]
       )
     }
+  }
+
+  private loadStatus(passiveData) {
+    // for (const name in passiveData.unlockedPassives) {
+    //   this.passives.addNewUnlockedPassive(name)
+    // }
+    // for (const location in passiveData.equippedPassives) {
+    //   this.passives.changeEquippedPassives(
+    //     parseInt(location),
+    //     passiveData.equippedPassives[location]
+    //   )
+    // }
   }
 }

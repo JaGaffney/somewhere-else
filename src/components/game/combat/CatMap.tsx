@@ -6,7 +6,7 @@ import backgroundImage from "../../../images/combat/map.jpg"
 
 export const CatMap = (props) => {
     const [areaInfo, setAreaInfo] = useState(null)
-    console.log(props.enemies)
+
     const mapData = [
         {
             id: 1,
@@ -15,18 +15,18 @@ export const CatMap = (props) => {
             requirements: "none",
             effect: "none",
             recommended: 1,
-            enemys: [props.enemies.enemies.get(1), props.enemies.enemies.get(1)],
+            enemys: [props.enemies.enemies.get(1), props.enemies.enemies.get(2)],
             x: 5,
             y: 5,
             icon: "",
         },
         {
             id: 2,
-            name: "Haunted Forest",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Opti",
+            name: "Southbay",
+            description: "The port town has been destoryed, yet life somehow finds a way, at least until you got there.",
             requirements: "none",
             effect: "none",
-            enemys: [props.enemies.enemies.get(1), props.enemies.enemies.get(1), props.enemies.enemies.get(1)],
+            enemys: [props.enemies.enemies.get(3), props.enemies.enemies.get(4), props.enemies.enemies.get(5)],
             recommended: 10,
             x: 5,
             y: 10,
@@ -40,8 +40,8 @@ export const CatMap = (props) => {
             effect: "none",
             enemys: [props.enemies.enemies.get(1)],
             recommended: 60,
-            x: 10,
-            y: 17,
+            x: 16,
+            y: 5,
             icon: "",
         }
 
@@ -85,8 +85,10 @@ export const CatMap = (props) => {
                                             <p>Combat style: {i.style}</p>
                                         </div>
 
-
-                                        <button className="map__enemy-fight">Fight</button>
+                                        <div className="map__enemy-buttons">
+                                            <button className="loot">Loot</button>
+                                            <button className="fight">Fight</button>
+                                        </div>
                                     </div>
 
                                     <div className="map__enemy-stats">

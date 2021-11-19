@@ -12,8 +12,7 @@ import METALWORK from "../../images/sidepanel/metalwork.svg"
 // on loads creates all of the ingame data.
 // such as skills, items, exp etc
 export class SkillData {
-  classSkill: Map<string, any> = new Map()
-  combatSkill: Map<string, any> = new Map()
+  statusSkill: Map<string, any> = new Map()
   gatheringSkill: Map<string, GatheringSkill> = new Map()
   productionSkill: Map<string, any> = new Map()
 
@@ -21,8 +20,7 @@ export class SkillData {
     this.createGatheringSkills()
   }
 
-  createClassSkills() {}
-  createCombatSkills() {}
+  createStatusSkills() {}
   createProductionSkills() {}
 
   createGatheringSkills() {

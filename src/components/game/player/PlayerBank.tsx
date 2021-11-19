@@ -20,7 +20,7 @@ export const PlayerBank = (props) => {
         let color = ""
         switch (rarity) {
             case ("COMMON"):
-                color = "var(--blue600)"
+                color = "var(--gray100)"
                 break;
             case ("RARE"):
                 color = "var(--blue400)"

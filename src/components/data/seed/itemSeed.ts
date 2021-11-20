@@ -182,4 +182,13 @@ export const itemSeed = [
     rarity: "COMMON",
     consumeable: false,
   },
+  {
+    id: 40001,
+    name: "bank slot",
+    price: 1000,
+    icon: log,
+    description: "Player bank slot",
+    rarity: "COMMON",
+    consumeable: true,
+  },
 ]

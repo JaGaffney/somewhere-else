@@ -157,13 +157,102 @@
 }
 
 // ATTACKS
+.attackloadout {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  margin: 0.8rem 0;
+  min-height: 80%;
+  margin-top: 1.5rem;
+}
+.attackloadout__equipped {
+  background: var(--gray800);
+  box-shadow: var(--shadow900);
+  width: 80%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  &-slot {
+    border-radius: 10px;
+    padding: 1rem;
+    background: var(--gray900);
+    box-shadow: var(--shadow900);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    width: fit-content;
+    span {
+      font-size: 4rem;
+      color: var(--gray100);
+    }
+  }
+}
+.attackloadout__info {
+  background: var(--gray800);
+  box-shadow: var(--shadow900);
+  width: 20%;
+  padding: 1rem;
+  h3 {
+    text-transform: capitalize;
+  }
+}
+.attacksloadout__stats {
+  display: flex;
+  flex-wrap: wrap;
+  &-description {
+    margin: 0.1rem 0;
+    width: 100%;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between;
+    span {
+      font-weight: 800;
+      color: var(--gray500);
+      font-size: 1rem;
+    }
+  }
+}
+.attackloadout__eqiup {
+  width: 100%;
+  border: none;
+  border-radius: 7px;
+  padding: 0.5rem 0rem;
+  background: var(--blue800);
+  color: var(--blue100);
+  margin-top: 0.8rem;
+  margin-left: auto;
+}
+
+.attacks__container {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  background: var(--gray800);
+  padding: 1rem;
+}
+
 .attacks__button {
   border: none;
+  border-radius: 10px;
+  box-shadow: var(--shadow500);
   height: 5rem;
   width: 5rem;
-
+  background: var(--gray800);
+  border: solid 3px transparent;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-2px);
+  }
   &-icon {
     width: 100%;
     height: 100%;
+    img {
+      margin: 0;
+    }
   }
+}
+.attacks__button-general {
+  border: solid 3px var(--violet700);
 }

@@ -8,7 +8,7 @@ import MAGICIAN from "../../../images/classes/magician.svg"
 export const warrior = [
   {
     name: ClassesEnum.Warrior,
-    attacks: [1, 2],
+    attacks: [1, 2, 3],
     icon: WARRIOR,
   },
 ]

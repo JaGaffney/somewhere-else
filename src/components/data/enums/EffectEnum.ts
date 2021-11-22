@@ -4,4 +4,5 @@ export enum EffectEnum {
   Stun = "STUN", // stuns for X turns
   Slow = "SLOW", // increased CD for all spells by X
   Lifesteal = "LIFESTEAL", // drains hp by X
+  DoT = "DOT", // damage over time
 }

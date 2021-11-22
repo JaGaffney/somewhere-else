@@ -8,6 +8,7 @@ import AttackLoadout from './generics/AttackLoadout'
 
 export const CombatSkill = (props) => {
     const [activeData, setActiveData] = useState(null)
+    const [selectedSkill, setSelecetedSkill] = useState(null)
 
     useEffect(() => {
         if (props.skills.length !== 0) {
@@ -15,6 +16,10 @@ export const CombatSkill = (props) => {
         }
 
     }, [props.skills])
+
+    const onSelectedSkillHandler = (data) => {
+        setSelecetedSkill(data)
+    }
 
     console.log(activeData)
     return (
@@ -24,12 +29,14 @@ export const CombatSkill = (props) => {
                 <div>
                     <EXP />
                     <Talents />
-                    <AttackLoadout />
-                    {activeData.classSkillIDs.map((i, k) => {
-                        return (
-                            <Attack attackID={i} />
-                        )
-                    })}
+                    <AttackLoadout selectedSkill={selectedSkill} />
+                    <div className="attacks__container">
+                        {activeData.classSkillIDs.map((i, k) => {
+                            return (
+                                <Attack attackID={i} key={k} onSelectedSkillHandler={onSelectedSkillHandler} />
+                            )
+                        })}
+                    </div>
 
                 </div>)
         )

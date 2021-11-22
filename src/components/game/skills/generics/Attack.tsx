@@ -5,20 +5,20 @@ import { setActionTime, resetActionTime } from "../../../actions/api"
 import { FiClock } from "react-icons/fi";
 
 export const Attack = (props) => {
-    const setEquippedSkill = (data) => {
-        console.log("skill clicked")
-        console.log(data)
+    function onDragStart(e) {
+        console.log(e.target.id)
+        e.dataTransfer.setData("text/plain", e.target.id)
     }
 
     return (
-        <button className="attacks__button" onClick={() => setEquippedSkill(props.attackData)}>
-            <div className="attacks__button-icon"><img src={props.attackData.getAttackById(props.attackID).icon} /></div>
-            {/* <div className="attacks__button-content">
-                <span className="attacks__button-name">{props.data.name}</span>
-                <span className="attacks__button-level">Level {props.data.level}</span>
-                <span className="attacks__button-details">{props.data.exp} xp</span>
-                <span className="attacks__button-details"><FiClock /> {props.data.time} seconds</span>
-            </div> */}
+        <button className={`attacks__button ${props.attackData.getAttackById(props.attackID).type === "general" ? "attacks__button-general" : null}`} onClick={() => props.onSelectedSkillHandler(props.attackID)} >
+            <img className="attacks__button-icon"
+                draggable={true}
+                onDragStart={e => onDragStart(e)}
+                id={props.attackID}
+                src={props.attackData.getAttackById(props.attackID).icon}
+                alt={props.attackData.getAttackById(props.attackID).name}
+            />
         </button>
     )
 }

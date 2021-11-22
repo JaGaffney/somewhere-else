@@ -33,8 +33,7 @@ export const Item = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    counter: state.player.counter,
-    activePage: state.player.activePage
+    activePage: state.engine.activePage
 })
 
 const mapDispatchToProps = {

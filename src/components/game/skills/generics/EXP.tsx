@@ -29,8 +29,8 @@ export const EXP = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
-    activePage: state.player.activePage,
-    playerUpdated: state.player.playerUpdated
+    activePage: state.engine.activePage,
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = {

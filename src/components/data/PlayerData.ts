@@ -98,15 +98,9 @@ export class PlayerData {
     }
   }
 
-  private loadStatus(passiveData) {
-    // for (const name in passiveData.unlockedPassives) {
-    //   this.passives.addNewUnlockedPassive(name)
-    // }
-    // for (const location in passiveData.equippedPassives) {
-    //   this.passives.changeEquippedPassives(
-    //     parseInt(location),
-    //     passiveData.equippedPassives[location]
-    //   )
-    // }
+  private loadStatus(data) {
+    for (const skill in data) {
+      this.status[skill] = data[skill]
+    }
   }
 }

@@ -36,7 +36,7 @@ export const Header = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    activePage: state.player.activePage
+    activePage: state.engine.activePage
 })
 
 const mapDispatchToProps = {

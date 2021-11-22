@@ -31,8 +31,7 @@ const IndexPage = props => {
 
     // creates all skill data not pertaining to the player
     const skillData = new SkillData()
-    const skillNames = skillData.getAllNoncombatSkills()
-
+    const skillNames = skillData.getAllSkills()
     const attackData = new AttackData()
 
     const enemyData = new EnemyData(attackData)
@@ -164,8 +163,8 @@ const IndexPage = props => {
 }
 
 const mapStateToProps = (state) => ({
-  actionTime: state.player.actionTime,
-  allDataLoaded: state.player.allDataLoaded,
+  actionTime: state.engine.actionTime,
+  allDataLoaded: state.engine.allDataLoaded,
   playerData: state.player.playerData,
   skillData: state.skills.skillData,
   itemData: state.items.itemData

@@ -1,10 +1,12 @@
 import { EffectEnum } from "../enums/EffectEnum"
 
+import defaultIcon from "../../../images/combat/attack.svg"
+
 export const attackSeed = [
   {
     id: 1,
     name: "basic attack",
-    type: "warrior",
+    type: "general",
     minDamage: 1,
     maxDamage: 5,
     cooldown: 1,
@@ -13,7 +15,7 @@ export const attackSeed = [
       type: null,
       value: null,
     },
-    icon: "",
+    icon: defaultIcon,
   },
   {
     id: 2,
@@ -27,6 +29,6 @@ export const attackSeed = [
       type: EffectEnum.Drain,
       value: 25,
     },
-    icon: "",
+    icon: defaultIcon,
   },
 ]

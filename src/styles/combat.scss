@@ -155,3 +155,15 @@
     right: 5px;
   }
 }
+
+// ATTACKS
+.attacks__button {
+  border: none;
+  height: 5rem;
+  width: 5rem;
+
+  &-icon {
+    width: 100%;
+    height: 100%;
+  }
+}

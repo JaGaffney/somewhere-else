@@ -16,11 +16,12 @@ export class AttackData {
 
   createAttacks() {
     for (const key in attackSeed) {
+      console.log(attackSeed[key].icon)
       this.attacks.set(
         attackSeed[key].id,
         new Attack(
           attackSeed[key].name,
-          enumFromValue(attackSeed[key].type, ClassesEnum),
+          attackSeed[key].type,
           attackSeed[key].minDamage,
           attackSeed[key].maxDamage,
           attackSeed[key].cooldown,

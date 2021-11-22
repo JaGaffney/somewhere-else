@@ -12,11 +12,9 @@ export class Classes {
   }
 
   createJobClasses(jobClass: Array<string>) {
-    console.log("jobClass", jobClass)
     for (const job in jobClass) {
       let newJob = new JobClass()
       this.jobClass.set(jobClass[job], newJob)
-      console.log(this.jobClass)
     }
   }
 }

@@ -113,6 +113,7 @@ const IndexPage = props => {
       actionTimeHandler(currentTime, props.actionTime, props.skillData)
       if (timer > 10) {
         console.log("SAVING")
+        console.log(props.playerData)
         saveAllDataToLocalStorage(props.playerData, props.actionTime)
         setTimer(0)
       }

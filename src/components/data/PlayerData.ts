@@ -115,7 +115,9 @@ export class PlayerData {
   private loadClasses(data) {
     let deserialized = new Map(JSON.parse(data.jobClass))
     deserialized.forEach((k: any, v: any) => {
-      this.classes[k] = data[k]
+      for (const attack in k) {
+        this.classes.findJobClass(v).setEquippedAttacks(k[attack])
+      }
     })
   }
 }

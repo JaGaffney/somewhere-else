@@ -29,3 +29,10 @@ export const setDeltaTime = (deltatime: number) => dispatch => {
     payload: deltatime,
   })
 }
+
+// export const addNewAttack = (id:number, slot:number) => dispatch => {
+//   return dispatch({
+//     type: "ADD_NEW_ATTACK",
+//     payload: deltatime,
+//   })
+// }

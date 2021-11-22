@@ -10,6 +10,10 @@ export class JobClass {
 
   constructor() {}
 
+  setEquippedAttacks(ea) {
+    this.equippedAttacks = ea
+  }
+
   addNewAttack(attackID: number) {
     let iterate = true
     for (const key in this.equippedAttacks) {

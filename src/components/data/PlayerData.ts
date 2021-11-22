@@ -3,6 +3,7 @@ import { Bank } from "./player/bank/Bank"
 import { SkillEXP } from "./player/SkillExp"
 import { Passives } from "./player/Passives"
 import { Inventory } from "./player/Inventory"
+import { Classes } from "./player/Classes"
 import { Status, StatusValues } from "./player/Status"
 import { EXP } from "./player/Exp"
 
@@ -12,15 +13,17 @@ export class PlayerData {
   passives: Passives
   inventory: Inventory
   status: Status
+  classes: Classes
   levelChecker: EXP = new EXP()
 
   // creates the player with no data inside
-  constructor(skillNames: Array<string>) {
+  constructor(skillNames: Array<string>, jobClassID: Array<number>) {
     this.createBank()
     this.createSkills(skillNames)
     this.createPassives()
     this.createStatus()
     this.createInventory()
+    this.createClasses(jobClassID)
   }
 
   private createSkills(skillNames: Array<string>): void {
@@ -43,6 +46,10 @@ export class PlayerData {
     this.status = new Status()
   }
 
+  private createClasses(jobClassID): void {
+    this.classes = new Classes(jobClassID)
+  }
+
   // getters
   public getSkillExp(skillName: string): number {
     return this.skillExp.skillExp[skillName]
@@ -61,6 +68,7 @@ export class PlayerData {
     this.loadInventory(data.inventory)
     this.loadPassives(data.passives)
     this.loadStatus(data.status)
+    this.loadClasses(data.classes)
   }
 
   // loads from local storage
@@ -102,5 +110,12 @@ export class PlayerData {
     for (const skill in data) {
       this.status[skill] = data[skill]
     }
+  }
+
+  private loadClasses(data) {
+    let deserialized = new Map(JSON.parse(data.jobClass))
+    deserialized.forEach((k: any, v: any) => {
+      this.classes[k] = data[k]
+    })
   }
 }

@@ -47,8 +47,6 @@ export const CatMap = (props) => {
 
     ]
 
-    console.log(areaInfo)
-
     return (
         <div className="map__container">
             <div className="map__map" style={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "no-repeat" }}>

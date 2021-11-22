@@ -31,18 +31,18 @@ const IndexPage = props => {
 
     // creates all skill data not pertaining to the player
     const skillData = new SkillData()
-    const skillNames = skillData.getAllSkills()
     const attackData = new AttackData()
-
     const enemyData = new EnemyData(attackData)
 
     // creates the default player with no data
-    const playerData = new PlayerData(skillNames)
+    const playerData = new PlayerData(skillData.getAllSkills(), skillData.getAllCombatSkills())
     const dataFromStorage = onLoadDataFromLocalStorage()
 
     if (dataFromStorage !== null) {
       playerData.loadPlayerData(dataFromStorage, itemData)
     }
+
+
     // loads data into redux
     props.loadSkills(skillData)
     props.loadItems(itemData)

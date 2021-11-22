@@ -6,7 +6,6 @@ import { FiClock } from "react-icons/fi";
 
 export const Attack = (props) => {
     function onDragStart(e) {
-        console.log(e.target.id)
         e.dataTransfer.setData("text/plain", e.target.id)
     }
 

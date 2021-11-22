@@ -16,7 +16,6 @@ export class AttackData {
 
   createAttacks() {
     for (const key in attackSeed) {
-      console.log(attackSeed[key].icon)
       this.attacks.set(
         attackSeed[key].id,
         new Attack(

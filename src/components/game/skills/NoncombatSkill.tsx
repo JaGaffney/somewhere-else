@@ -11,7 +11,7 @@ export const Noncombat = (props) => {
 
     useEffect(() => {
         if (props.skills.length !== 0) {
-            setActiveData(props.skills.getSkillByName("g", props.activePage))
+            setActiveData(props.skills.getSkillByName("gathering", props.activePage))
         }
 
     }, [props.skills])

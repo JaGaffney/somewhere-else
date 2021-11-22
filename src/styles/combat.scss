@@ -172,8 +172,16 @@
   padding: 1rem;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   gap: 2rem;
+  &-attacks,
+  &-talents {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+  }
   &-slot {
+    height: 5rem;
     border-radius: 10px;
     padding: 1rem;
     background: var(--gray900);

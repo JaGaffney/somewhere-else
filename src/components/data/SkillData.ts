@@ -71,13 +71,13 @@ export class SkillData {
 
   getSkillByName(type: string, name: string) {
     switch (type) {
-      case "g":
+      case "gathering":
         return this.gatheringSkill[name]
-      case "p":
+      case "production":
         return this.productionSkill[name]
-      case "c":
+      case "combat":
         return this.combatSkill[name]
-      case "s":
+      case "status":
         return this.statusSkill[name]
       default:
         return []
@@ -85,13 +85,13 @@ export class SkillData {
   }
   getSkillIconByName(type: string, name: string) {
     switch (type) {
-      case "g":
+      case "gathering":
         return this.gatheringSkill[name].getIcon()
-      case "p":
+      case "production":
         return this.productionSkill[name].getIcon()
-      case "c":
+      case "combat":
         return this.combatSkill[name].getIcon()
-      case "s":
+      case "status":
         return this.statusSkill[name].getIcon()
       default:
         return ""

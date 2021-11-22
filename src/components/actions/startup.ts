@@ -57,7 +57,7 @@ export const onLoadDataFromLocalStorage = () => {
 }
 
 export const saveAllDataToLocalStorage = (
-  { playerBank, skillExp, passives, inventory },
+  { playerBank, skillExp, passives, inventory, status, classes },
   actionTime
 ) => {
   const playerData = {
@@ -66,12 +66,19 @@ export const saveAllDataToLocalStorage = (
   }
   const skillData = skillExp.skillExp
 
+  const classData = {
+    ...classes,
+    jobClass: JSON.stringify([...classes.jobClass]),
+  }
+
   const data = {
     skillExp: skillData,
     playerBank: playerData,
     passives,
     inventory,
     actionTime,
+    status,
+    classes: classData,
   }
   localStorageSave(data)
 }

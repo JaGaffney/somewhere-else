@@ -12,7 +12,7 @@ export const CombatSkill = (props) => {
 
     useEffect(() => {
         if (props.skills.length !== 0) {
-            setActiveData(props.skills.getSkillByName("c", props.activePage))
+            setActiveData(props.skills.getSkillByName("combat", props.activePage))
         }
 
     }, [props.skills])
@@ -21,15 +21,13 @@ export const CombatSkill = (props) => {
         setSelecetedSkill(data)
     }
 
-    console.log(activeData)
     return (
         props.skills.length !== 0 && (
             activeData !== null &&
             (
                 <div>
                     <EXP />
-                    <Talents />
-                    <AttackLoadout selectedSkill={selectedSkill} />
+                    <AttackLoadout selectedSkill={selectedSkill} onSelectedSkillHandler={onSelectedSkillHandler} />
                     <div className="attacks__container">
                         {activeData.classSkillIDs.map((i, k) => {
                             return (
@@ -37,7 +35,7 @@ export const CombatSkill = (props) => {
                             )
                         })}
                     </div>
-
+                    <Talents />
                 </div>)
         )
     )

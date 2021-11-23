@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 // @ts-expect-error
 import backgroundImage from "../../../images/combat/map.jpg"
 
+import { getBackgroundColor } from '../../utils/color'
+
 export const CatMap = (props) => {
     const [areaInfo, setAreaInfo] = useState(null)
 
@@ -80,7 +82,7 @@ export const CatMap = (props) => {
                                     <div className="map__enemy-info">
                                         <div>
                                             <h3>{i.name}</h3>
-                                            <p>Combat style: {i.style}</p>
+                                            <p>Combat style: <strong style={{ color: getBackgroundColor(i.style) }}>{i.style}</strong></p>
                                         </div>
 
                                         <div className="map__enemy-buttons">

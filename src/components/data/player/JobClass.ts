@@ -10,6 +10,7 @@ export class JobClass {
 
   constructor() {}
 
+  // when data loads
   setEquippedAttacks(ea) {
     this.equippedAttacks = ea
   }

@@ -14,6 +14,7 @@ export const Game = (props) => {
                 return <NoncombatSkill />
             case ("warrior"):
             case ("archer"):
+            case ("magician"):
                 return <CombatSkill />
             case ("bank"):
                 return <Playerbank />

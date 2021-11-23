@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { setActionTime, resetActionTime } from "../../../actions/api"
 
 import { FiClock } from "react-icons/fi";
+import { getBackgroundColor } from '../../../utils/color';
 
 export const Attack = (props) => {
     function onDragStart(e) {
@@ -10,7 +11,7 @@ export const Attack = (props) => {
     }
 
     return (
-        <button className={`attacks__button ${props.attackData.getAttackById(props.attackID).type === "general" ? "attacks__button-general" : null}`} onClick={() => props.onSelectedSkillHandler(props.attackID)} >
+        <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(props.attackData.getAttackById(props.attackID).type) }} onClick={() => props.onSelectedSkillHandler(props.attackID)} >
             <img className="attacks__button-icon"
                 draggable={true}
                 onDragStart={e => onDragStart(e)}
@@ -18,6 +19,13 @@ export const Attack = (props) => {
                 src={props.attackData.getAttackById(props.attackID).icon}
                 alt={props.attackData.getAttackById(props.attackID).name}
             />
+            {props.attackData &&
+                <div className="attacks__button-stats">
+                    <span className="attacks__button-stats-topLeft">{props.attackData.getAttackById(props.attackID).cooldown}</span>
+                    <span className="attacks__button-stats-topRight">{props.attackData.getAttackById(props.attackID).stamina}</span>
+                    <span className="attacks__button-stats-bottomRight">{props.attackData.getAttackById(props.attackID).maxDamage}</span>
+                </div>
+            }
         </button>
     )
 }

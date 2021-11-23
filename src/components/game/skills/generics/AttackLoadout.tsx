@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { setActionTime, resetActionTime } from "../../../actions/api"
 
-import { FiClock } from "react-icons/fi";
+import AttackInfo from './AttackInfo';
+
+import { getBackgroundColor } from '../../../utils/color';
 
 export const AttackLoadout = (props) => {
     const [componentHover, setComponentHover] = useState(false)
@@ -32,23 +34,31 @@ export const AttackLoadout = (props) => {
     return (
         <div className="attackloadout">
             <div className="attackloadout__equipped">
-                <div className="attackloadout__equipped-attacks">
 
+                <div className="attackloadout__equipped-attacks">
                     {Object.keys(props.playerData.classes.findJobClass(props.activePage).equippedAttacks).map((id, k) => {
                         const attackID = props.playerData.classes.findJobClass(props.activePage).equippedAttacks[id]
                         const attackData = props.attackData.getAttackById(attackID)
+                        console.log(attackData)
                         return (
                             <div className="attackloadout__equipped-slot"
                                 key={k}
                                 onClick={() => props.onSelectedSkillHandler(attackID)}
                             >
-                                <div className="attacks__button"
+                                <div className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default") }}
                                     onDragOver={dragOver}
                                     onDragEnter={dragEnter}
                                     onDragLeave={dragLeave}
                                     onDrop={(e) => attackDrop(e, k + 1)}
                                 >
                                     <img className="attacks__button-icon" src={attackData && attackData.icon} />
+                                    {attackData &&
+                                        <div className="attacks__button-stats">
+                                            <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>
+                                            <span className="attacks__button-stats-topRight">{attackData.stamina}</span>
+                                            <span className="attacks__button-stats-bottomRight">{attackData.maxDamage}</span>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         )
@@ -62,51 +72,10 @@ export const AttackLoadout = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div className="attackloadout__info">
-                <h3>{props.selectedSkill ? props.attackData.getAttackById(props.selectedSkill).name : "Attack"}</h3>
-                <div className="attacks__button">
-                    <img className="attacks__button-icon" src={props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).icon} />
-                </div>
-                <div className="attacksloadout__stats">
-
-                    <span className="attacksloadout__stats-description">
-                        min damage
-                        <span>
-                            {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).minDamage}
-                        </span>
-                    </span>
-                    <span className="attacksloadout__stats-description">
-                        max damage
-                        <span>
-                            {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).maxDamage}
-                        </span>
-                    </span>
-                    <span className="attacksloadout__stats-description">
-                        cooldown
-                        <span>
-                            {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).cooldown}
-                        </span>
-                    </span>
-                    <span className="attacksloadout__stats-description">
-                        stamina
-                        <span>
-                            {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).stamina}
-                        </span>
-                    </span>
-                    <span className="attacksloadout__stats-description">
-                        Effect
-                        <span>
-                            {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).effect.value} {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).effect.type}
-                        </span>
-                    </span>
-                </div>
-
-                <button className="attackloadout__eqiup">Equip</button>
-
 
             </div>
+
+            <AttackInfo selectedSkill={props.selectedSkill} onSelectedSkillHandler={props.onSelectedSkillHandler} />
 
         </div>
     )

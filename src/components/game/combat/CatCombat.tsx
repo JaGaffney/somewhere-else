@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { Section } from './generics/Section'
+
 export const CatCombat = (props) => {
     //props.playerData.status.health.setBase(15)
-    console.log(props.playerData.status)
     // divination
     // can reset each one at the cost of coins, can only have 1  on at a time
     // 1 focus on dmg at the cost of defence
@@ -11,7 +12,10 @@ export const CatCombat = (props) => {
     // 1 focus on killing things effiecntly (drop rate increase etc)
 
     return (
-        <div className="combat__container"><h1>Cat</h1></div>
+        <div className="catcombat__container">
+            <Section type="player" />
+            <Section type="enemy" />
+        </div>
     )
 }
 

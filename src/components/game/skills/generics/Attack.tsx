@@ -11,11 +11,11 @@ export const Attack = (props) => {
     }
 
     return (
-        <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(props.attackData.getAttackById(props.attackID).type) }} onClick={() => props.onSelectedSkillHandler(props.attackID)} >
+        <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(props.attackData.getAttackById(props.attackID).type) }} onClick={() => props.onSelectedSkillHandler(props.attackID)} draggable={true}
+            onDragStart={e => onDragStart(e)}
+            id={props.attackID} >
             <img className="attacks__button-icon"
-                draggable={true}
-                onDragStart={e => onDragStart(e)}
-                id={props.attackID}
+
                 src={props.attackData.getAttackById(props.attackID).icon}
                 alt={props.attackData.getAttackById(props.attackID).name}
             />

@@ -53,7 +53,7 @@ export const SidePanel = (props) => {
             icon: HEALTH
         },
         {
-            name: "defence",
+            name: "armour",
             icon: DEFENCE
         },
         {

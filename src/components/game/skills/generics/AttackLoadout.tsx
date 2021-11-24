@@ -22,13 +22,13 @@ export const AttackLoadout = (props) => {
         e.preventDefault()
         setComponentHover(false)
     }
-    const attackDrop = (e, slot) => {
+    const attackDrop = (e, slot: number) => {
         e.preventDefault()
         setComponentHover(false)
         const attackDataID = e.dataTransfer.getData("text")
 
         console.log(attackDataID, slot)
-        props.playerData.classes.findJobClass(props.activePage).changeAttackLocation(parseInt(attackDataID), parseInt(slot))
+        props.playerData.classes.findJobClass(props.activePage).changeAttackLocation(parseInt(attackDataID), slot)
     }
 
     return (
@@ -37,9 +37,9 @@ export const AttackLoadout = (props) => {
 
                 <div className="attackloadout__equipped-attacks">
                     {Object.keys(props.playerData.classes.findJobClass(props.activePage).equippedAttacks).map((id, k) => {
-                        const attackID = props.playerData.classes.findJobClass(props.activePage).equippedAttacks[id]
+                        const attackID: number = props.playerData.classes.findJobClass(props.activePage).equippedAttacks[id]
                         const attackData = props.attackData.getAttackById(attackID)
-                        console.log(attackData)
+                        const slot: number = k + 1
                         return (
                             <div className="attackloadout__equipped-slot"
                                 key={k}
@@ -49,7 +49,7 @@ export const AttackLoadout = (props) => {
                                     onDragOver={dragOver}
                                     onDragEnter={dragEnter}
                                     onDragLeave={dragLeave}
-                                    onDrop={(e) => attackDrop(e, k + 1)}
+                                    onDrop={(e) => attackDrop(e, slot)}
                                 >
                                     <img className="attacks__button-icon" src={attackData && attackData.icon} />
                                     {attackData &&
@@ -73,10 +73,10 @@ export const AttackLoadout = (props) => {
                     </div>
                 </div>
 
+
             </div>
 
             <AttackInfo selectedSkill={props.selectedSkill} onSelectedSkillHandler={props.onSelectedSkillHandler} />
-
         </div>
     )
 }

@@ -22,7 +22,6 @@ import backgroundImage from "../images/background/cat.jpg"
 
 const IndexPage = props => {
   const [timer, setTimer] = useState(0)
-  const updateTime = () => setTimer(timer + 1)
 
   useEffect(() => {
     // NOTE: should be a loader somewhere else maybe inside redux
@@ -42,7 +41,6 @@ const IndexPage = props => {
       playerData.loadPlayerData(dataFromStorage, itemData)
     }
 
-
     // loads data into redux
     props.loadSkills(skillData)
     props.loadItems(itemData)
@@ -50,10 +48,10 @@ const IndexPage = props => {
     props.loadEnemies(enemyData)
     props.loadPlayer(playerData)
 
+    // keeps data from action is currently in progress when closing down the game
     if (dataFromStorage !== null) {
       for (const current in dataFromStorage.actionTime) {
         const actionData = dataFromStorage.actionTime[current]
-
         const id = actionData.data.id
         const skill = actionData.data.skill
         const time = actionData.timeToComplete
@@ -66,7 +64,9 @@ const IndexPage = props => {
     props.allDataLoaded()
   }, [])
 
-
+  const updateTime = () => {
+    setTimer(timer + 1)
+  }
 
   const actionTimeHandler = (currentTime, data, skillData) => {
     let previousTime = 0

@@ -4,7 +4,7 @@ import { SkillEXP } from "./player/SkillExp"
 import { Passives } from "./player/Passives"
 import { Inventory } from "./player/Inventory"
 import { Classes } from "./player/Classes"
-import { Status, StatusValues } from "./player/Status"
+import { Status } from "./player/Status"
 import { EXP } from "./player/Exp"
 
 export class PlayerData {
@@ -107,9 +107,7 @@ export class PlayerData {
   }
 
   private loadStatus(data) {
-    for (const skill in data) {
-      this.status[skill] = data[skill]
-    }
+    this.status.loadStatus(data)
   }
 
   private loadClasses(data) {

@@ -2,13 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { setActionTime, resetActionTime } from "../../../actions/api"
 
-import { FiClock } from "react-icons/fi";
 import { getBackgroundColor } from '../../../utils/color';
 
 export const Attack = (props) => {
     function onDragStart(e) {
         e.dataTransfer.setData("text/plain", e.target.id)
     }
+
+    console.log(props.attackID)
 
     return (
         <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(props.attackData.getAttackById(props.attackID).type) }} onClick={() => props.onSelectedSkillHandler(props.attackID)} draggable={true}

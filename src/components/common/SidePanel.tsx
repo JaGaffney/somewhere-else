@@ -33,38 +33,6 @@ export const SidePanel = (props) => {
         "bushcraft", "Prowling", "metalwork", "quartermaster", "way of the land", "cat burglar", "botanist"
     ]
 
-    const tempCombatClasses = [
-        {
-            name: "warrior",
-            icon: WARRIOR
-        },
-        {
-            name: "archer",
-            icon: ARCHER
-        },
-        {
-            name: "magician",
-            icon: MAGICIAN
-        },
-    ]
-    const tempStatusSkills = [
-        {
-            name: "health",
-            icon: HEALTH
-        },
-        {
-            name: "armour",
-            icon: DEFENCE
-        },
-        {
-            name: "stamina",
-            icon: STAMINA
-        },
-        {
-            name: "divination",
-            icon: DIVI
-        },
-    ]
     const tempLogs = [
         {
             name: "collection",
@@ -105,23 +73,26 @@ export const SidePanel = (props) => {
                 <NonSkillPanel />
 
                 {props.skills.length !== 0 &&
-                    <div className="sidepanel__skill">
-                        <span className="sidepanel__skill-title">Classes</span>
-                        {props.skills.getAllCombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("combat", i)} />)}
-                    </div>
-                }
+                    (
+                        <>
+                            <div className="sidepanel__skill">
+                                <span className="sidepanel__skill-title">Classes</span>
+                                {props.skills.getAllCombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("combat", i)} />)}
+                            </div>
 
-                <div className="sidepanel__skill">
-                    <span className="sidepanel__skill-title">Status</span>
-                    {Object.keys(tempStatusSkills).map((i, k) => <SkillPanel key={k} skillName={tempStatusSkills[i].name} skillLevelTotal={99} seperator={" / "} icon={tempStatusSkills[i].icon} />)}
-                </div>
 
-                {props.skills.length !== 0 &&
-                    <div className="sidepanel__skill">
-                        <span className="sidepanel__skill-title">Non-Combat</span>
-                        {props.skills.getAllNoncombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("gathering", i)} />)}
-                    </div>
-                }
+                            <div className="sidepanel__skill">
+                                <span className="sidepanel__skill-title">Status</span>
+                                {props.skills.getAllStatusSkills().map((i, k) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("status", i)} type={"status"} />)}
+                            </div>
+
+
+                            <div className="sidepanel__skill">
+                                <span className="sidepanel__skill-title">Non-Combat</span>
+                                {props.skills.getAllNoncombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("gathering", i)} />)}
+                            </div>
+                        </>
+                    )}
 
                 <div className="sidepanel__skill">
                     <span className="sidepanel__skill-title">Logs</span>

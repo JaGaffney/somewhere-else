@@ -7,36 +7,27 @@ import Attack from "./generics/Attack"
 import AttackLoadout from './generics/AttackLoadout'
 
 export const CombatSkill = (props) => {
-    const [activeData, setActiveData] = useState(null)
     const [selectedSkill, setSelecetedSkill] = useState(null)
-
-    useEffect(() => {
-        if (props.skills.length !== 0) {
-            setActiveData(props.skills.getSkillByName("combat", props.activePage))
-        }
-
-    }, [props.skills])
 
     const onSelectedSkillHandler = (data) => {
         setSelecetedSkill(data)
     }
 
     return (
-        props.skills.length !== 0 && (
-            activeData !== null &&
-            (
-                <div>
-                    <EXP />
-                    <AttackLoadout selectedSkill={selectedSkill} onSelectedSkillHandler={onSelectedSkillHandler} />
-                    <div className="attacks__container">
-                        {activeData.classSkillIDs.map((i, k) => {
-                            return (
-                                <Attack attackID={i} key={k} onSelectedSkillHandler={onSelectedSkillHandler} />
-                            )
-                        })}
-                    </div>
-                    <Talents />
-                </div>)
+        props.attackData.length !== 0 && (
+            <div>
+                <EXP />
+                <AttackLoadout selectedSkill={selectedSkill} onSelectedSkillHandler={onSelectedSkillHandler} />
+                <div className="attacks__container">
+                    {[...props.attackData.attacks.keys()].map((i, k) => {
+
+                        return (
+                            <Attack attackID={i} key={k} onSelectedSkillHandler={onSelectedSkillHandler} />
+                        )
+                    })}
+                </div>
+                <Talents />
+            </div>
         )
     )
 }
@@ -45,8 +36,8 @@ export const CombatSkill = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
-    skills: state.skills.skillData,
-    activePage: state.engine.activePage
+    activePage: state.engine.activePage,
+    attackData: state.attacks.attackData,
 })
 
 const mapDispatchToProps = {

@@ -46,46 +46,68 @@
   width: 100%;
 }
 .catcombat__section {
+  background: var(--gray800);
+  box-shadow: var(--shadow900);
+  padding: 1rem;
   width: 50%;
 }
 .catcombat__status {
-  background: var(--gray800);
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
   gap: 1rem;
+  border-radius: 10px;
+  background: var(--gray900);
+  box-shadow: var(--shadow900);
 }
 .statusBar__container {
   width: 100%;
   text-align: center;
   font-size: 1rem;
+  padding: 1rem;
 }
 .catcombat__armour {
+  margin-top: 0.7rem;
+  padding: 1rem;
   background: var(--blue700);
+  color: var(--blue100);
+  font-size: 2rem;
+  border-radius: 0px 0px 50% 50%;
   height: 1.5rem;
 }
 
 .catcombat__hotbar {
+  background: var(--gray900);
+  box-shadow: var(--shadow900);
   margin: 0.5rem 0;
   padding: 1rem;
-  background: var(--gray800);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: flex-start;
+  border-radius: 10px;
+  &-attacks {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
 }
 .catcombat__description {
   display: flex;
   flex-wrap: nowrap;
   gap: 0.5rem;
   width: 100%;
+
   &-info {
     width: 50%;
-    background: var(--gray800);
+    background: var(--gray900);
+    box-shadow: var(--shadow900);
+    border-radius: 10px;
   }
   &-stats {
     width: 50%;
-    background: var(--gray800);
+    background: var(--gray900);
+    box-shadow: var(--shadow900);
+    border-radius: 10px;
   }
 }
 

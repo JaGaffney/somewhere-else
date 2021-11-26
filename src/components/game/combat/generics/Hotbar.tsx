@@ -4,11 +4,8 @@ import { connect } from 'react-redux'
 import { getBackgroundColor } from '../../../utils/color';
 
 export const Hotbar = (props) => {
-    console.log(props.playerData)
-    console.log(props.attackData)
-
     return (
-        <>
+        <div className="catcombat__hotbar-attacks">
             {Object.keys(props.playerData.classes.findJobClass("warrior").equippedAttacks).map((id, k) => {
                 const attackID: number = props.playerData.classes.findJobClass("warrior").equippedAttacks[id]
                 const attackData = props.attackData.getAttackById(attackID)
@@ -31,7 +28,7 @@ export const Hotbar = (props) => {
                     </div>
                 )
             })}
-        </>
+        </div>
     )
 }
 

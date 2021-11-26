@@ -12,8 +12,13 @@ export const SkillPanel = (props) => {
             <img className="skillpanel__icon" src={props.icon} />
             <span className={`skillpanel__name ${props.activePage === props.skillName ? "skillpanel__name-active" : null}`}>{props.skillName.toLowerCase()}</span>
             {props.playerData.length !== 0 && (
-                <span className="skillpanel__level">{props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(props.skillName))}{props.seperator}{props.skillLevelTotal}</span>
-            )}
+                <span className="skillpanel__level">
+                    {props.type === "status" ? props.playerData.status.getValue(props.skillName).getBase() : props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(props.skillName))}
+                    {props.seperator}
+                    {props.skillLevelTotal}
+                </span>
+            )
+            }
         </button>
     )
 }

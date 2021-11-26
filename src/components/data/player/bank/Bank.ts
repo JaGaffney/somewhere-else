@@ -5,6 +5,7 @@ export class Bank {
   bankItems: Map<number, Bankslot> = new Map()
   bankSpace: number = 50
   coins: number = 0
+  essence: number = 0
 
   constructor() {}
 
@@ -26,6 +27,20 @@ export class Bank {
   removeFromCoins(value: number): void {
     if (value <= this.coins) {
       this.coins -= value
+    }
+  }
+  getEssence(): number {
+    return this.essence
+  }
+  setEssence(value: number): void {
+    this.essence = value
+  }
+  addToEssence(value: number): void {
+    this.essence += value
+  }
+  removeFromEssence(value: number): void {
+    if (value <= this.essence) {
+      this.essence -= value
     }
   }
 

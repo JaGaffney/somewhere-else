@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 
 import NoncombatSkill from "./skills/NoncombatSkill"
 import CombatSkill from "./skills/CombatSkill"
+import StatusSkill from "./skills/StatusSkill"
 import Playerbank from "./player/Playerbank"
 import Combat from "./combat/Combat"
+
 
 export const Game = (props) => {
     const LoadComponent = () => {
@@ -16,6 +18,11 @@ export const Game = (props) => {
             case ("archer"):
             case ("magician"):
                 return <CombatSkill />
+            case ("health"):
+            case ("stamina"):
+            case ("armour"):
+            case ("divination"):
+                return <StatusSkill />
             case ("bank"):
                 return <Playerbank />
             case ("combat"):

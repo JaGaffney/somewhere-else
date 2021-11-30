@@ -38,12 +38,9 @@ const IndexPage = props => {
     const dataFromStorage = onLoadDataFromLocalStorage()
 
     if (dataFromStorage !== null) {
-      console.log(dataFromStorage)
       playerData.loadPlayerData(dataFromStorage, itemData)
     }
 
-    playerData.status.getValue("health").setBase(50)
-    console.log(playerData.status.getValue("health"))
     // loads data into redux
     props.loadSkills(skillData)
     props.loadItems(itemData)
@@ -116,7 +113,6 @@ const IndexPage = props => {
       actionTimeHandler(currentTime, props.actionTime, props.skillData)
       if (timer > 10) {
         console.log("SAVING")
-        console.log(props.playerData)
         saveAllDataToLocalStorage(props.playerData, props.actionTime)
         setTimer(0)
       }

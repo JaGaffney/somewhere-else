@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 export const AttackInfo = (props) => {
     return (
-        <div className="attackloadout__info">
+        <div className="attackloadout__info catcombat__description-info">
             <h3>{props.selectedSkill ? props.attackData.getAttackById(props.selectedSkill).name : "Attack"}</h3>
             <div className="attacks__button">
                 <img className="attacks__button-icon" src={props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).icon} />

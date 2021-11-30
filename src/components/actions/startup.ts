@@ -22,6 +22,12 @@ export const loadEnemies = data => dispatch => {
     payload: data,
   })
 }
+export const loadCombatData = data => dispatch => {
+  return dispatch({
+    type: "LOAD_COMBAT_DATA",
+    payload: data,
+  })
+}
 export const loadPlayer = data => dispatch => {
   return dispatch({
     type: "LOAD_PLAYER",

@@ -9,8 +9,6 @@ export const Attack = (props) => {
         e.dataTransfer.setData("text/plain", e.target.id)
     }
 
-    console.log(props.attackID)
-
     return (
         <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(props.attackData.getAttackById(props.attackID).type) }} onClick={() => props.onSelectedSkillHandler(props.attackID)} draggable={true}
             onDragStart={e => onDragStart(e)}

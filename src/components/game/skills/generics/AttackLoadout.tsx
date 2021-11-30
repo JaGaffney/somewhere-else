@@ -76,7 +76,7 @@ export const AttackLoadout = (props) => {
 
             </div>
 
-            <AttackInfo selectedSkill={props.selectedSkill} onSelectedSkillHandler={props.onSelectedSkillHandler} />
+            <AttackInfo selectedSkill={props.selectedSkill} />
         </div>
     )
 }

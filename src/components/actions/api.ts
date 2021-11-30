@@ -1,3 +1,5 @@
+import { CombatData } from "../data/CombatData"
+
 export const setActivePage = (activePage: string) => dispatch => {
   return dispatch({
     type: "ACTIVE_PAGE",
@@ -30,9 +32,9 @@ export const setDeltaTime = (deltatime: number) => dispatch => {
   })
 }
 
-// export const addNewAttack = (id:number, slot:number) => dispatch => {
-//   return dispatch({
-//     type: "ADD_NEW_ATTACK",
-//     payload: deltatime,
-//   })
-// }
+export const setCombatData = data => dispatch => {
+  return dispatch({
+    type: "SET_COMBAT_DATA",
+    payload: data,
+  })
+}

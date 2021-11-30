@@ -4,6 +4,7 @@ const initialState = {
   allDataLoaded: false,
   deltaTime: 0,
   playerUpdated: false,
+  combatData: null,
 }
 
 const actionTimeHandler = (actionTime, payload) => {
@@ -58,6 +59,16 @@ export default function (state = initialState, action) {
       return {
         ...state,
         deltaTime: action.payload,
+      }
+    case "LOAD_COMBAT_DATA":
+      return {
+        ...state,
+        combatData: action.payload,
+      }
+    case "SET_COMBAT_DATA":
+      return {
+        ...state,
+        combatData: action.payload,
       }
     default:
       return state

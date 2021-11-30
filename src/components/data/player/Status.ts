@@ -21,6 +21,9 @@ export class StatusValues {
   setCurrent(val: number): void {
     this.current = val
   }
+  buyStatus(): void {
+    this.base += 1
+  }
 
   setData(base: number, current: number): void {
     this.base = base

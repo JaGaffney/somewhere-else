@@ -13,6 +13,7 @@ export const Hotbar = (props) => {
                     <div className="attackloadout__equipped-slot"
                         key={k}
                         onClick={() => props.onSelectedSkillHandler(attackID)}
+                        onMouseEnter={() => props.onSelectedSkillHandler(attackID)}
                     >
                         <div className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default") }}
                         >

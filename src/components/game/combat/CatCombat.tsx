@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { Section } from './generics/Section'
+import Section from './generics/Section'
 
 export const CatCombat = (props) => {
     //props.playerData.status.health.setBase(15)
@@ -13,15 +13,15 @@ export const CatCombat = (props) => {
 
     return (
         <div className="catcombat__container">
-            <Section type="player" />
-            <Section type="enemy" />
+            <Section type="player" data={props.playerData} />
+            <Section type="enemy" data={props.enemyData} />
         </div>
     )
 }
 
 
 const mapStateToProps = (state) => ({
-    enemies: state.enemies,
+    enemyData: state.engine.combatData,
     playerData: state.player.playerData
 })
 

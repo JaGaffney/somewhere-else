@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 export const Rotation = (props) => {
+    console.log(props.data)
+
     return (
         <div className="catcombat__description-rotation">
             <p>Set your rotation for auto-combat</p>
@@ -13,8 +15,16 @@ export const Rotation = (props) => {
                 <li>Attack 5</li>
                 <li>Attack 6</li>
             </ul>
+            {props.type === "player" ? (
+                <button>Being auto combat</button>
+            )
+                : (
+                    <>
+                        <button>Drops</button>
+                        <button>Run away</button>
+                    </>
+                )}
 
-            <button>Being auto combat</button>
         </div>
     )
 }

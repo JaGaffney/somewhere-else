@@ -7,12 +7,16 @@ export class JobClass {
     5: null,
     6: null,
   }
+  rotation: Array<number> = new Array(6)
 
   constructor() {}
 
   // when data loads
-  setEquippedAttacks(ea) {
-    this.equippedAttacks = ea
+  setEquippedAttacks(equippedAttacks) {
+    this.equippedAttacks = equippedAttacks
+  }
+  setRotation(rotation) {
+    this.rotation = rotation
   }
 
   addNewAttack(attackID: number) {
@@ -34,5 +38,16 @@ export class JobClass {
     }
 
     this.equippedAttacks[location] = attackID
+  }
+
+  changeRotation(attackID: number, location: number): void {
+    let tempData = this.rotation
+    for (let i in this.rotation) {
+      if ((tempData[i] = attackID)) {
+        tempData[i] = null
+      }
+    }
+    tempData[location] = attackID
+    this.rotation = tempData
   }
 }

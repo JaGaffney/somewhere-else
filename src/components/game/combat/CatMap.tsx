@@ -137,7 +137,7 @@ export const CatMap = (props) => {
                                         </div>
                                         <div className="map__enemy-statValue">
                                             <img src={require("../../../images/sidepanel/health.svg")} alt="health" />
-                                            <span>{i.health}</span>
+                                            <span>{data.health}</span>
                                         </div>
                                         <div className="map__enemy-statValue">
                                             <img src={require("../../../images/sidepanel/stamina.svg")} alt="stamina" />
@@ -147,8 +147,6 @@ export const CatMap = (props) => {
                                             <img src={require("../../../images/combat/speed.svg")} alt="speed" />
                                             <span>{data.speed}</span>
                                         </div>
-
-
                                     </div>
                                 </div>
                             )

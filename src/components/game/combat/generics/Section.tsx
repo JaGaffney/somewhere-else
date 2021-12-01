@@ -5,18 +5,19 @@ import StatusBar from './statusBar'
 import Armour from "./Armour"
 
 import Hotbar from './Hotbar'
+import EnemyInfo from "./EnemyInfo"
 
 import Rotation from './Rotation'
 import Info from './Info'
 
 export const Section = (props) => {
-    console.log(props.enemies)
     const [selectedSkill, setSelecetedSkill] = useState(null)
 
     const onSelectedSkillHandler = (data) => {
         setSelecetedSkill(data)
     }
 
+    console.log(props.playerData)
 
     return (
         <div className="catcombat__section">
@@ -26,14 +27,20 @@ export const Section = (props) => {
                 <StatusBar type="stamina" maxValue={props.data && props.data.status.getValue("stamina").getBase()} currentValue={props.data && props.data.status.getValue("stamina").getCurrent()} />
             </div>
 
-            <div className="catcombat__hotbar">
-                <Hotbar onSelectedSkillHandler={onSelectedSkillHandler} />
-            </div>
+            {props.type === "player" ? (
+                <div className="catcombat__hotbar">
+                    <Hotbar onSelectedSkillHandler={onSelectedSkillHandler} />
+                </div>
+            ) : (
+                <EnemyInfo data={props.data ? props.data : null} onSelectedSkillHandler={onSelectedSkillHandler} />
+            )}
 
             <div className="catcombat__description">
                 <Info selectedSkill={selectedSkill} />
-                <Rotation />
+                <Rotation type={props.type} data={props.data} />
             </div>
+
+
         </div>
     )
 }

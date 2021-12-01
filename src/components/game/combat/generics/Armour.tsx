@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 export const Armour = (props) => {
     return (
         <div className="catcombat__armour">
-            {props.value}
+            {props.value ? props.value : "*"}
         </div>
     )
 }

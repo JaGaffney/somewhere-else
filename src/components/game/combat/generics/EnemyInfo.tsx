@@ -17,40 +17,46 @@ export const EnemyInfo = (props) => {
                 <div className="catcombat__enemy-info">
 
                     <div className="catcombat__enemy-description">
-                        <h3>{enemyData.name}</h3>
-                        <div className="map__enemy-statValue">
-                            <img src={require("../../../../images/combat/level.svg")} alt="level" />
-                            <span>{enemyData.level}</span>
-                        </div>
+                        {props.data && (
+                            <>
+                                <h3>{enemyData.name}</h3>
+                                <div className="map__enemy-statValue">
+                                    <img src={require("../../../../images/combat/level.svg")} alt="level" />
+                                    <span>{enemyData.level}</span>
+                                </div>
+                            </>)}
                     </div>
 
-
-                    {enemyData.attacks.map((id, k) => {
-                        const attackData = props.attackData.getAttackById(id)
-                        return (
-                            <div className="attackloadout__equipped-slot"
-                                key={k}
-                                onClick={() => props.onSelectedSkillHandler(id)}
-                                onMouseEnter={() => props.onSelectedSkillHandler(id)}
-                            >
-                                <div className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default") }}
+                    {props.data && (
+                        enemyData.attacks.map((id, k) => {
+                            const attackData = props.attackData.getAttackById(id)
+                            return (
+                                <div className="attackloadout__equipped-slot"
+                                    key={k}
+                                    onClick={() => props.onSelectedSkillHandler(id)}
+                                    onMouseEnter={() => props.onSelectedSkillHandler(id)}
                                 >
-                                    <img className="attacks__button-icon" src={attackData && attackData.icon} />
-                                    {attackData &&
-                                        <div className="attacks__button-stats">
-                                            <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>
-                                            <span className="attacks__button-stats-topRight">{attackData.stamina}</span>
-                                            <span className="attacks__button-stats-bottomRight">{attackData.maxDamage}</span>
-                                        </div>
-                                    }
+                                    <div className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default") }}
+                                    >
+                                        <img className="attacks__button-icon" src={attackData && attackData.icon} />
+                                        {attackData &&
+                                            <div className="attacks__button-stats">
+                                                <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>
+                                                <span className="attacks__button-stats-topRight">{attackData.stamina}</span>
+                                                <span className="attacks__button-stats-bottomRight">{attackData.maxDamage}</span>
+                                            </div>
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })}
+                            )
+                        }))}
 
                 </div>
                 <div className="catcombat__enemy-image">
-                    <img src={enemyData.image} />
+                    {props.data && (
+
+                        <img src={enemyData.image} />
+                    )}
                 </div>
             </div>
         )

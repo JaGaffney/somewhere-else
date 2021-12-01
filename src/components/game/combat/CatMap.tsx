@@ -77,6 +77,7 @@ export const CatMap = (props) => {
 
         enemy.status.loadStatus(values)
         props.setCombatData(enemy)
+        props.onFightStart({ type: props.types.CAT_COMBAT })
     }
 
     return (

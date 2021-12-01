@@ -116,8 +116,10 @@
         width: 100%;
         background: var(--gray800);
         border-radius: 5px;
+        height: 1.8rem;
         margin: 0.5rem 0;
         padding: 0.5rem 0;
+        border: solid 3px transparent;
       }
     }
     button {
@@ -128,6 +130,9 @@
       border: none;
       border-radius: 10px;
     }
+  }
+  &-rotationActive {
+    border: solid 3px var(--blue700) !important;
   }
 }
 .catcombat__enemy {
@@ -155,6 +160,7 @@
     align-items: center;
   }
   &-image {
+    min-height: 17rem;
     width: 50%;
     background: var(--gray900);
     box-shadow: var(--shadow900);

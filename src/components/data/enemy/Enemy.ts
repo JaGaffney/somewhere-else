@@ -10,7 +10,8 @@ export class Enemy {
   style: string
   speed: number
   drops: Drops
-  attacks: Array<object>
+  attacks: Array<number>
+  rotation: Array<number>
   image: string
   requirement: number
 
@@ -24,7 +25,8 @@ export class Enemy {
     style: string,
     speed: number,
     drops: Drops,
-    attacks: Array<object>,
+    attacks: Array<number>,
+    rotation: Array<number>,
     image: string,
     requirement: number
   ) {
@@ -38,6 +40,7 @@ export class Enemy {
     this.speed = speed
     this.drops = drops
     this.attacks = attacks
+    this.rotation = rotation
     this.image = image
     this.requirement = requirement
   }

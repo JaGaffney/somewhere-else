@@ -34,6 +34,7 @@ export class EnemyData {
           enemySeed[key].speed,
           drops,
           enemySeed[key].attacks,
+          enemySeed[key].rotation,
           enemySeed[key].image,
           enemySeed[key].requirement
         )

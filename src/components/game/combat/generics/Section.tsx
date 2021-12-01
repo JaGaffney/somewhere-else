@@ -17,8 +17,6 @@ export const Section = (props) => {
         setSelecetedSkill(data)
     }
 
-    console.log(props.playerData)
-
     return (
         <div className="catcombat__section">
             <div className="catcombat__status">

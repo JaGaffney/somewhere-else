@@ -36,7 +36,7 @@ export const attackSeed = [
   },
   {
     id: 3,
-    name: "shield bash",
+    name: "rend",
     type: "warrior",
     minDamage: 1,
     maxDamage: 10,

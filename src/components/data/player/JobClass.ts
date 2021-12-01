@@ -1,5 +1,5 @@
 export class JobClass {
-  equippedAttacks = {
+  equippedAttacks: object = {
     1: 1,
     2: null,
     3: null,
@@ -12,14 +12,14 @@ export class JobClass {
   constructor() {}
 
   // when data loads
-  setEquippedAttacks(equippedAttacks) {
+  setEquippedAttacks(equippedAttacks: object): void {
     this.equippedAttacks = equippedAttacks
   }
-  setRotation(rotation) {
+  setRotation(rotation: Array<number>): void {
     this.rotation = rotation
   }
 
-  addNewAttack(attackID: number) {
+  addNewAttack(attackID: number): void {
     let iterate = true
     for (const key in this.equippedAttacks) {
       if (this.equippedAttacks[key] === null && iterate !== false) {
@@ -29,7 +29,7 @@ export class JobClass {
     }
   }
 
-  changeAttackLocation(attackID: number, location: number) {
+  changeAttackLocation(attackID: number, location: number): void {
     // resets previous location if applicable
     for (const attack in this.equippedAttacks) {
       if (this.equippedAttacks[attack] === attackID) {
@@ -43,10 +43,12 @@ export class JobClass {
   changeRotation(attackID: number, location: number): void {
     let tempData = this.rotation
     for (let i in this.rotation) {
-      if ((tempData[i] = attackID)) {
+      console.log(i)
+      if (tempData[i] === attackID) {
         tempData[i] = null
       }
     }
+    console.log(tempData)
     tempData[location] = attackID
     this.rotation = tempData
   }

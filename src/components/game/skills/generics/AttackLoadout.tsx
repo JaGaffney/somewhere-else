@@ -27,7 +27,6 @@ export const AttackLoadout = (props) => {
         setComponentHover(false)
         const attackDataID = e.dataTransfer.getData("text")
 
-        console.log(attackDataID, slot)
         props.playerData.classes.findJobClass(props.activePage).changeAttackLocation(parseInt(attackDataID), slot)
     }
 

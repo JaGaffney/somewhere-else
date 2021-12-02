@@ -43,12 +43,10 @@ export class JobClass {
   changeRotation(attackID: number, location: number): void {
     let tempData = this.rotation
     for (let i in this.rotation) {
-      console.log(i)
       if (tempData[i] === attackID) {
         tempData[i] = null
       }
     }
-    console.log(tempData)
     tempData[location] = attackID
     this.rotation = tempData
   }

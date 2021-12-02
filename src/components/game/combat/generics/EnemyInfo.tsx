@@ -5,7 +5,6 @@ import { getBackgroundColor } from '../../../utils/color'
 
 export const EnemyInfo = (props) => {
     const [enemyData, setEnemyData] = useState(null)
-    console.log(enemyData)
 
     useEffect(() => {
         setEnemyData(props.enemies.enemies.get(props.data ? props.data.enemyID : 1))

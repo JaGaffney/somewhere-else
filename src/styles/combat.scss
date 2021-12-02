@@ -112,13 +112,15 @@
     ul {
       margin: 0;
       li {
-        text-align: center;
-        width: 100%;
+        text-transform: capitalize;
+        text-align: left;
+        width: auto;
         background: var(--gray800);
         border-radius: 5px;
         height: 1.8rem;
         margin: 0.5rem 0;
         padding: 0.5rem 0;
+        padding-left: 1rem;
         border: solid 3px transparent;
       }
     }

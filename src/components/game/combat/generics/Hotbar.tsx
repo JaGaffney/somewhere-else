@@ -5,7 +5,6 @@ import { getBackgroundColor } from '../../../utils/color';
 
 export const Hotbar = (props) => {
     function onDragStart(e) {
-        console.log()
         e.dataTransfer.setData("text/plain", e.target.id)
     }
 

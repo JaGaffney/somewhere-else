@@ -45,4 +45,14 @@ export class EnemyData {
   getEnemyById(id: number) {
     return this.enemies.get(id)
   }
+
+  getEnemyByName(name: string) {
+    let retVal = null
+    this.enemies.forEach((data: any, id: number) => {
+      if (data.name === name) {
+        retVal = id
+      }
+    })
+    return retVal
+  }
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { setCombatData } from "../../../actions/api"
+
 import RotationItems from './RotationItems'
 
 export const Rotation = (props) => {
@@ -9,17 +11,17 @@ export const Rotation = (props) => {
             {props.data && props.type === "player" && (
                 <>
                     <p>Set your rotation for auto-combat</p>
-                    <RotationItems data={props.data.classes.findJobClass(props.data.classes.equippedJobClass).rotation} editable={true} />
+                    <RotationItems rotation={props.data.classes.findJobClass(props.data.classes.equippedJobClass).rotation} data={props.data} editable={true} />
 
-                    <button>Being auto combat</button>
+                    <button className="generic__button generic__button-primary generic__button-fit">Begin auto combat</button>
                 </>
             )} {props.data && props.type === "enemy" && (
                 <>
                     <p>Enemies rotation</p>
-                    <RotationItems data={props.enemyData.getEnemyById(props.data.enemyID).rotation} editable={false} />
+                    <RotationItems rotation={props.enemyData.getEnemyById(props.data.enemyID).rotation} editable={false} />
 
-                    <button>Drops</button>
-                    <button>Run away</button>
+                    <button className="generic__button generic__button-primary">Drops</button>
+                    <button className="generic__button generic__button-secondary" onClick={() => props.setCombatData(null)}>Run away</button>
                 </>
             )}
         </div>
@@ -31,7 +33,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-
+    setCombatData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Rotation)

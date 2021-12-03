@@ -118,8 +118,8 @@ export const CatMap = (props) => {
                                         </div>
 
                                         <div className="map__enemy-buttons">
-                                            <button className="loot">Loot</button>
-                                            <button className="fight" onClick={() => onFightHandler(i, data)}>Fight</button>
+                                            <button className="generic__button generic__button-primary">Loot</button>
+                                            <button className="generic__button generic__button-secondary" onClick={() => onFightHandler(i, data)}>Fight</button>
                                         </div>
                                     </div>
 

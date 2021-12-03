@@ -1,15 +1,52 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import Section from './generics/Section'
 
 export const CatCombat = (props) => {
-    //props.playerData.status.health.setBase(15)
-    // divination
-    // can reset each one at the cost of coins, can only have 1  on at a time
-    // 1 focus on dmg at the cost of defence
-    // 1 focus on defence at the csot of damage
-    // 1 focus on killing things effiecntly (drop rate increase etc)
+    const [timer, setTimer] = useState(0)
+    const [combatInProcess, setCombatInProcess] = useState<boolean>(false)
+    const [playersTurn, setPlayersTurn] = useState(null)
+
+
+    const handleAttackInput = (attackID) => {
+
+    }
+
+    const handleHit = () => {
+        console.log("waiting for next attack", timer)
+
+    }
+
+    const gameEngineStart = () => {
+
+    }
+
+
+    useEffect(() => {
+        console.log("start up")
+        if (props.enemyData) {
+            setCombatInProcess(true)
+        }
+    }, [])
+
+    const updateTime = () => {
+        setTimer(timer + 1)
+    }
+
+    useEffect(() => {
+        const intervalRefresh = setInterval(() => {
+            updateTime()
+
+            if (timer >= 3) {
+                console.log("attack happend")
+                handleHit()
+                setTimer(0)
+            }
+
+        }, 1000);
+        return () => clearInterval(intervalRefresh);
+    }, [combatInProcess, timer]);
 
     return (
         <div className="catcombat__container">

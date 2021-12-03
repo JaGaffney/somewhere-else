@@ -3,12 +3,16 @@ import { connect } from 'react-redux'
 
 export const RotationItems = (props) => {
     const [componentHover, setComponentHover] = useState(false)
+    const [activeHover, setActiveHover] = useState("")
 
     const dragOver = e => {
+
         e.preventDefault()
         setComponentHover(true)
     }
     const dragEnter = e => {
+        console.log(e.target.id)
+        setActiveHover(e.target.id)
         e.preventDefault()
         setComponentHover(true)
     }
@@ -30,7 +34,7 @@ export const RotationItems = (props) => {
 
     return (
         <ul>
-            {props.data.map((attackID: string, k: number) => {
+            {props.rotation.map((attackID: string, k: number) => {
                 const attackData = props.attackData.getAttackById(parseInt(attackID))
                 let name = ""
                 if (attackData !== undefined) {

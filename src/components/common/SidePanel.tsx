@@ -35,19 +35,19 @@ export const SidePanel = (props) => {
 
     const tempLogs = [
         {
-            name: "collection",
+            name: "collection log",
             icon: COLLECTION
         },
         {
-            name: "combat",
+            name: "combat log",
             icon: COMBAT
         },
         {
-            name: "achievement",
+            name: "achievement log",
             icon: ACHI
         },
         {
-            name: "quest",
+            name: "quest log",
             icon: QUEST
         },
     ]

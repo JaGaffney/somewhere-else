@@ -124,14 +124,6 @@
         border: solid 3px transparent;
       }
     }
-    button {
-      cursor: pointer;
-      background: var(--blue700);
-      color: var(--blue100);
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 10px;
-    }
   }
   &-rotationActive {
     border: solid 3px var(--blue700) !important;

@@ -8,12 +8,15 @@ export const Shop = props => {
     <div className="game__normal">
       <div className="shop__container">
         {" "}
-        {[...props.itemData.shop.shopItems.keys()].map((id, k) => {
-          const itemId = props.itemData.shop.shopItems.get(id).item.id
-          const data = props.itemData.getItemById(itemId)
-          console.log(data)
-          return <ShopItem key={k} id={id} itemData={data} />
-        })}
+        <div className="shop__items">
+          <div className="shop__items-inner">
+            {[...props.itemData.shop.shopItems.keys()].map((id, k) => {
+              const itemId = props.itemData.shop.shopItems.get(id).item.id
+              const data = props.itemData.getItemById(itemId)
+              return <ShopItem key={k} id={id} itemData={data} />
+            })}
+          </div>
+        </div>
       </div>
     </div>
   )

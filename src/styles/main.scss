@@ -348,3 +348,76 @@
   margin: 0.8rem 0;
   min-height: 80%;
 }
+
+.shop__items {
+  width: 60%;
+  padding: 2rem;
+  background: var(--gray800);
+  box-sizing: var(--shadow900);
+  &-inner {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2.3rem 1rem;
+    height: auto;
+  }
+  &-singleItem {
+    cursor: pointer;
+    transform: scale(100%);
+    padding: 0;
+    background: var(--gray900);
+    color: var(--gray200);
+    box-shadow: var(--shadow500);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    position: relative;
+    max-width: 6rem;
+    width: 8rem;
+    height: 7rem;
+    z-index: 10;
+    transition: transform ease-in 100ms;
+    border: none;
+    &:hover,
+    &:focus {
+      transform: scale(105%);
+      box-shadow: var(--shadow900);
+      background: var(--blue700);
+    }
+  }
+  &-image {
+    height: 3.5rem;
+    width: 100%;
+    background: var(--gray700);
+    border-radius: 10px 10px 0 0;
+    margin: 0;
+    padding: 0.2rem;
+  }
+  &-name {
+    width: 100%;
+    text-transform: capitalize;
+  }
+  &-detail {
+    display: flex;
+    flex-wrap: wrap;
+    &-price {
+      width: 100%;
+      background: var(--blue700);
+      color: var(--blue100);
+      padding: 0.2rem 0.8rem;
+      border-radius: 5px;
+    }
+    &-rarity {
+      text-transform: capitalize;
+      width: 100%;
+      background: var(--blue900);
+      color: var(--blue100);
+      padding: 0.2rem 0.8rem;
+      border-radius: 5px;
+    }
+  }
+}

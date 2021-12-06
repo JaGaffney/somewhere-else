@@ -5,4 +5,10 @@ export const shopSeed = [
     unique: false,
     item: { id: 40001, qty: 1 },
   },
+  {
+    id: 2,
+    name: "mithril ore",
+    unique: false,
+    item: { id: 10019, qty: 5 },
+  },
 ]

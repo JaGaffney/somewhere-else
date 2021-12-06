@@ -6,6 +6,7 @@ import CombatSkill from "./skills/CombatSkill"
 import StatusSkill from "./skills/StatusSkill"
 import Playerbank from "./player/Playerbank"
 import Combat from "./combat/Combat"
+import Shop from "./shop/Shop"
 
 export const Game = props => {
   const LoadComponent = () => {
@@ -26,6 +27,8 @@ export const Game = props => {
         return <Playerbank />
       case "combat":
         return <Combat />
+      case "shop":
+        return <Shop />
       default:
         return null
     }

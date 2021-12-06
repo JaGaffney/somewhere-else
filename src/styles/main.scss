@@ -375,10 +375,9 @@
     text-align: center;
     border-radius: 10px;
     font-size: 0.8rem;
-    position: relative;
-    max-width: 6rem;
-    width: 8rem;
-    height: 7rem;
+    max-width: 20rem;
+    width: 20rem;
+    height: 15rem;
     z-index: 10;
     transition: transform ease-in 100ms;
     border: none;
@@ -390,7 +389,7 @@
     }
   }
   &-image {
-    height: 3.5rem;
+    height: 10rem;
     width: 100%;
     background: var(--gray700);
     border-radius: 10px 10px 0 0;
@@ -404,6 +403,7 @@
   &-detail {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     &-price {
       width: 100%;
       color: var(--amber500);
@@ -416,7 +416,7 @@
       background: var(--blue900);
       color: var(--blue100);
       padding: 0.2rem 0.8rem;
-      border-radius: 5px;
+      border-radius: 0 0 5px 5px;
     }
   }
 }

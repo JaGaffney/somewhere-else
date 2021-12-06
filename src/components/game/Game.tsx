@@ -7,30 +7,27 @@ import StatusSkill from "./skills/StatusSkill"
 import Playerbank from "./player/Playerbank"
 import Combat from "./combat/Combat"
 
-
-export const Game = (props) => {
-
-    const LoadComponent = () => {
-        switch (props.activePage) {
-            case ("bushcraft"):
-            case ("metalwork"):
-                return <NoncombatSkill />
-            case ("warrior"):
-            case ("archer"):
-            case ("magician"):
-                return <CombatSkill />
-            case ("health"):
-            case ("stamina"):
-            case ("armour"):
-            case ("divination"):
-                return <StatusSkill />
-            case ("bank"):
-                return <Playerbank />
-            case ("combat"):
-                return <Combat />
-            default:
-                return null
-        }
+export const Game = props => {
+  const LoadComponent = () => {
+    switch (props.activePage) {
+      case "bushcraft":
+      case "metalwork":
+        return <NoncombatSkill />
+      case "warrior":
+      case "archer":
+      case "magician":
+        return <CombatSkill />
+      case "health":
+      case "stamina":
+      case "armour":
+      case "divination":
+        return <StatusSkill />
+      case "bank":
+        return <Playerbank />
+      case "combat":
+        return <Combat />
+      default:
+        return null
     }
   }
 
@@ -40,11 +37,8 @@ export const Game = (props) => {
     </section>
   )
 }
-
-
-
-const mapStateToProps = (state) => ({
-    activePage: state.engine.activePage
+const mapStateToProps = state => ({
+  activePage: state.engine.activePage,
 })
 
 const mapDispatchToProps = {}

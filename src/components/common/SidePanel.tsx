@@ -76,7 +76,7 @@ export const SidePanel = (props) => {
                     (
                         <>
                             <div className="sidepanel__skill">
-                                <span className="sidepanel__skill-title">Classes</span>
+                                <span className="sidepanel__skill-title">Orders of the (Classes)</span>
                                 {props.skills.getAllCombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("combat", i)} />)}
                             </div>
 

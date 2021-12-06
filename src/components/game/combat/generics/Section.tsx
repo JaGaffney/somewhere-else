@@ -13,8 +13,8 @@ import Info from './Info'
 export const Section = (props) => {
     const [selectedSkill, setSelecetedSkill] = useState(null)
 
-    const onSelectedSkillHandler = (data) => {
-        setSelecetedSkill(data)
+    const onSelectedSkillHandler = (id) => {
+        setSelecetedSkill(id)
     }
 
     return (
@@ -27,7 +27,7 @@ export const Section = (props) => {
 
             {props.type === "player" ? (
                 <div className="catcombat__hotbar">
-                    <Hotbar onSelectedSkillHandler={onSelectedSkillHandler} />
+                    <Hotbar onSelectedSkillHandler={onSelectedSkillHandler} onAttackHandler={props.onAttackHandler} />
                 </div>
             ) : (
                 <EnemyInfo data={props.data ? props.data : null} onSelectedSkillHandler={onSelectedSkillHandler} />

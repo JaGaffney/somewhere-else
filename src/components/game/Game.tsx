@@ -9,6 +9,7 @@ import Combat from "./combat/Combat"
 
 
 export const Game = (props) => {
+
     const LoadComponent = () => {
         switch (props.activePage) {
             case ("bushcraft"):

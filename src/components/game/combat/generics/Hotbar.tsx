@@ -19,7 +19,7 @@ export const Hotbar = (props) => {
                         onDragStart={e => onDragStart(e)}
                         id={attackID}
                         draggable={true}
-                        onClick={() => props.onSelectedSkillHandler(attackID)}
+                        onClick={() => props.onAttackHandler(attackID)}
                         onMouseEnter={() => props.onSelectedSkillHandler(attackID)}
                     >
                         <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default") }}

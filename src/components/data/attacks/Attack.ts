@@ -3,7 +3,7 @@ import { ClassesEnum } from "../enums/ClassesEnum"
 
 export class Attack {
   name: string
-  type: ClassesEnum
+  type: string
   minDamage: number
   maxDamage: number
   cooldown: number
@@ -13,7 +13,7 @@ export class Attack {
 
   constructor(
     name: string,
-    type: ClassesEnum,
+    type: string,
     minDamage: number,
     maxDamage: number,
     cooldown: number,

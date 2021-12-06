@@ -10,10 +10,15 @@ export const SkillPanel = (props) => {
     return (
         <button className="skillpanel" onClick={() => props.setActivePage(props.skillName)}>
             <img className="skillpanel__icon" src={props.icon} />
-            <span className={`skillpanel__name ${props.activePage === props.skillName ? "skillpanel__name-active" : null}`}>{props.skillName}</span>
+            <span className={`skillpanel__name ${props.activePage === props.skillName ? "skillpanel__name-active" : null}`}>{props.skillName.toLowerCase()}</span>
             {props.playerData.length !== 0 && (
-                <span className="skillpanel__level">{props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(props.skillName))}{props.seperator}{props.skillLevelTotal}</span>
-            )}
+                <span className="skillpanel__level">
+                    {props.type === "status" ? props.playerData.status.getValue(props.skillName).getBase() : props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(props.skillName))}
+                    {props.seperator}
+                    {props.skillLevelTotal}
+                </span>
+            )
+            }
         </button>
     )
 }
@@ -22,7 +27,7 @@ export const SkillPanel = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
-    activePage: state.player.activePage,
+    activePage: state.engine.activePage,
     playerUpdated: state.player.playerUpdated
 })
 

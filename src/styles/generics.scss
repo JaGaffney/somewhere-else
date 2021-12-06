@@ -46,3 +46,55 @@
     align-items: center;
   }
 }
+
+.statusBar {
+  height: 1.5rem;
+  width: 100%;
+  border-radius: 3px;
+  background: var(--blue900);
+  position: relative;
+  z-index: 1;
+  &-inner {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 1.5rem;
+    width: 100%;
+    // border-radius: 3px;  causes issues for some reason when the status values are really small
+    background: var(--red500);
+    transform: scaleX(0);
+    transform-origin: top left;
+    transition: transform 0.3s ease-in;
+    will-change: transform;
+  }
+}
+
+.generic__button {
+  cursor: pointer;
+  background: var(--blue700);
+  color: var(--blue100);
+  box-shadow: var(--shadow100);
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  border: none;
+  border-radius: 7px;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow900);
+  }
+}
+.generic__button-fit {
+  width: 100%;
+  padding: 0.5rem 0;
+  margin: 0.3rem 0;
+}
+
+.generic__button-primary {
+  background: var(--blue900);
+  color: var(--blue100);
+}
+.generic__button-secondary {
+  background: var(--red900);
+  color: var(--red100);
+}

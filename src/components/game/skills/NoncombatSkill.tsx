@@ -11,7 +11,7 @@ export const Noncombat = (props) => {
 
     useEffect(() => {
         if (props.skills.length !== 0) {
-            setActiveData(props.skills.getNoncombatSkillByName(props.activePage))
+            setActiveData(props.skills.getSkillByName("gathering", props.activePage))
         }
 
     }, [props.skills])
@@ -34,7 +34,7 @@ export const Noncombat = (props) => {
 
 const mapStateToProps = (state) => ({
     skills: state.skills.skillData,
-    activePage: state.player.activePage
+    activePage: state.engine.activePage
 })
 
 const mapDispatchToProps = {

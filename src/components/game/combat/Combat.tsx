@@ -44,7 +44,7 @@ export const Combat = (props) => {
                     <CatCombat />
                 }
                 {state.toggle === types.CAT_MAP &&
-                    <CatMap />
+                    <CatMap onFightStart={dispatch} types={types} />
                 }
             </div>
         </div>

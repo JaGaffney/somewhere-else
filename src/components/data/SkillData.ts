@@ -1,8 +1,13 @@
 import { GatheringSkill } from "./skills/GatheringSkill"
+import { CombatSkill } from "./skills/CombatSkill"
+import { StatusSkill } from "./skills/StatusSkill"
 
 // seed data
+import { warrior, archer, magician } from "./seed/combatSeed"
+import { health, stamina, armour, divination } from "./seed/statusSeed"
 import { bushcraft, metalwork } from "./seed/skillSeed"
 
+// ICONS
 // non-combat
 // @ts-expect-error
 import BUSHCRAFT from "../../images/sidepanel/bushcraft.svg"
@@ -12,46 +17,103 @@ import METALWORK from "../../images/sidepanel/metalwork.svg"
 // on loads creates all of the ingame data.
 // such as skills, items, exp etc
 export class SkillData {
-  statusSkill: Map<string, any> = new Map()
+  combatSkill: Map<string, CombatSkill> = new Map()
+  statusSkill: Map<string, StatusSkill> = new Map()
   gatheringSkill: Map<string, GatheringSkill> = new Map()
   productionSkill: Map<string, any> = new Map()
 
   constructor() {
     this.createGatheringSkills()
+    this.createCombatSkills()
+    this.createStatusSkills()
   }
 
-  createStatusSkills() {}
-  createProductionSkills() {}
+  private createCombatSkills(): void {
+    this.buildCombatSkill("warrior", warrior)
+    this.buildCombatSkill("archer", archer)
+    this.buildCombatSkill("magician", magician)
+  }
 
-  createGatheringSkills() {
+  private createStatusSkills(): void {
+    this.buildStatusSkill("health", health)
+    this.buildStatusSkill("stamina", stamina)
+    this.buildStatusSkill("armour", armour)
+    this.buildStatusSkill("divination", divination)
+  }
+  private createProductionSkills(): void {}
+
+  private createGatheringSkills(): void {
     this.buildGatheringSkill("bushcraft", BUSHCRAFT, bushcraft) // woodcutting, bushcraft
     this.buildGatheringSkill("metalwork", METALWORK, metalwork)
   }
 
-  buildGatheringSkill(name: string, icon, seed) {
+  private buildCombatSkill(name: string, seed: any): void {
+    const skillCreate = new CombatSkill(name, seed)
+    this.combatSkill[name] = skillCreate
+  }
+  private buildStatusSkill(name: string, seed: any): void {
+    const statusCreate = new StatusSkill(name, seed)
+    this.statusSkill[name] = statusCreate
+  }
+  private buildGatheringSkill(name: string, icon: string, seed: any): void {
     const skillCreate = new GatheringSkill(name, icon, seed)
     this.gatheringSkill[name] = skillCreate
   }
 
   getAllSkills() {
-    const skillList = []
-    return skillList
+    const skillList = [
+      this.getSkillsAsArray(this.combatSkill),
+      this.getSkillsAsArray(this.statusSkill),
+      this.getSkillsAsArray(this.gatheringSkill),
+    ]
+    return skillList.flat()
   }
 
-  getAllNoncombatSkills() {
-    const noncombatSkillList = []
-    for (const skill in this.gatheringSkill) {
-      noncombatSkillList.push(this.gatheringSkill[skill].name)
+  private getSkillsAsArray(property: Map<any, any>) {
+    const array = []
+    for (const skill in property) {
+      array.push(property[skill].name)
     }
-    return noncombatSkillList
+    return array
   }
 
-  getNoncombatSkillByName(name: string) {
-    return this.gatheringSkill[name]
+  getAllCombatSkills() {
+    return this.getSkillsAsArray(this.combatSkill)
+  }
+  getAllStatusSkills() {
+    return this.getSkillsAsArray(this.statusSkill)
+  }
+  getAllNoncombatSkills() {
+    return this.getSkillsAsArray(this.gatheringSkill)
   }
 
-  getSkillIconByName(name: string) {
-    return this.gatheringSkill[name].getIcon()
+  getSkillByName(type: string, name: string) {
+    switch (type) {
+      case "gathering":
+        return this.gatheringSkill[name]
+      case "production":
+        return this.productionSkill[name]
+      case "combat":
+        return this.combatSkill[name]
+      case "status":
+        return this.statusSkill[name]
+      default:
+        return []
+    }
+  }
+  getSkillIconByName(type: string, name: string) {
+    switch (type) {
+      case "gathering":
+        return this.gatheringSkill[name].getIcon()
+      case "production":
+        return this.productionSkill[name].getIcon()
+      case "combat":
+        return this.combatSkill[name].getIcon()
+      case "status":
+        return this.statusSkill[name].getIcon()
+      default:
+        return ""
+    }
   }
 
   getItemIdBySkillId(name: string, actionID: string) {

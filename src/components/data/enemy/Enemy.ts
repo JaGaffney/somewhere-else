@@ -1,3 +1,5 @@
+import { Drops } from "./Drops"
+
 export class Enemy {
   name: string
   level: number
@@ -7,8 +9,9 @@ export class Enemy {
   stamina: number
   style: string
   speed: number
-  drops: Array<object>
-  attacks: Array<object>
+  drops: Drops
+  attacks: Array<number>
+  rotation: Array<number>
   image: string
   requirement: number
 
@@ -21,8 +24,9 @@ export class Enemy {
     stamina: number,
     style: string,
     speed: number,
-    drops: Array<object>,
-    attacks: Array<object>,
+    drops: Drops,
+    attacks: Array<number>,
+    rotation: Array<number>,
     image: string,
     requirement: number
   ) {
@@ -36,6 +40,7 @@ export class Enemy {
     this.speed = speed
     this.drops = drops
     this.attacks = attacks
+    this.rotation = rotation
     this.image = image
     this.requirement = requirement
   }

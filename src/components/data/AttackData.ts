@@ -1,9 +1,6 @@
 import { Attack } from "./attacks/Attack"
 import { Effect } from "./attacks/Effect"
 
-import { enumFromValue } from "./enums/enumFromValue"
-import { ClassesEnum } from "./enums/ClassesEnum"
-
 import { attackSeed } from "./seed/attackSeed"
 
 // on loads creates all of the attacks into game data.
@@ -20,7 +17,7 @@ export class AttackData {
         attackSeed[key].id,
         new Attack(
           attackSeed[key].name,
-          enumFromValue(attackSeed[key].type, ClassesEnum),
+          attackSeed[key].type,
           attackSeed[key].minDamage,
           attackSeed[key].maxDamage,
           attackSeed[key].cooldown,

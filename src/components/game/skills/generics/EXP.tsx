@@ -5,7 +5,11 @@ export const EXP = (props) => {
     const [percentage, setPercentage] = useState(0)
 
     useEffect(() => {
-        setPercentage(props.playerData.getSkillExp(props.activePage) / props.playerData.levelChecker.getNextLevelFromExp(props.playerData.getSkillExp(props.activePage)) * 100)
+        let percentageNormliased = props.playerData.getSkillExp(props.activePage) / props.playerData.levelChecker.getNextLevelFromExp(props.playerData.getSkillExp(props.activePage)) * 100
+        if (percentageNormliased > 100) {
+            percentageNormliased = 100
+        }
+        setPercentage(percentageNormliased)
     }, [props.playerData.getSkillExp(props.activePage), props.playerUpdated])
 
     return (
@@ -29,8 +33,8 @@ export const EXP = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
-    activePage: state.player.activePage,
-    playerUpdated: state.player.playerUpdated
+    activePage: state.engine.activePage,
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = {

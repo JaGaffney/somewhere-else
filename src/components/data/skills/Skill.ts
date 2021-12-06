@@ -12,4 +12,7 @@ export abstract class Skill {
   getIcon() {
     return this.icon
   }
+  setIcon(icon) {
+    this.icon = icon
+  }
 }

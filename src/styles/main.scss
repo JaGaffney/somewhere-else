@@ -386,7 +386,7 @@
     &:focus {
       transform: scale(105%);
       box-shadow: var(--shadow900);
-      background: var(--blue700);
+      background: var(--blue900);
     }
   }
   &-image {
@@ -406,8 +406,7 @@
     flex-wrap: wrap;
     &-price {
       width: 100%;
-      background: var(--blue700);
-      color: var(--blue100);
+      color: var(--amber500);
       padding: 0.2rem 0.8rem;
       border-radius: 5px;
     }

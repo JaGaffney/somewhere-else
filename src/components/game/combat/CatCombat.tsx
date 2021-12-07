@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
+import { setCombatData } from "../../actions/api"
+
 import Section from './generics/Section'
 
 import { randomInteger } from "../../utils/generic"
-
 import { Attack } from "../../data/attacks/Attack"
 
 export const CatCombat = (props) => {
     const [combatInProcess, setCombatInProcess] = useState<boolean>(false)
     const [autoCombat, setAutoCombat] = useState(true)
+    const [playerTurn, setPlayerTurn] = useState(false)
+    const [playerTurnColor, setPlayerTurnColor] = useState("transpraent")
+    const [timer, setTimer] = useState(0)
     const [attackSelectedID, setAttackSelectedID] = useState(null)
-    const [playerTurn, setPlayerTurn] = useState(true)
     const [attackErrors, setAttackErrors] = useState({
         stamina: false,
         cooldown: false
@@ -22,58 +25,76 @@ export const CatCombat = (props) => {
         enemy: {},
         turn: 0
     })
-    const toggleChecked = () =>
 
-        useEffect(() => {
-            console.log("start up")
-            // build combat engine
-            const enemyAttacks = {}
-            const attacks = {}
 
-            if (props.combatData) {
-                const rotation = props.enemyData.getEnemyById(props.combatData.enemyID).rotation
-                for (const attack in rotation) {
-                    const attackInfo = props.attackData.getAttackById(parseInt(rotation[parseInt(attack)]))
-                    enemyAttacks[parseInt(attack) + 1] = {
-                        id: parseInt(rotation[attack]),
+    useEffect(() => {
+        console.log("start up")
+        // build combat engine
+        const enemyAttacks = {}
+        const attacks = {}
+
+        if (props.combatData) {
+            const rotation = props.enemyData.getEnemyById(props.combatData.enemyID).rotation
+            for (const attack in rotation) {
+                const attackInfo = props.attackData.getAttackById(parseInt(rotation[parseInt(attack)]))
+                enemyAttacks[parseInt(attack) + 1] = {
+                    id: parseInt(rotation[attack]),
+                    cooldown: {
+                        base: attackInfo.cooldown,
+                        current: attackInfo.cooldown
+                    }
+                }
+            }
+        }
+
+        if (props.playerData) {
+            const rotation = props.playerData.classes.findJobClass(props.playerData.classes.equippedJobClass).rotation
+            for (const attack in rotation) {
+                const attackAsNumber: number = parseInt(attack)
+                const attackInfo = props.attackData.getAttackById(parseInt(rotation[attackAsNumber]))
+                if (attackInfo !== undefined) {
+                    attacks[attackAsNumber + 1] = {
+                        id: parseInt(rotation[attackAsNumber]),
                         cooldown: {
                             base: attackInfo.cooldown,
                             current: attackInfo.cooldown
                         }
                     }
-                }
-            }
-
-            if (props.playerData) {
-                const rotation = props.playerData.classes.findJobClass(props.playerData.classes.equippedJobClass).rotation
-                for (const attack in rotation) {
-                    const attackAsNumber: number = parseInt(attack)
-                    const attackInfo = props.attackData.getAttackById(parseInt(rotation[attackAsNumber]))
-                    if (attackInfo !== undefined) {
-                        attacks[attackAsNumber + 1] = {
-                            id: parseInt(rotation[attackAsNumber]),
-                            cooldown: {
-                                base: attackInfo.cooldown,
-                                current: attackInfo.cooldown
-                            }
-                        }
-                    } else {
-                        attacks[attackAsNumber + 1] = {
-                            id: null,
-                            cooldown: {
-                                base: null,
-                                current: null
-                            }
+                } else {
+                    attacks[attackAsNumber + 1] = {
+                        id: null,
+                        cooldown: {
+                            base: null,
+                            current: null
                         }
                     }
                 }
             }
+        }
 
-            if (props.combatData && props.playerData) {
-                setCombatData({ ...combatData, player: attacks, enemy: enemyAttacks })
-                setCombatInProcess(true)
+        if (props.combatData && props.playerData) {
+            setCombatData({ ...combatData, player: attacks, enemy: enemyAttacks })
+            setCombatInProcess(true)
+        }
+    }, [])
+
+    useEffect(() => {
+        const intervalRefresh = setInterval(() => {
+            updateTime()
+            if (combatInProcess) {
+                if (timer > 2500) {
+                    console.log("Attacking")
+
+                    if (props.combatData && props.playerData) {
+                        gameEngineStart()
+                    }
+                    setTimer(0)
+                }
             }
-        }, [])
+
+        }, 250);
+        return () => clearInterval(intervalRefresh);
+    }, [timer, playerTurn]);
 
 
     // work out if attack is possible
@@ -119,12 +140,22 @@ export const CatCombat = (props) => {
         return damage
     }
     const resolveDamageDealt = (attackID: number, activePlayer: string, attackData: Attack, damage: number): void => {
-        // remove enemy hp
-        // remove stamina
-        // put on cd
+        // remove enemy hp - DONE
+        // remove stamina - DONE
+        // put on cd - DONE
+        // work out armour
         if (activePlayer === "player") {
+            const actualDamage = props.combatData.status.armour.getCurrent() - damage
+            let armourValue = null
+            if (actualDamage > 0) {
+                armourValue = props.combatData.status.armour.getCurrent() - actualDamage
+            } else {
+                armourValue = 0
+            }
+
             props.combatData.status.health.setCurrent(props.combatData.status.health.getCurrent() - damage)
             props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getCurrent() - attackData.stamina)
+            props.combatData.status.armour.setCurrent(armourValue)
         } else {
             props.playerData.status.health.setCurrent(props.playerData.status.health.getCurrent() - damage)
             props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getCurrent() - attackData.stamina)
@@ -150,8 +181,8 @@ export const CatCombat = (props) => {
         }
         return validAttack
     }
+
     const onAttackHandler = (attackID: number) => {
-        console.log(attackID)
         setAttackSelectedID(attackID)
     }
 
@@ -161,17 +192,22 @@ export const CatCombat = (props) => {
 
         // work out attack damage
         const damage = Math.round(attackDamageCalculator(attackData))
-        console.log(damage)
+        console.log(activePlayer, " dealt: ", damage)
 
         // do calcs on attack
         resolveDamageDealt(attackID, activePlayer, attackData, damage)
 
         // resolve death
         if (enemyDead()) {
-            console.log("enemy dead")
+            console.log("Enemy dead")
+            props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
+            props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase())
+            props.playerData.status.armour.setCurrent(props.playerData.status.armour.getBase())
+
             return "Enemy dead"
         }
         if (playerDead()) {
+            console.log("Player dead")
             return "Player dead"
         }
     }
@@ -182,18 +218,20 @@ export const CatCombat = (props) => {
     const playerDead = () => {
         return props.playerData.status.health.getCurrent() < 0
     }
-    const gameEngineStart = async () => {
-        while (!enemyDead() && !playerDead()) {
-            let whoseGoIsIt = "player"
-            if (playerTurn) {
-                whoseGoIsIt = "player"
-            } else {
-                // add a wait here ?
-                whoseGoIsIt = "enemy"
-            }
 
-            console.log(whoseGoIsIt, playerTurn)
-            if (autoCombat) {
+    const currentTurn = (): string => {
+        if (playerTurn) {
+            return "player"
+        } else {
+            // add a wait here ?
+            return "enemy"
+        }
+    }
+    const gameEngineStart = () => {
+        if (!enemyDead() && !playerDead() && combatInProcess) {
+            let whoseGoIsIt = currentTurn()
+
+            if (autoCombat || whoseGoIsIt === "enemy") {
                 // find first viable attack?
                 const attackID = rotationHandler(whoseGoIsIt)
 
@@ -215,31 +253,44 @@ export const CatCombat = (props) => {
                 // }
             }
             // next turn
-            setPlayerTurn(value => !value) // doesnt work
-
-            await timer(3000)
+            setPlayerTurn(!playerTurn) // doesnt work
         }
     }
 
+    const updateTime = () => {
+        setTimer(timer + 1000)
+    }
 
 
-    const timer = ms => new Promise(res => setTimeout(res, ms))
+
+    const autoCombatHandler = () => {
+        setAutoCombat(true)
+        setCombatInProcess(true)
+    }
+
+    const runAwayHandler = () => {
+        setAutoCombat(false)
+        setCombatInProcess(false)
+        props.setCombatData(null)
+    }
 
     // TEMP
-    const handleTesting = () => {
-    }
     const healTesting = () => {
         props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
         props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase())
     }
 
+
+
     return (
         <div className="catcombat__container">
-            <button onClick={healTesting}>Heal</button>
-            <button onClick={gameEngineStart}>Tester</button>
-            <Section type="player" data={props.playerData} onAttackHandler={onAttackHandler} />
-            <Section type="enemy" data={props.combatData} />
-        </div>
+            <div>
+                <h1>{combatInProcess}</h1>
+                <button onClick={healTesting}>Heal</button>
+            </div>
+            <Section type="player" data={props.playerData} onAttackHandler={onAttackHandler} autoCombatHandler={autoCombatHandler} />
+            <Section type="enemy" data={props.combatData} runAwayHandler={runAwayHandler} />
+        </div >
     )
 }
 
@@ -252,7 +303,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-
+    setCombatData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CatCombat)

@@ -35,7 +35,7 @@ export const Section = (props) => {
 
             <div className="catcombat__description">
                 <Info selectedSkill={selectedSkill} />
-                <Rotation type={props.type} data={props.data} />
+                <Rotation type={props.type} data={props.data} onButtonHandler={props.type === "enemy" ? props.runAwayHandler : props.autoCombatHandler} />
             </div>
 
 

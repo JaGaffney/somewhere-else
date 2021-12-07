@@ -13,7 +13,7 @@ export const Rotation = (props) => {
                     <p>Set your rotation for auto-combat</p>
                     <RotationItems rotation={props.data.classes.findJobClass(props.data.classes.equippedJobClass).rotation} data={props.data} editable={true} />
 
-                    <button className="generic__button generic__button-primary generic__button-fit">Begin auto combat</button>
+                    <button className="generic__button generic__button-primary generic__button-fit" onClick={() => props.onButtonHandler(true)}>Begin auto combat</button>
                 </>
             )} {props.data && props.type === "enemy" && (
                 <>
@@ -21,7 +21,7 @@ export const Rotation = (props) => {
                     <RotationItems rotation={props.enemyData.getEnemyById(props.data.enemyID).rotation} editable={false} />
 
                     <button className="generic__button generic__button-primary">Drops</button>
-                    <button className="generic__button generic__button-secondary" onClick={() => props.setCombatData(null)}>Run away</button>
+                    <button className="generic__button generic__button-secondary" onClick={() => props.onButtonHandler(false)}>Run away</button>
                 </>
             )}
         </div>

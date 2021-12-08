@@ -26,6 +26,15 @@ export const CatCombat = (props) => {
         turn: 0
     })
 
+    const [damageOverlay, setDamageOverlay] = useState({
+        player: null,
+        enemy: null
+    })
+    const [staminaOverlay, setStaminaOverlay] = useState({
+        player: null,
+        enemy: null
+    })
+
 
     useEffect(() => {
         console.log("start up")
@@ -145,20 +154,23 @@ export const CatCombat = (props) => {
         // put on cd - DONE
         // work out armour
         if (activePlayer === "player") {
-            const actualDamage = props.combatData.status.armour.getCurrent() - damage
-            let armourValue = null
-            if (actualDamage > 0) {
-                armourValue = props.combatData.status.armour.getCurrent() - actualDamage
-            } else {
-                armourValue = 0
-            }
-
+            // const actualDamage = props.combatData.status.armour.getCurrent() - damage
+            // let armourValue = null
+            // if (actualDamage > 0) {
+            //     armourValue = props.combatData.status.armour.getCurrent() - actualDamage
+            // } else {
+            //     armourValue = 0
+            // }
             props.combatData.status.health.setCurrent(props.combatData.status.health.getCurrent() - damage)
             props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getCurrent() - attackData.stamina)
-            props.combatData.status.armour.setCurrent(armourValue)
+
+            setDamageOverlay({ player: null, enemy: - damage })
+            setStaminaOverlay({ player: null, enemy: - attackData.stamina })
         } else {
             props.playerData.status.health.setCurrent(props.playerData.status.health.getCurrent() - damage)
             props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getCurrent() - attackData.stamina)
+            setDamageOverlay({ player: - damage, enemy: null })
+            setStaminaOverlay({ player: -attackData.stamina, enemy: null })
         }
         combatData[activePlayer][attackID].cooldown.current = combatData[activePlayer][attackID].cooldown.base
     }
@@ -204,19 +216,25 @@ export const CatCombat = (props) => {
             props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase())
             props.playerData.status.armour.setCurrent(props.playerData.status.armour.getBase())
 
+
+            setDamageOverlay({ player: null, enemy: null })
+            setStaminaOverlay({ player: null, enemy: null })
             return "Enemy dead"
         }
         if (playerDead()) {
             console.log("Player dead")
+
+            setDamageOverlay({ player: null, enemy: null })
+            setStaminaOverlay({ player: null, enemy: null })
             return "Player dead"
         }
     }
 
     const enemyDead = () => {
-        return props.combatData.status.health.getCurrent() < 0
+        return props.combatData.status.health.getCurrent() <= 0
     }
     const playerDead = () => {
-        return props.playerData.status.health.getCurrent() < 0
+        return props.playerData.status.health.getCurrent() <= 0
     }
 
     const currentTurn = (): string => {
@@ -258,7 +276,7 @@ export const CatCombat = (props) => {
     }
 
     const updateTime = () => {
-        setTimer(timer + 1000)
+        setTimer(timer + 250)
     }
 
 
@@ -288,8 +306,23 @@ export const CatCombat = (props) => {
                 <h1>{combatInProcess}</h1>
                 <button onClick={healTesting}>Heal</button>
             </div>
-            <Section type="player" data={props.playerData} onAttackHandler={onAttackHandler} autoCombatHandler={autoCombatHandler} />
-            <Section type="enemy" data={props.combatData} runAwayHandler={runAwayHandler} />
+            <Section
+                type="player"
+                currentTurn={currentTurn}
+                data={props.playerData}
+                onAttackHandler={onAttackHandler}
+                autoCombatHandler={autoCombatHandler}
+                damageOverlay={damageOverlay}
+                staminaOverlay={staminaOverlay}
+            />
+            <Section
+                type="enemy"
+                currentTurn={currentTurn}
+                data={props.combatData}
+                runAwayHandler={runAwayHandler}
+                damageOverlay={damageOverlay}
+                staminaOverlay={staminaOverlay}
+            />
         </div >
     )
 }

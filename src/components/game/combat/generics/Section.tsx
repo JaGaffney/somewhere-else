@@ -18,11 +18,23 @@ export const Section = (props) => {
     }
 
     return (
-        <div className="catcombat__section">
+        <div className={`catcombat__section ${props.type === props.currentTurn() ? "catcombat__section-active" : ""}`}>
             <div className="catcombat__status">
-                <StatusBar type="health" maxValue={props.data && props.data.status.getValue("health").getBase()} currentValue={props.data && props.data.status.getValue("health").getCurrent()} />
+                <StatusBar
+                    type="health"
+                    maxValue={props.data && props.data.status.getValue("health").getBase()}
+                    currentValue={props.data && props.data.status.getValue("health").getCurrent()}
+                    damageOverlay={props.damageOverlay}
+                    damageRecieved={props.type}
+                />
                 <Armour value={props.data && props.data.status.getValue("armour").getCurrent()} />
-                <StatusBar type="stamina" maxValue={props.data && props.data.status.getValue("stamina").getBase()} currentValue={props.data && props.data.status.getValue("stamina").getCurrent()} />
+                <StatusBar
+                    type="stamina"
+                    maxValue={props.data && props.data.status.getValue("stamina").getBase()}
+                    currentValue={props.data && props.data.status.getValue("stamina").getCurrent()}
+                    damageOverlay={props.staminaOverlay}
+                    damageRecieved={props.type}
+                />
             </div>
 
             {props.type === "player" ? (

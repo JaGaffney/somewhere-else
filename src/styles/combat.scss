@@ -46,10 +46,14 @@
   width: 100%;
 }
 .catcombat__section {
+  border-top: solid 1.3rem transparent;
   background: var(--gray800);
   box-shadow: var(--shadow900);
   padding: 1rem;
   width: 50%;
+  &-active {
+    border-color: var(--amber500);
+  }
 }
 .catcombat__status {
   width: 100%;
@@ -66,6 +70,7 @@
   font-size: 1rem;
   padding: 1rem;
 }
+
 .catcombat__armour {
   margin-top: 0.7rem;
   padding: 1rem;

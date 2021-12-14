@@ -24,16 +24,17 @@ export const Section = (props) => {
                     type="health"
                     maxValue={props.data && props.data.status.getValue("health").getBase()}
                     currentValue={props.data && props.data.status.getValue("health").getCurrent()}
-                    damageOverlay={props.damageOverlay}
-                    damageRecieved={props.type}
+                    damageOverlay={props.type === "player" ? props.damageOverlay.playerHealth : props.damageOverlay.enemyHealth}
                 />
-                <Armour value={props.data && props.data.status.getValue("armour").getCurrent()} />
+                <Armour
+                    value={props.data && props.data.status.getValue("armour").getCurrent()}
+                    damageOverlay={props.type === "player" ? props.damageOverlay.playerArmour : props.damageOverlay.enemyArmour}
+                />
                 <StatusBar
                     type="stamina"
                     maxValue={props.data && props.data.status.getValue("stamina").getBase()}
                     currentValue={props.data && props.data.status.getValue("stamina").getCurrent()}
-                    damageOverlay={props.staminaOverlay}
-                    damageRecieved={props.type}
+                    damageOverlay={props.type === "player" ? props.staminaOverlay.player : props.staminaOverlay.enemy}
                 />
             </div>
 

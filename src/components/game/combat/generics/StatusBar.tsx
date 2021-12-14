@@ -6,8 +6,8 @@ export const StatusBar = (props) => {
         return (val - 0) / (max - 0) * 100;
     }
     const handleDamageType = () => {
-        if (props.damageOverlay[props.damageRecieved]) {
-            if (props.damageOverlay[props.damageRecieved] > 0) {
+        if (props.damageOverlay) {
+            if (props.damageOverlay > 0) {
                 return "var(--green700)"
             } else {
                 return "var(--red900)"
@@ -26,13 +26,13 @@ export const StatusBar = (props) => {
                 >
 
                 </div>
-                <div className={`statusBar-innerPopup ${props.damageOverlay[props.damageRecieved] ? 'fadeIn' : 'fadeOut'}`}
+                <div className={`statusBar-innerPopup ${props.damageOverlay ? 'fadeIn' : 'fadeOut'}`}
                     style={{
                         left: `${normalize(props.currentValue, props.maxValue)}%`,
                         color: handleDamageType(),
                     }}
                 >
-                    {props.damageOverlay[props.damageRecieved] && props.damageOverlay[props.damageRecieved]}
+                    {props.damageOverlay && props.damageOverlay}
                 </div>
 
 

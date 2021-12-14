@@ -27,8 +27,10 @@ export const CatCombat = (props) => {
         turn: 0
     })
     const [damageOverlay, setDamageOverlay] = useState({
-        player: null,
-        enemy: null
+        playerHealth: null,
+        playerArmour: null,
+        enemyHealth: null,
+        enemyArmour: null,
     })
     const [staminaOverlay, setStaminaOverlay] = useState({
         player: null,
@@ -156,29 +158,55 @@ export const CatCombat = (props) => {
             // setters
             let armourValue = props.combatData.status.armour.getCurrent() - damage
             if (armourValue < 0) {
+                setDamageOverlay({
+                    playerHealth: null,
+                    playerArmour: null,
+                    enemyHealth: - damage,
+                    enemyArmour: props.combatData.status.armour.getCurrent()
+                })
+
                 props.combatData.status.health.setCurrent(props.combatData.status.health.getCurrent() + armourValue)
                 props.combatData.status.armour.setCurrent(0)
+
             } else {
+                setDamageOverlay({
+                    playerHealth: null,
+                    playerArmour: null,
+                    enemyHealth: 0,
+                    enemyArmour: - damage
+                })
+
                 props.combatData.status.armour.setCurrent(armourValue)
             }
             props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getCurrent() - attackData.stamina)
 
-            // ui
-            setDamageOverlay({ player: null, enemy: - damage })
             setStaminaOverlay({ player: null, enemy: - attackData.stamina })
         } else {
             // setters
             let armourValue = props.playerData.status.armour.getCurrent() - damage
             if (armourValue < 0) {
+                setDamageOverlay({
+                    playerHealth: - damage,
+                    playerArmour: props.playerData.status.armour.getCurrent(),
+                    enemyHealth: null,
+                    enemyArmour: null
+                })
+
                 props.playerData.status.health.setCurrent(props.playerData.status.health.getCurrent() + armourValue)
                 props.playerData.status.armour.setCurrent(0)
             } else {
+                setDamageOverlay({
+                    playerHealth: "0",
+                    playerArmour: - damage,
+                    enemyHealth: null,
+                    enemyArmour: null
+                })
+
                 props.playerData.status.armour.setCurrent(armourValue)
             }
             props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getCurrent() - attackData.stamina)
 
             // ui
-            setDamageOverlay({ player: - damage, enemy: null })
             setStaminaOverlay({ player: -attackData.stamina, enemy: null })
         }
         combatData[activePlayer][attackID].cooldown.current = combatData[activePlayer][attackID].cooldown.base
@@ -221,21 +249,25 @@ export const CatCombat = (props) => {
         // resolve death
         if (enemyDead()) {
             console.log("Enemy dead")
-            handleLoot(props.enemyData.getEnemyById(props.combatData.enemyID))
+            const enemyData = props.enemyData.getEnemyById(props.combatData.enemyID)
+            notifyWithImage(`You have slain a ${enemyData.name}`, enemyData.image)
 
+            handleLoot(enemyData)
+
+            // spawn "new" monster
             props.combatData.status.health.setCurrent(props.combatData.status.health.getBase())
             props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getBase())
             props.combatData.status.armour.setCurrent(props.combatData.status.armour.getBase())
 
 
-            setDamageOverlay({ player: null, enemy: null })
+            setDamageOverlay({ playerHealth: null, playerArmour: null, enemyHealth: null, enemyArmour: null })
             setStaminaOverlay({ player: null, enemy: null })
             return "Enemy dead"
         }
         if (playerDead()) {
             console.log("Player dead")
 
-            setDamageOverlay({ player: null, enemy: null })
+            setDamageOverlay({ playerHealth: null, playerArmour: null, enemyHealth: null, enemyArmour: null })
             setStaminaOverlay({ player: null, enemy: null })
             return "Player dead"
         }
@@ -256,12 +288,12 @@ export const CatCombat = (props) => {
         if (randomNumber < coins.chance) {
             const coinsReceived = randomInteger(coins.min, coins.max)
             props.playerData.playerBank.addToCoins(coinsReceived)
-            notify(`${coinsReceived} coins added to bank`, require("../../../images/items/coins.svg"))
+            notifyWithImage(`${coinsReceived} coins added to bank`, require("../../../images/items/coins.svg"))
         }
         // need to work out loot randomness
         const item = props.itemData.getItemById(drops[0].id)
         props.playerData.playerBank.addItemtoBank(drops[0].id, drops[0].qty, item)
-        notify(`${drops[0].qty} ${item.name} added to bank`, item.icon)
+        notifyWithImage(`${drops[0].qty} ${item.name} added to bank`, item.icon)
 
 
     }
@@ -334,7 +366,7 @@ export const CatCombat = (props) => {
     }
 
 
-    const notify = (value: string, url: string) => {
+    const notifyWithImage = (value: string, url: string): void => {
         toast(value, {
             position: "bottom-right",
             autoClose: 5000,
@@ -375,8 +407,6 @@ export const CatCombat = (props) => {
             />
             <ToastContainer
                 position="bottom-right"
-                autoClose={3000}
-                hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick
                 rtl={false}

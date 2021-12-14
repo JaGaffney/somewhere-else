@@ -80,6 +80,12 @@
   font-size: 2rem;
   border-radius: 0px 0px 50% 50%;
   height: 1.5rem;
+  max-width: 3rem;
+  position: relative;
+  .statusBar-innerPopup {
+    left: 0;
+    top: -20px;
+  }
 }
 
 .catcombat__hotbar {

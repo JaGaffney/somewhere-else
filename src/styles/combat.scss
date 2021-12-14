@@ -458,3 +458,56 @@
 .attacks__button-general {
   border: solid 3px var(--violet700);
 }
+
+.popup-content {
+  background: var(--gray900) !important;
+  border-color: var(--gray800) !important;
+}
+.dropData {
+  background: var(--gray900);
+  color: var(--gray100);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem;
+  strong {
+    font-size: 1.2rem;
+  }
+  &-image {
+    height: 8rem;
+    width: 8rem;
+  }
+  &-title {
+    text-transform: capitalize;
+    width: 100%;
+    text-align: center;
+  }
+  &-coins {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      margin-right: 1rem;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  &-loot {
+    margin-top: 1rem;
+  }
+  &-lootItem {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    img {
+      margin-right: 1rem;
+      width: 2rem;
+      height: 2rem;
+    }
+    b {
+      font-size: 0.7rem;
+    }
+  }
+}

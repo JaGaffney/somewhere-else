@@ -390,6 +390,7 @@ export const CatCombat = (props) => {
                 runAwayHandler={runAwayHandler}
                 damageOverlay={damageOverlay}
                 staminaOverlay={staminaOverlay}
+                onDropInfoHandler={props.onDropInfoHandler}
             />
             <ToastContainer
                 position="bottom-right"

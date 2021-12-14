@@ -20,7 +20,7 @@ export const Rotation = (props) => {
                     <p>Enemies rotation</p>
                     <RotationItems rotation={props.enemyData.getEnemyById(props.data.enemyID).rotation} editable={false} />
 
-                    <button className="generic__button generic__button-primary generic__button-fit">Drops</button>
+                    <button className="generic__button generic__button-primary generic__button-fit" onClick={() => props.onDropInfoHandler(props.enemyData.getEnemyById(props.data.enemyID))}>Drops</button>
                     <button className="generic__button generic__button-secondary generic__button-fit" onClick={() => props.onButtonHandler(false)}>Run away</button>
                 </>
             )}

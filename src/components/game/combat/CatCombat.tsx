@@ -353,17 +353,6 @@ export const CatCombat = (props) => {
         props.setCombatData(null)
     }
 
-    // TEMP
-    const healTesting = () => {
-        props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
-        props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase())
-        props.playerData.status.armour.setCurrent(props.playerData.status.armour.getBase())
-    }
-
-    const killTesting = () => {
-        props.combatData.status.health.setCurrent(1)
-        props.combatData.status.armour.setCurrent(0)
-    }
 
 
     const notifyWithImage = (value: string, url: string): void => {
@@ -384,10 +373,7 @@ export const CatCombat = (props) => {
 
     return (
         <div className="catcombat__container">
-            <div>
-                <button onClick={healTesting}>Heal</button>
-                <button onClick={killTesting}>Kill</button>
-            </div>
+
             <Section
                 type="player"
                 currentTurn={currentTurn}

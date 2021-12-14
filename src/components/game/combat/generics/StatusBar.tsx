@@ -24,8 +24,8 @@ export const StatusBar = (props) => {
                         background: props.type === "health" ? "var(--red500)" : "var(--green500)"
                     }}
                 >
-
                 </div>
+
                 <div className={`statusBar-innerPopup ${props.damageOverlay ? 'fadeIn' : 'fadeOut'}`}
                     style={{
                         left: `${normalize(props.currentValue, props.maxValue)}%`,
@@ -35,13 +35,10 @@ export const StatusBar = (props) => {
                     {props.damageOverlay && props.damageOverlay}
                 </div>
 
-
             </div>
             <div>
                 <span>{props.currentValue} / {props.maxValue} {props.type}</span>
             </div>
-
-
         </div>
     )
 }

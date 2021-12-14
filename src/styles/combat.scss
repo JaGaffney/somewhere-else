@@ -74,14 +74,31 @@
 
 .catcombat__armour {
   margin-top: 0.7rem;
-  padding: 1rem;
-  background: var(--blue700);
   color: var(--blue100);
-  font-size: 2rem;
-  border-radius: 0px 0px 50% 50%;
-  height: 1.5rem;
-  max-width: 3rem;
+  font-size: 1.8rem;
+  width: 4rem;
+  height: 4rem;
   position: relative;
+  &-image {
+    width: 4rem;
+    height: 4rem;
+  }
+  &-icon {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    img {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    span {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
   .statusBar-innerPopup {
     left: 0;
     top: -20px;
@@ -114,6 +131,7 @@
     box-shadow: var(--shadow900);
     border-radius: 10px;
     padding: 1rem;
+    text-transform: capitalize;
   }
   &-rotation {
     width: 50%;

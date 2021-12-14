@@ -1,6 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+//@ts-ignore
+import SHIELDBROKEN from "../../../../images/combat/shieldBroken.svg"
+//@ts-ignore
+import SHIELD from "../../../../images/combat/shield.svg"
+
 export const Armour = (props) => {
     const handleDamageType = () => {
         if (props.damageOverlay) {
@@ -14,7 +19,16 @@ export const Armour = (props) => {
 
     return (
         <div className="catcombat__armour">
-            {props.value ? props.value : "*"}
+
+            <div className="catcombat__armour-icon">
+                {props.value ? (
+                    <>
+                        <img className="catcobmat__armour-image" src={SHIELD} alt={props.value} />
+                        <span>{props.value}</span>
+                    </>
+                ) : (<img className="catcobmat__armour-image" src={SHIELDBROKEN} alt={"0"} />)}
+            </div>
+
             <div className={`statusBar-innerPopup ${props.damageOverlay ? 'fadeIn' : 'fadeOut'}`}
                 style={{
                     color: handleDamageType(),

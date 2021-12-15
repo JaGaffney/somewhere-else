@@ -63,7 +63,7 @@ export class Status {
   // sets data after load
   loadStatus(values) {
     this.health.setData(values.health.base, values.health.current)
-    this.stamina.setData(values.stamina.base, values.stamina.current)
+    this.stamina.setData(values.stamina.base, values.stamina.base + 100)
     this.armour.setData(values.armour.base, values.armour.current)
     this.divination.setData(values.divination.base, values.divination.current)
   }

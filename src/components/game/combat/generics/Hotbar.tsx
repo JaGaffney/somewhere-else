@@ -13,6 +13,9 @@ export const Hotbar = (props) => {
             {Object.keys(props.playerData.classes.findJobClass(props.playerData.classes.equippedJobClass).equippedAttacks).map((id, k) => {
                 const attackID = props.playerData.classes.findJobClass(props.playerData.classes.equippedJobClass).equippedAttacks[id]
                 const attackData = props.attackData.getAttackById(attackID)
+                if (props.cooldowns) {
+                    console.log(props.cooldowns.player[attackID])
+                }
                 return (
                     <div className="attackloadout__equipped-slot"
                         key={k}

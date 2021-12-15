@@ -33,17 +33,25 @@ export const Section = (props) => {
                 <StatusBar
                     type="stamina"
                     maxValue={props.data && props.data.status.getValue("stamina").getBase() + 100}
-                    currentValue={props.data && props.data.status.getValue("stamina").getCurrent() + 100}
+                    currentValue={props.data && props.data.status.getValue("stamina").getCurrent()}
                     damageOverlay={props.type === "player" ? props.staminaOverlay.player : props.staminaOverlay.enemy}
                 />
             </div>
 
             {props.type === "player" ? (
                 <div className="catcombat__hotbar">
-                    <Hotbar onSelectedSkillHandler={onSelectedSkillHandler} onAttackHandler={props.onAttackHandler} />
+                    <Hotbar
+                        onSelectedSkillHandler={onSelectedSkillHandler}
+                        onAttackHandler={props.onAttackHandler}
+                        cooldowns={props.cooldowns}
+                    />
                 </div>
             ) : (
-                <EnemyInfo data={props.data ? props.data : null} onSelectedSkillHandler={onSelectedSkillHandler} />
+                <EnemyInfo
+                    data={props.data ? props.data : null}
+                    onSelectedSkillHandler={onSelectedSkillHandler}
+                    cooldowns={props.cooldowns}
+                />
             )}
 
             <div className="catcombat__description">

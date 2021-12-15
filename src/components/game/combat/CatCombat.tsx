@@ -21,6 +21,8 @@ import 'reactjs-popup/dist/index.css';
 
 
 export const CatCombat = (props) => {
+    const tempBaseStaminaRegen = 10
+
     const [combatInProcess, setCombatInProcess] = useState<boolean>(false)
     const [autoCombat, setAutoCombat] = useState(true)
     const [playerTurn, setPlayerTurn] = useState(true)
@@ -30,11 +32,7 @@ export const CatCombat = (props) => {
         stamina: false,
         cooldown: false
     }) // not in use
-    const [combatData, setCombatData] = useState({
-        player: {},
-        enemy: {},
-        turn: 0
-    })
+    const [combatData, setCombatData] = useState(null)
     const [damageOverlay, setDamageOverlay] = useState({
         playerHealth: null,
         playerArmour: null,
@@ -47,12 +45,7 @@ export const CatCombat = (props) => {
     })
     const [playerDeadPopup, setPlayerDeadPopup] = useState<boolean>(false)
 
-    const playerDeadModal = () => {
-        // reset all data pertaining to combat
-        runAwayHandler()
-
-        setPlayerDeadPopup(false)
-    }
+    const playerDeadModal = () => setPlayerDeadPopup(false)
 
     useEffect(() => {
         console.log("start up")
@@ -68,7 +61,7 @@ export const CatCombat = (props) => {
                     id: parseInt(rotation[attack]),
                     cooldown: {
                         base: attackInfo.cooldown,
-                        current: attackInfo.cooldown
+                        current: 0
                     }
                 }
             }
@@ -84,7 +77,7 @@ export const CatCombat = (props) => {
                         id: parseInt(rotation[attackAsNumber]),
                         cooldown: {
                             base: attackInfo.cooldown,
-                            current: attackInfo.cooldown
+                            current: 0
                         }
                     }
                 } else {
@@ -132,6 +125,7 @@ export const CatCombat = (props) => {
         } else {
             currentStamina = props.combatData.status.stamina.getCurrent()
         }
+        console.log(currentStamina, " ", attackData.stamina)
         if (currentStamina < attackData.stamina) {
             console.log("Attack failed due to lack of stamina")
             setAttackErrors({ ...attackErrors, stamina: true })
@@ -140,12 +134,17 @@ export const CatCombat = (props) => {
         return true
     }
     const attackPossibleCooldown = (attackID: number, activePlayer: string): boolean => {
+        console.log(combatData[activePlayer][attackID].cooldown.current)
         if (combatData[activePlayer][attackID].cooldown.current >= 2) {
             console.log("Attack failed due to still being on cooldown")
             setAttackErrors({ ...attackErrors, cooldown: true })
             return false
         }
         return true
+    }
+
+    const handleCooldowns = (attackID: number, activePlayer: string): void => {
+
     }
 
     // can also be used to estimate how much damage an attack would do to the enemy before hand
@@ -166,13 +165,21 @@ export const CatCombat = (props) => {
         }
         return damage
     }
+
+    const staminaHandler = (stamina, value: number): void => {
+        // stamina cost of attack
+        stamina.setCurrent(stamina.getCurrent() - value)
+
+        // stamina regen
+        if ((stamina.getCurrent() + tempBaseStaminaRegen) >= (stamina.getBase() + 100)) {
+            stamina.setCurrent(stamina.getBase() + 100)
+        } else {
+            stamina.setCurrent(stamina.getCurrent() + tempBaseStaminaRegen)
+        }
+    }
+
     const resolveDamageDealt = (attackID: number, activePlayer: string, attackData: Attack, damage: number): void => {
-        // remove enemy hp - DONE
-        // remove stamina - DONE
-        // put on cd - DONE
-        // work out armour
         if (activePlayer === "player") {
-            // setters
             let armourValue = props.combatData.status.armour.getCurrent() - damage
             if (armourValue < 0) {
                 setDamageOverlay({
@@ -184,7 +191,6 @@ export const CatCombat = (props) => {
 
                 props.combatData.status.health.setCurrent(props.combatData.status.health.getCurrent() + armourValue)
                 props.combatData.status.armour.setCurrent(0)
-
             } else {
                 setDamageOverlay({
                     playerHealth: null,
@@ -195,9 +201,9 @@ export const CatCombat = (props) => {
 
                 props.combatData.status.armour.setCurrent(armourValue)
             }
-            props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getCurrent() - attackData.stamina)
+            staminaHandler(props.playerData.status.stamina, attackData.stamina)
+            setStaminaOverlay({ player: tempBaseStaminaRegen - attackData.stamina, enemy: null })
 
-            setStaminaOverlay({ player: null, enemy: - attackData.stamina })
         } else {
             // setters
             let armourValue = props.playerData.status.armour.getCurrent() - damage
@@ -221,11 +227,12 @@ export const CatCombat = (props) => {
 
                 props.playerData.status.armour.setCurrent(armourValue)
             }
-            props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getCurrent() - attackData.stamina)
 
-            // ui
-            setStaminaOverlay({ player: -attackData.stamina, enemy: null })
+            staminaHandler(props.combatData.status.stamina, attackData.stamina)
+
+            setStaminaOverlay({ player: tempBaseStaminaRegen - attackData.stamina, enemy: null })
         }
+
         combatData[activePlayer][attackID].cooldown.current = combatData[activePlayer][attackID].cooldown.base
     }
 
@@ -283,9 +290,8 @@ export const CatCombat = (props) => {
         }
         if (playerDead()) {
             console.log("Player dead")
+            runAwayHandler()
             setPlayerDeadPopup(true)
-
-
             return "Player dead"
         }
         return "next turn"
@@ -414,6 +420,7 @@ export const CatCombat = (props) => {
                 type="player"
                 currentTurn={currentTurn}
                 data={props.playerData}
+                cooldowns={combatData}
                 onAttackHandler={onAttackHandler}
                 autoCombatHandler={autoCombatHandler}
                 damageOverlay={damageOverlay}
@@ -423,6 +430,7 @@ export const CatCombat = (props) => {
                 type="enemy"
                 currentTurn={currentTurn}
                 data={props.combatData}
+                cooldowns={combatData}
                 runAwayHandler={runAwayHandler}
                 damageOverlay={damageOverlay}
                 staminaOverlay={staminaOverlay}

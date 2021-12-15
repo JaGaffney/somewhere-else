@@ -438,6 +438,7 @@
       border-radius: 10px 20px 30px 10px;
       top: -10px;
       left: -10px;
+      z-index: 4;
     }
     &-topRight {
       background: var(--green800);
@@ -445,6 +446,7 @@
       border-radius: 30px;
       top: -10px;
       right: -10px;
+      z-index: 4;
     }
     &-bottomRight {
       background: var(--red700);
@@ -452,6 +454,23 @@
       border-radius: 30px 10px 10px 30px;
       bottom: -10px;
       right: -10px;
+      z-index: 4;
+    }
+    &-overlay {
+      top: 0;
+      left: -2px;
+      right: 0;
+      bottom: 0;
+      width: 100% !important;
+      height: 100% !important;
+      pointer-events: none;
+      border: none !important;
+      font-size: 3rem !important;
+      background: var(--gray900);
+      opacity: 0.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

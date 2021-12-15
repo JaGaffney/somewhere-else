@@ -13,8 +13,17 @@ export const Hotbar = (props) => {
             {Object.keys(props.playerData.classes.findJobClass(props.playerData.classes.equippedJobClass).equippedAttacks).map((id, k) => {
                 const attackID = props.playerData.classes.findJobClass(props.playerData.classes.equippedJobClass).equippedAttacks[id]
                 const attackData = props.attackData.getAttackById(attackID)
+                let cooldownRemaining;
                 if (props.cooldowns) {
-                    console.log(props.cooldowns.player[attackID])
+                    for (const attack in props.cooldowns["player"]) {
+                        if (props.cooldowns["player"][attack]) {
+                            if (props.cooldowns["player"][attack].id === attackID) {
+
+                                cooldownRemaining = props.cooldowns["player"][attack].cooldown.current
+                            }
+                        }
+
+                    }
                 }
                 return (
                     <div className="attackloadout__equipped-slot"
@@ -34,6 +43,7 @@ export const Hotbar = (props) => {
                                     <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>
                                     <span className="attacks__button-stats-topRight">{attackData.stamina}</span>
                                     <span className="attacks__button-stats-bottomRight">{attackData.maxDamage}</span>
+                                    {cooldownRemaining !== 0 && (<span className="attacks__button-stats-overlay">{cooldownRemaining}</span>)}
                                 </div>
                             }
                         </button>

@@ -143,8 +143,26 @@ export const CatCombat = (props) => {
         return true
     }
 
+    // reduces cooldowns by 1 round
     const handleCooldowns = (attackID: number, activePlayer: string): void => {
+        if (activePlayer === "player") {
+            for (const attack in combatData[activePlayer]) {
+                if (combatData[activePlayer][attack].cooldown.base) {
+                    if (combatData[activePlayer][attack].cooldown.base !== 0) {
+                        if (combatData[activePlayer][attack].cooldown.current > 0) {
+                            combatData[activePlayer][attack].cooldown.current = combatData[activePlayer][attack].cooldown.current - 1
+                            console.log(combatData[activePlayer][attack].cooldown)
+                        }
+                    }
 
+
+                }
+            }
+        } else {
+
+        }
+
+        combatData[activePlayer][attackID].cooldown.current = combatData[activePlayer][attackID].cooldown.base
     }
 
     // can also be used to estimate how much damage an attack would do to the enemy before hand
@@ -178,7 +196,7 @@ export const CatCombat = (props) => {
         }
     }
 
-    const resolveDamageDealt = (attackID: number, activePlayer: string, attackData: Attack, damage: number): void => {
+    const resolveDamageDealt = (activePlayer: string, attackData: Attack, damage: number): void => {
         if (activePlayer === "player") {
             let armourValue = props.combatData.status.armour.getCurrent() - damage
             if (armourValue < 0) {
@@ -229,11 +247,8 @@ export const CatCombat = (props) => {
             }
 
             staminaHandler(props.combatData.status.stamina, attackData.stamina)
-
             setStaminaOverlay({ player: tempBaseStaminaRegen - attackData.stamina, enemy: null })
         }
-
-        combatData[activePlayer][attackID].cooldown.current = combatData[activePlayer][attackID].cooldown.base
     }
 
     const rotationHandler = (activePlayer: string): number | null => {
@@ -268,7 +283,10 @@ export const CatCombat = (props) => {
         console.log(activePlayer, " dealt: ", damage)
 
         // do calcs on attack
-        resolveDamageDealt(attackID, activePlayer, attackData, damage)
+        resolveDamageDealt(activePlayer, attackData, damage)
+
+        // handle cooldowns resetting per turn 
+        handleCooldowns(attackID, activePlayer)
 
         // resolve death
         if (enemyDead()) {

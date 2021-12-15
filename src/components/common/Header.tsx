@@ -9,7 +9,7 @@ export const Header = (props) => {
     // TEMP Debug mode
     const healTesting = () => {
         props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
-        props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase())
+        props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase() + 100)
         props.playerData.status.armour.setCurrent(props.playerData.status.armour.getBase())
     }
     const killPlayer = () => {

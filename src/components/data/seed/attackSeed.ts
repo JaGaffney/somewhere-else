@@ -12,7 +12,7 @@ export const attackSeed = [
     type: "general",
     minDamage: 1,
     maxDamage: 5,
-    cooldown: 1,
+    cooldown: 0,
     stamina: 0,
     effect: {
       type: null,

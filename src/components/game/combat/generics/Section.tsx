@@ -32,8 +32,8 @@ export const Section = (props) => {
                 />
                 <StatusBar
                     type="stamina"
-                    maxValue={props.data && props.data.status.getValue("stamina").getBase()}
-                    currentValue={props.data && props.data.status.getValue("stamina").getCurrent()}
+                    maxValue={props.data && props.data.status.getValue("stamina").getBase() + 100}
+                    currentValue={props.data && props.data.status.getValue("stamina").getCurrent() + 100}
                     damageOverlay={props.type === "player" ? props.staminaOverlay.player : props.staminaOverlay.enemy}
                 />
             </div>

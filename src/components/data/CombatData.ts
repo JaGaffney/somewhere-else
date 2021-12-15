@@ -11,4 +11,9 @@ export class CombatData {
   setDefaultStatus(status): void {
     this.status.loadStatus(status)
   }
+
+  resetData(): void {
+    this.enemyID = null
+    this.status = new Status()
+  }
 }

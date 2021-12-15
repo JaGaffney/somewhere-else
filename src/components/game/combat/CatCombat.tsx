@@ -8,13 +8,22 @@ import Section from './generics/Section'
 import { randomInteger } from "../../utils/generic"
 import { Attack } from "../../data/attacks/Attack"
 
+// @ts-ignore
+import TOMBESTONE from "../../../images/combat/grave.svg"
+// @ts-ignore
+import CAT from "../../../images/cat.svg"
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
+
 
 export const CatCombat = (props) => {
     const [combatInProcess, setCombatInProcess] = useState<boolean>(false)
     const [autoCombat, setAutoCombat] = useState(true)
-    const [playerTurn, setPlayerTurn] = useState(false)
+    const [playerTurn, setPlayerTurn] = useState(true)
     const [timer, setTimer] = useState(0)
     const [attackSelectedID, setAttackSelectedID] = useState(null)
     const [attackErrors, setAttackErrors] = useState({
@@ -36,6 +45,14 @@ export const CatCombat = (props) => {
         player: null,
         enemy: null
     })
+    const [playerDeadPopup, setPlayerDeadPopup] = useState<boolean>(false)
+
+    const playerDeadModal = () => {
+        // reset all data pertaining to combat
+        runAwayHandler()
+
+        setPlayerDeadPopup(false)
+    }
 
     useEffect(() => {
         console.log("start up")
@@ -250,7 +267,7 @@ export const CatCombat = (props) => {
         if (enemyDead()) {
             console.log("Enemy dead")
             const enemyData = props.enemyData.getEnemyById(props.combatData.enemyID)
-            notifyWithImage(`You have slain a ${enemyData.name}`, enemyData.image)
+            // notifyWithImage(`You have slain a ${enemyData.name}`, enemyData.image)  too much stuff on the screen?
 
             handleLoot(enemyData)
 
@@ -266,9 +283,9 @@ export const CatCombat = (props) => {
         }
         if (playerDead()) {
             console.log("Player dead")
+            setPlayerDeadPopup(true)
 
-            setDamageOverlay({ playerHealth: null, playerArmour: null, enemyHealth: null, enemyArmour: null })
-            setStaminaOverlay({ player: null, enemy: null })
+
             return "Player dead"
         }
         return "next turn"
@@ -350,7 +367,19 @@ export const CatCombat = (props) => {
     const runAwayHandler = (): void => {
         setAutoCombat(false)
         setCombatInProcess(false)
+        setDamageOverlay({ playerHealth: null, playerArmour: null, enemyHealth: null, enemyArmour: null })
+        setStaminaOverlay({ player: null, enemy: null })
+        setCombatData({
+            player: {},
+            enemy: {},
+            turn: 0
+        })
+
         props.setCombatData(null)
+        props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
+        props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase())
+        props.playerData.status.armour.setCurrent(props.playerData.status.armour.getBase())
+        props.playerData.status.divination.setCurrent(props.playerData.status.divination.getBase())
     }
 
 
@@ -373,7 +402,14 @@ export const CatCombat = (props) => {
 
     return (
         <div className="catcombat__container">
-
+            <Popup open={playerDeadPopup} closeOnDocumentClick onClose={playerDeadModal} position="right center" modal>
+                <div className="dropData">
+                    <img className="dropData-image" src={TOMBESTONE} alt={"TomeStone"} />
+                    <h1 className="dropData-title">Oh dear, you seem to have died...</h1>
+                    <h2 className="dropData-title">Luckily you have 9 lives!</h2>
+                    <img className="dropData-image" src={CAT} />
+                </div>
+            </Popup>
             <Section
                 type="player"
                 currentTurn={currentTurn}

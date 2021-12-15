@@ -6,11 +6,16 @@ import { getTextColor, getBackgroundColor } from '../utils/color'
 export const Header = (props) => {
 
 
-    // TEMP
+    // TEMP Debug mode
     const healTesting = () => {
         props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
         props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase())
         props.playerData.status.armour.setCurrent(props.playerData.status.armour.getBase())
+    }
+    const killPlayer = () => {
+        props.playerData.status.health.setCurrent(1)
+        props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase())
+        props.playerData.status.armour.setCurrent(0)
     }
 
     const killTesting = () => {
@@ -28,7 +33,8 @@ export const Header = (props) => {
                 <span>{props.activePage}</span>
                 <div>
                     <span>Debug Mode</span>
-                    <button onClick={healTesting}>Heal</button>
+                    <button onClick={healTesting}>Heal player</button>
+                    <button onClick={killPlayer}>Kill player</button>
                     <button onClick={killTesting}>Kill</button>
                 </div>
                 <span>Charcter info</span>

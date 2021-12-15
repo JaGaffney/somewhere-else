@@ -38,7 +38,7 @@ export class Status {
   divination: StatusValues
 
   constructor() {
-    this.health = new StatusValues(1, 1)
+    this.health = new StatusValues(10, 10)
     this.stamina = new StatusValues(1, 1)
     this.armour = new StatusValues(1, 1)
     this.divination = new StatusValues(1, 1)

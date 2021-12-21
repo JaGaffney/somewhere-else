@@ -34,6 +34,12 @@ export const AttackInfo = (props) => {
                         {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).stamina}
                     </span>
                 </span>
+                <span className="attacksloadout__stats-description" style={{ color: "var(--green600)" }}>
+                    speed
+                    <span>
+                        0
+                    </span>
+                </span>
                 <span className="attacksloadout__stats-description">
                     Effect
                     <span>

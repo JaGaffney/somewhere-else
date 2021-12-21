@@ -44,12 +44,17 @@
   flex-wrap: nowrap;
   gap: 1rem;
   width: 100%;
+  position: relative;
 }
 .catcombat__section {
+  border-top: solid 1.3rem transparent;
   background: var(--gray800);
   box-shadow: var(--shadow900);
   padding: 1rem;
   width: 50%;
+  &-active {
+    border-color: var(--amber500);
+  }
 }
 .catcombat__status {
   width: 100%;
@@ -66,14 +71,38 @@
   font-size: 1rem;
   padding: 1rem;
 }
+
 .catcombat__armour {
   margin-top: 0.7rem;
-  padding: 1rem;
-  background: var(--blue700);
   color: var(--blue100);
-  font-size: 2rem;
-  border-radius: 0px 0px 50% 50%;
-  height: 1.5rem;
+  font-size: 1.8rem;
+  width: 4rem;
+  height: 4rem;
+  position: relative;
+  &-image {
+    width: 4rem;
+    height: 4rem;
+  }
+  &-icon {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    img {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    span {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+  .statusBar-innerPopup {
+    left: 0;
+    top: -20px;
+  }
 }
 
 .catcombat__hotbar {
@@ -102,6 +131,7 @@
     box-shadow: var(--shadow900);
     border-radius: 10px;
     padding: 1rem;
+    text-transform: capitalize;
   }
   &-rotation {
     width: 50%;
@@ -408,6 +438,7 @@
       border-radius: 10px 20px 30px 10px;
       top: -10px;
       left: -10px;
+      z-index: 4;
     }
     &-topRight {
       background: var(--green800);
@@ -415,6 +446,7 @@
       border-radius: 30px;
       top: -10px;
       right: -10px;
+      z-index: 4;
     }
     &-bottomRight {
       background: var(--red700);
@@ -422,9 +454,79 @@
       border-radius: 30px 10px 10px 30px;
       bottom: -10px;
       right: -10px;
+      z-index: 4;
+    }
+    &-overlay {
+      top: 0;
+      left: -2px;
+      right: 0;
+      bottom: 0;
+      width: 100% !important;
+      height: 100% !important;
+      pointer-events: none;
+      border: none !important;
+      font-size: 3rem !important;
+      background: var(--gray900);
+      opacity: 0.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
 .attacks__button-general {
   border: solid 3px var(--violet700);
+}
+
+.popup-content {
+  background: var(--gray900) !important;
+  border-color: var(--gray800) !important;
+}
+.dropData {
+  background: var(--gray900);
+  color: var(--gray100);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem;
+  strong {
+    font-size: 1.2rem;
+  }
+  &-image {
+    height: 8rem;
+    width: 8rem;
+  }
+  &-title {
+    text-transform: capitalize;
+    width: 100%;
+    text-align: center;
+  }
+  &-coins {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      margin-right: 1rem;
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  &-loot {
+    margin-top: 1rem;
+  }
+  &-lootItem {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    img {
+      margin-right: 1rem;
+      width: 2rem;
+      height: 2rem;
+    }
+    b {
+      font-size: 0.6rem;
+    }
+  }
 }

@@ -5,18 +5,6 @@ import { connect } from 'react-redux'
 import SkillPanel from './SkillPanel'
 import NonSkillPanel from "./NonSkillPanel"
 
-// classses
-import WARRIOR from "../../images/classes/warrior.svg"
-import ARCHER from "../../images/classes/archer.svg"
-import MAGICIAN from "../../images/classes/magician.svg"
-
-// status
-import HEALTH from "../../images/sidepanel/health.svg"
-import DEFENCE from "../../images/sidepanel/defence.svg"
-import STAMINA from "../../images/sidepanel/stamina.svg"
-import DIVI from "../../images/sidepanel/divination.svg"
-
-
 // logs
 import COLLECTION from "../../images/sidepanel/collectionLog.svg"
 import COMBAT from "../../images/sidepanel/combatLog.svg"

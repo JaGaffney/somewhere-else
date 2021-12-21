@@ -38,7 +38,7 @@ export class Status {
   divination: StatusValues
 
   constructor() {
-    this.health = new StatusValues(1, 1)
+    this.health = new StatusValues(10, 10)
     this.stamina = new StatusValues(1, 1)
     this.armour = new StatusValues(1, 1)
     this.divination = new StatusValues(1, 1)
@@ -63,7 +63,7 @@ export class Status {
   // sets data after load
   loadStatus(values) {
     this.health.setData(values.health.base, values.health.current)
-    this.stamina.setData(values.stamina.base, values.stamina.current)
+    this.stamina.setData(values.stamina.base, values.stamina.base + 100)
     this.armour.setData(values.armour.base, values.armour.current)
     this.divination.setData(values.divination.base, values.divination.current)
   }

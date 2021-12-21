@@ -11,7 +11,6 @@ export const RotationItems = (props) => {
         setComponentHover(true)
     }
     const dragEnter = e => {
-        console.log(e.target.id)
         setActiveHover(e.target.id)
         e.preventDefault()
         setComponentHover(true)

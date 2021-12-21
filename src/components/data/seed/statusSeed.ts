@@ -2,7 +2,7 @@
 
 import HEALTH from "../../../images/sidepanel/health.svg"
 import STAMINA from "../../../images/sidepanel/stamina.svg"
-import ARMOUR from "../../../images/sidepanel/defence.svg"
+import ARMOUR from "../../../images/combat/shield.svg"
 import DIVINIATION from "../../../images/sidepanel/divination.svg"
 
 export const health = [

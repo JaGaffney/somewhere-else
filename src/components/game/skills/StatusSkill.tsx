@@ -7,7 +7,6 @@ export const StatusSkill = (props) => {
     // 1 focus on dmg at the cost of defence
     // 1 focus on defence at the csot of damage
     // 1 focus on killing things effiecntly (drop rate increase etc)
-    console.log(props.status)
     return (
         <div>
             <button onClick={() => props.status.health.buyStatus()}>Add Health</button>

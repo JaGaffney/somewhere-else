@@ -444,6 +444,15 @@ export const CatCombat = (props) => {
                 damageOverlay={damageOverlay}
                 staminaOverlay={staminaOverlay}
             />
+            <ToastContainer
+                position="bottom-right"
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <Section
                 type="enemy"
                 currentTurn={currentTurn}
@@ -454,16 +463,6 @@ export const CatCombat = (props) => {
                 staminaOverlay={staminaOverlay}
                 onDropInfoHandler={props.onDropInfoHandler}
             />
-            <ToastContainer
-                position="bottom-right"
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
-
         </div >
     )
 }

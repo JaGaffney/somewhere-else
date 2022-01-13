@@ -11,7 +11,7 @@ import Shop from "./shop/Shop"
 export const Game = props => {
   const LoadComponent = () => {
     switch (props.activePage) {
-      case "bushcraft":
+      case "forestry":
       case "metalwork":
         return <NoncombatSkill />
       case "warrior":

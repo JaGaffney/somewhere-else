@@ -15,7 +15,7 @@ import STAMINA from "../../../../images/sidepanel/stamina.svg"
 import DIVI from "../../../../images/sidepanel/divination.svg"
 
 // non-combat
-import BUSHCRAFT from "../../../../images/sidepanel/bushcraft.svg"
+import forestry from "../../../../images/sidepanel/forestry.svg"
 import METALWORK from "../../../../images/sidepanel/metalwork.svg"
 
 // logs

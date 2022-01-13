@@ -11,7 +11,7 @@ SKILLS
 SKILLS (cont)
     Melee (Warrior), range (Ranger), mage (Magician),
 all uses -  Health, Defence, stamina
-1.  Bushcraft - woodcutting + fletching
+1.  forestry - woodcutting + fletching
 2.  Prowling - fishing (more food) + hunting (less food but secondarys) (no need for cooking as cats eat raw food)
 3.  metalsmith   - mining + smithing
 4.  quartermaster   - slayer (kill monsters) + quests (hand in items, could also be from monsters)

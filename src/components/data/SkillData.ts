@@ -5,12 +5,12 @@ import { StatusSkill } from "./skills/StatusSkill"
 // seed data
 import { warrior, archer, magician } from "./seed/combatSeed"
 import { health, stamina, armour, divination } from "./seed/statusSeed"
-import { bushcraft, metalwork } from "./seed/skillSeed"
+import { forestry, metalwork } from "./seed/skillSeed"
 
 // ICONS
 // non-combat
 // @ts-expect-error
-import BUSHCRAFT from "../../images/sidepanel/bushcraft.svg"
+import FORESTRY from "../../images/sidepanel/forestry.svg"
 // @ts-expect-error
 import METALWORK from "../../images/sidepanel/metalwork.svg"
 
@@ -43,7 +43,7 @@ export class SkillData {
   private createProductionSkills(): void {}
 
   private createGatheringSkills(): void {
-    this.buildGatheringSkill("bushcraft", BUSHCRAFT, bushcraft) // woodcutting, bushcraft
+    this.buildGatheringSkill("forestry", FORESTRY, forestry) // woodcutting, forestry
     this.buildGatheringSkill("metalwork", METALWORK, metalwork)
   }
 

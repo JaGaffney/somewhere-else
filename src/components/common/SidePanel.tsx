@@ -18,7 +18,7 @@ import BUG from "../../images/sidepanel/bug.svg"
 
 export const SidePanel = (props) => {
     const tempNonCombatSklls = [
-        "bushcraft", "Prowling", "metalwork", "quartermaster", "way of the land", "cat burglar", "botanist"
+        "forestry/forestry", "Prowling", "metalwork", "quartermaster", "way of the land", "cat burglar", "botanist"
     ]
 
     const tempLogs = [

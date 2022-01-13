@@ -21,7 +21,7 @@ export const playerSeed = {
     coins: 65000,
   },
   skillExp: {
-    bushcraft: 1900,
+    forestry: 1900,
     metalwork: 502,
   },
   passives: {

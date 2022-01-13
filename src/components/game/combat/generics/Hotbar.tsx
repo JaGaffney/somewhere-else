@@ -18,7 +18,6 @@ export const Hotbar = (props) => {
                     for (const attack in props.cooldowns["player"]) {
                         if (props.cooldowns["player"][attack]) {
                             if (props.cooldowns["player"][attack].id === attackID) {
-
                                 cooldownRemaining = props.cooldowns["player"][attack].cooldown.current
                             }
                         }

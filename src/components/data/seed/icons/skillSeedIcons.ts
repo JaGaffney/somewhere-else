@@ -1,27 +1,27 @@
 // @ts-nocheck
-import BUSHCRAFT_IMG_1 from "../../../../images/skill/bushcraft/bamboo.svg"
-import BUSHCRAFT_IMG_2 from "../../../../images/skill/bushcraft/beech.svg"
-import BUSHCRAFT_IMG_3 from "../../../../images/skill/bushcraft/birch.svg"
-import BUSHCRAFT_IMG_4 from "../../../../images/skill/bushcraft/oak.svg"
-import BUSHCRAFT_IMG_5 from "../../../../images/skill/bushcraft/palm.svg"
-import BUSHCRAFT_IMG_6 from "../../../../images/skill/bushcraft/willow.svg"
-import BUSHCRAFT_IMG_7 from "../../../../images/skill/bushcraft/redwood.svg"
-import BUSHCRAFT_IMG_8 from "../../../../images/skill/bushcraft/undead.svg"
-import BUSHCRAFT_IMG_9 from "../../../../images/skill/bushcraft/holy.svg"
-import BUSHCRAFT_IMG_10 from "../../../../images/skill/bushcraft/master.svg"
-import BUSHCRAFT_IMG_11 from "../../../../images/skill/bushcraft/god.svg"
+import forestry_IMG_1 from "../../../../images/skill/forestry/bamboo.svg"
+import forestry_IMG_2 from "../../../../images/skill/forestry/beech.svg"
+import forestry_IMG_3 from "../../../../images/skill/forestry/birch.svg"
+import forestry_IMG_4 from "../../../../images/skill/forestry/oak.svg"
+import forestry_IMG_5 from "../../../../images/skill/forestry/palm.svg"
+import forestry_IMG_6 from "../../../../images/skill/forestry/willow.svg"
+import forestry_IMG_7 from "../../../../images/skill/forestry/redwood.svg"
+import forestry_IMG_8 from "../../../../images/skill/forestry/undead.svg"
+import forestry_IMG_9 from "../../../../images/skill/forestry/holy.svg"
+import forestry_IMG_10 from "../../../../images/skill/forestry/master.svg"
+import forestry_IMG_11 from "../../../../images/skill/forestry/god.svg"
 
-export const bamboo = BUSHCRAFT_IMG_1
-export const beech = BUSHCRAFT_IMG_2
-export const birch = BUSHCRAFT_IMG_3
-export const oak = BUSHCRAFT_IMG_4
-export const palm = BUSHCRAFT_IMG_5
-export const willow = BUSHCRAFT_IMG_6
-export const redwood = BUSHCRAFT_IMG_7
-export const undead = BUSHCRAFT_IMG_8
-export const holy = BUSHCRAFT_IMG_9
-export const demonic = BUSHCRAFT_IMG_10
-export const god = BUSHCRAFT_IMG_11
+export const bamboo = forestry_IMG_1
+export const beech = forestry_IMG_2
+export const birch = forestry_IMG_3
+export const oak = forestry_IMG_4
+export const palm = forestry_IMG_5
+export const willow = forestry_IMG_6
+export const redwood = forestry_IMG_7
+export const undead = forestry_IMG_8
+export const holy = forestry_IMG_9
+export const demonic = forestry_IMG_10
+export const god = forestry_IMG_11
 
 import METALWORK_IMG_1 from "../../../../images/skill/metalwork/stone.svg"
 import METALWORK_IMG_2 from "../../../../images/skill/metalwork/copper.svg"

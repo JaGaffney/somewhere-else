@@ -10,7 +10,7 @@ export const getBackgroundColor = (color: string): string => {
         case ("bank"): {
             return "var(--amber800)";
         }
-        case ("bushcraft"): {
+        case ("forestry"): {
             return "var(--green700)";
         }
         case ("metalwork"): {
@@ -50,7 +50,7 @@ export const getTextColor = (color: string): string => {
         }
         case ("bank"):
         case ("general"):
-        case ("bushcraft"):
+        case ("forestry"):
             {
                 return "var(--gray100)";
             }

@@ -20,7 +20,7 @@ import {
   mithril,
 } from "./icons/skillSeedIcons"
 
-export const bushcraft = [
+export const forestry = [
   {
     name: "bamboo",
     level: 1,

@@ -37,7 +37,7 @@ export const Header = (props) => {
                     <button onClick={killPlayer}>Kill player</button>
                     <button onClick={killTesting}>Kill</button>
                 </div>
-                <span>Charcter info</span>
+                <span>Character info</span>
             </div>
 
         </div>

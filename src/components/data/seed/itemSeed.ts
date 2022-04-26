@@ -12,7 +12,7 @@ import {
 
 export const itemSeed = [
   {
-    id: 10001,
+    id: 1,
     name: "bamboo log",
     price: 10,
     icon: log,
@@ -21,7 +21,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10002,
+    id: 2,
     name: "beech log",
     price: 10,
     icon: log,
@@ -30,7 +30,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10003,
+    id: 3,
     name: "birch log",
     price: 10,
     icon: log,
@@ -39,7 +39,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10004,
+    id: 4,
     name: "oak log",
     price: 10,
     icon: log,
@@ -48,7 +48,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10005,
+    id: 5,
     name: "palm log",
     price: 10,
     icon: log,
@@ -57,7 +57,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10006,
+    id: 6,
     name: "willow log",
     price: 10,
     icon: log,
@@ -66,7 +66,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10007,
+    id: 7,
     name: "redwood log",
     price: 10,
     icon: log,
@@ -75,7 +75,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10008,
+    id: 8,
     name: "undead log",
     price: 10,
     icon: log,
@@ -84,7 +84,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10009,
+    id: 9,
     name: "tree of life",
     price: 10,
     icon: log,
@@ -93,7 +93,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10010,
+    id: 10,
     name: "demonic tree",
     price: 10,
     icon: log,
@@ -102,7 +102,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10011,
+    id: 11,
     name: "god tree",
     price: 10,
     icon: log,
@@ -111,7 +111,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10012,
+    id: 12,
     name: "stone",
     price: 10,
     icon: stone,
@@ -120,7 +120,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10013,
+    id: 13,
     name: "copper ore",
     price: 10,
     icon: copper,
@@ -129,7 +129,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10014,
+    id: 14,
     name: "tin ore",
     price: 10,
     icon: tin,
@@ -138,7 +138,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10015,
+    id: 15,
     name: "iron ore",
     price: 10,
     icon: iron,
@@ -147,7 +147,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10016,
+    id: 16,
     name: "coal",
     price: 10,
     icon: coal,
@@ -156,7 +156,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10017,
+    id: 17,
     name: "silver ore",
     price: 10,
     icon: silver,
@@ -165,7 +165,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10018,
+    id: 18,
     name: "gold ore",
     price: 10,
     icon: gold,
@@ -174,7 +174,7 @@ export const itemSeed = [
     consumeable: false,
   },
   {
-    id: 10019,
+    id: 19,
     name: "mithril ore",
     price: 10,
     icon: mithril,

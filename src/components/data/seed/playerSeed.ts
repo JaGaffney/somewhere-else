@@ -35,7 +35,6 @@ export const playerSeed = {
     Feet: 50,
     Hands: 60,
     Neck: 0,
-    Tail: 80,
     Back: 90,
     Trinket: 56,
     MainHand: 6,

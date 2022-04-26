@@ -18,6 +18,7 @@ export class GatheringSkill extends Skill {
         val.name,
         val.exp,
         val.time,
+        val.manpower,
         val.level,
         val.icon,
         val.itemsRecieved

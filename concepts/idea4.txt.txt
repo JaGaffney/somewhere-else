@@ -1,0 +1,6 @@
+
+storage/warehouse
+
+settlement
+*	can assign cats to do skills to gather resources for money
+*	cats charge a fee when doing skills

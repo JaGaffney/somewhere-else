@@ -7,12 +7,13 @@ export class ProductionAction extends SkillAction {
     name: string,
     exp: number,
     time: number,
+    manpower: number,
     level: number,
     icon: string,
     itemsReceived: Array<any>,
     itemsRequired: Array<any>
   ) {
-    super(name, exp, time, level, icon, itemsReceived)
+    super(name, exp, time, manpower, level, icon, itemsReceived)
     this.itemsRequired = itemsRequired
   }
 }

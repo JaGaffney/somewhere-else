@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import EXP from "./generics/EXP"
-import Talents from "./generics/Talents"
+import Upgrades from "./generics/Upgrades"
 import Actions from "./generics/Actions"
 import Progression from "./generics/Progression"
 
@@ -22,7 +22,7 @@ export const Noncombat = (props) => {
             (
                 <div>
                     <EXP />
-                    <Talents />
+                    <Upgrades />
                     <Progression />
                     <Actions gather={activeData.gatheringName} skillData={activeData} />
                 </div>)

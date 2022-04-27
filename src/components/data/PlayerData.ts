@@ -1,5 +1,6 @@
 // on load creates all of the ingame data for the player.
 import { Bank } from "./player/bank/Bank"
+import { Settlement } from "./player/Settlement"
 import { SkillEXP } from "./player/SkillExp"
 import { Passives } from "./player/Passives"
 import { Inventory } from "./player/Inventory"
@@ -9,6 +10,7 @@ import { EXP } from "./player/Exp"
 
 export class PlayerData {
   playerBank: Bank
+  settlement: Settlement
   skillExp: SkillEXP
   passives: Passives
   inventory: Inventory
@@ -18,35 +20,12 @@ export class PlayerData {
 
   // creates the player with no data inside
   constructor(skillNames: Array<string>, jobClassID: Array<number>) {
-    this.createBank()
-    this.createSkills(skillNames)
-    this.createPassives()
-    this.createStatus()
-    this.createInventory()
-    this.createClasses(jobClassID)
-  }
-
-  private createSkills(skillNames: Array<string>): void {
-    this.skillExp = new SkillEXP(skillNames)
-  }
-
-  private createBank(): void {
+    this.settlement = new Settlement()
     this.playerBank = new Bank()
-  }
-
-  private createPassives(): void {
+    this.skillExp = new SkillEXP(skillNames)
     this.passives = new Passives()
-  }
-
-  private createInventory(): void {
-    this.inventory = new Inventory()
-  }
-
-  private createStatus(): void {
     this.status = new Status()
-  }
-
-  private createClasses(jobClassID): void {
+    this.inventory = new Inventory()
     this.classes = new Classes(jobClassID)
   }
 
@@ -55,16 +34,26 @@ export class PlayerData {
     return this.skillExp.skillExp[skillName]
   }
 
+  // getters
+  public getManpower(): number {
+    return this.settlement.getManpower()
+  }
+
   // setters
   public setSkillExp(skillName: string, amount: number): void {
     this.skillExp.skillExp[skillName] =
       this.skillExp.skillExp[skillName] + amount
   }
 
+  public setManpower(amount: number): void {
+    this.settlement.addManpower(amount)
+  }
+
   // loads data once player is created
   loadPlayerData(data, itemData) {
     this.loadSkillEXP(data.skillExp)
     this.loadBank(data.playerBank, itemData)
+    this.loadSettlment(data.settlement)
     this.loadInventory(data.inventory)
     this.loadPassives(data.passives)
     this.loadStatus(data.status)
@@ -89,11 +78,16 @@ export class PlayerData {
     })
   }
 
+  private loadSettlment(settlementData) {
+    console.log("got here ", settlementData)
+  }
+
   private loadInventory(inventoryData) {
     for (const slot in inventoryData) {
       this.inventory.setEquippedItem(slot, inventoryData[slot])
     }
   }
+
   private loadPassives(passiveData) {
     for (const name in passiveData.unlockedPassives) {
       this.passives.addNewUnlockedPassive(name)

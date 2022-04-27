@@ -13,7 +13,7 @@ export const NonSkillPanel = (props) => {
 
             <button className="skillpanel" onClick={() => props.setActivePage("shop")}>
                 <img className="skillpanel__icon" src={require("../../images/sidepanel/shop.svg")} />
-                <span className={`skillpanel__name ${props.activePage === "shop" ? "skillpanel__name-active" : null}`}>Shop</span>
+                <span className={`skillpanel__name ${props.activePage === "shop" ? "skillpanel__name-active" : null}`}>Merchant</span>
                 {props.playerData.length !== 0 && (
                     <span className="skillpanel__level">{props.playerData.playerBank.getCoins()} GP</span>
                 )}
@@ -21,7 +21,7 @@ export const NonSkillPanel = (props) => {
 
             <button className="skillpanel" onClick={() => props.setActivePage("bank")}>
                 <img className="skillpanel__icon" src={require("../../images/sidepanel/bank.svg")} />
-                <span className={`skillpanel__name ${props.activePage === "bank" ? "skillpanel__name-active" : null}`}>Bank</span>
+                <span className={`skillpanel__name ${props.activePage === "bank" ? "skillpanel__name-active" : null}`}>Storage</span>
                 {props.playerData.length !== 0 && (
                     <span className="skillpanel__level">{props.playerData.playerBank.totalItemsInBank()}{props.seperator} / {props.playerData.playerBank.getBankSpace()}</span>
                 )}
@@ -30,6 +30,11 @@ export const NonSkillPanel = (props) => {
             <button className="skillpanel" onClick={() => props.setActivePage("combat")}>
                 <img className="skillpanel__icon" src={require("../../images/sidepanel/combat.svg")} />
                 <span className={`skillpanel__name ${props.activePage === "combat" ? "skillpanel__name-active" : null}`}>Combat</span>
+            </button>
+
+            <button className="skillpanel" onClick={() => props.setActivePage("settlement")}>
+                <img className="skillpanel__icon" src={require("../../images/sidepanel/castle.svg")} />
+                <span className={`skillpanel__name ${props.activePage === "settlement" ? "skillpanel__name-active" : null}`}>Settlement</span>
             </button>
 
         </div>

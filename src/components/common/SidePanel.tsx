@@ -1,6 +1,8 @@
 // @ts-nocheck
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
+
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 import SkillPanel from './SkillPanel'
 import NonSkillPanel from "./NonSkillPanel"
@@ -16,7 +18,15 @@ import SETTINGS from "../../images/sidepanel/settings.svg"
 import HELP from "../../images/sidepanel/help.svg"
 import BUG from "../../images/sidepanel/bug.svg"
 
+
+
 export const SidePanel = (props) => {
+    const [showStatus, setShowStatus] = useState<boolean>(true)
+    const [showCombat, setShowCombat] = useState<boolean>(true)
+    const [showSkills, setShowSkills] = useState<boolean>(true)
+    const [showLogs, setShowLogs] = useState<boolean>(true)
+    const [showOther, setShowOther] = useState<boolean>(true)
+
     const tempNonCombatSklls = [
         "forestry/forestry", "Prowling", "metalwork", "quartermaster", "way of the land", "cat burglar", "botanist"
     ]
@@ -63,33 +73,32 @@ export const SidePanel = (props) => {
                 {props.skills.length !== 0 &&
                     (
                         <>
+
                             <div className="sidepanel__skill">
-                                <span className="sidepanel__skill-title">Orders of the (Classes)</span>
-                                {props.skills.getAllCombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("combat", i)} />)}
+                                <span className="sidepanel__skill-title" onClick={() => setShowStatus(!showStatus)}>Status {showStatus ? <FiEyeOff /> : <FiEye />}</span>
+                                {showStatus && props.skills.getAllStatusSkills().map((i, k) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("status", i)} type={"status"} />)}
                             </div>
 
-
                             <div className="sidepanel__skill">
-                                <span className="sidepanel__skill-title">Status</span>
-                                {props.skills.getAllStatusSkills().map((i, k) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("status", i)} type={"status"} />)}
+                                <span className="sidepanel__skill-title" onClick={() => setShowCombat(!showCombat)}>Classes {showCombat ? <FiEyeOff /> : <FiEye />}</span>
+                                {showCombat && props.skills.getAllCombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("combat", i)} />)}
                             </div>
 
-
                             <div className="sidepanel__skill">
-                                <span className="sidepanel__skill-title">Non-Combat</span>
-                                {props.skills.getAllNoncombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("gathering", i)} />)}
+                                <span className="sidepanel__skill-title" onClick={() => setShowSkills(!showSkills)}>Jobs {showSkills ? <FiEyeOff /> : <FiEye />}</span>
+                                {showSkills && props.skills.getAllNoncombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("gathering", i)} />)}
                             </div>
                         </>
                     )}
 
                 <div className="sidepanel__skill">
-                    <span className="sidepanel__skill-title">Logs</span>
-                    {Object.keys(tempLogs).map((i, k) => <SkillPanel key={k} skillName={tempLogs[i].name} icon={tempLogs[i].icon} />)}
+                    <span className="sidepanel__skill-title" onClick={() => setShowLogs(!showLogs)}>Logs {showLogs ? <FiEyeOff /> : <FiEye />}</span>
+                    {showLogs && Object.keys(tempLogs).map((i, k) => <SkillPanel key={k} skillName={tempLogs[i].name} icon={tempLogs[i].icon} />)}
                 </div>
 
                 <div className="sidepanel__skill">
-                    <span className="sidepanel__skill-title">Other</span>
-                    {Object.keys(tempOther).map((i, k) => <SkillPanel key={k} skillName={tempOther[i].name} icon={tempOther[i].icon} />)}
+                    <span className="sidepanel__skill-title" onClick={() => setShowOther(!showOther)}>Other {showOther ? <FiEyeOff /> : <FiEye />}</span>
+                    {showOther && Object.keys(tempOther).map((i, k) => <SkillPanel key={k} skillName={tempOther[i].name} icon={tempOther[i].icon} />)}
                 </div>
             </div>
         </aside>

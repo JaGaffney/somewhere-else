@@ -1,4 +1,4 @@
-.exp {
+.topPanel {
   height: 5rem;
   width: 100%;
   background: var(--gray800);
@@ -7,6 +7,9 @@
   display: flex;
   align-items: center;
   font-size: 1rem;
+}
+
+.exp {
   &__level {
     padding: 1rem;
     display: flex;

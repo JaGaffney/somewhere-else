@@ -19,11 +19,12 @@ export class ItemData {
     this.createItems()
     this.createConsumableItems()
     this.createEquipmentItems()
-    this.shop = new Shop(shopSeed)
+    //this.shop = new Shop(shopSeed)
   }
 
   createItems() {
     for (const key in itemSeed) {
+      console.log(key)
       this.generic.set(
         itemSeed[key].id,
         new Item(

@@ -53,9 +53,9 @@ export const Combat = (props) => {
     return (
         <div className="game__normal">
             <div className="combat__info">
-                <button onClick={() => dispatch({ type: types.CAT_COMBAT })}><img src={COMBAT} /><span>Cat Combat</span></button>
-                <button onClick={() => dispatch({ type: types.CAT_MAP })}><img src={GLOBE} /><span>Cat Map</span></button>
-                <button><img src={COMPASS} /> <span>Cat Adventure</span></button>
+                <button onClick={() => dispatch({ type: types.CAT_COMBAT })}><img src={COMBAT} /><span>Battle</span></button>
+                <button onClick={() => dispatch({ type: types.CAT_MAP })}><img src={GLOBE} /><span>Map</span></button>
+                <button><img src={COMPASS} /> <span>Adventure</span></button>
             </div>
             <Popup open={displayDrops} closeOnDocumentClick onClose={closeModal} position="right center" modal>
                 <Drop dropData={dropData} />

@@ -1,0 +1,63 @@
+.settlement__controls {
+  display: flex;
+  justify-content: space-between;
+
+  &-manpower {
+    width: 30%;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: var(--gray300);
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0px;
+    &-title {
+      font-size: 0.8rem;
+      width: 100%;
+      color: var(--gray400);
+    }
+    &-info {
+      width: 100%;
+      font-size: 0.7rem;
+      color: var(--gray500);
+    }
+  }
+
+  &-buttons {
+    padding: 1rem;
+  }
+}
+
+.settlement__actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  margin: 0.8rem 0;
+  min-height: 80%;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.settlement__jobs {
+  background: var(--gray800);
+  box-shadow: var(--shadow900);
+  padding: 1rem;
+  width: 70%;
+}
+
+.settlement__stats {
+  background: var(--gray800);
+  box-shadow: var(--shadow900);
+  padding: 1rem;
+  width: 30%;
+  &-balance {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    border-radius: 10px;
+    background: var(--gray900);
+    box-shadow: var(--shadow900);
+  }
+}

@@ -74,7 +74,11 @@ export class ItemData {
   }
 
   getItemById(id) {
-    let value = Math.floor(id / 10000)
+    let value = id
+    // TODO: need a better check for equipment and consumeable
+    if (id > 10000) {
+      value = Math.floor(id / 10000)
+    }
     switch (value) {
       case 1:
       case 4:

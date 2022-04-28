@@ -2,20 +2,20 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 export const Balance = (props) => {
+
+    console.log(props.itemData)
+
     return (
         <div className="settlement__stats-balance">
             <h2>{props.title}</h2>
 
-
             <div>
                 {props.data.map((i, k) => {
-                    console.log(i.id)
                     const data = props.itemData.getItemById(i.id)
-                    console.log(data)
                     return (
                         <div key={k}>
-                            <span></span>
-                            <span></span>
+                            <span><img src={data.icon} />{data.name}</span>
+                            <span>{i.qty}</span>
                         </div>
 
                     )

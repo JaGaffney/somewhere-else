@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { setActivePage } from '../actions/api';
 
 export const NonSkillPanel = (props) => {
-
     useEffect(() => {
     }, [props.playerUpdated])
 
@@ -35,6 +34,9 @@ export const NonSkillPanel = (props) => {
             <button className="skillpanel" onClick={() => props.setActivePage("settlement")}>
                 <img className="skillpanel__icon" src={require("../../images/sidepanel/castle.svg")} />
                 <span className={`skillpanel__name ${props.activePage === "settlement" ? "skillpanel__name-active" : null}`}>Settlement</span>
+                {props.playerData.length !== 0 && (
+                    <span className="skillpanel__level">0{props.seperator} / {props.playerData.getManpower()}</span>
+                )}
             </button>
 
         </div>
@@ -46,7 +48,7 @@ export const NonSkillPanel = (props) => {
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
     activePage: state.skills.activePage,
-    playerUpdated: state.player.playerUpdated
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = {

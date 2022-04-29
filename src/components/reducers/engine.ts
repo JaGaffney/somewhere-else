@@ -31,6 +31,11 @@ const actionTimeHandler = (actionTime, payload) => {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case "PLAYER_UPDATED":
+      return {
+        ...state,
+        playerUpdated: !state.playerUpdated,
+      }
     case "START_ACTION":
       return {
         ...state,

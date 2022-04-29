@@ -2,14 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 export const Balance = (props) => {
-
-    console.log(props.itemData)
-
     return (
         <div className="settlement__stats-balance">
             <h2>{props.title}</h2>
 
-            <div>
+            <div className="settlement__stats-balance-items">
                 {props.data.map((i, k) => {
                     const data = props.itemData.getItemById(i.id)
                     return (

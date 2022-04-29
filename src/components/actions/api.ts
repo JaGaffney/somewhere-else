@@ -1,5 +1,11 @@
 import { CombatData } from "../data/CombatData"
 
+export const setPlayerUpdated = () => dispatch => {
+  return dispatch({
+    type: "PLAYER_UPDATED",
+  })
+}
+
 export const setActivePage = (activePage: string) => dispatch => {
   return dispatch({
     type: "ACTIVE_PAGE",

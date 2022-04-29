@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { FiEye, FiEyeOff } from "react-icons/fi";
@@ -107,7 +107,7 @@ export const SidePanel = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    skills: state.skills.skillData
+    skills: state.skills.skillData,
 })
 
 const mapDispatchToProps = {

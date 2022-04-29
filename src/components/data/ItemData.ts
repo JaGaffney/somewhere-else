@@ -24,7 +24,6 @@ export class ItemData {
 
   createItems() {
     for (const key in itemSeed) {
-      console.log(key)
       this.generic.set(
         itemSeed[key].id,
         new Item(

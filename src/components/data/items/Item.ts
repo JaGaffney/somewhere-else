@@ -22,6 +22,5 @@ export class Item {
     this.icon = icon
     this.description = description
     this.rarity = enumFromValue(rarity, Rarity)
-    console.log(this.name)
   }
 }

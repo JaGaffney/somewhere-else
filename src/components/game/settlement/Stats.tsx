@@ -20,7 +20,7 @@ export const Stats = (props) => {
 
     return (
         <div className="settlement__stats">
-            <h1>Breakdown</h1>
+            <h1>Each action</h1>
 
             <Balance title={"Income"} data={mockIncome} />
             <Balance title={"Cost"} data={mockIncome} />

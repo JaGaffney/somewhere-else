@@ -8,6 +8,8 @@ export const Jobs = (props) => {
         { id: "g_beech tree", assigned: 2 },
     ]
 
+    console.log(props.playerData.settlement.tasks)
+
     return (
         <div className="settlement__jobs">
             <div className="settlement__jobs-title">
@@ -15,10 +17,11 @@ export const Jobs = (props) => {
                 <span>{props.jobData.name}</span>
             </div>
             <div className="settlement__jobs-data">
-                {mockData.map((i, k) => {
+                {props.playerData.settlement.tasks.map((i, k) => {
                     return (
                         <div key={k}>
-                            {props.jobData.actions[i.id] && props.jobData.actions[i.id].name}
+                            {props.jobData.actions[i.taskName] && `${props.jobData.actions[i.taskName].name} assigned: ${i.manpowerAssigned}`}
+
                         </div>
                     )
                 })}
@@ -27,7 +30,9 @@ export const Jobs = (props) => {
     )
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+    playerData: state.player.playerData,
+})
 
 const mapDispatchToProps = {}
 

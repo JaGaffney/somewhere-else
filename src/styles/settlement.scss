@@ -39,7 +39,7 @@
   margin-top: 1.5rem;
 }
 
-.settlement__jobs {
+.settlement__assignments {
   background: var(--gray800);
   box-shadow: var(--shadow900);
   padding: 1rem;
@@ -80,5 +80,19 @@
         margin-right: 0.5rem;
       }
     }
+  }
+}
+
+.settlement__jobs {
+  background: var(--gray900);
+  box-shadow: var(--shadow900);
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  gap: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  &-title {
+    text-transform: capitalize;
   }
 }

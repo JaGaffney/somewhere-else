@@ -35,7 +35,7 @@ export const NonSkillPanel = (props) => {
                 <img className="skillpanel__icon" src={require("../../images/sidepanel/castle.svg")} />
                 <span className={`skillpanel__name ${props.activePage === "settlement" ? "skillpanel__name-active" : null}`}>Settlement</span>
                 {props.playerData.length !== 0 && (
-                    <span className="skillpanel__level">0{props.seperator} / {props.playerData.getManpower()}</span>
+                    <span className="skillpanel__level">{props.playerData.getActiveManpower()} / {props.playerData.getManpower()}</span>
                 )}
             </button>
 

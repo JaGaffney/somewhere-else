@@ -34,9 +34,11 @@ export class PlayerData {
     return this.skillExp.skillExp[skillName]
   }
 
-  // getters
   public getManpower(): number {
     return this.settlement.getManpower()
+  }
+  public getActiveManpower(): number {
+    return this.settlement.getActiveManpower()
   }
 
   // setters
@@ -79,7 +81,9 @@ export class PlayerData {
   }
 
   private loadSettlment(settlementData) {
-    console.log("got here ", settlementData)
+    // TODO: add tasks
+    this.settlement.setManpower(settlementData.manpower)
+    this.settlement.setTasks(settlementData.tasks)
   }
 
   private loadInventory(inventoryData) {

@@ -26,7 +26,7 @@ const mapStateToProps = state => ({
   playerData: state.player.playerData,
   itemData: state.items.itemData,
   activePage: state.skills.activePage,
-  playerUpdated: state.player.playerUpdated,
+  playerUpdated: state.engine.playerUpdated,
 })
 
 const mapDispatchToProps = {}

@@ -18,7 +18,7 @@ export const Controls = (props) => {
     return (
         <div className="topPanel settlement__controls">
             <div className="settlement__controls-manpower">
-                <span>0 / {props.playerData.getManpower()} Manpower</span>
+                <span>{props.playerData.getActiveManpower()} / {props.playerData.getManpower()} Manpower</span>
                 <span className="settlement__controls-manpower-info">100 GP an action</span>
             </div>
 
@@ -27,6 +27,10 @@ export const Controls = (props) => {
                 <button className="generic__button generic__button-primary" onClick={addManpower}>Hire 100000 GP</button>
                 <button className="generic__button generic__button-primary">Auto Sell</button>
                 <button className="generic__button generic__button-secondary">Reset</button>
+                <button className="generic__button generic__button-secondary" onClick={() => props.playerData.settlement.createNewTask("g_stone", 1)}>Temp task</button>
+                <button className="generic__button generic__button-secondary" onClick={() => props.playerData.settlement.createNewTask("g_bamboo", 4)}>Temp task</button>
+                <button className="generic__button generic__button-secondary" onClick={() => props.playerData.settlement.updateTask("g_stone", 5)}>add task</button>
+                <button className="generic__button generic__button-secondary" onClick={() => props.playerData.settlement.updateTask("g_stone", -7)}>delete task</button>
             </div>
         </div>
     )

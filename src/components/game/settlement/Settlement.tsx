@@ -3,14 +3,14 @@ import { connect } from "react-redux"
 
 import Controls from "./Controls"
 import Stats from "./Stats"
-import Jobs from "./Jobs"
+import Assignments from "./Assignments"
 
 export const Settlement = props => {
     return (
         <div className="game__normal">
             <Controls />
             <div className="settlement__actions">
-                <Jobs />
+                <Assignments />
                 <Stats />
 
             </div>

@@ -11,6 +11,10 @@ export class Bankslot {
   }
 
   getItemTotalPrice(): number {
-    return this.item.price * this.qty
+    if (this.item) {
+      return this.item.price * this.qty
+    } else {
+      0
+    }
   }
 }

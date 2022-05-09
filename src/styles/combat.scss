@@ -9,7 +9,7 @@
     width: 33%;
     padding: 1rem 2rem;
     border-radius: 10px 10px 0 0;
-    background: var(--gray800);
+    background-color: var(--gray800);
     box-sizing: var(--shadow900);
     height: 3rem;
     border: none;
@@ -48,7 +48,7 @@
 }
 .catcombat__section {
   border-top: solid 1.3rem transparent;
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-shadow: var(--shadow900);
   padding: 1rem;
   width: 50%;
@@ -62,7 +62,7 @@
   flex-wrap: nowrap;
   gap: 1rem;
   border-radius: 10px;
-  background: var(--gray900);
+  background-color: var(--gray900);
   box-shadow: var(--shadow900);
 }
 .statusBar__container {
@@ -106,7 +106,7 @@
 }
 
 .catcombat__hotbar {
-  background: var(--gray900);
+  background-color: var(--gray900);
   box-shadow: var(--shadow900);
   margin: 0.5rem 0;
   padding: 1rem;
@@ -127,7 +127,7 @@
   width: 100%;
   &-info {
     width: 50%;
-    background: var(--gray900);
+    background-color: var(--gray900);
     box-shadow: var(--shadow900);
     border-radius: 10px;
     padding: 1rem;
@@ -135,7 +135,7 @@
   }
   &-rotation {
     width: 50%;
-    background: var(--gray900);
+    background-color: var(--gray900);
     box-shadow: var(--shadow900);
     border-radius: 10px;
     padding: 1rem;
@@ -145,7 +145,7 @@
         text-transform: capitalize;
         text-align: left;
         width: auto;
-        background: var(--gray800);
+        background-color: var(--gray800);
         border-radius: 5px;
         height: 1.8rem;
         margin: 0.5rem 0;
@@ -167,7 +167,7 @@
   margin: 0.5rem 0;
   &-info {
     width: 50%;
-    background: var(--gray900);
+    background-color: var(--gray900);
     box-shadow: var(--shadow900);
     border-radius: 10px;
     padding: 1rem;
@@ -186,7 +186,7 @@
   &-image {
     min-height: 17rem;
     width: 50%;
-    background: var(--gray900);
+    background-color: var(--gray900);
     box-shadow: var(--shadow900);
     border-radius: 10px;
     padding: 1rem;
@@ -194,7 +194,7 @@
 }
 
 .map__container {
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-shadow: var(--shadow900);
   width: 100%;
   padding: 2rem;
@@ -207,17 +207,17 @@
   width: 45%;
   display: grid;
   gap: 0.1rem;
-  background: var(--gray800);
+  background-color: var(--gray800);
   grid-template-columns: repeat(20, 1fr);
   grid-template-rows: repeat(20, 1fr);
   border-radius: 15% 25%;
   box-shadow: var(--shadow900);
-  background-position: left center;
-  background-size: contain;
+  background-color-position: left center;
+  background-color-size: contain;
   &-item {
     cursor: pointer;
     box-shadow: var(--shadow500);
-    background: var(--gray900);
+    background-color: var(--gray900);
     color: var(--gray100);
     border: none;
     border-radius: 8px;
@@ -235,7 +235,7 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   border-radius: 10px;
-  background: var(--gray900);
+  background-color: var(--gray900);
   padding: 1rem;
   margin: 0.8rem 0;
   width: fit-content;
@@ -263,11 +263,11 @@
     display: flex;
     flex-wrap: nowrap;
     .loot {
-      background: var(--blue800);
+      background-color: var(--blue800);
       color: var(--blue100);
     }
     .fight {
-      background: var(--red600);
+      background-color: var(--red600);
       color: var(--red100);
     }
     button {
@@ -319,7 +319,7 @@
   margin-top: 1.5rem;
 }
 .attackloadout__equipped {
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-shadow: var(--shadow900);
   width: 80%;
   padding: 1rem;
@@ -337,7 +337,7 @@
     height: 5.5rem;
     border-radius: 10px;
     padding: 1rem;
-    background: var(--gray900);
+    background-color: var(--gray900);
     box-shadow: var(--shadow900);
     display: flex;
     flex-wrap: nowrap;
@@ -351,7 +351,7 @@
   }
 }
 .attackloadout__info {
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-shadow: var(--shadow900);
   width: 20%;
   padding: 1rem;
@@ -380,7 +380,7 @@
   border: none;
   border-radius: 7px;
   padding: 0.5rem 0rem;
-  background: var(--blue800);
+  background-color: var(--blue800);
   color: var(--blue100);
   margin-top: 0.8rem;
   margin-left: auto;
@@ -390,7 +390,7 @@
   display: flex;
   gap: 1rem;
   justify-content: flex-start;
-  background: var(--gray800);
+  background-color: var(--gray800);
   padding: 1rem;
 }
 
@@ -400,7 +400,7 @@
   box-shadow: var(--shadow500);
   height: 5.5rem;
   width: 5.5rem;
-  background: var(--gray800);
+  background-color: var(--gray800);
   border: solid 3px transparent;
   cursor: pointer;
   position: relative;
@@ -433,7 +433,7 @@
     }
 
     &-topLeft {
-      background: var(--blue700);
+      background-color: var(--blue700);
       color: var(--blue100);
       border-radius: 10px 20px 30px 10px;
       top: -10px;
@@ -441,7 +441,7 @@
       z-index: 4;
     }
     &-topRight {
-      background: var(--green800);
+      background-color: var(--green800);
       color: var(--green100);
       border-radius: 30px;
       top: -10px;
@@ -449,7 +449,7 @@
       z-index: 4;
     }
     &-bottomRight {
-      background: var(--red700);
+      background-color: var(--red700);
       color: var(--red100);
       border-radius: 30px 10px 10px 30px;
       bottom: -10px;
@@ -466,7 +466,7 @@
       pointer-events: none;
       border: none !important;
       font-size: 3rem !important;
-      background: var(--gray900);
+      background-color: var(--gray900);
       opacity: 0.8;
       display: flex;
       justify-content: center;
@@ -479,11 +479,11 @@
 }
 
 .popup-content {
-  background: var(--gray900) !important;
+  background-color: var(--gray900) !important;
   border-color: var(--gray800) !important;
 }
 .dropData {
-  background: var(--gray900);
+  background-color: var(--gray900);
   color: var(--gray100);
   display: flex;
   flex-wrap: wrap;

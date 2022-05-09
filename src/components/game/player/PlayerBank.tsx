@@ -50,7 +50,9 @@ export const PlayerBank = (props) => {
                         <div className="bank__items-inner">
                             {[...props.playerData.playerBank.bankItems.keys()].map((id, k) => {
                                 const data = props.itemData.getItemById(id)
+
                                 return (
+                                    data &&
                                     <BankItem
                                         key={k}
                                         id={id}

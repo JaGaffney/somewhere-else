@@ -9,14 +9,14 @@
 .talents {
   height: 8rem;
   width: 100%;
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-sizing: var(--shadow900);
   margin: 0.8rem 0;
 }
 
 .progression {
   width: 100%;
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-shadow: var(--shadow500);
   border-radius: 0 0 10px 10px;
   &__container {
@@ -34,7 +34,7 @@
     &-icon {
       width: 5rem;
       height: 5rem;
-      background: var(--gray900);
+      background-color: var(--gray900);
       border-radius: 50% 25%;
       padding: 0;
       margin: 0;
@@ -82,7 +82,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: 1rem;
-    background: var(--amber700);
+    background-color: var(--amber700);
     color: var(--amber100);
     border-radius: 0;
     height: 2rem;
@@ -113,7 +113,7 @@
   transition: transform 0.2s;
   width: 13rem;
   height: 18rem;
-  background: var(--gray800);
+  background-color: var(--gray800);
   color: var(--gray200);
   box-shadow: var(--shadow500);
   border: none;
@@ -132,7 +132,7 @@
   &-icon {
     width: 6rem;
     height: 6rem;
-    background: var(--gray900);
+    background-color: var(--gray900);
     border-radius: 50% 25%;
     padding: 0;
   }
@@ -172,7 +172,7 @@
 
 // BANK
 .bank__info {
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-shadow: var(--shadow900);
   height: 2rem;
   padding: 1rem 2rem;
@@ -191,7 +191,7 @@
 .bank__items {
   width: 60%;
   padding: 2rem;
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-sizing: var(--shadow900);
   &-inner {
     display: flex;
@@ -206,7 +206,7 @@
     cursor: pointer;
     transform: scale(100%);
     padding: 0;
-    background: var(--gray900);
+    background-color: var(--gray900);
     color: var(--gray200);
     box-shadow: var(--shadow500);
     display: flex;
@@ -226,13 +226,13 @@
     &:focus {
       transform: scale(105%);
       box-shadow: var(--shadow900);
-      background: var(--blue700);
+      background-color: var(--blue700);
     }
   }
   &-image {
     height: 2.5rem;
     width: 100%;
-    background: var(--gray700);
+    background-color: var(--gray700);
     border-radius: 10px 10px 0 0;
     margin: 0;
     padding: 0.2rem;
@@ -252,7 +252,7 @@
     text-align: center;
     font-size: 1rem;
     &-inner {
-      background: var(--blue700);
+      background-color: var(--blue700);
       color: var(--blue100);
       padding: 0.2rem 0.8rem;
       border-radius: 10px;
@@ -262,7 +262,7 @@
 .bank__details {
   width: 35%;
   padding: 2rem;
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-sizing: var(--shadow900);
   &-content {
     display: flex;
@@ -276,7 +276,7 @@
     position: relative;
     width: 10rem;
     height: 10rem;
-    background: var(--gray900);
+    background-color: var(--gray900);
     padding: 0;
     border-radius: 10px;
     img {
@@ -294,7 +294,7 @@
       text-align: center;
       font-size: 1rem;
       span {
-        background: var(--blue700);
+        background-color: var(--blue700);
         color: var(--blue100);
         padding: 0.2rem 0.8rem;
         border-radius: 10px;
@@ -304,7 +304,7 @@
   &-body {
     padding: 1rem;
     width: 100%;
-    background: var(--gray900);
+    background-color: var(--gray900);
     border-radius: 10px;
     h4 {
       text-transform: capitalize;
@@ -317,7 +317,7 @@
     }
   }
   .bank__details-sale {
-    background: var(--gray900);
+    background-color: var(--gray900);
     border-radius: 10px;
   }
 
@@ -329,7 +329,7 @@
   }
   .bank__details-button {
     color: var(--blue100);
-    background: var(--blue700);
+    background-color: var(--blue700);
     border-radius: 10px;
     padding: 0.7rem 1.5rem;
     font-size: 1.2rem;
@@ -340,7 +340,7 @@
 // Shop
 
 .shop__container {
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-shadow: var(--shadow900);
   display: flex;
   flex-wrap: nowrap;
@@ -352,7 +352,7 @@
 .shop__items {
   width: 60%;
   padding: 2rem;
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-sizing: var(--shadow900);
   &-inner {
     display: flex;
@@ -366,7 +366,7 @@
     cursor: pointer;
     transform: scale(100%);
     padding: 0;
-    background: var(--gray900);
+    background-color: var(--gray900);
     color: var(--gray200);
     box-shadow: var(--shadow500);
     display: flex;
@@ -385,13 +385,13 @@
     &:focus {
       transform: scale(105%);
       box-shadow: var(--shadow900);
-      background: var(--blue900);
+      background-color: var(--blue900);
     }
   }
   &-image {
     height: 10rem;
     width: 100%;
-    background: var(--gray700);
+    background-color: var(--gray700);
     border-radius: 10px 10px 0 0;
     margin: 0;
     padding: 0.2rem;
@@ -413,7 +413,7 @@
     &-rarity {
       text-transform: capitalize;
       width: 100%;
-      background: var(--blue900);
+      background-color: var(--blue900);
       color: var(--blue100);
       padding: 0.2rem 0.8rem;
       border-radius: 0 0 5px 5px;

@@ -1,7 +1,7 @@
 .topPanel {
   height: 5rem;
   width: 100%;
-  background: var(--gray800);
+  background-color: var(--gray800);
   box-sizing: var(--shadow900);
   border-radius: 10px 10px 0 0;
   display: flex;
@@ -24,7 +24,7 @@
     height: 1rem;
     width: 100%;
     border-radius: 10px;
-    background: var(--green900);
+    background-color: var(--green900);
     position: relative;
     z-index: 1;
     &-inner {
@@ -35,7 +35,7 @@
       height: 1rem;
       width: 100%;
       border-radius: 10px;
-      background: var(--green500);
+      background-color: var(--green500);
       transform: scaleX(0);
       transform-origin: top left;
       transition: transform 0.3s ease-in;
@@ -54,7 +54,7 @@
   height: 1.5rem;
   width: 100%;
   border-radius: 3px;
-  background: var(--blue900);
+  background-color: var(--blue900);
   position: relative;
   z-index: 1;
   &-inner {
@@ -65,7 +65,7 @@
     height: 1.5rem;
     width: 100%;
     // border-radius: 3px;  causes issues for some reason when the status values are really small
-    background: var(--red500);
+    background-color: var(--red500);
     transform: scaleX(0);
     transform-origin: top left;
     transition: transform 0.3s ease-in;
@@ -85,7 +85,7 @@
 
 .generic__button {
   cursor: pointer;
-  background: var(--blue700);
+  background-color: var(--blue700);
   color: var(--blue100);
   box-shadow: var(--shadow100);
   padding: 0.5rem 1rem;
@@ -104,11 +104,11 @@
 }
 
 .generic__button-primary {
-  background: var(--blue900);
+  background-color: var(--blue900);
   color: var(--blue100);
 }
 .generic__button-secondary {
-  background: var(--red900);
+  background-color: var(--red900);
   color: var(--red100);
 }
 

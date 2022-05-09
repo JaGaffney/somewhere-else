@@ -15,6 +15,11 @@ export const Controls = (props) => {
         props.setPlayerUpdated()
     }
 
+    const resetAllTasks = () => {
+        props.playerData.settlement.resetTasks()
+        props.setPlayerUpdated()
+    }
+
     return (
         <div className="topPanel settlement__controls">
             <div className="settlement__controls-manpower">
@@ -26,11 +31,9 @@ export const Controls = (props) => {
             <div className="settlement__controls-buttons">
                 <button className="generic__button generic__button-primary" onClick={addManpower}>Hire 100000 GP</button>
                 <button className="generic__button generic__button-primary">Auto Sell</button>
-                <button className="generic__button generic__button-secondary">Reset</button>
-                <button className="generic__button generic__button-secondary" onClick={() => props.playerData.settlement.createNewTask("g_stone", 1)}>Temp task</button>
-                <button className="generic__button generic__button-secondary" onClick={() => props.playerData.settlement.createNewTask("g_bamboo", 4)}>Temp task</button>
-                <button className="generic__button generic__button-secondary" onClick={() => props.playerData.settlement.updateTask("g_stone", 5)}>add task</button>
-                <button className="generic__button generic__button-secondary" onClick={() => props.playerData.settlement.updateTask("g_stone", -7)}>delete task</button>
+                <button className="generic__button generic__button-secondary" onClick={resetAllTasks}>Reset</button>
+                <button className="generic__button generic__button-secondary" onClick={() => props.playerData.settlement.createNewTask("g_stone", 1)}>Temp task 1</button>
+                <button className="generic__button generic__button-secondary" onClick={() => props.playerData.settlement.createNewTask("g_bamboo", 4)}>Temp task 2</button>
             </div>
         </div>
     )

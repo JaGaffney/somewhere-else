@@ -93,13 +93,13 @@
 }
 
 body {
-  background: var(--gray100);
-  background: -webkit-linear-gradient(
+  background-color: var(--gray100);
+  background-color: -webkit-linear-gradient(
     to bottom,
     var(--gray100),
     var(--gray200)
   );
-  background: linear-gradient(to bottom, var(--gray100), var(--gray200));
+  background-color: linear-gradient(to bottom, var(--gray100), var(--gray200));
 }
 
 ul {

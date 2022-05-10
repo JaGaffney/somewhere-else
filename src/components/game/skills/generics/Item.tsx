@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { setActionTime, resetActionTime, setPlayerUpdated } from "../../../actions/api"
 
 import { FiClock } from "react-icons/fi";
 
 export const Item = (props) => {
+
+    const [manpower, setManpower] = useState<number>(props.playerData.settlement.tasks[props.id] || 0)
+
+    console.log(props.playerData.settlement.tasks[props.id])
+
     const setActiveActionData = () => {
         props.resetActionTime()
         const page = props.activePage
@@ -17,9 +22,8 @@ export const Item = (props) => {
     }
 
     const handleManpowerChange = (name: string, value: number): void => {
-        console.log(value)
         props.playerData.settlement.updateTask(name, value)
-        //setManpower(manpower + value)
+        setManpower(manpower + value)
         props.setPlayerUpdated()
     }
 
@@ -27,15 +31,17 @@ export const Item = (props) => {
         <div className="action__item">
             <div className="action__item-icon"><img src={props.data.icon} /></div>
             <div className="action__item-content">
-                <span className="action__item-name">{props.data.name}</span>
+                <span className="action__item-name">{props.data.name} ({manpower})</span>
+                <div className="action__item-buttons">
+                    <button disabled={manpower === 0} onClick={() => handleManpowerChange(props.id, -1)}>[ - ]</button>
+
+                    <button onClick={() => handleManpowerChange(props.id, 1)}>[ + ]</button>
+                </div>
                 <span className="action__item-level">Level {props.data.level}</span>
                 <span className="action__item-details">{props.data.exp} xp</span>
                 <span className="action__item-details"><FiClock /> {props.data.time} seconds</span>
             </div>
-            <div>
-                <button onClick={() => handleManpowerChange(props.id, -1)}>[ - ]</button>
-                <button onClick={() => handleManpowerChange(props.id, 1)}>[ + ]</button>
-            </div>
+
         </div>
     )
 }

@@ -20,11 +20,6 @@ export const Controls = (props) => {
         props.setPlayerUpdated()
     }
 
-    const tempSkillAdder = (name, value) => {
-        props.playerData.settlement.createNewTask(name, value)
-        props.setPlayerUpdated()
-    }
-
     return (
         <div className="topPanel settlement__controls">
             <div className="settlement__controls-manpower">
@@ -37,8 +32,6 @@ export const Controls = (props) => {
                 <button className="generic__button generic__button-primary" onClick={addManpower}>Hire 100000 GP</button>
                 <button className="generic__button generic__button-primary">Auto Sell</button>
                 <button className="generic__button generic__button-secondary" onClick={resetAllTasks}>Reset</button>
-                <button className="generic__button generic__button-secondary" onClick={() => tempSkillAdder("g_stone", 1)}>Temp task 1</button>
-                <button className="generic__button generic__button-secondary" onClick={() => tempSkillAdder("g_bamboo", 4)}>Temp task 2</button>
             </div>
         </div>
     )

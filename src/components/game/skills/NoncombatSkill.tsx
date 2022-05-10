@@ -22,8 +22,8 @@ export const Noncombat = (props) => {
             (
                 <div>
                     <EXP />
-                    <Upgrades />
-                    <Progression />
+                    {/* <Upgrades /> */}
+                    {/* <Progression /> */}
                     <Actions gather={activeData.gatheringName} skillData={activeData} />
                 </div>)
         )

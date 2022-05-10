@@ -118,15 +118,31 @@
   box-shadow: var(--shadow500);
   border: none;
   border-top: solid 10px transparent;
-  cursor: pointer;
+  &-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    button {
+      cursor: pointer;
+      background-color: inherit;
+      color: var(--gray100);
+      border: none;
+      padding: 0.1rem;
+      &:hover {
+        color: var(--gray400);
+      }
+      &:disabled {
+        color: var(--gray600);
+        cursor: auto;
+      }
+    }
+  }
   &:hover,
   &:focus {
-    transform: translateY(-2px);
     box-shadow: var(--shadow900);
     border-top: solid 10px var(--blue700);
   }
   &:focus {
-    transform: translateY(0px);
     border-top: solid 10px var(--amber500);
   }
   &-icon {

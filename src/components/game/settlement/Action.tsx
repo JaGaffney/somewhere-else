@@ -14,6 +14,8 @@ export const Action = (props) => {
         props.setPlayerUpdated()
     }
 
+    console.log(props.enoughManpower)
+
     return (
         <div className="settlement__jobs-data-action" key={props.key}>
             <img className="action__item-icon" src={props.jobData.actions[props.action].icon} />
@@ -21,8 +23,7 @@ export const Action = (props) => {
                 <span className="settlement__jobs-data-action-title">{props.jobData.actions[props.action].name} ({manpower})</span>
                 <div className="settlement__jobs-data-action-controls">
                     <button onClick={() => handleManpowerChange(props.action, -1)}>[ - ]</button>
-                    {props.enoughManpower &&
-                        <button onClick={() => handleManpowerChange(props.action, 1)}>[ + ]</button>}
+                    <button disabled={!props.enoughManpower} onClick={() => handleManpowerChange(props.action, 1)}>[ + ]</button>
                 </div>
             </div>
         </div>

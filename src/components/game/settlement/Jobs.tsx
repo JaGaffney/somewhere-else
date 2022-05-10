@@ -14,6 +14,7 @@ export const Jobs = (props) => {
         setEnoughManpower(props.playerData.getActiveManpower() < props.playerData.getManpower())
     }, [props.playerUpdated])
 
+    // TODO: bug, when removing tasks they show old data
     return (
         <div className="settlement__jobs">
             <div className="settlement__jobs-title">

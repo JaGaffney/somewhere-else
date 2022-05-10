@@ -140,6 +140,10 @@
           &:hover {
             color: var(--gray400);
           }
+          &:disabled {
+            color: var(--gray600);
+            cursor: auto;
+          }
         }
       }
     }

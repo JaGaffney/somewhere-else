@@ -94,14 +94,18 @@
   justify-content: flex-start;
   &-title {
     text-transform: capitalize;
-    width: 8rem;
+    min-width: 7rem;
+    width: 7rem;
     text-align: center;
   }
   &-data {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 1rem;
     &-action {
       min-width: 10rem;
+      width: 15rem;
       padding: 0.5rem;
       border-radius: 5px;
       background-color: var(--gray800);

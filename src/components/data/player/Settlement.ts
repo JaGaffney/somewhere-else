@@ -28,10 +28,7 @@ export class Settlement {
 
   // tasks
   setTasks(data): void {
-    console.log("got here inside setTasks")
-    console.log(data)
     for (let task in data) {
-      console.log(task)
       if (task) {
         this.tasks[task] = data[task]
       }
@@ -43,7 +40,11 @@ export class Settlement {
   }
 
   updateTask(taskName: string, manpowerAdjustment: number): void {
-    this.tasks[taskName] = this.tasks[taskName] + manpowerAdjustment
+    if (this.tasks[taskName]) {
+      this.tasks[taskName] = this.tasks[taskName] + manpowerAdjustment
+    } else {
+      this.createNewTask(taskName, manpowerAdjustment)
+    }
 
     // removes any task if its value is 0
     if (this.tasks[taskName] === 0) {

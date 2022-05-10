@@ -7,9 +7,11 @@ import Action from './Action'
 
 export const Jobs = (props) => {
     const [tasks, setTasks] = useState(props.playerData.settlement.tasks)
+    const [enoughManpower, setEnoughManpower] = useState(props.playerData.getActiveManpower() < props.playerData.getManpower())
 
     useEffect(() => {
         setTasks(props.playerData.settlement.tasks)
+        setEnoughManpower(props.playerData.getActiveManpower() < props.playerData.getManpower())
     }, [props.playerUpdated])
 
     return (
@@ -22,7 +24,7 @@ export const Jobs = (props) => {
                 {Object.keys(tasks).map((i, k) => {
                     return (
                         props.jobData.actions[i] && (
-                            <Action action={i} key={k} jobData={props.jobData} />
+                            <Action action={i} key={k} jobData={props.jobData} enoughManpower={enoughManpower} />
                         )
                     )
                 })}

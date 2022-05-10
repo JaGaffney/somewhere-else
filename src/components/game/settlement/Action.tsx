@@ -16,12 +16,13 @@ export const Action = (props) => {
 
     return (
         <div className="settlement__jobs-data-action" key={props.key}>
-            <img src={props.jobData.actions[props.action].icon} />
+            <img className="action__item-icon" src={props.jobData.actions[props.action].icon} />
             <div className="settlement__jobs-data-action-data">
                 <span className="settlement__jobs-data-action-title">{props.jobData.actions[props.action].name} ({manpower})</span>
                 <div className="settlement__jobs-data-action-controls">
                     <button onClick={() => handleManpowerChange(props.action, -1)}>[ - ]</button>
-                    <button onClick={() => handleManpowerChange(props.action, 1)}>[ + ]</button>
+                    {props.enoughManpower &&
+                        <button onClick={() => handleManpowerChange(props.action, 1)}>[ + ]</button>}
                 </div>
             </div>
         </div>

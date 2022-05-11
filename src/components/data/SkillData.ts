@@ -117,7 +117,6 @@ export class SkillData {
   }
 
   getItemIdBySkillId(name: string, actionID: string) {
-    console.log(name, actionID)
     return this.gatheringSkill[name].getItemDataBySkillId(actionID)
   }
 

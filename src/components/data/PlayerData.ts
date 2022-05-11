@@ -83,7 +83,6 @@ export class PlayerData {
   private loadSettlment(settlementData) {
     this.settlement.setManpower(settlementData.manpower)
     this.settlement.setTasks(settlementData.tasks)
-    console.log(settlementData)
   }
 
   private loadInventory(inventoryData) {

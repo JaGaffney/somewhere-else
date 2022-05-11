@@ -19,6 +19,7 @@ import { PlayerData } from "../components/data/PlayerData"
 // this will be loaded from local storage
 // @ts-ignore
 import backgroundImage from "../images/background/cat.jpg"
+import { SkillAction } from "../components/data/skills/SkillAction"
 
 const IndexPage = props => {
   const [timer, setTimer] = useState(0)
@@ -74,19 +75,17 @@ const IndexPage = props => {
 
 
     if (deltaTime < actionTimeInMs) {
-      console.log("got here less than")
       props.setDeltaTime(Math.round(deltaTime / 1000))
     }
 
     if (deltaTime > actionTimeInMs) {
       // check if required level
-      console.log("got here - do action")
+
       const amount = Math.round(deltaTime / actionTimeInMs)
       // const activeData = skillData.getItemIdBySkillId(skill, id)
 
       for (const task in props.playerData.settlement.tasks) {
-        const activeData = skillData.getActionDataBySkillID(task)[1]
-
+        const activeData = skillData.getActionDataBySkillID(task).filter((n => n !== undefined))[0]
         const activeWorkers = amount * Math.floor(props.playerData.settlement.tasks[task] / activeData.manpower)
 
         // add items to bank
@@ -128,15 +127,12 @@ const IndexPage = props => {
   }, [props.skillData, props.actionTime, timer]);
 
 
-  const handleAddToBank = (activeData, amount: number) => {
-    console.log(activeData)
+  const handleAddToBank = (activeData: SkillAction, amount: number) => {
     if (activeData.itemsReceived.length > 0) {
       for (const value in activeData.itemsReceived) {
-        console.log(value)
         const qty = activeData.itemsReceived[value].qty * amount
         const id = activeData.itemsReceived[value].id
         const item = props.itemData.getItemById(id)
-        console.log(id)
         props.playerData.playerBank.addItemtoBank(id, qty, item)
       }
     }
@@ -152,7 +148,7 @@ const IndexPage = props => {
   }
 
 
-  const handleExp = (activeData, amount: number, skill: string) => {
+  const handleExp = (activeData: SkillAction, amount: number, skill: string) => {
     props.playerData.setSkillExp(skill, activeData.exp * amount)
   }
   const handleReset = () => {

@@ -85,7 +85,7 @@ export const itemSeed = [
   },
   {
     id: 9,
-    name: "tree of life",
+    name: "log of life",
     price: 10,
     icon: log,
     description: "",
@@ -94,7 +94,7 @@ export const itemSeed = [
   },
   {
     id: 10,
-    name: "demonic tree",
+    name: "demonic log",
     price: 10,
     icon: log,
     description: "",

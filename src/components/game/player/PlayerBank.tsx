@@ -37,7 +37,6 @@ export const PlayerBank = (props) => {
         }
     }
 
-    console.log(props.playerData.playerBank)
     return (
         <div className="game__normal">
             <div className="bank__info">

@@ -1,32 +1,20 @@
 const initialState = {
   activePage: null,
-  actionTime: {},
+  actionTime: null,
   allDataLoaded: false,
   deltaTime: 0,
   playerUpdated: false,
   combatData: null,
 }
 
-const actionTimeHandler = (actionTime, payload) => {
-  let name = payload[0]
-  let value = payload[1]
-  let oldTime = payload[2]
-  let data = payload[3]
-
+const actionTimeHandler = (oldTime: number) => {
   let newTime = null
   if (oldTime !== null) {
     newTime = oldTime
   } else {
     newTime = new Date().valueOf()
   }
-
-  actionTime[name] = {
-    startTime: newTime,
-    timeToComplete: value,
-    data,
-  }
-
-  return actionTime
+  return newTime
 }
 
 export default function (state = initialState, action) {
@@ -40,13 +28,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         deltaTime: 0,
-        actionTime: actionTimeHandler(state.actionTime, action.payload),
+        actionTime: actionTimeHandler(action.payload),
         playerUpdated: !state.playerUpdated,
       }
     case "STOP_ACTION":
       return {
         ...state,
-        actionTime: {},
+        actionTime: null,
         deltaTime: 0,
         playerUpdated: !state.playerUpdated,
       }

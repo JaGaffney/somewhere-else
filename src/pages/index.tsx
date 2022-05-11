@@ -50,14 +50,10 @@ const IndexPage = props => {
 
     // keeps data from action is currently in progress when closing down the game
     if (dataFromStorage !== null) {
-      for (const current in dataFromStorage.actionTime) {
-        const actionData = dataFromStorage.actionTime[current]
-        const id = actionData.data.id
-        const skill = actionData.data.skill
-        const time = actionData.timeToComplete
-        const startTime = actionData.startTime
-        props.setActionTime(current, time, startTime, { id, skill })
-      }
+      const actionTime = dataFromStorage.actionTime
+      props.setActionTime(actionTime)
+      //props.setActionTime(1652162390941)
+
     }
 
     // add check if data fails to load
@@ -68,41 +64,51 @@ const IndexPage = props => {
     setTimer(timer + 1)
   }
 
-  const actionTimeHandler = (currentTime, data, skillData) => {
-    let previousTime = 0
+  const actionTimeHandler = (currentTime, previousTime, skillData) => {
     let deltaTime = 0
 
-    for (const current in data) {
-      const actionData = data[current]
-      previousTime = actionData.startTime
-      deltaTime = currentTime - previousTime
-      let actionTimeInMs = actionData.timeToComplete * 1000
+    let TEMPTIME = 5 // needs to be from skill
 
-      if (deltaTime < actionData.timeToComplete * 1000) {
-        props.setDeltaTime(Math.round(deltaTime / 1000))
-      }
+    deltaTime = currentTime - previousTime
+    let actionTimeInMs = TEMPTIME * 1000
 
-      if (deltaTime > actionTimeInMs) {
-        // check if required level
 
-        const amount = Math.round(deltaTime / actionTimeInMs)
-        const id = actionData.data.id
-        const skill = actionData.data.skill
-        const activeData = skillData.getItemIdBySkillId(skill, id)
+    if (deltaTime < actionTimeInMs) {
+      console.log("got here less than")
+      props.setDeltaTime(Math.round(deltaTime / 1000))
+    }
+
+    if (deltaTime > actionTimeInMs) {
+      // check if required level
+      console.log("got here - do action")
+      const amount = Math.round(deltaTime / actionTimeInMs)
+      // const activeData = skillData.getItemIdBySkillId(skill, id)
+
+      for (const task in props.playerData.settlement.tasks) {
+        const activeData = skillData.getActionDataBySkillID(task)[1]
+
+        const activeWorkers = amount * Math.floor(props.playerData.settlement.tasks[task] / activeData.manpower)
 
         // add items to bank
-        handleAddToBank(activeData, amount)
-
-        // take items from bank if applicable
-        // handleRemoveFromBank(activeData, amount)
+        handleAddToBank(activeData, activeWorkers)
 
         // add exp
-        handleExp(activeData, amount, skill)
-
-        // reset value to current time
-        handleReset(skill, id, actionData.timeToComplete, current)
+        handleExp(activeData, activeWorkers, activeData.job)
       }
+
+
+      // NOTE: doesnt work for trees for some reaosn but works for stones
+
+
+      // take items from bank if applicable
+      // handleRemoveFromBank(activeData, amount)
+
+
+
+      // reset value to current time
+      handleReset()
     }
+
   }
 
 
@@ -123,11 +129,14 @@ const IndexPage = props => {
 
 
   const handleAddToBank = (activeData, amount: number) => {
+    console.log(activeData)
     if (activeData.itemsReceived.length > 0) {
       for (const value in activeData.itemsReceived) {
+        console.log(value)
         const qty = activeData.itemsReceived[value].qty * amount
         const id = activeData.itemsReceived[value].id
         const item = props.itemData.getItemById(id)
+        console.log(id)
         props.playerData.playerBank.addItemtoBank(id, qty, item)
       }
     }
@@ -143,12 +152,12 @@ const IndexPage = props => {
   }
 
 
-  const handleExp = (activeData, amount: number, skill: "string") => {
+  const handleExp = (activeData, amount: number, skill: string) => {
     props.playerData.setSkillExp(skill, activeData.exp * amount)
   }
-  const handleReset = (skill: string, id, time: number, name: string) => {
+  const handleReset = () => {
     props.resetActionTime()
-    props.setActionTime(name, time, null, { id, skill })
+    props.setActionTime(null)
   }
 
   return (

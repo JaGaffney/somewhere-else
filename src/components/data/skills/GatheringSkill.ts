@@ -21,14 +21,16 @@ export class GatheringSkill extends Skill {
         val.manpower,
         val.level,
         val.icon,
-        val.itemsRecieved
+        val.itemsRecieved,
+        this.name
       )
       let id = `g_${val.name}`
+      id = id.replace(" ", "_")
       this.actions[id] = action
     }
   }
 
-  getItemDataBySkillId(skillId: string) {
-    return this.actions[skillId]
+  getItemDataBySkillId(skillID: string) {
+    return this.actions[skillID]
   }
 }

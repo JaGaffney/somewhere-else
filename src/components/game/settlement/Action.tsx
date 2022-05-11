@@ -14,8 +14,6 @@ export const Action = (props) => {
         props.setPlayerUpdated()
     }
 
-    console.log(props.enoughManpower)
-
     return (
         <div className="settlement__jobs-data-action" key={props.key}>
             <img className="action__item-icon" src={props.jobData.actions[props.action].icon} />

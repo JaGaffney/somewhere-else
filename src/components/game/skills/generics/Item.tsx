@@ -8,18 +8,16 @@ export const Item = (props) => {
 
     const [manpower, setManpower] = useState<number>(props.playerData.settlement.tasks[props.id] || 0)
 
-    console.log(props.playerData.settlement.tasks[props.id])
+    // const setActiveActionData = () => {
+    //     props.resetActionTime()
+    //     const page = props.activePage
+    //     const data = {
+    //         id: props.id,
+    //         skill: page
+    //     }
 
-    const setActiveActionData = () => {
-        props.resetActionTime()
-        const page = props.activePage
-        const data = {
-            id: props.id,
-            skill: page
-        }
-
-        props.setActionTime(props.data.name, props.data.time, null, data)
-    }
+    //     props.setActionTime(props.data.name, props.data.time, null, data)
+    // }
 
     const handleManpowerChange = (name: string, value: number): void => {
         props.playerData.settlement.updateTask(name, value)
@@ -35,7 +33,7 @@ export const Item = (props) => {
                 <div className="action__item-buttons">
                     <button disabled={manpower === 0} onClick={() => handleManpowerChange(props.id, -1)}>[ - ]</button>
 
-                    <button onClick={() => handleManpowerChange(props.id, 1)}>[ + ]</button>
+                    <button disabled={!props.enoughManpower} onClick={() => handleManpowerChange(props.id, 1)}>[ + ]</button>
                 </div>
                 <span className="action__item-level">Level {props.data.level}</span>
                 <span className="action__item-details">{props.data.exp} xp</span>

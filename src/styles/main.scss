@@ -98,7 +98,7 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   gap: 3rem;
   margin-top: 2rem;
 }
@@ -123,13 +123,14 @@
     display: flex;
     justify-content: center;
     button {
+      font-size: 1.5rem;
       cursor: pointer;
       background-color: inherit;
-      color: var(--gray100);
+      color: var(--blue400);
       border: none;
       padding: 0.1rem;
       &:hover {
-        color: var(--gray400);
+        color: var(--blue600);
       }
       &:disabled {
         color: var(--gray600);

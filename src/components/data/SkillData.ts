@@ -117,6 +117,17 @@ export class SkillData {
   }
 
   getItemIdBySkillId(name: string, actionID: string) {
+    console.log(name, actionID)
     return this.gatheringSkill[name].getItemDataBySkillId(actionID)
+  }
+
+  getActionDataBySkillID(actionID: string) {
+    return Object.keys(this.gatheringSkill).map(i => {
+      return this.gatheringSkill[i].actions[
+        Object.keys(this.gatheringSkill[i].actions).filter(
+          ii => ii === actionID
+        )
+      ]
+    })
   }
 }

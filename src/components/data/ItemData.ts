@@ -78,16 +78,18 @@ export class ItemData {
     if (id > 10000) {
       value = Math.floor(id / 10000)
     }
+    console.log(value)
     switch (value) {
       case 1:
       case 4:
+        console.log("got hre ", this.generic.get(id))
         return this.generic.get(id)
       case 2:
         return this.equipment.get(id)
       case 3:
         return this.consumable.get(id)
       default:
-        return null
+        return this.generic.get(id)
     }
   }
 }

@@ -30,7 +30,7 @@ export const Controls = (props) => {
         <div className="topPanel settlement__controls">
             <div className="settlement__controls-manpower">
                 <span>{props.playerData.getActiveManpower()} / {props.playerData.getManpower()} Manpower</span>
-                <span className="settlement__controls-manpower-info">{costPerAction(props.playerData.getActiveManpower())} GP an action</span>
+                <span className="settlement__controls-manpower-info">Salary: {costPerAction(props.playerData.getActiveManpower())} GP</span>
             </div>
 
 

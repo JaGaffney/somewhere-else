@@ -1,18 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import { setPlayerUpdated } from '../../actions/api'
 
 export const Controls = (props) => {
+    const [manpowerCost, setManpowerCost] = useState<number>(props.playerData.levelChecker.level[props.playerData.getManpower()])
 
     useEffect(() => {
+        setManpowerCost(props.playerData.levelChecker.level[props.playerData.getManpower()])
     }, [props.playerUpdated])
 
 
     const addManpower = () => {
-        // TODO: check for price
-        props.playerData.setManpower(1)
-        props.setPlayerUpdated()
+        if (manpowerCost <= props.playerData.playerBank.getCoins()) {
+            props.playerData.setManpower(1)
+            props.playerData.playerBank.removeFromCoins(manpowerCost)
+            props.setPlayerUpdated()
+        }
     }
 
     const resetAllTasks = () => {
@@ -29,7 +33,7 @@ export const Controls = (props) => {
 
 
             <div className="settlement__controls-buttons">
-                <button className="generic__button generic__button-primary" onClick={addManpower}>Hire 100000 GP</button>
+                <button disabled={props.playerData.playerBank.getCoins() <= manpowerCost} className="generic__button generic__button-primary" onClick={addManpower}>Hire for {manpowerCost} GP</button>
                 <button className="generic__button generic__button-primary">Auto Sell</button>
                 <button className="generic__button generic__button-secondary" onClick={resetAllTasks}>Reset</button>
             </div>

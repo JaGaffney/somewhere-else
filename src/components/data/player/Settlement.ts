@@ -1,6 +1,6 @@
 // on load creates all of the ingame data for the player.
 export class Settlement {
-  manpower: number = 0
+  manpower: number = 1
   tasks: Object = {}
 
   constructor() {}

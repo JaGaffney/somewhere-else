@@ -65,7 +65,7 @@ const IndexPage = props => {
     setTimer(timer + 1)
   }
 
-  const actionTimeHandler = (currentTime, previousTime, skillData) => {
+  const actionTimeHandler = (currentTime: number, previousTime: number, skillData: SkillData): void => {
     let deltaTime = 0
 
     let TEMPTIME = 5 // needs to be from skill
@@ -85,7 +85,7 @@ const IndexPage = props => {
       // const activeData = skillData.getItemIdBySkillId(skill, id)
 
       for (const task in props.playerData.settlement.tasks) {
-        const activeData = skillData.getActionDataBySkillID(task).filter((n => n !== undefined))[0]
+        const activeData = skillData.getActionDataBySkillID(task).filter((i => i !== undefined))[0]
         const activeWorkers = amount * Math.floor(props.playerData.settlement.tasks[task] / activeData.manpower)
 
         // add items to bank
@@ -95,8 +95,6 @@ const IndexPage = props => {
         handleExp(activeData, activeWorkers, activeData.job)
       }
 
-
-      // NOTE: doesnt work for trees for some reaosn but works for stones
 
 
       // take items from bank if applicable
@@ -127,7 +125,7 @@ const IndexPage = props => {
   }, [props.skillData, props.actionTime, timer]);
 
 
-  const handleAddToBank = (activeData: SkillAction, amount: number) => {
+  const handleAddToBank = (activeData: SkillAction, amount: number): void => {
     if (activeData.itemsReceived.length > 0) {
       for (const value in activeData.itemsReceived) {
         const qty = activeData.itemsReceived[value].qty * amount
@@ -138,7 +136,7 @@ const IndexPage = props => {
     }
   }
 
-  const handleRemoveFromBank = (activeData, amount: number) => {
+  const handleRemoveFromBank = (activeData, amount: number): void => {
     if (activeData.itemsRequired.length > 0) {
       for (const item in activeData.itemsRequired) {
         const qty = activeData.itemsRequired[item].qty * amount
@@ -148,10 +146,12 @@ const IndexPage = props => {
   }
 
 
-  const handleExp = (activeData: SkillAction, amount: number, skill: string) => {
+  const handleExp = (activeData: SkillAction, amount: number, skill: string): void => {
     props.playerData.setSkillExp(skill, activeData.exp * amount)
   }
-  const handleReset = () => {
+
+  const handleReset = (): void => {
+    // handle reset of time tick
     props.resetActionTime()
     props.setActionTime(null)
   }

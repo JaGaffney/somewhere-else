@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { setPlayerUpdated } from '../../actions/api'
 
+import { costPerAction } from '../../utils/generic'
+
 export const Controls = (props) => {
     const [manpowerCost, setManpowerCost] = useState<number>(props.playerData.levelChecker.level[props.playerData.getManpower()])
 
@@ -28,7 +30,7 @@ export const Controls = (props) => {
         <div className="topPanel settlement__controls">
             <div className="settlement__controls-manpower">
                 <span>{props.playerData.getActiveManpower()} / {props.playerData.getManpower()} Manpower</span>
-                <span className="settlement__controls-manpower-info">100 GP an action</span>
+                <span className="settlement__controls-manpower-info">{costPerAction(props.playerData.getActiveManpower())} GP an action</span>
             </div>
 
 

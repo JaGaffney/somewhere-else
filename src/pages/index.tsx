@@ -21,6 +21,8 @@ import { PlayerData } from "../components/data/PlayerData"
 import backgroundImage from "../images/background/cat.jpg"
 import { SkillAction } from "../components/data/skills/SkillAction"
 
+import { costPerAction } from "../components/utils/generic"
+
 const IndexPage = props => {
   const [timer, setTimer] = useState(0)
 
@@ -53,15 +55,13 @@ const IndexPage = props => {
     if (dataFromStorage !== null) {
       const actionTime = dataFromStorage.actionTime
       props.setActionTime(actionTime)
-      //props.setActionTime(1652162390941)
-
     }
 
     // add check if data fails to load
     props.allDataLoaded()
   }, [])
 
-  const updateTime = () => {
+  const updateTime = (): void => {
     setTimer(timer + 1)
   }
 
@@ -94,6 +94,12 @@ const IndexPage = props => {
         // add exp
         handleExp(activeData, activeWorkers, activeData.job)
       }
+
+      // salary cost
+      if (Object.keys(props.playerData.settlement.tasks).length > 0) {
+        props.playerData.playerBank.removeFromCoins(costPerAction(props.playerData.getActiveManpower()))
+      }
+
 
 
 
@@ -128,6 +134,7 @@ const IndexPage = props => {
   const handleAddToBank = (activeData: SkillAction, amount: number): void => {
     if (activeData.itemsReceived.length > 0) {
       for (const value in activeData.itemsReceived) {
+        // TODO: turn to gold or have items
         const qty = activeData.itemsReceived[value].qty * amount
         const id = activeData.itemsReceived[value].id
         const item = props.itemData.getItemById(id)

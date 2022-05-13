@@ -81,32 +81,35 @@ const IndexPage = props => {
     if (deltaTime > actionTimeInMs) {
       // check if required level
 
-      const amount = Math.round(deltaTime / actionTimeInMs)
-      // const activeData = skillData.getItemIdBySkillId(skill, id)
+      if (costPerAction(props.playerData.getActiveManpower()) <= props.playerData.playerBank.getCoins()) {
+        const amount = Math.round(deltaTime / actionTimeInMs)
+        // const activeData = skillData.getItemIdBySkillId(skill, id)
 
-      for (const task in props.playerData.settlement.tasks) {
-        const activeData = skillData.getActionDataBySkillID(task).filter((i => i !== undefined))[0]
-        const activeWorkers = amount * Math.floor(props.playerData.settlement.tasks[task] / activeData.manpower)
 
-        // add items to bank
-        handleAddToBank(activeData, activeWorkers)
+        for (const task in props.playerData.settlement.tasks) {
+          const activeData = skillData.getActionDataBySkillID(task).filter((i => i !== undefined))[0]
+          const activeWorkers = amount * Math.floor(props.playerData.settlement.tasks[task] / activeData.manpower)
 
-        // add exp
-        handleExp(activeData, activeWorkers, activeData.job)
+          // add items to bank
+          handleAddToBank(activeData, activeWorkers)
+
+          // add exp
+          handleExp(activeData, activeWorkers, activeData.job)
+        }
+
+        // salary cost
+        if (Object.keys(props.playerData.settlement.tasks).length > 0) {
+          props.playerData.playerBank.removeFromCoins(costPerAction(props.playerData.getActiveManpower()))
+        }
+
+
+
+
+        // take items from bank if applicable
+        // handleRemoveFromBank(activeData, amount)
+
+
       }
-
-      // salary cost
-      if (Object.keys(props.playerData.settlement.tasks).length > 0) {
-        props.playerData.playerBank.removeFromCoins(costPerAction(props.playerData.getActiveManpower()))
-      }
-
-
-
-
-      // take items from bank if applicable
-      // handleRemoveFromBank(activeData, amount)
-
-
 
       // reset value to current time
       handleReset()

@@ -35,7 +35,9 @@ export const Item = (props) => {
 
                     <button disabled={!props.enoughManpower} onClick={() => handleManpowerChange(props.id, 1)}>[ + ]</button>
                 </div>
+                <span className="action__item-level">Manpower {props.data.manpower}</span>
                 <span className="action__item-level">Level {props.data.level}</span>
+
                 <span className="action__item-details">{props.data.exp} xp</span>
                 <span className="action__item-details"><FiClock /> {props.data.time} seconds</span>
             </div>

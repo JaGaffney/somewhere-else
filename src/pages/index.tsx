@@ -135,13 +135,27 @@ const IndexPage = props => {
 
 
   const handleAddToBank = (activeData: SkillAction, amount: number): void => {
+    // TEMP selling
+    const autoSell = true
+
+
     if (activeData.itemsReceived.length > 0) {
       for (const value in activeData.itemsReceived) {
-        // TODO: turn to gold or have items
         const qty = activeData.itemsReceived[value].qty * amount
         const id = activeData.itemsReceived[value].id
         const item = props.itemData.getItemById(id)
-        props.playerData.playerBank.addItemtoBank(id, qty, item)
+
+        if (autoSell) {
+          let val = item.price * qty
+          if (!val) {
+            val = 1
+          }
+          props.playerData.playerBank.addToCoins(val)
+        } else {
+          props.playerData.playerBank.addItemtoBank(id, qty, item)
+        }
+
+
       }
     }
   }

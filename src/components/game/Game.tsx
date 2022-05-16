@@ -31,7 +31,8 @@ export const Game = props => {
       case "combat":
         return <Combat />
       case "shop":
-        return <Shop />
+        //return <Shop />
+        return null
       default:
         return null
     }

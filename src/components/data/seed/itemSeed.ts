@@ -23,7 +23,7 @@ export const itemSeed = [
   {
     id: 2,
     name: "beech log",
-    price: 10,
+    price: 15,
     icon: log,
     description: "",
     rarity: "COMMON",
@@ -32,7 +32,7 @@ export const itemSeed = [
   {
     id: 3,
     name: "birch log",
-    price: 10,
+    price: 20,
     icon: log,
     description: "",
     rarity: "COMMON",
@@ -41,7 +41,7 @@ export const itemSeed = [
   {
     id: 4,
     name: "oak log",
-    price: 10,
+    price: 25,
     icon: log,
     description: "",
     rarity: "COMMON",
@@ -50,7 +50,7 @@ export const itemSeed = [
   {
     id: 5,
     name: "palm log",
-    price: 10,
+    price: 30,
     icon: log,
     description: "",
     rarity: "COMMON",
@@ -59,7 +59,7 @@ export const itemSeed = [
   {
     id: 6,
     name: "willow log",
-    price: 10,
+    price: 35,
     icon: log,
     description: "",
     rarity: "COMMON",
@@ -68,7 +68,7 @@ export const itemSeed = [
   {
     id: 7,
     name: "redwood log",
-    price: 10,
+    price: 40,
     icon: log,
     description: "",
     rarity: "COMMON",
@@ -77,7 +77,7 @@ export const itemSeed = [
   {
     id: 8,
     name: "undead log",
-    price: 10,
+    price: 45,
     icon: log,
     description: "",
     rarity: "COMMON",
@@ -86,7 +86,7 @@ export const itemSeed = [
   {
     id: 9,
     name: "log of life",
-    price: 10,
+    price: 50,
     icon: log,
     description: "",
     rarity: "COMMON",
@@ -95,7 +95,7 @@ export const itemSeed = [
   {
     id: 10,
     name: "demonic log",
-    price: 10,
+    price: 55,
     icon: log,
     description: "",
     rarity: "COMMON",
@@ -104,7 +104,7 @@ export const itemSeed = [
   {
     id: 11,
     name: "god tree",
-    price: 10,
+    price: 1,
     icon: log,
     description: "",
     rarity: "COMMON",
@@ -158,7 +158,7 @@ export const itemSeed = [
   {
     id: 17,
     name: "silver ore",
-    price: 10,
+    price: 500,
     icon: silver,
     description: "",
     rarity: "COMMON",
@@ -167,7 +167,7 @@ export const itemSeed = [
   {
     id: 18,
     name: "gold ore",
-    price: 10,
+    price: 500,
     icon: gold,
     description: "",
     rarity: "COMMON",

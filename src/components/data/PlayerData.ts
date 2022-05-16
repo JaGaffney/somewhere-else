@@ -17,6 +17,7 @@ export class PlayerData {
   status: Status
   classes: Classes
   levelChecker: EXP = new EXP()
+  settings: Object
 
   // creates the player with no data inside
   constructor(skillNames: Array<string>, jobClassID: Array<number>) {
@@ -27,6 +28,7 @@ export class PlayerData {
     this.status = new Status()
     this.inventory = new Inventory()
     this.classes = new Classes(jobClassID)
+    this.settings = {}
   }
 
   // getters
@@ -41,6 +43,10 @@ export class PlayerData {
     return this.settlement.getActiveManpower()
   }
 
+  public getSettingValue(key: string): any {
+    return this.settings[key]
+  }
+
   // setters
   public setSkillExp(skillName: string, amount: number): void {
     this.skillExp.skillExp[skillName] =
@@ -51,8 +57,15 @@ export class PlayerData {
     this.settlement.addManpower(amount)
   }
 
+  public updateSettings(key: string, value): void {
+    if (this.settings === undefined) {
+      this.settings = {}
+    }
+    this.settings[key] = value
+  }
+
   // loads data once player is created
-  loadPlayerData(data, itemData) {
+  loadPlayerData(data, itemData): void {
     this.loadSkillEXP(data.skillExp)
     this.loadBank(data.playerBank, itemData)
     this.loadSettlment(data.settlement)
@@ -60,6 +73,7 @@ export class PlayerData {
     this.loadPassives(data.passives)
     this.loadStatus(data.status)
     this.loadClasses(data.classes)
+    this.loadSettings(data.settings)
   }
 
   // loads from local storage
@@ -80,18 +94,18 @@ export class PlayerData {
     })
   }
 
-  private loadSettlment(settlementData) {
+  private loadSettlment(settlementData): void {
     this.settlement.setManpower(settlementData.manpower)
     this.settlement.setTasks(settlementData.tasks)
   }
 
-  private loadInventory(inventoryData) {
+  private loadInventory(inventoryData): void {
     for (const slot in inventoryData) {
       this.inventory.setEquippedItem(slot, inventoryData[slot])
     }
   }
 
-  private loadPassives(passiveData) {
+  private loadPassives(passiveData): void {
     for (const name in passiveData.unlockedPassives) {
       this.passives.addNewUnlockedPassive(name)
     }
@@ -103,15 +117,20 @@ export class PlayerData {
     }
   }
 
-  private loadStatus(data) {
+  private loadStatus(data): void {
     this.status.loadStatus(data)
   }
 
-  private loadClasses(data) {
+  private loadClasses(data): void {
     let deserialized = new Map(JSON.parse(data.jobClass))
     deserialized.forEach((k: any, v: any) => {
       this.classes.findJobClass(v).setRotation(k.rotation)
       this.classes.findJobClass(v).setEquippedAttacks(k.equippedAttacks)
     })
+  }
+
+  private loadSettings(data): void {
+    console.log("got here", data)
+    this.settings = data
   }
 }

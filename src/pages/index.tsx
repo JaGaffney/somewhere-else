@@ -79,7 +79,7 @@ const IndexPage = props => {
     }
 
     if (deltaTime > actionTimeInMs) {
-      // check if required level
+      // TODO: check if required level
 
       if (costPerAction(props.playerData.getActiveManpower()) <= props.playerData.playerBank.getCoins()) {
         const amount = Math.round(deltaTime / actionTimeInMs)
@@ -135,9 +135,7 @@ const IndexPage = props => {
 
 
   const handleAddToBank = (activeData: SkillAction, amount: number): void => {
-    // TEMP selling
-    const autoSell = true
-
+    const autoSell = props.playerData.getSettingValue("autoSell")
 
     if (activeData.itemsReceived.length > 0) {
       for (const value in activeData.itemsReceived) {
@@ -154,8 +152,6 @@ const IndexPage = props => {
         } else {
           props.playerData.playerBank.addItemtoBank(id, qty, item)
         }
-
-
       }
     }
   }

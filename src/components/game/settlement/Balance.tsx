@@ -1,6 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+// @ts-ignore
+import COINS from "../../../images/sidepanel/coins.svg"
+
 export const Balance = (props) => {
     return (
         <div className="settlement__stats-balance">
@@ -17,6 +20,13 @@ export const Balance = (props) => {
 
                     )
                 })}
+                {props.cash && (
+                    <div>
+                        <span><img src={COINS} />Coins</span>
+                        <span>{props.cash} GP</span>
+                    </div>
+                )
+                }
             </div>
         </div>
     )

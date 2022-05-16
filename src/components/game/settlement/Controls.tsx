@@ -26,6 +26,11 @@ export const Controls = (props) => {
         props.setPlayerUpdated()
     }
 
+    const handleAutoSell = () => {
+        props.playerData.updateSettings("autoSell", !props.playerData.getSettingValue("autoSell"))
+        props.setPlayerUpdated()
+    }
+
     return (
         <div className="topPanel settlement__controls">
             <div className="settlement__controls-manpower">
@@ -36,7 +41,7 @@ export const Controls = (props) => {
 
             <div className="settlement__controls-buttons">
                 <button disabled={props.playerData.playerBank.getCoins() <= manpowerCost} className="generic__button generic__button-primary" onClick={addManpower}>Hire for {manpowerCost} GP</button>
-                <button className="generic__button generic__button-primary">Auto Sell</button>
+                <button className={`generic__button generic__button-primary ${props.playerData.getSettingValue("autoSell") ? "generic__button-active" : null}`} onClick={handleAutoSell}>Auto Sell</button>
                 <button className="generic__button generic__button-secondary" onClick={resetAllTasks}>Reset</button>
             </div>
         </div>

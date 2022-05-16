@@ -111,6 +111,10 @@
   background-color: var(--red900);
   color: var(--red100);
 }
+.generic__button-active {
+  background-color: var(--teal900);
+  color: var(--teal100);
+}
 
 .fadeOut {
   opacity: 0;

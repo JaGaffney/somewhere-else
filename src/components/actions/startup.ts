@@ -63,7 +63,16 @@ export const onLoadDataFromLocalStorage = () => {
 }
 
 export const saveAllDataToLocalStorage = (
-  { playerBank, skillExp, passives, inventory, status, classes, settlement },
+  {
+    playerBank,
+    skillExp,
+    passives,
+    inventory,
+    status,
+    classes,
+    settlement,
+    settings,
+  },
   actionTime
 ) => {
   const playerData = {
@@ -86,6 +95,7 @@ export const saveAllDataToLocalStorage = (
     status,
     classes: classData,
     settlement,
+    settings,
   }
   localStorageSave(data)
 }

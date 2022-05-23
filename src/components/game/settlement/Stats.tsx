@@ -24,15 +24,15 @@ export const Stats = (props) => {
             setIncomeCash(tempItems.reduce((a, b) => a + b, 0))
             setIncome([])
         } else {
-            setIncome(tempItems)
+            setIncome(tempItems.flat())
             setIncomeCash(null)
         }
-
 
     }, [props.playerUpdated])
 
     const handleItemCalc = (activeData, amount: number) => {
         if (activeData.itemsReceived.length > 0) {
+            let tempItems = []
             for (const value in activeData.itemsReceived) {
                 const qty = activeData.itemsReceived[value].qty * amount
                 const id = activeData.itemsReceived[value].id
@@ -48,8 +48,10 @@ export const Stats = (props) => {
                 } else {
                     tempValue = { id, qty }
                 }
-                return tempValue
+                tempItems.push(tempValue)
+
             }
+            return tempItems
         }
     }
 

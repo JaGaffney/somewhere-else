@@ -142,7 +142,6 @@ const IndexPage = props => {
         const qty = activeData.itemsReceived[value].qty * amount
         const id = activeData.itemsReceived[value].id
         const item = props.itemData.getItemById(id)
-
         if (autoSell) {
           let val = item.price * qty
           if (!val) {

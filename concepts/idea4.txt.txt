@@ -4,3 +4,9 @@ storage/warehouse
 settlement
 *	can assign cats to do skills to gather resources for money
 *	cats charge a fee when doing skills
+
+research/market tab
+
+new skills
+same type of skill but 1 requires more people to do
+(i.e) woodcutting needs 1-5 per log, minign requires like 10/20

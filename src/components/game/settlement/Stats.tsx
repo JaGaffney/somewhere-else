@@ -5,6 +5,8 @@ import Balance from './Balance'
 
 export const Stats = (props) => {
 
+    const [exp, setExp] = useState({})
+
     const [income, setIncome] = useState([])
     const [incomeCash, setIncomeCash] = useState(null)
 
@@ -13,24 +15,35 @@ export const Stats = (props) => {
 
     useEffect(() => {
         let tempItems = []
+        let tempExp = {}
         for (const task in props.playerData.settlement.tasks) {
             const activeData = props.skillData.getActionDataBySkillID(task).filter((i => i !== undefined))[0]
             const activeWorkers = 1 * Math.floor(props.playerData.settlement.tasks[task] / activeData.manpower)
+
+            const job = activeData.job
+            const expGained = activeData.exp * activeWorkers
+            if (tempExp[job]) {
+                tempExp[job] = tempExp[job] + expGained
+            } else {
+                tempExp[job] = expGained
+            }
 
             tempItems.push(handleItemCalc(activeData, activeWorkers))
         }
 
         if (props.playerData.getSettingValue("autoSell")) {
-            setIncomeCash(tempItems.reduce((a, b) => a + b, 0))
+            setIncomeCash(tempItems.flat().reduce((a, b) => a + b, 0))
             setIncome([])
         } else {
-            setIncome(tempItems.flat())
             setIncomeCash(null)
+            setIncome(tempItems.flat())
         }
+        setExp(tempExp)
 
     }, [props.playerUpdated])
 
     const handleItemCalc = (activeData, amount: number) => {
+
         if (activeData.itemsReceived.length > 0) {
             let tempItems = []
             for (const value in activeData.itemsReceived) {
@@ -57,7 +70,7 @@ export const Stats = (props) => {
 
     return (
         <div className="settlement__stats">
-            <Balance title={"Income"} data={income} cash={incomeCash} />
+            <Balance title={"Income"} data={income} cash={incomeCash} exp={exp} />
             <Balance title={"Cost"} data={outcome} cash={outcomeCash} />
         </div>
     )

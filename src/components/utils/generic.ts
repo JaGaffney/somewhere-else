@@ -5,6 +5,8 @@ export const randomInteger = (min: number, max: number): number => {
 export const costPerAction = (value: number): number => {
   let returnValue = 1
   switch (true) {
+    case value === 1:
+      return 0
     case value < 10:
       returnValue = value * 10
       break

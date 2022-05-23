@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 
 import Settlement from "./settlement/Settlement"
+import Research from "./research/research"
 import NoncombatSkill from "./skills/NoncombatSkill"
 import CombatSkill from "./skills/CombatSkill"
 import StatusSkill from "./skills/StatusSkill"
@@ -12,6 +13,8 @@ import Shop from "./shop/Shop"
 export const Game = props => {
   const LoadComponent = () => {
     switch (props.activePage) {
+      case "research":
+        return <Research />
       case "settlement":
         return <Settlement />
       case "forestry":

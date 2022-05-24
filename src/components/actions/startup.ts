@@ -10,6 +10,12 @@ export const loadItems = data => dispatch => {
     payload: data,
   })
 }
+export const loadResearch = data => dispatch => {
+  return dispatch({
+    type: "LOAD_RESEARCH",
+    payload: data,
+  })
+}
 export const loadAttacks = data => dispatch => {
   return dispatch({
     type: "LOAD_ATTACKS",
@@ -72,6 +78,7 @@ export const saveAllDataToLocalStorage = (
     classes,
     settlement,
     settings,
+    research,
   },
   actionTime
 ) => {
@@ -96,6 +103,7 @@ export const saveAllDataToLocalStorage = (
     classes: classData,
     settlement,
     settings,
+    research,
   }
   localStorageSave(data)
 }

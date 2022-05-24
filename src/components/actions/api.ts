@@ -1,5 +1,3 @@
-import { CombatData } from "../data/CombatData"
-
 export const setPlayerUpdated = () => dispatch => {
   return dispatch({
     type: "PLAYER_UPDATED",

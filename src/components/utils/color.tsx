@@ -59,3 +59,25 @@ export const getTextColor = (color: string): string => {
             return "inherit"
     }
 }
+
+
+
+export const getResearchBorderColor = (color: string): string => {
+    if (color === null) {
+        return ""
+    }
+
+    switch (color.toLowerCase()) {
+        case ("global"): {
+            return "var(--teal800)";
+        }
+        case ("job"): {
+            return "var(--amber700)";
+        }
+        case ("combat"): {
+            return "var(--purple700)";
+        }
+        default:
+            return "inherit"
+    }
+}

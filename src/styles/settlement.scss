@@ -155,3 +155,80 @@
     }
   }
 }
+
+//////////////////
+// RESEARCH
+/////////////////
+.research__panel {
+  background-color: var(--gray900);
+  box-shadow: var(--shadow900);
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  gap: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  &-title {
+    text-transform: capitalize;
+    min-width: 7rem;
+    width: 7rem;
+    text-align: center;
+  }
+  &-data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem;
+    &-action {
+      min-width: 10rem;
+      width: 15rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      background-color: var(--gray800);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      border: solid 3px transparent;
+      &-data {
+        width: 100%;
+        font-size: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        text-transform: capitalize;
+      }
+      &-title {
+        width: 100%;
+        font-size: 1.2rem;
+      }
+      &-description {
+        width: 100%;
+        font-size: 0.9rem;
+      }
+      &-controls {
+        color: var(--gray100);
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.1rem;
+        align-items: center;
+        height: 2rem;
+        button {
+          cursor: pointer;
+          background-color: inherit;
+          color: var(--gray100);
+          border: none;
+          font-size: 1rem;
+          padding: 0.1rem;
+          &:hover {
+            color: var(--gray400);
+          }
+          &:disabled {
+            color: var(--gray600);
+            cursor: auto;
+          }
+        }
+      }
+    }
+  }
+}

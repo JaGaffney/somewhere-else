@@ -1,9 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import Repeat from './Repeat'
+import Single from './Single'
+
 export const Research = (props) => {
     return (
-        <div>research</div>
+        <div className="game__normal">
+            <Repeat />
+            <Single />
+
+
+        </div>
     )
 }
 

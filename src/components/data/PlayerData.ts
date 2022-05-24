@@ -7,6 +7,7 @@ import { Inventory } from "./player/Inventory"
 import { Classes } from "./player/Classes"
 import { Status } from "./player/Status"
 import { EXP } from "./player/Exp"
+import { Research } from "./player/Research"
 
 export class PlayerData {
   playerBank: Bank
@@ -17,6 +18,7 @@ export class PlayerData {
   status: Status
   classes: Classes
   levelChecker: EXP = new EXP()
+  research: Research
   settings: Object
 
   // creates the player with no data inside
@@ -28,6 +30,7 @@ export class PlayerData {
     this.status = new Status()
     this.inventory = new Inventory()
     this.classes = new Classes(jobClassID)
+    this.research = new Research()
     this.settings = {}
   }
 
@@ -63,6 +66,9 @@ export class PlayerData {
     }
     this.settings[key] = value
   }
+  public updateResearch(researchType: boolean, key: string, value): void {
+    this.updateResearch(researchType, key, value)
+  }
 
   // loads data once player is created
   loadPlayerData(data, itemData): void {
@@ -74,6 +80,7 @@ export class PlayerData {
     this.loadStatus(data.status)
     this.loadClasses(data.classes)
     this.loadSettings(data.settings)
+    this.loadResearch(data?.research)
   }
 
   // loads from local storage
@@ -129,8 +136,14 @@ export class PlayerData {
     })
   }
 
+  private loadResearch(data): void {
+    console.log(data)
+    console.log(this.research)
+    this.research.setRepeat(data?.repeat)
+    this.research.setSingular(data?.singular)
+  }
+
   private loadSettings(data): void {
-    console.log("got here", data)
     this.settings = data
   }
 }

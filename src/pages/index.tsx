@@ -69,13 +69,32 @@ const IndexPage = props => {
     setTimer(timer + 1)
   }
 
+  const realTimeCalc = (): number => {
+    let retValue = 10
+
+    if (props.playerData.research.repeat["efficiency"]) {
+      let tempValue = retValue * (props.playerData.research.repeat["efficiency"] / 100)
+      retValue = retValue - tempValue
+    }
+
+    // if (Object.keys(props.playerData.research.repeat).includes("efficiency")) {
+    //   let tempValue = retValue * (props.playerData.research.repeat["efficiency"] / 100)
+    //   retValue = retValue - tempValue
+    // }
+
+    if (retValue <= 1) {
+      retValue = 1
+    }
+
+    return retValue
+  }
+
   const actionTimeHandler = (currentTime: number, previousTime: number, skillData: SkillData): void => {
     let deltaTime = 0
-
-    let TEMPTIME = 5 // needs to be from skill
+    let time = realTimeCalc()
 
     deltaTime = currentTime - previousTime
-    let actionTimeInMs = TEMPTIME * 1000
+    let actionTimeInMs = time * 1000
 
 
     if (deltaTime < actionTimeInMs) {
@@ -146,14 +165,21 @@ const IndexPage = props => {
         const qty = activeData.itemsReceived[value].qty * amount
         const id = activeData.itemsReceived[value].id
         const item = props.itemData.getItemById(id)
-        if (autoSell) {
-          let val = item.price * qty
-          if (!val) {
-            val = 1
-          }
-          props.playerData.playerBank.addToCoins(val)
+
+        // research cannot be sold
+        if (item.rarity === "RESEARCH") {
+          let name = item.name.split(" ")[0]
+          props.playerData.playerBank.addToResearch(name, qty)
         } else {
-          props.playerData.playerBank.addItemtoBank(id, qty, item)
+          if (autoSell || item.rarity === "BANK") {
+            let val = item.price * qty
+            if (!val) {
+              val = 1
+            }
+            props.playerData.playerBank.addToCoins(val)
+          } else {
+            props.playerData.playerBank.addItemtoBank(id, qty, item)
+          }
         }
       }
     }

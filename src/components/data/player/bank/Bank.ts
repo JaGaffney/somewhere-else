@@ -3,9 +3,16 @@ import { Item } from "../../items/Item"
 
 export class Bank {
   bankItems: Map<number, Bankslot> = new Map()
-  bankSpace: number = 50
+  bankSpace: number = 10
   coins: number = 0
   essence: number = 0
+  research: {
+    red: 0
+    green: 0
+    blue: 0
+    yellow: 0
+    purple: 0
+  }
 
   constructor() {}
 
@@ -41,6 +48,35 @@ export class Bank {
   removeFromEssence(value: number): void {
     if (value <= this.essence) {
       this.essence -= value
+    }
+  }
+
+  getResearch(): Object {
+    console.log("got here")
+    return this.research
+  }
+  getResearchByColor(color: string): number {
+    return this.research[color]
+  }
+  setResearch(value: any): void {
+    if (value) {
+      this.research = value
+    } else {
+      this.research = {
+        red: 0,
+        green: 0,
+        blue: 0,
+        yellow: 0,
+        purple: 0,
+      }
+    }
+  }
+  addToResearch(color: string, value: number): void {
+    this.research[color] += value
+  }
+  removeFromResearch(color: string, value: number): void {
+    if (value <= this.research[color]) {
+      this.research[color] -= value
     }
   }
 

@@ -12,17 +12,23 @@ export class Research {
     this.singular = data
   }
 
-  public updateResearch(repeat: boolean, key: string, value): void {
-    if (repeat) {
-      if (this.repeat === undefined) {
-        this.repeat = {}
-      }
-      this.repeat[key] = value
-    } else {
-      if (this.singular === undefined) {
-        this.singular = {}
-      }
-      this.singular[key] = value
+  public updateResearchRepeat(key: string, value: number): void {
+    if (this.repeat === undefined) {
+      this.repeat = {}
     }
+
+    if (this.repeat[key]) {
+      this.repeat[key] = this.repeat[key] + value
+    } else {
+      this.repeat[key] = value
+    }
+  }
+
+  public updateResearchSingle(key: string, value: boolean): void {
+    if (this.singular === undefined) {
+      this.singular = {}
+    }
+
+    this.singular[key] = value
   }
 }

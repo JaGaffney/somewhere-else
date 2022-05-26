@@ -1,4 +1,12 @@
-import { log } from "./icons/itemSeedIcons"
+import {
+  gp,
+  researchRed,
+  researchGreen,
+  researchBlue,
+  researchYellow,
+  researchPurple,
+  log,
+} from "./icons/itemSeedIcons"
 import {
   stone,
   copper,
@@ -11,6 +19,60 @@ import {
 } from "./icons/skillSeedIcons"
 
 export const itemSeed = [
+  {
+    id: 999,
+    name: "gp",
+    price: 1,
+    icon: gp,
+    description: "",
+    rarity: "BANK",
+    consumeable: false,
+  },
+  {
+    id: 998,
+    name: "red research",
+    price: 0,
+    icon: researchRed,
+    description: "",
+    rarity: "RESEARCH",
+    consumeable: false,
+  },
+  {
+    id: 997,
+    name: "green research",
+    price: 0,
+    icon: researchGreen,
+    description: "",
+    rarity: "RESEARCH",
+    consumeable: false,
+  },
+  {
+    id: 996,
+    name: "blue research",
+    price: 0,
+    icon: researchBlue,
+    description: "",
+    rarity: "RESEARCH",
+    consumeable: false,
+  },
+  {
+    id: 995,
+    name: "yellow research",
+    price: 0,
+    icon: researchYellow,
+    description: "",
+    rarity: "RESEARCH",
+    consumeable: false,
+  },
+  {
+    id: 994,
+    name: "purple research",
+    price: 0,
+    icon: researchPurple,
+    description: "",
+    rarity: "RESEARCH",
+    consumeable: false,
+  },
   {
     id: 1,
     name: "bamboo log",

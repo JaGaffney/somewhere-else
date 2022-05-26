@@ -206,6 +206,21 @@
         width: 100%;
         font-size: 0.9rem;
       }
+      &-cost {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0.5rem;
+        span {
+          display: flex;
+          align-items: center;
+          flex-wrap: nowrap;
+        }
+        img {
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+      }
       &-controls {
         color: var(--gray100);
         display: flex;
@@ -230,5 +245,21 @@
         }
       }
     }
+  }
+}
+
+.research__panel-controls {
+  display: flex;
+  justify-content: flex-start;
+  width: 50%;
+  gap: 0.5rem;
+  span {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  img {
+    width: 1.2rem;
+    height: 1.2rem;
   }
 }

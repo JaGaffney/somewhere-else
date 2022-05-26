@@ -40,3 +40,14 @@ export const coal = METALWORK_IMG_5
 export const silver = METALWORK_IMG_6
 export const gold = METALWORK_IMG_7
 export const mithril = METALWORK_IMG_8
+
+import SCHOLAR_IMG_1 from "../../../../images/skill/scholar/reading.svg"
+import SCHOLAR_IMG_2 from "../../../../images/skill/scholar/reading.svg"
+import SCHOLAR_IMG_3 from "../../../../images/skill/scholar/reading.svg"
+import SCHOLAR_IMG_4 from "../../../../images/skill/scholar/reading.svg"
+import SCHOLAR_IMG_5 from "../../../../images/skill/scholar/reading.svg"
+import SCHOLAR_IMG_6 from "../../../../images/skill/scholar/reading.svg"
+import SCHOLAR_IMG_7 from "../../../../images/skill/scholar/reading.svg"
+import SCHOLAR_IMG_8 from "../../../../images/skill/scholar/reading.svg"
+
+export const reading = SCHOLAR_IMG_1

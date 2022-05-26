@@ -93,6 +93,7 @@ export class PlayerData {
   private loadBank(bankData, itemData): void {
     this.playerBank.setBankSpace(bankData.bankSpace)
     this.playerBank.setCoins(bankData.coins)
+    this.playerBank.setResearch(bankData.research)
 
     let deserialized = new Map(JSON.parse(bankData.bankItems))
     deserialized.forEach((k: any, v: any) => {
@@ -137,8 +138,6 @@ export class PlayerData {
   }
 
   private loadResearch(data): void {
-    console.log(data)
-    console.log(this.research)
     this.research.setRepeat(data?.repeat)
     this.research.setSingular(data?.singular)
   }

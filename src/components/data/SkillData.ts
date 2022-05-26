@@ -5,7 +5,7 @@ import { StatusSkill } from "./skills/StatusSkill"
 // seed data
 import { warrior, archer, magician } from "./seed/combatSeed"
 import { health, stamina, armour, divination } from "./seed/statusSeed"
-import { forestry, metalwork } from "./seed/skillSeed"
+import { forestry, metalwork, scholar } from "./seed/skillSeed"
 
 // ICONS
 // non-combat
@@ -13,6 +13,8 @@ import { forestry, metalwork } from "./seed/skillSeed"
 import FORESTRY from "../../images/sidepanel/forestry.svg"
 // @ts-expect-error
 import METALWORK from "../../images/sidepanel/metalwork.svg"
+// @ts-expect-error
+import SCHOLAR from "../../images/sidepanel/scholar.svg"
 
 // on loads creates all of the ingame data.
 // such as skills, items, exp etc
@@ -45,6 +47,7 @@ export class SkillData {
   private createGatheringSkills(): void {
     this.buildGatheringSkill("forestry", FORESTRY, forestry) // woodcutting, forestry
     this.buildGatheringSkill("metalwork", METALWORK, metalwork)
+    this.buildGatheringSkill("scholar", SCHOLAR, scholar)
   }
 
   private buildCombatSkill(name: string, seed: any): void {

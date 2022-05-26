@@ -17,6 +17,9 @@ export const EXP = (props) => {
         if (percentageNormliased > 100) {
             percentageNormliased = 100
         }
+        if (percentageNormliased < 1) {
+            percentageNormliased = 0
+        }
         setPercentage(percentageNormliased)
     }, [props.playerData.getSkillExp(props.activePage), props.playerUpdated])
 

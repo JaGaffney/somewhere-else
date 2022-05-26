@@ -19,6 +19,7 @@ export const Game = props => {
         return <Settlement />
       case "forestry":
       case "metalwork":
+      case "scholar":
         return <NoncombatSkill />
       case "warrior":
       case "archer":

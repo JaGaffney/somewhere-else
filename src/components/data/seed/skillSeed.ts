@@ -18,6 +18,7 @@ import {
   silver,
   gold,
   mithril,
+  reading,
 } from "./icons/skillSeedIcons"
 
 export const forestry = [
@@ -214,6 +215,41 @@ export const metalwork = [
     itemsRecieved: [
       { id: 12, qty: 10 },
       { id: 19, qty: 1 },
+    ],
+  },
+]
+
+export const scholar = [
+  {
+    name: "reading",
+    level: 1,
+    exp: 5,
+    time: 10.0,
+    manpower: 1,
+    icon: reading,
+    itemsRecieved: [
+      {
+        id: 998,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "experimentation",
+    level: 1,
+    exp: 25,
+    time: 10.0,
+    manpower: 1,
+    icon: reading,
+    itemsRecieved: [
+      {
+        id: 998,
+        qty: 1,
+      },
+      {
+        id: 997,
+        qty: 1,
+      },
     ],
   },
 ]

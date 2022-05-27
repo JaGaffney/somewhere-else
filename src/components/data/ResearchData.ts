@@ -45,7 +45,7 @@ class Research {
   }
 }
 
-class ResearchSingular extends Research {
+class ResearchRepeat extends Research {
   startLevel: number
   maxLevel: number
 
@@ -100,7 +100,7 @@ export class ResearchData {
       let description = researchRepeatData[data].description
       let type = researchRepeatData[data].type
 
-      this.repeat[name] = new ResearchSingular(
+      this.repeat[name] = new ResearchRepeat(
         name,
         startLevel,
         maxLevel,
@@ -120,7 +120,7 @@ export class ResearchData {
       let description = researchRepeatData[data].description
       let type = researchRepeatData[data].type
 
-      this.singular[name] = new Research(name, cost, icon, description, type)
+      this.singular[name] = new Research(name, icon, cost, description, type)
     }
   }
 }

@@ -14,11 +14,11 @@ import {
     researchPurple,
 } from "../../data/seed/icons/itemSeedIcons"
 
-export const RepeatItem = (props) => {
-    const [currentLevel, setCurrentLevel] = useState<number>(props.playerData.research.repeat[props.data.name])
+export const ResearchItem = (props) => {
+    const [currentLevel, setCurrentLevel] = useState<number>(props.playerData.research[props.researchType][props.data.name])
 
     useEffect(() => {
-        setCurrentLevel(props.playerData.research.repeat[props.data.name])
+        setCurrentLevel(props.playerData.research[props.researchType][props.data.name])
     }, [props.playerUpdated])
 
 
@@ -33,7 +33,7 @@ export const RepeatItem = (props) => {
         <div className="research__panel-data-action" key={props.k} style={{ borderColor: getResearchBorderColor(props.data.type) }}>
             <img className="action__item-icon" src={props.data.icon} />
             <div className="research__panel-data-action-data">
-                <span className="research__panel-data-action-title">{props.data.name} {props.playerData.research.repeat[props.data.name] && `(${currentLevel})`}</span>
+                <span className="research__panel-data-action-title">{props.data.name} {props.playerData.research[props.researchType][props.data.name] && `(${currentLevel})`}</span>
                 <span className="research__panel-data-action-description">"{props.data.description}"</span>
                 <div className="research__panel-data-action-cost">
                     <span><img src={gp} />{currentLevel ? intToString((props.data.cost.gp * currentLevel) * props.researchData.multiplier["gp"]) : props.data.cost.gp}GP</span>
@@ -50,7 +50,10 @@ export const RepeatItem = (props) => {
                 </div>
 
                 <div className="research__panel-data-action-controls">
-                    <button onClick={() => props.onBuyHandler(props.data, currentLevel)}>[ Buy ]</button>
+
+                    <button disabled={!props.validatePurchase(props.data.cost, currentLevel)} onClick={() => props.onBuyHandler(props.data, currentLevel)}>[ Buy ]</button>
+
+
 
                 </div>
             </div>
@@ -66,4 +69,4 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(RepeatItem)
+export default connect(mapStateToProps, mapDispatchToProps)(ResearchItem)

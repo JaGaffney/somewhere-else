@@ -76,9 +76,14 @@ class ResearchSingular extends Research {
 export class ResearchData {
   repeat: Object = {}
   singular: Object = {}
-  redConstant: number = 0.1
-  greenConstant: number = 0.2
-  blueConstant: number = 0.3
+  multiplier = {
+    gp: 10,
+    red: 0.1,
+    green: 0.2,
+    blue: 0.3,
+    yellow: 0.4,
+    purple: 0.5,
+  }
 
   constructor() {
     this.createResearchRepeat(researchRepeat)

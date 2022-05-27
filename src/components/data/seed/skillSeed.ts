@@ -243,11 +243,21 @@ export const scholar = [
     icon: reading,
     itemsRecieved: [
       {
-        id: 998,
+        id: 997,
         qty: 1,
       },
+    ],
+  },
+  {
+    name: "experimentation ii",
+    level: 1,
+    exp: 25,
+    time: 10.0,
+    manpower: 1,
+    icon: reading,
+    itemsRecieved: [
       {
-        id: 997,
+        id: 996,
         qty: 1,
       },
     ],

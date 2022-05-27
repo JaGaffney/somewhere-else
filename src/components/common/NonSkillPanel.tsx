@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { setActivePage } from '../actions/api';
 
+import { intToString } from "../utils/generic"
+
 export const NonSkillPanel = (props) => {
     useEffect(() => {
     }, [props.playerUpdated])
@@ -14,7 +16,7 @@ export const NonSkillPanel = (props) => {
                 <img className="skillpanel__icon" src={require("../../images/sidepanel/shop.svg")} />
                 <span className={`skillpanel__name ${props.activePage === "shop" ? "skillpanel__name-active" : null}`}>Merchant</span>
                 {props.playerData.length !== 0 && (
-                    <span className="skillpanel__level">{props.playerData.playerBank.getCoins()} GP</span>
+                    <span className="skillpanel__level">{intToString(props.playerData.playerBank.getCoins())} GP</span>
                 )}
             </button>
 

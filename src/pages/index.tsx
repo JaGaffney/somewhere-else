@@ -89,6 +89,19 @@ const IndexPage = props => {
     return retValue
   }
 
+  const randomSucess = (): number => {
+    let retValue = 1
+
+    if (props.playerData.research.repeat["production"]) {
+      const random = Math.floor(Math.random() * 100) + 1
+      const randomChance = props.playerData.research.repeat["production"]
+
+      retValue = randomChance > random ? 2 : 1
+    }
+
+    return retValue
+  }
+
   const actionTimeHandler = (currentTime: number, previousTime: number, skillData: SkillData): void => {
     let deltaTime = 0
     let time = realTimeCalc()
@@ -158,11 +171,9 @@ const IndexPage = props => {
 
 
   const handleAddToBank = (activeData: SkillAction, amount: number): void => {
-    const autoSell = props.playerData.getSettingValue("autoSell")
-
     if (activeData.itemsReceived.length > 0) {
       for (const value in activeData.itemsReceived) {
-        const qty = activeData.itemsReceived[value].qty * amount
+        const qty = (activeData.itemsReceived[value].qty * amount) * randomSucess() // adds random chance if applicable
         const id = activeData.itemsReceived[value].id
         const item = props.itemData.getItemById(id)
 
@@ -171,7 +182,7 @@ const IndexPage = props => {
           let name = item.name.split(" ")[0]
           props.playerData.playerBank.addToResearch(name, qty)
         } else {
-          if (autoSell || item.rarity === "BANK") {
+          if (props.playerData.getSettingValue("autoSell") || item.rarity === "BANK") {
             let val = item.price * qty
             if (!val) {
               val = 1

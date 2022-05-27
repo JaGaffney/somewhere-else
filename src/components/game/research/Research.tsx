@@ -11,8 +11,6 @@ export const Research = (props) => {
             <Controls />
             <Repeat />
             <Single />
-
-
         </div>
     )
 }

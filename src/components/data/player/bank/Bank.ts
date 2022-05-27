@@ -52,7 +52,6 @@ export class Bank {
   }
 
   getResearch(): Object {
-    console.log("got here")
     return this.research
   }
   getResearchByColor(color: string): number {

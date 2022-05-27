@@ -34,7 +34,7 @@ export const researchRepeat = [
       other: {},
     },
     icon: production,
-    description: "Increase the amount of resources gained while gathering.",
+    description: "Increase the chance of gaining more resources.",
     type: ResearchType.Job,
   },
   {
@@ -51,8 +51,7 @@ export const researchRepeat = [
       other: {},
     },
     icon: capacity,
-    description:
-      "Increase the capacity of your storehouse to allow you to store more items.",
+    description: "Increase the amount of things you can store.",
     type: ResearchType.Global,
   },
 ]

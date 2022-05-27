@@ -17,7 +17,7 @@ export const Repeat = (props) => {
             {Object.keys(props.researchData.repeat).map((i, k) => {
                 const data = props.researchData.repeat[i]
                 return (
-                    <RepeatItem data={data} k={k} onBuyHandler={onBuyHandler} />
+                    <RepeatItem data={data} k={k} onBuyHandler={onBuyHandler} key={k} />
                 )
             })}
         </div>

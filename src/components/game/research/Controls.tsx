@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { setPlayerUpdated } from '../../actions/api'
 
+import { intToString } from '../../utils/generic'
+
 import {
     researchRed,
     researchGreen,
@@ -31,7 +33,7 @@ export const Controls = (props) => {
             <div className="settlement__controls-manpower research__panel-controls">
                 {Object.keys(researchVials).map((i, k) => {
                     return (
-                        <span key={k}><img src={researchColor[i]} />{researchVials[i]}</span>
+                        <span key={k}><img src={researchColor[i]} />{intToString(researchVials[i])}</span>
                     )
                 })}
                 <span className="settlement__controls-manpower-info">Current research</span>

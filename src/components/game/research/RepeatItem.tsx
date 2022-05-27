@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 
 import { getResearchBorderColor } from "../../utils/color"
+import { intToString } from '../../utils/generic'
 
 import {
     gp,
@@ -35,16 +36,21 @@ export const RepeatItem = (props) => {
                 <span className="research__panel-data-action-title">{props.data.name} {props.playerData.research.repeat[props.data.name] && `(${currentLevel})`}</span>
                 <span className="research__panel-data-action-description">"{props.data.description}"</span>
                 <div className="research__panel-data-action-cost">
-                    <span><img src={gp} />{props.data.cost.gp}GP</span>
+                    <span><img src={gp} />{currentLevel ? intToString((props.data.cost.gp * currentLevel) * props.researchData.multiplier["gp"]) : props.data.cost.gp}GP</span>
                     {Object.keys(props.data.cost.researchPoints).map((ii, kk) => {
+                        let value = 1
+                        if (currentLevel !== undefined) {
+                            value = currentLevel
+                        }
+                        value = Math.floor((props.data.cost.researchPoints[ii] * value) / props.researchData.multiplier[ii])
                         return (
-                            <span key={kk}><img src={researchColor[ii]} />{props.data.cost.researchPoints[ii]}</span>
+                            <span key={kk}><img src={researchColor[ii]} />{intToString(value)}</span>
                         )
                     })}
                 </div>
 
                 <div className="research__panel-data-action-controls">
-                    <button onClick={() => props.onBuyHandler(props.data.name)}>[ Buy ]</button>
+                    <button onClick={() => props.onBuyHandler(props.data.name, props.data.cost)}>[ Buy ]</button>
 
                 </div>
             </div>
@@ -54,7 +60,8 @@ export const RepeatItem = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
-    playerUpdated: state.engine.playerUpdated
+    playerUpdated: state.engine.playerUpdated,
+    researchData: state.research.researchData,
 })
 
 const mapDispatchToProps = {}

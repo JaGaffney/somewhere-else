@@ -50,7 +50,7 @@ export const RepeatItem = (props) => {
                 </div>
 
                 <div className="research__panel-data-action-controls">
-                    <button onClick={() => props.onBuyHandler(props.data.name, props.data.cost)}>[ Buy ]</button>
+                    <button onClick={() => props.onBuyHandler(props.data, currentLevel)}>[ Buy ]</button>
 
                 </div>
             </div>

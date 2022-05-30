@@ -28,6 +28,8 @@ export const Controls = (props) => {
         purple: researchPurple,
     }
 
+    const controlButtons = ["GLOBAL", "COMBAT", "JOB", "SKILL"]
+
     return (
         <div className="topPanel settlement__controls">
             <div className="settlement__controls-manpower research__panel-controls">
@@ -40,10 +42,18 @@ export const Controls = (props) => {
             </div>
 
             <div className="settlement__controls-buttons">
-                <button onClick={() => props.controlHandler("GLOBAL")}>Global</button>
-                <button onClick={() => props.controlHandler("SKILL")}>Skill</button>
-                <button onClick={() => props.controlHandler("JOB")}>Job</button>
-                <button onClick={() => props.controlHandler("COMBAT")}>Combat</button>
+                {controlButtons.map((i, k) => {
+                    console.log(i)
+                    return (
+                        <button
+                            key={k}
+                            className={`generic__button ${props.researchFilter.includes(i) ? "generic__button-inactive " : "generic__button-active"}`}
+                            onClick={() => props.controlHandler(i)}>
+                            {i.toLocaleLowerCase()}
+                        </button>
+                    )
+                })}
+
             </div>
         </div>
     )

@@ -54,7 +54,7 @@ export const Research = (props) => {
 
     return (
         <div className="game__normal">
-            <Controls controlHandler={controlHandler} />
+            <Controls controlHandler={controlHandler} researchFilter={researchFilter} />
             <ResearchPanel validatePurchase={validatePurchase} handlePurchase={handlePurchase} data={props.researchData.repeat} researchType={"repeat"} researchFilter={researchFilter} />
             <ResearchPanel validatePurchase={validatePurchase} handlePurchase={handlePurchase} data={props.researchData.singular} researchType={"singular"} researchFilter={researchFilter} />
         </div>

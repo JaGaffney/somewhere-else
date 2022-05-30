@@ -85,6 +85,7 @@
 
 .generic__button {
   cursor: pointer;
+  text-transform: capitalize;
   background-color: var(--blue700);
   color: var(--blue100);
   box-shadow: var(--shadow100);
@@ -114,6 +115,11 @@
 .generic__button-active {
   background-color: var(--teal900);
   color: var(--teal100);
+}
+.generic__button-inactive {
+  background-color: var(--teal900);
+  color: var(--teal100);
+  opacity: 0.4;
 }
 
 .fadeOut {

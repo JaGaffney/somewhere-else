@@ -1,8 +1,10 @@
 // @ts-nocheck
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
 import { FiEye, FiEyeOff } from "react-icons/fi";
+
+import { setActivePage } from '../actions/api';
 
 import SkillPanel from './SkillPanel'
 import NonSkillPanel from "./NonSkillPanel"
@@ -17,6 +19,8 @@ import QUEST from "../../images/sidepanel/questLog.svg"
 import SETTINGS from "../../images/sidepanel/settings.svg"
 import HELP from "../../images/sidepanel/help.svg"
 import BUG from "../../images/sidepanel/bug.svg"
+
+import LOCKED from "../../images/sidepanel/locked.svg"
 
 
 
@@ -64,6 +68,24 @@ export const SidePanel = (props) => {
         },
     ]
 
+    const getValidCombatSkills = () => {
+        const tempCombatSkills = props.skills.getAllCombatSkills()
+        const tempResearchSkills = Object.keys(props.playerData.research.singular)
+        let unlockedSkills = []
+
+        if (tempResearchSkills.length <= 0) {
+            return unlockedSkills
+        }
+
+        for (let skill in tempCombatSkills) {
+            if (tempResearchSkills.includes(tempCombatSkills[skill])) {
+                unlockedSkills.push(tempCombatSkills[skill])
+            }
+        }
+        return unlockedSkills
+    }
+
+
     return (
         <aside className="sidepanel__wrapper">
             <div className="sidepanel__container">
@@ -81,7 +103,14 @@ export const SidePanel = (props) => {
 
                             <div className="sidepanel__skill">
                                 <span className="sidepanel__skill-title" onClick={() => setShowCombat(!showCombat)}>Classes {showCombat ? <FiEyeOff /> : <FiEye />}</span>
-                                {showCombat && props.skills.getAllCombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("combat", i)} />)}
+                                {showCombat && getValidCombatSkills().length !== 0 ? (
+                                    getValidCombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("combat", i)} />))
+                                    : (
+                                        <button className="skillpanel" onClick={() => props.setActivePage("research")}>
+                                            <img className="skillpanel__icon" src={LOCKED} />
+                                            <span className="skillpanel__name">Locked</span>
+                                        </button>
+                                    )}
                             </div>
 
                             <div className="sidepanel__skill">
@@ -108,10 +137,11 @@ export const SidePanel = (props) => {
 
 const mapStateToProps = (state) => ({
     skills: state.skills.skillData,
+    playerData: state.player.playerData
 })
 
 const mapDispatchToProps = {
-
+    setActivePage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SidePanel)

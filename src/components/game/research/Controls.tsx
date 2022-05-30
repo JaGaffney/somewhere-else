@@ -40,7 +40,10 @@ export const Controls = (props) => {
             </div>
 
             <div className="settlement__controls-buttons">
-                <button>do something?</button>
+                <button onClick={() => props.controlHandler("GLOBAL")}>Global</button>
+                <button onClick={() => props.controlHandler("SKILL")}>Skill</button>
+                <button onClick={() => props.controlHandler("JOB")}>Job</button>
+                <button onClick={() => props.controlHandler("COMBAT")}>Combat</button>
             </div>
         </div>
     )

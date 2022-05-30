@@ -10,3 +10,10 @@ research/market tab
 new skills
 same type of skill but 1 requires more people to do
 (i.e) woodcutting needs 1-5 per log, minign requires like 10/20
+
+farming
+ x | x | x
+ x | x | x
+ x | x | x
+ kind of like ff14/stardew in that you need to look after it (can assign cats)
+ or just click yourself to save on cats every 20 mins etc

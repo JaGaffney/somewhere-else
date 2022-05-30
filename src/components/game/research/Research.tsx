@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import Controls from './Controls'
 import ResearchPanel from './ResearchPanel'
 
 export const Research = (props) => {
+    const [researchFilter, setResearchFilter] = useState([])
+
     const validatePurchase = (cost, currentLevel): boolean => {
         let retValue = true
         if (cost.gp > props.playerData.playerBank.getCoins()) {
@@ -42,12 +44,19 @@ export const Research = (props) => {
         return costValue
     }
 
+    const controlHandler = (value: string) => {
+        if (researchFilter.includes(value)) {
+            setResearchFilter([researchFilter.filter(i => i !== value)])
+        } else {
+            setResearchFilter([...researchFilter, value])
+        }
+    }
 
     return (
         <div className="game__normal">
-            <Controls />
-            <ResearchPanel validatePurchase={validatePurchase} handlePurchase={handlePurchase} data={props.researchData.repeat} researchType={"repeat"} />
-            <ResearchPanel validatePurchase={validatePurchase} handlePurchase={handlePurchase} data={props.researchData.singular} researchType={"singular"} />
+            <Controls controlHandler={controlHandler} />
+            <ResearchPanel validatePurchase={validatePurchase} handlePurchase={handlePurchase} data={props.researchData.repeat} researchType={"repeat"} researchFilter={researchFilter} />
+            <ResearchPanel validatePurchase={validatePurchase} handlePurchase={handlePurchase} data={props.researchData.singular} researchType={"singular"} researchFilter={researchFilter} />
         </div>
     )
 }

@@ -38,7 +38,6 @@ export const Controls = (props) => {
                         <span key={k}><img src={researchColor[i]} />{intToString(researchVials[i])}</span>
                     )
                 })}
-                <span className="settlement__controls-manpower-info">Current research</span>
             </div>
 
             <div className="settlement__controls-buttons">

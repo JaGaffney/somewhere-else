@@ -81,3 +81,18 @@ export const getResearchBorderColor = (color: string): string => {
             return "inherit"
     }
 }
+
+export const getRarityColor = (rarity: string): string => {
+    let color = ""
+    switch (rarity) {
+        case ("COMMON"):
+            color = "var(--gray100)"
+            break;
+        case ("RARE"):
+            color = "var(--blue400)"
+            break;
+        default:
+            color = "var(--gray100)"
+    }
+    return color
+}

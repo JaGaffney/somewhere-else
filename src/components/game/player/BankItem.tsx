@@ -4,9 +4,8 @@ import { connect } from 'react-redux'
 export const BankItem = (props) => {
     return (
         <button className="bank__items-singleItem" key={props.key} onClick={() => {
-            props.handler(props.itemData)
-            props.qtyHandler(props.qty)
-            props.idHandler(props.id)
+            props.bankItemSelectedHandler(props.itemData)
+            props.setActiveItemID(props.id)
         }}>
             <img className="bank__items-image" src={props.icon} />
             <span className="bank__items-name">{props.name && props.name}</span>

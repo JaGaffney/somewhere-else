@@ -27,22 +27,25 @@ export const ResearchPanel = (props) => {
 
 
     return (
-        <div className="research__panel">
-            {props.researchData[props.researchType] && Object.keys(props.researchData[props.researchType]).map((i, k) => {
-                const data = props.researchData[props.researchType][i]
-                if (props.researchType === "singular") {
-                    if (Object.keys(props.playerData.research.singular).includes(data.name)) {
-                        return null
+        <div className="settlement__assignments research__assignments">
+            <h2>{props.researchType}</h2>
+            <div className="research__panel">
+                {props.researchData[props.researchType] && Object.keys(props.researchData[props.researchType]).map((i, k) => {
+                    const data = props.researchData[props.researchType][i]
+                    if (props.researchType === "singular") {
+                        if (Object.keys(props.playerData.research.singular).includes(data.name)) {
+                            return null
+                        }
                     }
-                }
 
-                if (!props.researchFilter.includes(data.type)) {
-                    return (
-                        <ResearchItem data={data} k={k} onBuyHandler={onBuyHandler} key={k} researchType={props.researchType} validatePurchase={props.validatePurchase} />
-                    )
-                }
+                    if (!props.researchFilter.includes(data.type)) {
+                        return (
+                            <ResearchItem data={data} k={k} onBuyHandler={onBuyHandler} key={k} researchType={props.researchType} validatePurchase={props.validatePurchase} />
+                        )
+                    }
 
-            })}
+                })}
+            </div>
         </div>
     )
 }

@@ -9,6 +9,48 @@
   font-size: 1rem;
 }
 
+.topPanel__controls {
+  display: flex;
+  justify-content: space-between;
+
+  &-left {
+    width: 30%;
+    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: var(--gray300);
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0px;
+    &-title {
+      font-size: 0.8rem;
+      width: 100%;
+      color: var(--gray400);
+    }
+    &-info {
+      width: 100%;
+      font-size: 0.7rem;
+      color: var(--gray500);
+    }
+    &-icons {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  &-right {
+    padding: 0 1rem;
+  }
+  img {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
+
 .exp {
   &__level {
     padding: 1rem;

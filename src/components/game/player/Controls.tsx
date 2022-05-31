@@ -5,13 +5,13 @@ import { intToString } from '../../utils/generic'
 
 export const Controls = (props) => {
     return (
-        <div className="topPanel settlement__controls">
-            <div className="settlement__controls-manpower research__panel-controls">
+        <div className="topPanel topPanel__controls">
+            <div className="topPanel__controls-left">
                 <span>{props.playerData.playerBank.bankItems.size} / {props.playerData.playerBank.bankSpace}</span>
-                <span className="settlement__controls-manpower-info">Bank Value {intToString(props.playerData.playerBank.getBankValue())} gp</span>
+                <span className="topPanel__controls-left-info">Bank Value {intToString(props.playerData.playerBank.getBankValue())} gp</span>
             </div>
 
-            <div className="settlement__controls-buttons">
+            <div className="topPanel__controls-right">
                 <button className="generic__button generic__button-primary" >do something</button>
                 <button className="generic__button generic__button-primary" >do something</button>
             </div>

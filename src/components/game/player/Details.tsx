@@ -7,8 +7,13 @@ export const Details = (props) => {
     const [xValue, setXValue] = useState<number>(0)
 
     const onSellHandler = (amount: number) => {
-        if (amount <= props.playerData.playerBank.findItemInBank(props.activeItemID).qty) {
+        const qty = props.playerData.playerBank.findItemInBank(props.activeItemID).qty
+        if (amount <= qty) {
             props.playerData.playerBank.sellItemFromBank(props.activeItemID, amount, props.activeBankItem.price)
+
+            if (amount === qty) {
+                props.bankItemSelectedHandler(null)
+            }
         }
     }
 

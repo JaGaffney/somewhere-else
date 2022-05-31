@@ -32,14 +32,14 @@ export const Controls = (props) => {
     }
 
     return (
-        <div className="topPanel settlement__controls">
-            <div className="settlement__controls-manpower">
+        <div className="topPanel topPanel__controls">
+            <div className="topPanel__controls-left">
                 <span>{props.playerData.getActiveManpower()} / {props.playerData.getManpower()} Manpower</span>
-                <span className="settlement__controls-manpower-info">Salary: {costPerAction(props.playerData.getActiveManpower())} GP</span>
+                <span className="topPanel__controls-left-info">Salary: {costPerAction(props.playerData.getActiveManpower())} GP</span>
             </div>
 
 
-            <div className="settlement__controls-buttons">
+            <div className="topPanel__controls-right">
                 <button disabled={props.playerData.playerBank.getCoins() <= manpowerCost} className="generic__button generic__button-primary" onClick={addManpower}>Hire for {manpowerCost} GP</button>
                 <button className={`generic__button generic__button-primary ${props.playerData.getSettingValue("autoSell") ? "generic__button-active" : null}`} onClick={handleAutoSell}>Auto Sell</button>
                 <button className="generic__button generic__button-secondary" onClick={resetAllTasks}>Reset</button>

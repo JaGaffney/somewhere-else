@@ -31,16 +31,19 @@ export const Controls = (props) => {
     const controlButtons = ["GLOBAL", "COMBAT", "JOB", "SKILL"]
 
     return (
-        <div className="topPanel settlement__controls">
-            <div className="settlement__controls-manpower research__panel-controls">
+        <div className="topPanel topPanel__controls">
+            <div className="topPanel__controls-left">
                 {Object.keys(researchVials).map((i, k) => {
                     return (
-                        <span key={k}><img src={researchColor[i]} />{intToString(researchVials[i])}</span>
+                        <div key={k} className="topPanel__controls-left-icons">
+                            <img src={researchColor[i]} />
+                            <span>{intToString(researchVials[i])}</span>
+                        </div>
                     )
                 })}
             </div>
 
-            <div className="settlement__controls-buttons">
+            <div className="topPanel__controls-right">
                 {controlButtons.map((i, k) => {
                     console.log(i)
                     return (

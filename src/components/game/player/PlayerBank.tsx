@@ -31,7 +31,7 @@ export const PlayerBank = (props) => {
                     <Storage setActiveItemID={setActiveItemID} bankItemSelectedHandler={bankItemSelectedHandler} />
                 )}
 
-                <Details activeBankItem={activeBankItem} activeItemID={activeItemID} />
+                <Details activeBankItem={activeBankItem} activeItemID={activeItemID} bankItemSelectedHandler={bankItemSelectedHandler} />
 
             </div>
         </div>

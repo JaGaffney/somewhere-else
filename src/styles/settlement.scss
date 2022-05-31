@@ -1,34 +1,3 @@
-.settlement__controls {
-  display: flex;
-  justify-content: space-between;
-
-  &-manpower {
-    width: 30%;
-    padding: 0 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    color: var(--gray300);
-    font-weight: 700;
-    font-size: 1.3rem;
-    letter-spacing: 0px;
-    &-title {
-      font-size: 0.8rem;
-      width: 100%;
-      color: var(--gray400);
-    }
-    &-info {
-      width: 100%;
-      font-size: 0.7rem;
-      color: var(--gray500);
-    }
-  }
-
-  &-buttons {
-    padding: 0 1rem;
-  }
-}
-
 .settlement__actions {
   display: flex;
   flex-wrap: nowrap;
@@ -254,21 +223,5 @@
         }
       }
     }
-  }
-}
-
-.research__panel-controls {
-  display: flex;
-  justify-content: flex-start;
-  width: 50%;
-  gap: 0.5rem;
-  span {
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-  }
-  img {
-    width: 1.2rem;
-    height: 1.2rem;
   }
 }

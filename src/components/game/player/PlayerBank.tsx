@@ -19,9 +19,6 @@ export const PlayerBank = (props) => {
         setActiveBankItem(itemData)
     }
 
-
-    console.log({ activeItemID })
-
     return (
         <div className="game__normal">
             <Controls />

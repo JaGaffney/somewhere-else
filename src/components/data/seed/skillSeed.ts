@@ -221,7 +221,7 @@ export const metalwork = [
 
 export const scholar = [
   {
-    name: "reading",
+    name: "experimentation I",
     level: 1,
     exp: 5,
     time: 10.0,
@@ -235,11 +235,11 @@ export const scholar = [
     ],
   },
   {
-    name: "experimentation",
+    name: "experimentation II",
     level: 1,
     exp: 25,
     time: 10.0,
-    manpower: 1,
+    manpower: 2,
     icon: reading,
     itemsRecieved: [
       {
@@ -249,11 +249,11 @@ export const scholar = [
     ],
   },
   {
-    name: "experimentation ii",
+    name: "experimentation III",
     level: 1,
     exp: 25,
     time: 10.0,
-    manpower: 1,
+    manpower: 31,
     icon: reading,
     itemsRecieved: [
       {

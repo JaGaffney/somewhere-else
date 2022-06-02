@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import ReactTooltip from 'react-tooltip';
@@ -6,6 +6,9 @@ import ReactTooltip from 'react-tooltip';
 
 
 export const BankItem = (props) => {
+    useEffect(() => {
+    }, [props.playerUpdated])
+
     return (
         props.qty > 0 &&
         <>
@@ -28,7 +31,7 @@ export const BankItem = (props) => {
 
 
 const mapStateToProps = (state) => ({
-
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = {

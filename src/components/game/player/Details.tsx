@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
+import { setPlayerUpdated } from '../../actions/api'
+
 import { getRarityColor } from '../../utils/color'
 
 // @ts-expect-error
@@ -17,6 +19,7 @@ export const Details = (props) => {
             if (amount === qty) {
                 props.bankItemSelectedHandler(null)
             }
+            props.setPlayerUpdated()
         }
     }
 
@@ -65,6 +68,8 @@ const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+    setPlayerUpdated
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Details)

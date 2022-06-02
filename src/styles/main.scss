@@ -247,6 +247,13 @@
       border-color: var(--blue700);
     }
   }
+  &-sellMode {
+    &:hover,
+    &:focus {
+      background-color: var(--gray900);
+      border-color: var(--red700);
+    }
+  }
   &-image {
     height: 2.5rem;
     width: 100%;

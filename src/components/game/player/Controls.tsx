@@ -12,7 +12,7 @@ export const Controls = (props) => {
             </div>
 
             <div className="topPanel__controls-right">
-                <button className="generic__button generic__button-primary" >do something</button>
+                <button className={`generic__button ${!props.sellMode ? "generic__button-primary" : "generic__button-secondary"}`} onClick={() => props.setSellMode(!props.sellMode)}>Toggle Sell Mode</button>
                 <button className="generic__button generic__button-primary" >do something</button>
             </div>
 

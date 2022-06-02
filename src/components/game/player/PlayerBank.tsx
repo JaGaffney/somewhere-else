@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
-import { intToString } from '../../utils/generic'
-
 import Controls from './Controls'
 import Storage from './Storage'
 import Details from './Details'
@@ -11,6 +9,7 @@ import Details from './Details'
 export const PlayerBank = (props) => {
     const [activeBankItem, setActiveBankItem] = useState(null)
     const [activeItemID, setActiveItemID] = useState<number>(0)
+    const [sellMode, setSellMode] = useState<boolean>(false)
 
     useEffect(() => {
     }, [props.playerData.playerBank.bankItems, props.playerUpdated])
@@ -21,11 +20,11 @@ export const PlayerBank = (props) => {
 
     return (
         <div className="game__normal">
-            <Controls />
+            <Controls setSellMode={setSellMode} sellMode={sellMode} />
 
             <div className="bank__container">
                 {props.playerData.playerBank !== null && (
-                    <Storage setActiveItemID={setActiveItemID} bankItemSelectedHandler={bankItemSelectedHandler} />
+                    <Storage setActiveItemID={setActiveItemID} bankItemSelectedHandler={bankItemSelectedHandler} sellMode={sellMode} />
                 )}
 
                 <Details activeBankItem={activeBankItem} activeItemID={activeItemID} bankItemSelectedHandler={bankItemSelectedHandler} />

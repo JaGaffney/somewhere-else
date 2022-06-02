@@ -23,6 +23,7 @@ export const Jobs = (props) => {
             </div>
             <div className="settlement__jobs-data">
                 {Object.keys(tasks).map((i, k) => {
+                    console.log(tasks)
                     return (
                         props.jobData.actions[i] && (
                             <Action action={i} key={k} jobData={props.jobData} enoughManpower={enoughManpower} />

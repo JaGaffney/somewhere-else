@@ -20,7 +20,8 @@ export const Storage = (props) => {
                             qty={props.playerData.playerBank.bankItems.get(id).qty}
                             itemData={data}
                             bankItemSelectedHandler={props.bankItemSelectedHandler}
-                            setActiveItemID={props.setActiveItemID} />
+                            setActiveItemID={props.setActiveItemID}
+                            sellMode={props.sellMode} />
 
                     )
                 })}

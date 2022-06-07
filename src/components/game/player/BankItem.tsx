@@ -5,19 +5,15 @@ import ReactTooltip from 'react-tooltip';
 
 import { setPlayerUpdated } from '../../actions/api'
 
-
-
 export const BankItem = (props) => {
     useEffect(() => {
     }, [props.playerUpdated])
-
 
     const onSellModeHandler = () => {
         const qty = props.playerData.playerBank.findItemInBank(props.id).qty
         props.playerData.playerBank.sellItemFromBank(props.id, qty, props.itemData.price)
         props.bankItemSelectedHandler(null)
         props.setPlayerUpdated()
-
     }
 
     const onClickHandler = () => {
@@ -44,8 +40,6 @@ export const BankItem = (props) => {
         </>
     )
 }
-
-
 
 const mapStateToProps = (state) => ({
     playerUpdated: state.engine.playerUpdated,

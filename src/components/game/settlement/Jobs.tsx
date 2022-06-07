@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-
-
 import Action from './Action'
 
 export const Jobs = (props) => {
@@ -23,7 +21,6 @@ export const Jobs = (props) => {
             </div>
             <div className="settlement__jobs-data">
                 {Object.keys(tasks).map((i, k) => {
-                    console.log(tasks)
                     return (
                         props.jobData.actions[i] && (
                             <Action action={i} key={k} jobData={props.jobData} enoughManpower={enoughManpower} />

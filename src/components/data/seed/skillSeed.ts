@@ -21,6 +21,14 @@ import {
   reading,
 } from "./icons/skillSeedIcons"
 
+import {
+  researchRed,
+  researchGreen,
+  researchBlue,
+  researchYellow,
+  researchPurple,
+} from "./icons/itemSeedIcons"
+
 export const forestry = [
   {
     name: "bamboo",
@@ -226,7 +234,7 @@ export const scholar = [
     exp: 5,
     time: 10.0,
     manpower: 1,
-    icon: reading,
+    icon: researchRed,
     itemsRecieved: [
       {
         id: 998,
@@ -240,7 +248,7 @@ export const scholar = [
     exp: 25,
     time: 10.0,
     manpower: 2,
-    icon: reading,
+    icon: researchGreen,
     itemsRecieved: [
       {
         id: 997,
@@ -253,11 +261,39 @@ export const scholar = [
     level: 1,
     exp: 25,
     time: 10.0,
-    manpower: 31,
-    icon: reading,
+    manpower: 3,
+    icon: researchBlue,
     itemsRecieved: [
       {
         id: 996,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "experimentation IV",
+    level: 1,
+    exp: 25,
+    time: 10.0,
+    manpower: 4,
+    icon: researchYellow,
+    itemsRecieved: [
+      {
+        id: 995,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "experimentation V",
+    level: 1,
+    exp: 25,
+    time: 10.0,
+    manpower: 5,
+    icon: researchPurple,
+    itemsRecieved: [
+      {
+        id: 994,
         qty: 1,
       },
     ],

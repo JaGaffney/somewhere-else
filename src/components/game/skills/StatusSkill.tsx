@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { setPlayerUpdated } from '../../actions/api'
+import Status from './generics/Status'
+
+// ICONS
+
 
 export const StatusSkill = (props) => {
     // TODO: divination
@@ -9,40 +12,20 @@ export const StatusSkill = (props) => {
     // 1 focus on dmg at the cost of defence
     // 1 focus on defence at the csot of damage
     // 1 focus on killing things effiecntly (drop rate increase etc)
-
-    const update = () => {
-        props.setPlayerUpdated()
-    }
-
-
     return (
         <div>
-            <button onClick={() => {
-                props.status.health.buyStatus()
-                update()
-            }}>Add Health</button>
-            <button onClick={() => {
-                props.status.stamina.buyStatus()
-                update()
-            }}>Add Stamina</button>
-            <button onClick={() => {
-                props.status.armour.buyStatus()
-                update()
-            }}>Add Armour</button>
-            <button onClick={() => {
-                props.status.divination.buyStatus()
-                update()
-            }}>Add divination</button>
+            {props.skills.getAllStatusSkills().map((i, k) => <Status key={k} skillName={i} icon={props.skills.getSkillIconByName("status", i)} type={"status"} />)}
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
-    status: state.player.playerData.status
+    status: state.player.playerData.status,
+    skills: state.skills.skillData,
 })
 
 const mapDispatchToProps = {
-    setPlayerUpdated
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(StatusSkill)

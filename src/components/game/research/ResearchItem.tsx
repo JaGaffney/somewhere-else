@@ -26,6 +26,8 @@ export const ResearchItem = (props) => {
         red: researchRed,
         green: researchGreen,
         blue: researchBlue,
+        yellow: researchYellow,
+        purple: researchPurple
 
     }
 
@@ -52,8 +54,6 @@ export const ResearchItem = (props) => {
                 <div className="research__panel-data-action-controls">
 
                     <button disabled={!props.validatePurchase(props.data.cost, currentLevel)} onClick={() => props.onBuyHandler(props.data, currentLevel, props.researchType)}>[ Buy ]</button>
-
-
 
                 </div>
             </div>

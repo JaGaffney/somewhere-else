@@ -105,4 +105,22 @@ export const researchSingular = [
     description: "Unlocks the Magician class",
     type: ResearchType.Combat,
   },
+  {
+    name: "test",
+    cost: {
+      gp: 10000,
+      researchPoints: {
+        red: 5000,
+        green: 1000,
+        blue: 1000,
+      },
+      other: {
+        1: 100,
+        2: 21,
+      },
+    },
+    icon: MAGICIAN,
+    description: "Unlocks the Magician class",
+    type: ResearchType.Combat,
+  },
 ]

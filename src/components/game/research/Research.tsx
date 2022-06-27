@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import Controls from './Controls'
 import ResearchPanel from './ResearchPanel'
+import ResearchSingle from './ResearchSingle'
 
 export const Research = (props) => {
     const [researchFilter, setResearchFilter] = useState([])
@@ -56,7 +57,7 @@ export const Research = (props) => {
         <div className="game__normal">
             <Controls controlHandler={controlHandler} researchFilter={researchFilter} />
             <ResearchPanel validatePurchase={validatePurchase} handlePurchase={handlePurchase} data={props.researchData.repeat} researchType={"repeat"} researchFilter={researchFilter} />
-            <ResearchPanel validatePurchase={validatePurchase} handlePurchase={handlePurchase} data={props.researchData.singular} researchType={"singular"} researchFilter={researchFilter} />
+            <ResearchSingle validatePurchase={validatePurchase} handlePurchase={handlePurchase} data={props.researchData.singular} researchFilter={researchFilter} />
         </div>
     )
 }

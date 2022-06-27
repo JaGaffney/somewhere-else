@@ -73,11 +73,13 @@ export class ItemData {
   }
 
   getItemById(id) {
+    console.log("got here id")
     let value = id
     // TODO: need a better check for equipment and consumeable
     if (id > 10000) {
       value = Math.floor(id / 10000)
     }
+    console.log(this.generic.get(id))
     return this.generic.get(id)
     // switch (value) {
     //   case 1:

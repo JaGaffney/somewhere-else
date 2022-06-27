@@ -45,7 +45,6 @@ export const Controls = (props) => {
 
             <div className="topPanel__controls-right">
                 {controlButtons.map((i, k) => {
-                    console.log(i)
                     return (
                         <button
                             key={k}

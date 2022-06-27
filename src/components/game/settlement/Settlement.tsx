@@ -12,7 +12,6 @@ export const Settlement = props => {
             <div className="settlement__actions">
                 <Assignments />
                 <Stats />
-
             </div>
 
         </div>

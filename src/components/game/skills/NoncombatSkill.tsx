@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import EXP from "./generics/EXP"
-import Upgrades from "./generics/Upgrades"
 import Actions from "./generics/Actions"
 import Progression from "./generics/Progression"
 

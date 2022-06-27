@@ -5,7 +5,7 @@ import Settlement from "./settlement/Settlement"
 import Research from "./research/research"
 import NoncombatSkill from "./skills/NoncombatSkill"
 import CombatSkill from "./skills/CombatSkill"
-import StatusSkill from "./skills/StatusSkill"
+import Status from "./status/Status"
 import Playerbank from "./player/Playerbank"
 import Combat from "./combat/Combat"
 import Shop from "./shop/Shop"
@@ -29,7 +29,7 @@ export const Game = props => {
       case "stamina":
       case "armour":
       case "divination":
-        return <StatusSkill />
+        return <Status />
       case "bank":
         return <Playerbank />
       case "combat":

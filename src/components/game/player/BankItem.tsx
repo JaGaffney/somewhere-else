@@ -5,6 +5,8 @@ import ReactTooltip from 'react-tooltip';
 
 import { setPlayerUpdated } from '../../actions/api'
 
+import { intToString } from '../../utils/generic';
+
 export const BankItem = (props) => {
     useEffect(() => {
     }, [props.playerUpdated])
@@ -34,7 +36,7 @@ export const BankItem = (props) => {
                 data-tip={props.name && props.name}
             >
                 <img className="bank__items-image" src={props.icon} />
-                <span className="bank__items-qty">{props.qty && props.qty}</span>
+                <span className="bank__items-qty">{props.qty && intToString(props.qty)}</span>
             </button>
             <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />
         </>

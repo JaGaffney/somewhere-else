@@ -106,7 +106,7 @@ export const researchSingular = [
     type: ResearchType.Combat,
   },
   {
-    name: "test",
+    name: "test1",
     cost: {
       gp: 10000,
       researchPoints: {
@@ -120,6 +120,63 @@ export const researchSingular = [
       },
     },
     icon: MAGICIAN,
+    description: "Unlocks the Magician class",
+    type: ResearchType.Combat,
+  },
+  {
+    name: "test2",
+    cost: {
+      gp: 10000,
+      researchPoints: {
+        red: 5000,
+        green: 1000,
+        blue: 1000,
+        purple: 1000,
+        yellow: 1,
+      },
+      other: {
+        1: 100,
+        2: 21,
+        5: 254,
+      },
+    },
+    icon: MAGICIAN,
+    description: "Unlocks the Magician class",
+    type: ResearchType.Combat,
+  },
+  {
+    name: "test3",
+    cost: {
+      gp: 10000,
+      researchPoints: {
+        red: 5000,
+        green: 1000,
+        blue: 1000,
+      },
+      other: {
+        1: 100,
+        2: 21,
+      },
+    },
+    icon: ARCHER,
+    description: "Unlocks the Magician class",
+    type: ResearchType.Combat,
+  },
+  {
+    name: "test4",
+    cost: {
+      gp: 10000,
+      researchPoints: {
+        red: 5000,
+        green: 1000,
+        blue: 1000,
+      },
+      other: {
+        1: 100,
+        2: 21,
+      },
+    },
+    icon: ARCHER,
     description: "Unlocks the Magician class",
     type: ResearchType.Combat,
   },

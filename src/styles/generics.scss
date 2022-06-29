@@ -14,7 +14,8 @@
   justify-content: space-between;
 
   &-left {
-    width: 30%;
+    width: auto;
+    max-width: 70%;
     padding: 0 1rem;
     display: flex;
     flex-wrap: wrap;

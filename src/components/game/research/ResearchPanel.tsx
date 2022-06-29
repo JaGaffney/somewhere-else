@@ -24,11 +24,9 @@ export const ResearchPanel = (props) => {
         }
     }
 
-
-
     return (
         <div className="settlement__assignments research__assignments">
-            <h2>{props.researchType}</h2>
+            <h2>Repeatable</h2>
             <div className="research__panel">
                 {props.researchData[props.researchType] && Object.keys(props.researchData[props.researchType]).map((i, k) => {
                     const data = props.researchData[props.researchType][i]

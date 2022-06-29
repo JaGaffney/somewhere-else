@@ -75,7 +75,7 @@ export const getResearchBorderColor = (color: string): string => {
             return "var(--amber700)";
         }
         case ("combat"): {
-            return "var(--purple700)";
+            return "var(--violet900)";
         }
         default:
             return "inherit"

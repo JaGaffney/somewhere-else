@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import ResearchCost from './ResearchCost'
 
+import { getResearchBorderColor } from "../../utils/color"
+
 export const ResearchSingle = (props) => {
     const [activeResearch, setActiveResearch] = useState<Object | null>(null)
 
@@ -14,6 +16,10 @@ export const ResearchSingle = (props) => {
         <div className="settlement__assignments research__assignments">
             <h2>One time buy</h2>
             <div className="research__panel-single">
+                <div className="research__panel-single-cost">
+                    <ResearchCost activeResearch={activeResearch} />
+                </div>
+
                 <div className="research__panel">
                     {props.researchData["singular"] && Object.keys(props.researchData["singular"]).map((i, k) => {
                         const data = props.researchData["singular"][i]
@@ -21,26 +27,27 @@ export const ResearchSingle = (props) => {
                             return null
                         }
 
-                        if (!props.researchFilter.includes(data.type)) {
-                            return (
-                                <div key={k} className="research__panel-single-item" onMouseEnter={() => onActiveResearchHandler(data.name)}>
-                                    <div className="research__panel-data-action" key={props.k}>
-                                        <img className="action__item-icon" src={data.icon} />
-                                        <div className="research__panel-data-action-data">
-                                            <span className="research__panel-data-action-title">{data.name} {props.playerData.research["singular"][data.name]}</span>
-                                            <span className="research__panel-data-action-description">"{data.description}"</span>
-                                        </div>
-                                    </div>
 
+                        if (!props.researchFilter.includes(data.type)) {
+                            console.log(data.type)
+                            return (
+                                <div key={k}
+                                    className="research__panel-single-item research__panel-data-action"
+                                    onClick={() => onActiveResearchHandler(data.name)}
+                                    style={{ borderColor: getResearchBorderColor(data.type) }}
+                                >
+                                    <img className="action__item-icon" src={data.icon} />
+                                    <div className="research__panel-data-action-data">
+                                        <span className="research__panel-data-action-title">{data.name} {props.playerData.research["singular"][data.name]}</span>
+                                        <span className="research__panel-data-action-description">"{data.description}"</span>
+                                    </div>
                                 </div>
                             )
                         }
                     })}
                 </div>
 
-                <div className="research__panel-single-cost">
-                    <ResearchCost activeResearch={activeResearch} />
-                </div>
+
             </div>
         </div>
     )

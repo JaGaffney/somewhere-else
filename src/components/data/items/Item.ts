@@ -9,18 +9,21 @@ export class Item {
   icon: any
   description: string
   rarity: Rarity
+  itemType: string
 
   constructor(
     name: string,
     price: number,
     icon: any,
     description: string,
-    rarity: string
+    rarity: string,
+    itemType: string
   ) {
     this.name = name
     this.price = price
     this.icon = icon
     this.description = description
     this.rarity = enumFromValue(rarity, Rarity)
+    this.itemType = itemType
   }
 }

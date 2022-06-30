@@ -10,9 +10,10 @@ export class Consumable extends Item {
     icon: any,
     description: string,
     rarity: string,
+    itemType: string,
     consumable: boolean
   ) {
-    super(name, price, icon, description, rarity)
+    super(name, price, icon, description, rarity, itemType)
     this.consumable = consumable
   }
 }

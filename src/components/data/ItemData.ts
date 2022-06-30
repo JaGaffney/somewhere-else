@@ -5,92 +5,80 @@ import { Item } from "./items/Item"
 import { Shop } from "./shop/Shop"
 
 import { itemSeed } from "./seed/itemSeed"
-import { equipmentSeed } from "./seed/equipmentSeed"
 import { shopSeed } from "./seed/shopSeed"
 
 // on loads creates all of the items in game data.
 export class ItemData {
-  generic: Map<number, Item> = new Map()
-  consumable: Map<number, Consumable> = new Map()
-  equipment: Map<number, Equipment> = new Map()
   shop: Shop
+  items: Map<number, Item> = new Map()
 
   constructor() {
-    this.createItems()
-    this.createConsumableItems()
-    this.createEquipmentItems()
-    //this.shop = new Shop(shopSeed)
+    this.createItemByType()
   }
 
-  createItems() {
+  private createItemByType(): void {
     for (const key in itemSeed) {
-      this.generic.set(
-        itemSeed[key].id,
-        new Item(
-          itemSeed[key].name,
-          itemSeed[key].price,
-          itemSeed[key].icon,
-          itemSeed[key].description,
-          itemSeed[key].rarity
-        )
-      )
-    }
-  }
-  createConsumableItems() {
-    for (const key in itemSeed) {
-      this.consumable.set(
-        itemSeed[key].id,
-        new Consumable(
-          itemSeed[key].name,
-          itemSeed[key].price,
-          itemSeed[key].icon,
-          itemSeed[key].description,
-          itemSeed[key].rarity,
-          itemSeed[key].consumeable
-        )
-      )
+      switch (itemSeed[key].itemType) {
+        case "generic":
+          this.items.set(
+            itemSeed[key].id,
+            this.createGenericItems(itemSeed[key])
+          )
+        case "equipment":
+          this.items.set(
+            itemSeed[key].id,
+            this.createEquipmentItems(itemSeed[key])
+          )
+        case "consumeable":
+          this.items.set(
+            itemSeed[key].id,
+            this.createConsumableItems(itemSeed[key])
+          )
+        default:
+          console.log(`ERROR Adding ${itemSeed[key].id} to data`)
+      }
     }
   }
 
-  createEquipmentItems() {
-    for (const key in equipmentSeed) {
-      this.equipment.set(
-        equipmentSeed[key].id,
-        new Equipment(
-          equipmentSeed[key].name,
-          equipmentSeed[key].price,
-          equipmentSeed[key].icon,
-          equipmentSeed[key].description,
-          equipmentSeed[key].rarity,
-          equipmentSeed[key].requirementLevel,
-          equipmentSeed[key].requirementStyle,
-          equipmentSeed[key].slot,
-          equipmentSeed[key].equipmentStats,
-          equipmentSeed[key].effect
-        )
-      )
-    }
+  createGenericItems(data) {
+    return new Item(
+      data.name,
+      data.price,
+      data.icon,
+      data.description,
+      data.rarity,
+      data.itemType
+    )
+  }
+  createConsumableItems(data) {
+    return new Consumable(
+      data.name,
+      data.price,
+      data.icon,
+      data.description,
+      data.rarity,
+      data.itemType,
+      data.consumeable
+    )
   }
 
-  getItemById(id) {
-    console.log("got here id")
-    let value = id
-    // TODO: need a better check for equipment and consumeable
-    if (id > 10000) {
-      value = Math.floor(id / 10000)
-    }
-    console.log(this.generic.get(id))
-    return this.generic.get(id)
-    // switch (value) {
-    //   case 1:
-    //   case 4:
-    //     return this.generic.get(id)
-    //   case 2:
-    //     return this.equipment.get(id)
-    //   case 3:
-    //     return this.consumable.get(id)
-    //   default:
-    //     return this.generic.get(id)
-    // }
+  createEquipmentItems(data) {
+    return new Equipment(
+      data.name,
+      data.price,
+      data.icon,
+      data.description,
+      data.rarity,
+      data.itemType,
+      data.requirementLevel,
+      data.requirementStyle,
+      data.slot,
+      data.equipmentStats,
+      data.effect
+    )
+  }
+
+  getItemById(id: number) {
+    return this.items.get(id)
   }
 }

@@ -32,6 +32,7 @@ import {
 export const itemSeed = [
   {
     id: 999,
+    itemType: "generic",
     name: "gp",
     price: 1,
     icon: gp,
@@ -41,6 +42,7 @@ export const itemSeed = [
   },
   {
     id: 998,
+    itemType: "generic",
     name: "red research",
     price: 0,
     icon: researchRed,
@@ -50,6 +52,7 @@ export const itemSeed = [
   },
   {
     id: 997,
+    itemType: "generic",
     name: "green research",
     price: 0,
     icon: researchGreen,
@@ -59,6 +62,7 @@ export const itemSeed = [
   },
   {
     id: 996,
+    itemType: "generic",
     name: "blue research",
     price: 0,
     icon: researchBlue,
@@ -68,6 +72,7 @@ export const itemSeed = [
   },
   {
     id: 995,
+    itemType: "generic",
     name: "yellow research",
     price: 0,
     icon: researchYellow,
@@ -77,6 +82,7 @@ export const itemSeed = [
   },
   {
     id: 994,
+    itemType: "generic",
     name: "purple research",
     price: 0,
     icon: researchPurple,
@@ -86,6 +92,7 @@ export const itemSeed = [
   },
   {
     id: 1,
+    itemType: "generic",
     name: "bamboo log",
     price: 10,
     icon: logBamboo,
@@ -95,6 +102,7 @@ export const itemSeed = [
   },
   {
     id: 2,
+    itemType: "generic",
     name: "beech log",
     price: 15,
     icon: logBrown,
@@ -104,6 +112,7 @@ export const itemSeed = [
   },
   {
     id: 3,
+    itemType: "generic",
     name: "birch log",
     price: 20,
     icon: logGray,
@@ -113,6 +122,7 @@ export const itemSeed = [
   },
   {
     id: 4,
+    itemType: "generic",
     name: "oak log",
     price: 25,
     icon: logDarkbrown,
@@ -122,6 +132,7 @@ export const itemSeed = [
   },
   {
     id: 5,
+    itemType: "generic",
     name: "palm log",
     price: 30,
     icon: logGreen,
@@ -131,6 +142,7 @@ export const itemSeed = [
   },
   {
     id: 6,
+    itemType: "generic",
     name: "willow log",
     price: 35,
     icon: logDarkgreen,
@@ -140,6 +152,7 @@ export const itemSeed = [
   },
   {
     id: 7,
+    itemType: "generic",
     name: "redwood log",
     price: 40,
     icon: logRed,
@@ -149,6 +162,7 @@ export const itemSeed = [
   },
   {
     id: 8,
+    itemType: "generic",
     name: "undead log",
     price: 45,
     icon: logUndead,
@@ -158,6 +172,7 @@ export const itemSeed = [
   },
   {
     id: 9,
+    itemType: "generic",
     name: "log of life",
     price: 50,
     icon: logOfLife,
@@ -167,6 +182,7 @@ export const itemSeed = [
   },
   {
     id: 10,
+    itemType: "generic",
     name: "demonic log",
     price: 55,
     icon: logDemon,
@@ -176,6 +192,7 @@ export const itemSeed = [
   },
   {
     id: 11,
+    itemType: "generic",
     name: "god tree",
     price: 1,
     icon: log,
@@ -185,6 +202,7 @@ export const itemSeed = [
   },
   {
     id: 12,
+    itemType: "generic",
     name: "stone",
     price: 10,
     icon: stone,
@@ -194,6 +212,7 @@ export const itemSeed = [
   },
   {
     id: 13,
+    itemType: "generic",
     name: "copper ore",
     price: 10,
     icon: copper,
@@ -203,6 +222,7 @@ export const itemSeed = [
   },
   {
     id: 14,
+    itemType: "generic",
     name: "tin ore",
     price: 10,
     icon: tin,
@@ -212,6 +232,7 @@ export const itemSeed = [
   },
   {
     id: 15,
+    itemType: "generic",
     name: "iron ore",
     price: 10,
     icon: iron,
@@ -221,6 +242,7 @@ export const itemSeed = [
   },
   {
     id: 16,
+    itemType: "generic",
     name: "coal",
     price: 10,
     icon: coal,
@@ -230,6 +252,7 @@ export const itemSeed = [
   },
   {
     id: 17,
+    itemType: "generic",
     name: "silver ore",
     price: 500,
     icon: silver,
@@ -239,6 +262,7 @@ export const itemSeed = [
   },
   {
     id: 18,
+    itemType: "generic",
     name: "gold ore",
     price: 500,
     icon: gold,
@@ -248,20 +272,12 @@ export const itemSeed = [
   },
   {
     id: 19,
+    itemType: "generic",
     name: "mithril ore",
     price: 10,
     icon: mithril,
     description: "",
     rarity: "COMMON",
     consumeable: false,
-  },
-  {
-    id: 40001,
-    name: "bank slot",
-    price: 1000,
-    icon: log,
-    description: "Player bank slot",
-    rarity: "COMMON",
-    consumeable: true,
   },
 ]

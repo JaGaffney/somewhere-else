@@ -61,8 +61,15 @@ export const intToString = (num): string => {
       break
     }
   }
-  return (
+  let retValue =
     (num / si[index].v).toFixed(2).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, "$1") +
     si[index].s
-  )
+
+  let tempRetValue = retValue.split(".")
+  if (tempRetValue.length === 2) {
+    let numberValue = tempRetValue[1].slice(-1)
+    retValue = tempRetValue[0] + numberValue
+  }
+
+  return retValue
 }

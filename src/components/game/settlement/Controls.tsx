@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import { setPlayerUpdated } from '../../actions/api'
 
-import { costPerAction } from '../../utils/generic'
+import { costPerAction, intToString } from '../../utils/generic'
 
 export const Controls = (props) => {
     const [manpowerCost, setManpowerCost] = useState<number>(props.playerData.levelChecker.level[props.playerData.getManpower()])
@@ -40,7 +40,7 @@ export const Controls = (props) => {
 
 
             <div className="topPanel__controls-right">
-                <button disabled={props.playerData.playerBank.getCoins() <= manpowerCost} className="generic__button generic__button-primary" onClick={addManpower}>Hire for {manpowerCost} GP</button>
+                <button disabled={props.playerData.playerBank.getCoins() <= manpowerCost} className="generic__button generic__button-primary" onClick={addManpower}>Hire for {intToString(manpowerCost)} GP</button>
                 <button className={`generic__button generic__button-primary ${props.playerData.getSettingValue("autoSell") ? "generic__button-active" : null}`} onClick={handleAutoSell}>Auto Sell</button>
                 <button className="generic__button generic__button-secondary" onClick={resetAllTasks}>Reset</button>
             </div>

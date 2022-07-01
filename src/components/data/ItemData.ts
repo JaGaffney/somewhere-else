@@ -24,18 +24,22 @@ export class ItemData {
             itemSeed[key].id,
             this.createGenericItems(itemSeed[key])
           )
+          break
         case "equipment":
           this.items.set(
             itemSeed[key].id,
             this.createEquipmentItems(itemSeed[key])
           )
+          break
         case "consumeable":
           this.items.set(
             itemSeed[key].id,
             this.createConsumableItems(itemSeed[key])
           )
+          break
         default:
-          console.log(`ERROR Adding ${itemSeed[key].id} to data`)
+          console.log(`ERROR Adding ${itemSeed[key].id} to itemData`)
+          break
       }
     }
   }
@@ -71,7 +75,6 @@ export class ItemData {
       data.rarity,
       data.itemType,
       data.requirementLevel,
-      data.requirementStyle,
       data.slot,
       data.equipmentStats,
       data.effect

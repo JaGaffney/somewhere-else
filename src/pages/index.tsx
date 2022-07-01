@@ -33,8 +33,6 @@ const IndexPage = props => {
     // creates all items in the game
     const itemData = new ItemData()
 
-    console.log(itemData)
-
     // creates all skill data not pertaining to the player
     const skillData = new SkillData()
     const attackData = new AttackData()

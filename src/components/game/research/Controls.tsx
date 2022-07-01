@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
+import ReactTooltip from 'react-tooltip';
+
 import { setPlayerUpdated } from '../../actions/api'
 
 import { intToString } from '../../utils/generic'
@@ -35,13 +37,15 @@ export const Controls = (props) => {
             <div className="topPanel__controls-left">
                 {Object.keys(researchVials).map((i, k) => {
                     return (
-                        <div key={k} className="topPanel__controls-left-icons">
+                        <div key={k} className="topPanel__controls-left-icons" data-tip={researchVials[i] && researchVials[i]}>
                             <img src={researchColor[i]} />
                             <span>{intToString(researchVials[i])}</span>
                         </div>
                     )
                 })}
             </div>
+
+            <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />
 
             <div className="topPanel__controls-right">
                 {controlButtons.map((i, k) => {

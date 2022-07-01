@@ -280,4 +280,17 @@ export const itemSeed = [
     rarity: "COMMON",
     consumeable: false,
   },
+  {
+    id: 20,
+    itemType: "equipment",
+    name: "bronze chainbody",
+    price: 10,
+    icon: mithril,
+    description: "A bronze chainbody",
+    rarity: "COMMON",
+    requirementLevel: 1,
+    slot: "CHEST",
+    equipmentStats: { attack: 0, defence: 5, weight: 10, speed: 100 },
+    effect: "",
+  },
 ]

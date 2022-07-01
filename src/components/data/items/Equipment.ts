@@ -25,14 +25,12 @@ export class Equipment extends Item {
     rarity: string,
     itemType: string,
     requirementLevel: number,
-    requirementStyle: string,
     slot: string,
     equipmentStats: IEquipmentStats,
     effect: string
   ) {
     super(name, price, icon, description, rarity, itemType)
     this.requirementLevel = requirementLevel
-    this.requirementStyle = enumFromValue(requirementStyle, RequirementStyle)
     this.slot = enumFromValue(slot, Slot)
     this.equipmentStats = equipmentStats
     this.effect = effect

@@ -9,10 +9,21 @@ import Controls from '../player/Controls'
 
 export const Inventory = (props) => {
 
-    const [activeEquipmentSlot, setActiveEquipmentSlot] = useState("weapon")
+    const [activeEquipmentSlot, setActiveEquipmentSlot] = useState("")
+    const [activeEquipmentItem, setActiveEquipmentItem] = useState("")
 
     const onActiveEquipmentSlotHandler = (slot: string): void => {
         setActiveEquipmentSlot(slot)
+    }
+
+    const onItemSelectedHandler = (item) => {
+        console.log(item)
+        //props.playerData.inventory.setEquippedItem("MainHand", 21)
+    }
+
+    const setActiveItemID = (id) => {
+        console.log({ id })
+        props.playerData.inventory.setEquippedItem(activeEquipmentSlot, id)
     }
 
 
@@ -21,7 +32,7 @@ export const Inventory = (props) => {
             <Controls />
             <div className="equipment__container">
                 <Equipped onActiveEquipmentSlotHandler={onActiveEquipmentSlotHandler} />
-                <Equipment activeEquipmentSlot={activeEquipmentSlot} />
+                <Equipment activeEquipmentSlot={activeEquipmentSlot} onItemSelectedHandler={onItemSelectedHandler} setActiveItemID={setActiveItemID} />
                 <Stats />
             </div>
 
@@ -29,7 +40,9 @@ export const Inventory = (props) => {
     )
 }
 
-const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+    playerData: state.player.playerData,
+})
 
 const mapDispatchToProps = {}
 

@@ -4,16 +4,6 @@ import { connect } from 'react-redux'
 import BankItem from '../player/BankItem'
 
 export const Equipment = (props) => {
-
-
-    const onItemSelectedHandler = (item) => {
-        console.log(item)
-    }
-
-    const setActiveItemID = (id) => {
-        console.log({ id })
-    }
-
     return (
         <div className="equipment__container-equipment">
             <h2>{props.activeEquipmentSlot}</h2>
@@ -37,8 +27,8 @@ export const Equipment = (props) => {
                                     icon={data.icon}
                                     qty={props.playerData.playerBank.bankItems.get(id).qty}
                                     itemData={data}
-                                    bankItemSelectedHandler={onItemSelectedHandler}
-                                    setActiveItemID={setActiveItemID}
+                                    bankItemSelectedHandler={props.onItemSelectedHandler}
+                                    setActiveItemID={props.setActiveItemID}
                                     sellMode={false} />
 
                             )

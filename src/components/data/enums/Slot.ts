@@ -1,12 +1,12 @@
 // the slot location of each equipped item
 export enum Slot {
-  Head = "HEAD",
-  Chest = "CHEST",
-  Legs = "LEGS",
-  Feet = "FEET",
-  Hands = "HANDS",
-  Neck = "NECK",
-  Back = "BACK",
-  Trinket = "TRINKET",
-  MainHand = "MAIN_HAND",
+  HEAD = "Head",
+  CHEST = "Chest",
+  LEGS = "Legs",
+  FEET = "Feet",
+  HANDS = "Hands",
+  NECK = "Neck",
+  BACK = "Back",
+  TRINKET = "Trinket",
+  MAIN_HAND = "Main Hand",
 }

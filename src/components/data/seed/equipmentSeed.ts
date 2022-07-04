@@ -1,3 +1,5 @@
+import { Slot } from "../enums/Slot"
+
 export const equipmentSeed = [
   {
     id: 20001,
@@ -112,7 +114,7 @@ export const equipmentSeed = [
     rarity: "COMMON",
     requirementLevel: 1,
     requirementStyle: "MELEE",
-    slot: "MAIN_HAND",
+    slot: Slot.MAIN_HAND,
     equipmentStats: {
       attack: {
         melee: 15,

@@ -1,3 +1,4 @@
+import { Slot } from "../enums/Slot"
 import {
   placeholder,
   gp,
@@ -31,6 +32,16 @@ import {
 } from "./icons/skillSeedIcons"
 
 export const itemSeed = [
+  {
+    id: 0,
+    itemType: "generic",
+    name: "error",
+    price: 0,
+    icon: placeholder,
+    description: "",
+    rarity: "COMMON",
+    consumeable: false,
+  },
   {
     id: 999,
     itemType: "generic",
@@ -290,7 +301,7 @@ export const itemSeed = [
     description: "A bronze chainbody",
     rarity: "COMMON",
     requirementLevel: 1,
-    slot: "CHEST",
+    slot: Slot.CHEST,
     equipmentStats: { attack: 0, defence: 5, weight: 10, speed: 0 },
     effect: "",
   },
@@ -303,7 +314,7 @@ export const itemSeed = [
     description: "A knife made from a bone",
     rarity: "COMMON",
     requirementLevel: 1,
-    slot: "MAIN_HAND",
+    slot: Slot.MAIN_HAND,
     equipmentStats: { attack: 1, defence: 1, weight: 1, speed: 100 },
     effect: "",
   },

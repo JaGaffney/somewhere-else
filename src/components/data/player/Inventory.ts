@@ -8,8 +8,6 @@ export class Inventory {
   Back: number = 0
   Trinket: number = 0
   MainHand: number = 0
-  OffHand: number = 0
-  TwoHand: number = 0
 
   constructor() {}
 

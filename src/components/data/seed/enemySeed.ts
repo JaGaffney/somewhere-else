@@ -38,7 +38,7 @@ export const enemySeed = [
     style: "warrior",
     speed: 10,
     coins: [0, 10, 100],
-    drops: [{ id: 1, qty: 1, chance: 100 }],
+    drops: [{ id: 20, qty: 1, chance: 100 }],
     attacks: [1],
     rotation: [1],
     image: goblinBruteIcon,

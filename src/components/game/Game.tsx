@@ -9,6 +9,7 @@ import Status from "./status/Status"
 import Playerbank from "./player/Playerbank"
 import Combat from "./combat/Combat"
 import Shop from "./shop/Shop"
+import Inventory from "./inventory/Inventory"
 
 export const Game = props => {
   const LoadComponent = () => {
@@ -25,6 +26,8 @@ export const Game = props => {
       case "archer":
       case "magician":
         return <CombatSkill />
+      case "inventory":
+        return <Inventory />
       case "health":
       case "stamina":
       case "armour":

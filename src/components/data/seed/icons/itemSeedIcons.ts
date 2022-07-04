@@ -19,9 +19,14 @@ export const researchYellow = RESEARCH_YELLOW
 export const researchPurple = RESEARCH_PURPLE
 
 // Items
-import ITEM_1 from "../../../../images/items/log.svg"
+import ITEM_PLACEHOLDER from "../../../../images/placeholder.svg"
 
-export const log = ITEM_1
+// Weapons
+import DAGGER_BONE from "../../../../images/items/dagger-bone.svg"
+
+export const daggerBone = DAGGER_BONE
+
+export const placeholder = ITEM_PLACEHOLDER
 
 // Skill Items
 import LOG_BROWN from "../../../../images/items/log-brown.svg"

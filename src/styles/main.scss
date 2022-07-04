@@ -438,3 +438,105 @@
 ////////////////////////////
 .status__item {
 }
+
+///////////////////////////
+/// Inventory
+////////////////////////////
+.equipment__container {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  &-equipped {
+    padding: 1rem 2rem 2rem 1rem;
+    background-color: var(--gray800);
+    width: auto;
+    min-width: 20rem;
+    min-height: 20rem;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 25% 25% 25% 25%;
+    place-items: center;
+    gap: 0.5rem;
+    &-slot {
+      height: 7rem;
+      width: 7rem;
+      border-radius: 10px;
+      background-color: var(--gray900);
+      box-shadow: var(--shadow900);
+      text-transform: capitalize;
+      position: relative;
+      cursor: pointer;
+      transform: scale(100%);
+      padding: 0;
+      color: var(--gray200);
+      box-shadow: var(--shadow500);
+      border-radius: 4px;
+      font-size: 0.8rem;
+      position: relative;
+      transition: transform ease-in 100ms;
+      border: none;
+      border: solid 1px transparent;
+      &:hover,
+      &:focus {
+        transform: scale(105%);
+        box-shadow: var(--shadow900);
+        background-color: var(--gray900);
+        border-color: var(--blue700);
+      }
+
+      span {
+        z-index: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      img {
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6rem;
+        height: 6rem;
+        transform: translate(-50%, -50%);
+        background-color: var(--gray900);
+        box-shadow: var(--shadow500);
+      }
+    }
+    &-equippedSlot-top {
+      grid-row: 1;
+    }
+    &-equippedSlot-middle {
+      grid-row: 2;
+    }
+    &-equippedSlot-bottom {
+      grid-row: 3;
+    }
+    &-equippedSlot-left {
+      grid-column: 1;
+    }
+    &-equippedSlot-center {
+      grid-column: 2;
+    }
+    &-equippedSlot-right {
+      grid-column: 3;
+    }
+    &-equippedSlot-weapon {
+      grid-row: 4;
+      grid-column: 1 / span 3;
+      background: red;
+    }
+  }
+
+  &-equipment {
+    background-color: var(--gray800);
+    width: 40%;
+  }
+
+  &-stats {
+    background-color: var(--gray800);
+    width: 30%;
+  }
+}

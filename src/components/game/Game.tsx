@@ -26,7 +26,7 @@ export const Game = props => {
       case "archer":
       case "magician":
         return <CombatSkill />
-      case "inventory":
+      case "equipment":
         return <Inventory />
       case "health":
       case "stamina":

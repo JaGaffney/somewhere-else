@@ -18,7 +18,7 @@ export const enemySeed = [
     speed: 10,
     coins: [0, 10, 100],
     drops: [
-      { id: 21, qty: 1, chance: 100 },
+      { id: 23, qty: 1, chance: 100 },
       { id: 2, qty: 1, chance: 100 },
       { id: 3, qty: 5, chance: 100 },
     ],

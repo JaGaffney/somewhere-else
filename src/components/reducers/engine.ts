@@ -5,6 +5,7 @@ const initialState = {
   deltaTime: 0,
   playerUpdated: false,
   combatData: null,
+  activeEquipmentDrag: null,
 }
 
 const actionTimeHandler = (oldTime: number) => {
@@ -62,6 +63,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         combatData: action.payload,
+      }
+    case "SET_ACTIVE_EQUIPMENT_DRAG":
+      return {
+        ...state,
+        activeEquipmentDrag: action.payload,
       }
     default:
       return state

@@ -1,4 +1,7 @@
 // @ts-nocheck
+import ITEM_PLACEHOLDER from "../../../../images/placeholder.svg"
+
+export const placeholder = ITEM_PLACEHOLDER
 
 // BANK
 import GP from "../../../../images/items/coins.svg"
@@ -19,14 +22,21 @@ export const researchYellow = RESEARCH_YELLOW
 export const researchPurple = RESEARCH_PURPLE
 
 // Items
-import ITEM_PLACEHOLDER from "../../../../images/placeholder.svg"
-
 // Weapons
-import DAGGER_BONE from "../../../../images/items/dagger-bone.svg"
+import DAGGER_BONE from "../../../../images/items/weapons/dagger-bone.svg"
+import DAGGER_BRONZE from "../../../../images/items/weapons/dagger-bronze.svg"
+import DAGGER_IRON from "../../../../images/items/weapons/dagger-iron.svg"
+import DAGGER_STEEL from "../../../../images/items/weapons/dagger-steel.svg"
 
 export const daggerBone = DAGGER_BONE
+export const daggerBronze = DAGGER_BRONZE
+export const daggerIron = DAGGER_IRON
+export const daggerSteel = DAGGER_STEEL
 
-export const placeholder = ITEM_PLACEHOLDER
+// Equipment
+import CHEST_ARMOUR_BRONZE from "../../../../images/items/equipment/chest-armour-bronze.svg"
+
+export const chestArmourBronze = CHEST_ARMOUR_BRONZE
 
 // Skill Items
 import LOG_BROWN from "../../../../images/items/log-brown.svg"

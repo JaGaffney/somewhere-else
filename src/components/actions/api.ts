@@ -36,3 +36,9 @@ export const setCombatData = data => dispatch => {
     payload: data,
   })
 }
+export const setActiveEquipmentDrag = data => dispatch => {
+  return dispatch({
+    type: "SET_ACTIVE_EQUIPMENT_DRAG",
+    payload: data,
+  })
+}

@@ -12,7 +12,7 @@
 .topPanel__controls {
   display: flex;
   justify-content: space-between;
-
+  text-transform: capitalize;
   &-left {
     width: auto;
     max-width: 70%;

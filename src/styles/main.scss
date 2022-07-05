@@ -505,28 +505,34 @@
         box-shadow: var(--shadow500);
       }
     }
-    &-equippedSlot-top {
-      grid-row: 1;
-    }
-    &-equippedSlot-middle {
-      grid-row: 2;
-    }
-    &-equippedSlot-bottom {
-      grid-row: 3;
-    }
-    &-equippedSlot-left {
-      grid-column: 1;
-    }
-    &-equippedSlot-center {
-      grid-column: 2;
-    }
-    &-equippedSlot-right {
-      grid-column: 3;
-    }
-    &-equippedSlot-weapon {
-      grid-row: 4;
-      grid-column: 1 / span 3;
-      background: red;
+    &-equippedSlot {
+      &-1 {
+        grid-row: 1;
+      }
+      &-2 {
+        grid-row: 2;
+      }
+      &-3 {
+        grid-row: 3;
+      }
+      &-4 {
+        grid-row: 4;
+      }
+      &-left {
+        grid-column: 1;
+      }
+      &-center {
+        grid-column: 2;
+      }
+      &-right {
+        grid-column: 3;
+      }
+      &-active {
+        border: solid 1px var(--teal700);
+      }
+      &-error {
+        border: solid 1px var(--red700);
+      }
     }
   }
 

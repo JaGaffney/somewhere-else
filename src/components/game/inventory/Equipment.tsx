@@ -6,8 +6,6 @@ import BankItem from '../player/BankItem'
 export const Equipment = (props) => {
     return (
         <div className="equipment__container-equipment">
-            <h2>{props.activeEquipmentSlot}</h2>
-
             <div className="bank__items">
                 <div className="bank__items-inner">
                     {[...props.playerData.playerBank.bankItems.keys()].map((id, k) => {

@@ -79,7 +79,16 @@ export const Slot = (props) => {
 
     return (
         <>
-            <div onClick={() => props.onActiveEquipmentSlotHandler(props.location)}
+            <div onClick={(e) => {
+                if (e.detail === 1) {
+                    props.onActiveEquipmentSlotHandler(props.location)
+                }
+                if (e.detail === 2) {
+                    props.playerData.inventory.setEquippedItem(props.location.replace(/\s/g, ''), 0)
+                    props.setPlayerUpdated()
+                }
+
+            }}
                 onDragStart={preventDragHandler}
                 onDragOver={dragOver}
                 onDragEnter={dragEnter}

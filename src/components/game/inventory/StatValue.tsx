@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 export const StatValue = (props) => {
-    console.log(props.getStatDifference(props.statType))
     return (
         <div className="attacksloadout__stats-description">
             <span className="equipment__container-stats-single-current">{props.statType}:</span>

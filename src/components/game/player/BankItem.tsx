@@ -18,16 +18,21 @@ export const BankItem = (props) => {
         props.setPlayerUpdated()
     }
 
-    const onClickHandler = () => {
-        if (props.sellMode) {
-            onSellModeHandler()
+    const onClickHandler = (e) => {
+        if (props.doubleClickHandler) {
+            props.setActiveEquipmentDrag(e.target.id)
+            props.doubleClickHandler(parseInt(e.target.id))
         } else {
-            props.bankItemSelectedHandler(props.itemData)
-            props.setActiveItemID(props.id)
+            if (props.sellMode) {
+                onSellModeHandler()
+            } else {
+                props.bankItemSelectedHandler(props.itemData)
+                props.setActiveItemID(props.id)
+            }
         }
     }
 
-    function onDragStart(e) {
+    const onDragStart = (e) => {
         e.dataTransfer.setData("text/plain", e.target.id)
         props.setActiveEquipmentDrag(e.target.id)
     }
@@ -38,11 +43,11 @@ export const BankItem = (props) => {
         <>
             <button className={`bank__items-singleItem ${props.sellMode ? "bank__items-sellMode" : null}`}
                 key={props.key}
-                onClick={onClickHandler}
+                onClick={(e) => onClickHandler(e)}
                 data-tip={props.name && props.name}
 
             >
-                <img className="bank__items-image" src={props.icon} onDragStart={e => onDragStart(e)}
+                <img className="bank__items-image" src={props.icon} onDragStart={onDragStart}
                     id={props.id && props.id} />
                 <span className="bank__items-qty">{props.qty && intToString(props.qty)}</span>
             </button>

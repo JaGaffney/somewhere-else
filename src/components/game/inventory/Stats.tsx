@@ -67,13 +67,11 @@ export const Stats = (props) => {
 
 
     return (
-        <div className="equipment__container-stats">
+        <div className="attacksloadout__stats">
             <StatValue statType="attack" currentValue={attack} getStatDifference={getStatDifference} />
             <StatValue statType="defence" currentValue={defence} getStatDifference={getStatDifference} />
             <StatValue statType="weight" currentValue={weight} getStatDifference={getStatDifference} />
             <StatValue statType="speed" currentValue={speed} getStatDifference={getStatDifference} />
-
-
         </div>
     )
 }

@@ -40,7 +40,7 @@ export const Inventory = (props) => {
             <Controls activeEquipmentSlot={activeEquipmentSlot} activeEquipmentItem={activeEquipmentItem} handleItemEquipStatus={handleItemEquipStatus} activeEquipmentItemID={activeEquipmentItemID} />
             <div className="equipment__container">
                 <Equipped onActiveEquipmentSlotHandler={onActiveEquipmentSlotHandler} activeEquipmentSlot={activeEquipmentSlot} />
-                <Equipment activeEquipmentSlot={activeEquipmentSlot} onItemSelectedHandler={onItemSelectedHandler} setActiveItemID={setActiveItemID} />
+                <Equipment activeEquipmentSlot={activeEquipmentSlot} onItemSelectedHandler={onItemSelectedHandler} setActiveItemID={setActiveItemID} handleItemEquipStatus={handleItemEquipStatus} />
                 <Stats activeEquipmentSlot={activeEquipmentSlot} activeEquipmentItemID={activeEquipmentItemID} />
             </div>
 

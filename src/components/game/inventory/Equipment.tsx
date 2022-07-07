@@ -27,7 +27,9 @@ export const Equipment = (props) => {
                                     itemData={data}
                                     bankItemSelectedHandler={props.onItemSelectedHandler}
                                     setActiveItemID={props.setActiveItemID}
-                                    sellMode={false} />
+                                    sellMode={false}
+                                    doubleClickHandler={props.handleItemEquipStatus}
+                                />
 
                             )
                         }

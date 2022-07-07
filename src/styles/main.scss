@@ -538,11 +538,34 @@
 
   &-equipment {
     background-color: var(--gray800);
-    width: 40%;
+    width: 50%;
   }
 
   &-stats {
     background-color: var(--gray800);
-    width: 30%;
+    width: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    padding: 1rem;
+    &-single {
+      margin: 1rem;
+      padding: 1rem;
+      width: 100%;
+      background-color: var(--gray900);
+      border-radius: 4px;
+      text-transform: capitalize;
+      display: flex;
+      &-difference {
+        &-positive {
+          color: var(--teal600) !important;
+        }
+        &-negative {
+          color: var(--red700) !important;
+        }
+      }
+    }
   }
 }

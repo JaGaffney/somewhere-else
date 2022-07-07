@@ -17,6 +17,8 @@ export const Inventory = (props) => {
 
     const onActiveEquipmentSlotHandler = (slot: string): void => {
         setActiveEquipmentSlot(slot)
+        setActiveEquipmentItem("")
+        setActiveEquipmentItemID(0)
     }
 
     const onItemSelectedHandler = (item) => {
@@ -33,14 +35,13 @@ export const Inventory = (props) => {
         props.setPlayerUpdated()
     }
 
-
     return (
         <div className="game__normal">
             <Controls activeEquipmentSlot={activeEquipmentSlot} activeEquipmentItem={activeEquipmentItem} handleItemEquipStatus={handleItemEquipStatus} activeEquipmentItemID={activeEquipmentItemID} />
             <div className="equipment__container">
                 <Equipped onActiveEquipmentSlotHandler={onActiveEquipmentSlotHandler} activeEquipmentSlot={activeEquipmentSlot} />
                 <Equipment activeEquipmentSlot={activeEquipmentSlot} onItemSelectedHandler={onItemSelectedHandler} setActiveItemID={setActiveItemID} />
-                <Stats />
+                <Stats activeEquipmentSlot={activeEquipmentSlot} activeEquipmentItemID={activeEquipmentItemID} />
             </div>
 
         </div>
@@ -49,6 +50,7 @@ export const Inventory = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
+    itemData: state.items.itemData
 })
 
 const mapDispatchToProps = { setPlayerUpdated }

@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { Slot } from "../../data/enums/Slot"
 
+import StatValue from './StatValue'
+
 export const Stats = (props) => {
 
     const [attack, setAttack] = useState(0)
@@ -35,15 +37,43 @@ export const Stats = (props) => {
         setSpeed(currentStats.speed)
 
 
-    }, [])
+    }, [props.playerUpdated])
+
+
+    const getStatDifference = (location: string) => {
+        if (props.activeEquipmentSlot && props.activeEquipmentItemID) {
+            const newItem = props.itemData.getItemById(props.activeEquipmentItemID).equipmentStats
+
+            const id = props.playerData.inventory.getEquippedItem(props.activeEquipmentSlot.replace(/\s/g, ''))
+            if (id === 0) {
+                return newItem[location]
+            }
+
+            const equippedItem = props.itemData.getItemById(id).equipmentStats
+            if (equippedItem[location] > newItem[location]) {
+                return - newItem[location]
+            }
+            else if (equippedItem[location] === newItem[location]) {
+                return null
+            } else {
+                return newItem[location]
+            }
+        } else {
+            return null
+        }
+    }
+
+
 
 
     return (
         <div className="equipment__container-stats">
-            <h2>attack: {attack}</h2>
-            <h2>defence: {defence}</h2>
-            <h2>weight: {weight}</h2>
-            <h2>speed: {speed}</h2>
+            <StatValue statType="attack" currentValue={attack} getStatDifference={getStatDifference} />
+            <StatValue statType="defence" currentValue={defence} getStatDifference={getStatDifference} />
+            <StatValue statType="weight" currentValue={weight} getStatDifference={getStatDifference} />
+            <StatValue statType="speed" currentValue={speed} getStatDifference={getStatDifference} />
+
+
         </div>
     )
 }
@@ -51,6 +81,7 @@ export const Stats = (props) => {
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
     itemData: state.items.itemData,
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = {}

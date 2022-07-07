@@ -13,8 +13,7 @@ export const Slot = (props) => {
     const [errorBorder, setErrorBorder] = useState<boolean>(false)
 
     useEffect(() => {
-        console.log(props.playerData.inventory)
-    }, [props.activeEquipmentSlot, props.playerUpdated, props.playerData.inventory])
+    }, [props.activeEquipmentSlot])
 
     useEffect(() => {
         const id = props.playerData.inventory.getEquippedItem(props.location.replace(/\s/g, ''))

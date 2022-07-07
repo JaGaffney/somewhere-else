@@ -13,6 +13,10 @@ export const Slot = (props) => {
     const [errorBorder, setErrorBorder] = useState<boolean>(false)
 
     useEffect(() => {
+        console.log(props.playerData.inventory)
+    }, [props.activeEquipmentSlot, props.playerUpdated, props.playerData.inventory])
+
+    useEffect(() => {
         const id = props.playerData.inventory.getEquippedItem(props.location.replace(/\s/g, ''))
         const data = props.itemData.getItemById(id)
         if (id === 0) {
@@ -22,12 +26,13 @@ export const Slot = (props) => {
         } else {
             setName(data.name)
             setIcon(data.icon)
+            setOpactiy(1)
         }
 
-    }, [])
+    }, [props.playerUpdated])
 
     const validLocation = (slot1, slot2) => {
-        if (slot1.replace(/\s/g, '') === slot2.replace(/\s/g, '') !== props.location.replace(/\s/g, '')) {
+        if (slot1.replace(/\s/g, '') === slot2.replace(/\s/g, '')) {
             return true
         }
         return false
@@ -39,6 +44,7 @@ export const Slot = (props) => {
         if (itemDataID) {
             const data = props.itemData.getItemById(parseInt(props.activeEquipmentDrag))
             const slot = data.slot.replace(/\s/g, '')
+            console.log(slot, props.location)
             if (!validLocation(slot, props.location)) {
                 setErrorBorder(true)
             }
@@ -46,7 +52,6 @@ export const Slot = (props) => {
     }
     const dragEnter = (e) => {
         e.preventDefault()
-
     }
     const dragLeave = e => {
         e.preventDefault()
@@ -69,13 +74,19 @@ export const Slot = (props) => {
         }
     }
 
+    const preventDragHandler = (e) => {
+        e.preventDefault();
+    }
+
     return (
         <>
             <div onClick={() => props.onActiveEquipmentSlotHandler(props.location)}
+                onDragStart={preventDragHandler}
                 onDragOver={dragOver}
                 onDragEnter={dragEnter}
                 onDragLeave={dragLeave}
                 onDrop={slotDrop}
+                draggable={false}
                 data-tip={name && name}
                 className={`equipment__container-equipped-slot 
                             equipment__container-equipped-equippedSlot-${props.row} 
@@ -95,7 +106,8 @@ export const Slot = (props) => {
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
     itemData: state.items.itemData,
-    activeEquipmentDrag: state.engine.activeEquipmentDrag
+    activeEquipmentDrag: state.engine.activeEquipmentDrag,
+    playerUpdated: state.engine.playerUpdated,
 })
 
 const mapDispatchToProps = { setPlayerUpdated }

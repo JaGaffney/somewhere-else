@@ -19,11 +19,6 @@ import FEET from "../../../images/items/template/feet.svg"
 import TRINKET from "../../../images/items/template/trinket.svg"
 
 export const Equipped = (props) => {
-
-    useEffect(() => {
-
-    }, [props.activeEquipmentSlot])
-
     return (
         <div className="equipment__container-equipped">
             <Slot activeSlot={props.activeEquipmentSlot} placeholderIcon={MAINHAND} onActiveEquipmentSlotHandler={props.onActiveEquipmentSlotHandler} location={SlotEnum.MAIN_HAND} row="2" column="left" />
@@ -41,8 +36,6 @@ export const Equipped = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    playerUpdated: state.engine.playerUpdated,
-
 })
 
 const mapDispatchToProps = {}

@@ -20,8 +20,15 @@ export const BankItem = (props) => {
 
     const onClickHandler = (e) => {
         if (props.doubleClickHandler) {
-            props.setActiveEquipmentDrag(e.target.id)
-            props.doubleClickHandler(parseInt(e.target.id))
+            if (e.detail === 1) {
+                props.bankItemSelectedHandler(props.itemData)
+                props.setActiveItemID(props.id)
+            }
+            if (e.detail === 2) {
+                props.setActiveEquipmentDrag(e.target.id)
+                props.doubleClickHandler(parseInt(e.target.id))
+            }
+
         } else {
             if (props.sellMode) {
                 onSellModeHandler()
@@ -37,6 +44,13 @@ export const BankItem = (props) => {
         props.setActiveEquipmentDrag(e.target.id)
     }
 
+    const onMouseEnterHandler = (id) => {
+        props.setActiveItemID(id)
+    }
+    const onMouseLeaveHandler = () => {
+        props.setActiveItemID(0)
+    }
+
 
     return (
         props.qty > 0 &&
@@ -45,6 +59,8 @@ export const BankItem = (props) => {
                 key={props.key}
                 onClick={(e) => onClickHandler(e)}
                 data-tip={props.name && props.name}
+                onMouseEnter={(e) => onMouseEnterHandler(props.id)}
+                onMouseLeave={onMouseLeaveHandler}
 
             >
                 <img className="bank__items-image" src={props.icon} onDragStart={onDragStart}

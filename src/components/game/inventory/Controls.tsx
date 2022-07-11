@@ -26,14 +26,14 @@ export const Controls = (props) => {
                 <span className="topPanel__controls-left-info">{props.activeEquipmentSlot}</span>
             </div>
 
-            <div className="topPanel__controls-right">
+            {/* <div className="topPanel__controls-right">
                 {props.activeEquipmentItem ? (
                     <button className={`generic__button generic__button-primary`} onClick={() => props.handleItemEquipStatus(props.activeEquipmentItemID)}>Equip</button>
                 ) : (
                     <button className={`generic__button generic__button-secondary`} onClick={() => props.handleItemEquipStatus(0)}>Unequip</button>
                 )}
 
-            </div>
+            </div> */}
 
         </div>
     )

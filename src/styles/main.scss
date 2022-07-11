@@ -538,12 +538,12 @@
 
   &-equipment {
     background-color: var(--gray800);
-    width: 50%;
+    width: 60%;
   }
 
   &-stats {
     background-color: var(--gray800);
-    width: 20%;
+    max-width: 10rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

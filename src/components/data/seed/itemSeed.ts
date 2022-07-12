@@ -345,7 +345,7 @@ export const itemSeed = [
     rarity: "COMMON",
     requirementLevel: 20,
     slot: Slot.MAIN_HAND,
-    equipmentStats: { attack: 3, defence: 1, weight: 1, speed: 200 },
+    equipmentStats: { attack: 3, defence: 1, weight: 1, speed: 200, crit: 5 },
     effect: "",
   },
   {
@@ -358,7 +358,7 @@ export const itemSeed = [
     rarity: "COMMON",
     requirementLevel: 30,
     slot: Slot.MAIN_HAND,
-    equipmentStats: { attack: 4, defence: 1, weight: 1, speed: 200 },
+    equipmentStats: { attack: 4, defence: 1, weight: 1 },
     effect: "",
   },
 ]

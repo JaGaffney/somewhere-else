@@ -2,36 +2,40 @@ import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { Slot } from "../../data/enums/Slot"
+import { IEquipmentStatsKeys } from '../../data/items/EquipmentStats'
 
 import StatValue from './StatValue'
 
 export const Stats = (props) => {
-    const defaultStatState = {
-        attack: 0,
-        defence: 0,
-        weight: 0,
-        speed: 0
-    }
+    const [currentStats, setCurrentStats] = useState({})
 
-    const [currentStats, setCurrentStats] = useState(defaultStatState)
-
-    useEffect(() => {
-        const tempStats = defaultStatState
+    const currentStatCalculator = () => {
+        const tempStats = {}
         for (const [key, value] of Object.entries(Slot)) {
             const id = props.playerData.inventory.getEquippedItem(value.replace(/\s/g, ''))
             if (id !== 0 && id !== undefined) {
                 const data = props.itemData.getItemById(id)
                 const stats = data.equipmentStats
-                tempStats.attack += stats.attack
-                tempStats.defence += stats.defence
-                tempStats.weight += stats.weight
-                tempStats.speed += stats.speed
+                for (let stat in stats) {
+                    if (tempStats[stat]) {
+                        tempStats[stat] = tempStats[stat] + stats[stat]
+                    } else {
+                        tempStats[stat] = stats[stat]
+                    }
+
+                }
             }
         }
         setCurrentStats(tempStats)
+    }
+
+    useEffect(() => {
+        currentStatCalculator()
+    }, [])
+
+    useEffect(() => {
+        currentStatCalculator()
     }, [props.playerUpdated])
-
-
 
     const getStatDifference = (location: string) => {
         if (props.activeEquipmentSlot && props.activeEquipmentItemID) {
@@ -50,6 +54,9 @@ export const Stats = (props) => {
                 }
                 else if (equippedItemStats[location] === newItem[location]) {
                     return null
+                }
+                else if (!newItem[location]) {
+                    return - equippedItemStats[location]
                 } else {
                     return newItem[location]
                 }
@@ -59,9 +66,11 @@ export const Stats = (props) => {
         }
     }
 
+
+
     return (
         <div className="equipment__container-stats">
-            {Object.keys(currentStats).map((i, k) => {
+            {Object.keys(IEquipmentStatsKeys).map((i, k) => {
                 return (
                     <StatValue statType={[i]} currentValue={currentStats[i]} getStatDifference={getStatDifference} />
 

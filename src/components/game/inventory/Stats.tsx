@@ -1,40 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { Slot } from "../../data/enums/Slot"
 import { IEquipmentStatsKeys } from '../../data/items/EquipmentStats'
 
 import StatValue from './StatValue'
 
+import { currentStatCalculator } from "../../utils/equipment"
+
 export const Stats = (props) => {
     const [currentStats, setCurrentStats] = useState({})
 
-    const currentStatCalculator = () => {
-        const tempStats = {}
-        for (const [key, value] of Object.entries(Slot)) {
-            const id = props.playerData.inventory.getEquippedItem(value.replace(/\s/g, ''))
-            if (id !== 0 && id !== undefined) {
-                const data = props.itemData.getItemById(id)
-                const stats = data.equipmentStats
-                for (let stat in stats) {
-                    if (tempStats[stat]) {
-                        tempStats[stat] = tempStats[stat] + stats[stat]
-                    } else {
-                        tempStats[stat] = stats[stat]
-                    }
-
-                }
-            }
-        }
-        setCurrentStats(tempStats)
-    }
-
     useEffect(() => {
-        currentStatCalculator()
+        setCurrentStats(currentStatCalculator(props.itemData, props.playerData.inventory))
     }, [])
 
     useEffect(() => {
-        currentStatCalculator()
+        setCurrentStats(currentStatCalculator(props.itemData, props.playerData.inventory))
     }, [props.playerUpdated])
 
     const getStatDifference = (location: string) => {

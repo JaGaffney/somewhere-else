@@ -6,7 +6,7 @@ export const StatValue = (props) => {
         <div className="attacksloadout__stats-description">
             <span className="equipment__container-stats-single-current">{props.statType}:</span>
             <div>
-                <span>{props.currentValue} </span>
+                <span>{props.currentValue ? props.currentValue : 0} </span>
                 {props.getStatDifference(props.statType) !== null && props.getStatDifference(props.statType) !== 0 ? (
                     props.getStatDifference(props.statType) > 0 ? (
                         <span className="equipment__container-stats-single-difference equipment__container-stats-single-difference-positive">(+{props.getStatDifference(props.statType)})</span>

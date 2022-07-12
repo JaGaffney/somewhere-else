@@ -31,7 +31,7 @@ export const costPerAction = (value: number): number => {
     case value < 80:
       returnValue = value * 400
       break
-    case value < 90:
+    case value < 91:
       returnValue = value * 600
     case value > 91:
       returnValue = value * 1000

@@ -6,6 +6,7 @@ import { setCombatData } from "../../actions/api"
 import Section from './generics/Section'
 
 import { randomInteger } from "../../utils/generic"
+import { calculateDamage, currentStatCalculator } from "../../utils/equipment"
 import { Attack } from "../../data/attacks/Attack"
 
 // @ts-ignore
@@ -168,19 +169,16 @@ export const CatCombat = (props) => {
     // can also be used to estimate how much damage an attack would do to the enemy before hand
     // could grey out the enemy hp in the avg dmg would do
     const attackDamageCalculator = (attackData: Attack): number => {
-        const multiplier = 1 // work out later
-        const critChance = 20
-        let critDamage = 1.2
-        let crit = false
+        // TODO: damage here is not correct
+        let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage)
 
-        if (randomInteger(1, 100) < critChance) {
-            crit = true
-        }
-        let damage = randomInteger(attackData.minDamage, attackData.maxDamage) * multiplier
+        const jobLevel = 10 // get
+        const itemAttack = 5 // get
+        const enemyDefence = 5 // get
+        const critChance = 5 // get
 
-        if (crit) {
-            damage = damage * critDamage
-        }
+        let damage = calculateDamage(jobLevel, damageRange, itemAttack, enemyDefence, critChance)
+        console.log({ damage })
         return damage
     }
 

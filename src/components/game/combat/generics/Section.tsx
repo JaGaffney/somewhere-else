@@ -10,11 +10,26 @@ import EnemyInfo from "./EnemyInfo"
 import Rotation from './Rotation'
 import Info from './Info'
 
+import { calculateDamage, currentStatCalculator } from "../../../utils/equipment"
+
 export const Section = (props) => {
     const [selectedSkill, setSelecetedSkill] = useState(null)
 
     const onSelectedSkillHandler = (id) => {
         setSelecetedSkill(id)
+    }
+
+    const maxDamgeCalc = (maxDamage): number => {
+        let jobLevel = 1; // get
+
+        const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
+        let attack = 1
+        if (playerStats) {
+            attack = playerStats.attack
+        }
+
+        let damage = calculateDamage(jobLevel, maxDamage, attack, 1, 1)
+        return Math.floor(damage)
     }
 
     return (
@@ -44,6 +59,7 @@ export const Section = (props) => {
                         onSelectedSkillHandler={onSelectedSkillHandler}
                         onAttackHandler={props.onAttackHandler}
                         cooldowns={props.cooldowns}
+                        maxDamgeCalc={maxDamgeCalc}
                     />
                 </div>
             ) : (
@@ -55,7 +71,7 @@ export const Section = (props) => {
             )}
 
             <div className="catcombat__description">
-                <Info selectedSkill={selectedSkill} />
+                <Info selectedSkill={selectedSkill} maxDamgeCalc={maxDamgeCalc} />
                 <Rotation
                     type={props.type}
                     data={props.data}
@@ -71,7 +87,8 @@ export const Section = (props) => {
 
 const mapStateToProps = (state) => ({
     enemies: state.enemies,
-    playerData: state.player.playerData
+    playerData: state.player.playerData,
+    itemData: state.items.itemData,
 })
 
 const mapDispatchToProps = {

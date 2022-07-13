@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { getBackgroundColor } from '../../../utils/color';
 
+
 export const Hotbar = (props) => {
     function onDragStart(e) {
         e.dataTransfer.setData("text/plain", e.target.id)
@@ -41,7 +42,7 @@ export const Hotbar = (props) => {
                                 <div className="attacks__button-stats">
                                     <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>
                                     <span className="attacks__button-stats-topRight">{attackData.stamina}</span>
-                                    <span className="attacks__button-stats-bottomRight">{attackData.maxDamage}</span>
+                                    <span className="attacks__button-stats-bottomRight">{props.maxDamgeCalc(attackData.maxDamage)}</span>
                                     {cooldownRemaining !== 0 && (<span className="attacks__button-stats-overlay">{cooldownRemaining}</span>)}
                                 </div>
                             }

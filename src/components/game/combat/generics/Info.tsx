@@ -21,7 +21,7 @@ export const Info = (props) => {
                 <span className="attacksloadout__stats-description" style={{ color: "var(--red700)" }}>
                     max damage
                     <span>
-                        {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).maxDamage}
+                        {props.selectedSkill && props.maxDamgeCalc(props.attackData.getAttackById(props.selectedSkill).maxDamage)}
                     </span>
                 </span>
                 <span className="attacksloadout__stats-description" style={{ color: "var(--blue700)" }}>
@@ -50,7 +50,7 @@ export const Info = (props) => {
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
     attackData: state.attacks.attackData,
-    activePage: state.engine.activePage
+    activePage: state.engine.activePage,
 })
 
 const mapDispatchToProps = {

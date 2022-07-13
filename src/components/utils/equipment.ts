@@ -42,7 +42,7 @@ export const calculateDamage = (
 
   // TODO: work this out
   // is this correct maths, prob not
-  const defence = (preModifiers * critDamage) / enemyDefence
+  const defence = (preModifiers * critDamage) / enemyDefence / 100
 
   return preModifiers * critDamage - defence
 }

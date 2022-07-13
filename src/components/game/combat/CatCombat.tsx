@@ -172,10 +172,21 @@ export const CatCombat = (props) => {
         // TODO: damage here is not correct
         let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage)
 
-        const jobLevel = 10 // get
-        const itemAttack = 5 // get
-        const enemyDefence = 5 // get
-        const critChance = 5 // get
+        const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
+        const enemeyStats = props.enemyData.enemies.get(props.combatData ? props.combatData.enemyID : 1)
+
+        let jobLevel, itemAttack, enemyDefence, critChance; // get
+        if (playerTurn) {
+            jobLevel = 1
+            itemAttack = playerStats.attack
+            enemyDefence = enemeyStats.defence
+            critChance = playerStats.crit
+        } else {
+            jobLevel = enemeyStats.level
+            itemAttack = enemeyStats.attack
+            enemyDefence = playerStats.defence
+            critChance = 1
+        }
 
         let damage = calculateDamage(jobLevel, damageRange, itemAttack, enemyDefence, critChance)
         console.log({ damage })
@@ -472,6 +483,7 @@ const mapStateToProps = (state) => ({
     attackData: state.attacks.attackData,
     enemyData: state.enemies.enemyData,
     itemData: state.items.itemData,
+
 })
 
 const mapDispatchToProps = {

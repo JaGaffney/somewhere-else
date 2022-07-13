@@ -28,6 +28,7 @@ export const calculateDamage = (
   enemyDefence: number,
   critChance: number
 ): number => {
+  // https://gamerant.com/pokemon-damage-calculation-help-guide/
   const levelMultiplyer = (2 * jobLevel) / 5 + 2
 
   const preModifiers = (levelMultiplyer * movePower * itemAttack) / 50 + 2

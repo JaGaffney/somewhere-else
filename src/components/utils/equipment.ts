@@ -2,7 +2,14 @@ import { Slot } from "../data/enums/Slot"
 
 import { randomInteger } from "./generic"
 
-export const currentStatCalculator = (itemData, inventory) => {
+import {
+  IEquipmentStatsKeys,
+  IEquipmentStats,
+} from "../data/items/EquipmentStats"
+
+import { Attack } from "../data/attacks/Attack"
+
+export const currentStatCalculator = (itemData, inventory): IEquipmentStats => {
   const totalEquippedStats = {}
   for (const [key, value] of Object.entries(Slot)) {
     const id = inventory.getEquippedItem(value.replace(/\s/g, ""))
@@ -22,18 +29,22 @@ export const currentStatCalculator = (itemData, inventory) => {
 }
 
 export const calculateDamage = (
-  jobLevel: number,
-  movePower: number,
-  itemAttack: number,
-  enemyDefence: number,
-  critChance: number
-): number => {
+  playerStats: IEquipmentStats,
+  enemyStats,
+  attackData: Attack,
+  jobLevel: number
+): IEquipmentStats => {
+  const damageData = IEquipmentStatsKeys
+
   // https://gamerant.com/pokemon-damage-calculation-help-guide/
   const levelMultiplyer = (2 * jobLevel) / 5 + 2
 
-  const preModifiers = (levelMultiplyer * movePower * itemAttack) / 50 + 2
+  let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage)
 
-  const crit = randomInteger(1, 100) < critChance
+  const preModifiers =
+    (levelMultiplyer * damageRange * playerStats.attack) / 50 + 2
+
+  const crit = randomInteger(1, 100) < playerStats.crit
 
   let critDamage = 1
   if (crit) {
@@ -42,7 +53,36 @@ export const calculateDamage = (
 
   // TODO: work this out
   // is this correct maths, prob not
-  const defence = (preModifiers * critDamage) / enemyDefence / 100
+  const defence = (preModifiers * critDamage) / enemyStats.defence / 100
 
-  return preModifiers * critDamage - defence
+  const damageDone = preModifiers * critDamage - defence
+
+  damageData.attack = damageDone
+  damageData.crit = critDamage
+
+  return damageData
+}
+
+export const calculateEnemyDamage = (
+  enemyStats,
+  playerStats: IEquipmentStats,
+  attackData: Attack
+): IEquipmentStats => {
+  const damageData = IEquipmentStatsKeys
+
+  // https://gamerant.com/pokemon-damage-calculation-help-guide/
+  const levelMultiplyer = (2 * enemyStats.level) / 5 + 2
+
+  let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage)
+
+  const preModifiers =
+    (levelMultiplyer * damageRange * enemyStats.attack) / 50 + 2
+
+  const defence = preModifiers / playerStats.defence / 100
+
+  const damageDone = preModifiers - defence
+
+  damageData.attack = damageDone
+
+  return damageData
 }

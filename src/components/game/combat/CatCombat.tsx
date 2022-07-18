@@ -6,7 +6,7 @@ import { setCombatData } from "../../actions/api"
 import Section from './generics/Section'
 
 import { randomInteger } from "../../utils/generic"
-import { calculateDamage, currentStatCalculator } from "../../utils/equipment"
+import { calculateDamage, currentStatCalculator, calculateEnemyDamage } from "../../utils/equipment"
 import { Attack } from "../../data/attacks/Attack"
 
 // @ts-ignore
@@ -170,27 +170,20 @@ export const CatCombat = (props) => {
     // could grey out the enemy hp in the avg dmg would do
     const attackDamageCalculator = (attackData: Attack): number => {
         // TODO: damage here is not correct
-        let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage)
 
         const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const enemeyStats = props.enemyData.enemies.get(props.combatData ? props.combatData.enemyID : 1)
 
-        let jobLevel, itemAttack, enemyDefence, critChance; // get
+        let jobLevel: number, damageData; // get
         if (playerTurn) {
             jobLevel = 1
-            itemAttack = playerStats.attack
-            enemyDefence = enemeyStats.defence
-            critChance = playerStats.crit
+            damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevel)
+
         } else {
-            jobLevel = enemeyStats.level
-            itemAttack = enemeyStats.attack
-            enemyDefence = playerStats.defence
-            critChance = 1
+            damageData = calculateEnemyDamage(enemeyStats, playerStats, attackData)
         }
 
-        let damage = calculateDamage(jobLevel, damageRange, itemAttack, enemyDefence, critChance)
-        console.log({ damage })
-        return damage
+        return damageData.attack
     }
 
     const staminaHandler = (stamina, value: number): void => {

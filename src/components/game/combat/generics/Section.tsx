@@ -19,17 +19,18 @@ export const Section = (props) => {
         setSelecetedSkill(id)
     }
 
-    const maxDamgeCalc = (maxDamage): number => {
+    const maxDamgeCalc = (attackData): number => {
         let jobLevel = 1; // get
 
         const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
-        let attack = 1
-        if (playerStats) {
-            attack = playerStats.attack
-        }
+        const placeholderEnemeyStats = { defence: 1 }
+        playerStats.crit = 0
 
-        let damage = calculateDamage(jobLevel, maxDamage, attack, 1, 1)
-        return Math.floor(damage)
+        attackData.minDamage = attackData.maxDamage
+
+        let damageData = calculateDamage(playerStats, placeholderEnemeyStats, attackData, jobLevel)
+
+        return Math.floor(damageData.attack)
     }
 
     return (

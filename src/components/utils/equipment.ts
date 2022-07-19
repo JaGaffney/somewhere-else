@@ -32,35 +32,52 @@ export const calculateDamage = (
   playerStats: IEquipmentStats,
   enemyStats,
   attackData: Attack,
-  jobLevel: number
+  jobLevel: number,
+  damageDisplay: boolean
 ): IEquipmentStats => {
   const damageData = IEquipmentStatsKeys
-
   // https://gamerant.com/pokemon-damage-calculation-help-guide/
   const levelMultiplyer = (2 * jobLevel) / 5 + 2
 
   let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage)
 
-  const preModifiers =
-    (levelMultiplyer * damageRange * playerStats.attack) / 50 + 2
+  const effects = calculateEffect(attackData, playerStats)
 
-  const crit = randomInteger(1, 100) < playerStats.crit
+  const preModifiers = (levelMultiplyer * damageRange * effects.attack) / 50 + 2
 
+  // if just displaying damage no need to show crits
+  let crit = false
   let critDamage = 1
-  if (crit) {
-    critDamage = 2
+  if (!damageDisplay) {
+    crit = randomInteger(1, 100) < effects.crit
+    if (crit) {
+      critDamage = 2
+    }
   }
 
   // TODO: work this out
   // is this correct maths, prob not
   const defence = (preModifiers * critDamage) / enemyStats.defence / 100
-
   const damageDone = preModifiers * critDamage - defence
 
   damageData.attack = damageDone
-  damageData.crit = critDamage
+  damageData.crit = crit // boolean
 
   return damageData
+}
+
+const calculateEffect = (attackData: Attack, playerStats: IEquipmentStats) => {
+  const effects = playerStats
+
+  for (const effect in attackData.effect) {
+    let item = playerStats[effect] === undefined ? 0 : playerStats[effect]
+    let att =
+      attackData.effect[effect] === undefined ? 0 : attackData.effect[effect]
+
+    effects[effect] = item + att
+  }
+
+  return effects
 }
 
 export const calculateEnemyDamage = (

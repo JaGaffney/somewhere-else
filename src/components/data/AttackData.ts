@@ -22,7 +22,7 @@ export class AttackData {
           attackSeed[key].maxDamage,
           attackSeed[key].cooldown,
           attackSeed[key].stamina,
-          new Effect(attackSeed[key].effect.type, attackSeed[key].effect.value),
+          attackSeed[key].effect,
           attackSeed[key].icon
         )
       )

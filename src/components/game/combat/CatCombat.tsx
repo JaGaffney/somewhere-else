@@ -177,9 +177,10 @@ export const CatCombat = (props) => {
         let jobLevel: number, damageData; // get
         if (playerTurn) {
             jobLevel = 1
-            damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevel)
+            damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevel, false)
 
-            props.playerData.setSkillExp(attackData.type, Math.floor(damageData.attack))
+            props.playerData.setSkillExp(attackData.type, Math.floor(damageData.attack) * 3)
+            console.log(props.playerData)
 
         } else {
             damageData = calculateEnemyDamage(enemeyStats, playerStats, attackData)

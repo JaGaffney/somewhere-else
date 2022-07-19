@@ -1,6 +1,4 @@
 // @ts-nocheck
-import { EffectEnum } from "../enums/EffectEnum"
-
 import icon_basic from "../../../images/combat/attacks/basic.svg"
 import icon_shieldBash from "../../../images/combat/attacks/shieldbash.svg"
 import icon_rend from "../../../images/combat/attacks/rend.svg"
@@ -14,10 +12,7 @@ export const attackSeed = [
     maxDamage: 5,
     cooldown: 0,
     stamina: 0,
-    effect: {
-      type: null,
-      value: null,
-    },
+    effect: { crit: 10 },
     icon: icon_basic,
   },
   {
@@ -29,8 +24,7 @@ export const attackSeed = [
     cooldown: 2,
     stamina: 50,
     effect: {
-      type: EffectEnum.Drain,
-      value: 25,
+      drain: 25,
     },
     icon: icon_shieldBash,
   },
@@ -43,8 +37,7 @@ export const attackSeed = [
     cooldown: 2,
     stamina: 50,
     effect: {
-      type: EffectEnum.DoT,
-      value: 25,
+      bleed: 10,
     },
     icon: icon_rend,
   },

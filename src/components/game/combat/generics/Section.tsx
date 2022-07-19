@@ -21,8 +21,7 @@ export const Section = (props) => {
 
     const maxDamgeCalc = (attackData): number => {
         const jobLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(attackData.type))
-        console.log(jobLevel)
-        let jobLevelMultiplyer = 50
+        let jobLevelMultiplyer = 1
         if (jobLevel) {
             jobLevelMultiplyer = jobLevel
         }
@@ -35,7 +34,7 @@ export const Section = (props) => {
         const copiedAttackData = Object.assign({}, attackData)
         copiedAttackData.minDamage = attackData.maxDamage
 
-        const damageData = calculateDamage(playerStats, placeholderEnemeyStats, copiedAttackData, jobLevelMultiplyer)
+        const damageData = calculateDamage(playerStats, placeholderEnemeyStats, copiedAttackData, jobLevelMultiplyer, true)
 
         return Math.floor(damageData.attack)
     }

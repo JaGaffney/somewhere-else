@@ -4,6 +4,11 @@ import { connect } from 'react-redux'
 import { getBackgroundColor } from '../../../utils/color'
 
 export const Info = (props) => {
+
+    console.log(props.selectedSkill && props.attackData.getAttackById(props.selectedSkill))
+
+    console.log(props.attackData)
+
     return (
         <div className="catcombat__description-info">
             <h3>{props.selectedSkill ? props.attackData.getAttackById(props.selectedSkill).name : "Attack"}</h3>

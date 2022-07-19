@@ -20,15 +20,22 @@ export const Section = (props) => {
     }
 
     const maxDamgeCalc = (attackData): number => {
-        let jobLevel = 1; // get
+        const jobLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(attackData.type))
+        console.log(jobLevel)
+        let jobLevelMultiplyer = 50
+        if (jobLevel) {
+            jobLevelMultiplyer = jobLevel
+        }
 
         const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const placeholderEnemeyStats = { defence: 1 }
         playerStats.crit = 0
 
-        attackData.minDamage = attackData.maxDamage
+        // need to copy otherwise data is set somewhere else for some reason
+        const copiedAttackData = Object.assign({}, attackData)
+        copiedAttackData.minDamage = attackData.maxDamage
 
-        let damageData = calculateDamage(playerStats, placeholderEnemeyStats, attackData, jobLevel)
+        const damageData = calculateDamage(playerStats, placeholderEnemeyStats, copiedAttackData, jobLevelMultiplyer)
 
         return Math.floor(damageData.attack)
     }

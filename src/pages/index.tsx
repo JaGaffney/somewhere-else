@@ -54,6 +54,7 @@ const IndexPage = props => {
     props.loadAttacks(attackData)
     props.loadEnemies(enemyData)
     props.loadPlayer(playerData)
+    console.log(playerData)
 
     // keeps data from action is currently in progress when closing down the game
     if (dataFromStorage !== null) {

@@ -42,7 +42,6 @@ export const calculateDamage = (
   let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage)
 
   const effects = calculateEffect(attackData, playerStats)
-
   const preModifiers = (levelMultiplyer * damageRange * effects.attack) / 50 + 2
 
   // if just displaying damage no need to show crits
@@ -60,9 +59,12 @@ export const calculateDamage = (
   const defence = (preModifiers * critDamage) / enemyStats.defence / 100
   const damageDone = preModifiers * critDamage - defence
 
-  damageData.attack = damageDone
-  damageData.crit = crit // boolean
+  for (const effect in effects) {
+    damageData[effect] = effects[effect]
+  }
 
+  damageData["attack"] = damageDone
+  damageData["crit"] = critDamage
   return damageData
 }
 
@@ -76,7 +78,6 @@ const calculateEffect = (attackData: Attack, playerStats: IEquipmentStats) => {
 
     effects[effect] = item + att
   }
-
   return effects
 }
 
@@ -99,7 +100,6 @@ export const calculateEnemyDamage = (
 
   const damageDone = preModifiers - defence
 
-  damageData.attack = damageDone
-  console.log(damageData)
+  damageData["attack"] = damageDone
   return damageData
 }

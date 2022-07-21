@@ -5,10 +5,10 @@ export interface IEquipmentStats {
   armour: number
   weight: number
   speed: number
-  crit: number | boolean
+  crit: number
   elemental: number
   drain: number
-  stun: number | boolean
+  stun: number
   lifesteal: number
   bleed: number
   enfeeable: number

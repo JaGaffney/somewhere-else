@@ -174,10 +174,15 @@ export const CatCombat = (props) => {
         const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const enemeyStats = props.enemyData.enemies.get(props.combatData ? props.combatData.enemyID : 1)
 
-        let jobLevel: number, damageData;
+        let damageData;
         if (playerTurn) {
-            jobLevel = 1
-            damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevel, false)
+            const jobLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(attackData.type))
+            let jobLevelMultiplyer = 1
+            if (jobLevel) {
+                jobLevelMultiplyer = jobLevel
+            }
+
+            damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevelMultiplyer, false)
 
             props.playerData.setSkillExp(attackData.type, Math.floor(damageData.attack) * 3)
         } else {
@@ -199,7 +204,7 @@ export const CatCombat = (props) => {
         }
     }
 
-    const statusEffectResovlePlayer = (data: any, status: string) => {
+    const statusEffectResovlePlayer = (data: any, status: string): void => {
         switch (status) {
             case ("lifesteal"):
                 props.playerData.status.health.setCurrent(props.playerData.status.health.getCurrent() + data)
@@ -249,6 +254,7 @@ export const CatCombat = (props) => {
                 console.log(`enemy ${status}: ${data}`)
                 break;
             case ("armour"):
+                console.log("armour " + data)
                 props.playerData.status.armour.setCurrent(props.playerData.status.armour.getCurrent() + data)
                 console.log(`player ${status}: +${data}`)
                 break;
@@ -268,9 +274,14 @@ export const CatCombat = (props) => {
 
     }
 
-    const resolveDamageDealt = (activePlayer: string, attackData: Attack, damageData: any): void => {
-        const damageOrder = ["lifesteal", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
+    const resolveDamageDealt = (activePlayer: string, attackData: Attack): void => {
+        // work out attack damage
+        const damageData = attackDamageCalculator(attackData)
+        console.log({ activePlayer })
         console.log({ damageData })
+
+        const damageOrder = ["lifesteal", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
+
         if (activePlayer === "player") {
             for (let damage of damageOrder) {
                 statusEffectResovlePlayer(damageData[damage], damage)
@@ -281,10 +292,12 @@ export const CatCombat = (props) => {
 
         } else {
             // setters
-            let armourValue = props.playerData.status.armour.getCurrent() - attackData.damage
+            console.log(damageData)
+            let damage = Math.floor(damageData.attack)
+            let armourValue = props.playerData.status.armour.getCurrent() - damage
             if (armourValue < 0) {
                 setDamageOverlay({
-                    playerHealth: - attackData.damage,
+                    playerHealth: - damage,
                     playerArmour: props.playerData.status.armour.getCurrent(),
                     enemyHealth: null,
                     enemyArmour: null
@@ -295,7 +308,7 @@ export const CatCombat = (props) => {
             } else {
                 setDamageOverlay({
                     playerHealth: "0",
-                    playerArmour: - attackData.damage,
+                    playerArmour: - damageData.damage,
                     enemyHealth: null,
                     enemyArmour: null
                 })
@@ -335,11 +348,10 @@ export const CatCombat = (props) => {
     const handleAttackInput = (attackID: number, activePlayer: string): string => {
         const attackData: Attack = props.attackData.getAttackById(attackID)
 
-        // work out attack damage
-        const damageData = attackDamageCalculator(attackData)
+
 
         // do calcs on attack
-        resolveDamageDealt(activePlayer, attackData, damageData)
+        resolveDamageDealt(activePlayer, attackData)
 
         // handle cooldowns resetting per turn 
         handleCooldowns(attackID, activePlayer)

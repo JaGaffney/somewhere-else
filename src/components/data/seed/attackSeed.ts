@@ -1,7 +1,8 @@
 // @ts-nocheck
 import icon_basic from "../../../images/combat/attacks/basic.svg"
-import icon_shieldBash from "../../../images/combat/attacks/shieldbash.svg"
+import icon_shieldBash from "../../../images/combat/attacks/shieldBash.svg"
 import icon_rend from "../../../images/combat/attacks/rend.svg"
+import icon_shieldBlock from "../../../images/combat/attacks/shieldBlock.svg"
 
 export const attackSeed = [
   {
@@ -40,5 +41,18 @@ export const attackSeed = [
       bleed: 10,
     },
     icon: icon_rend,
+  },
+  {
+    id: 4,
+    name: "shield block",
+    type: "warrior",
+    minDamage: 1,
+    maxDamage: 1,
+    cooldown: 0,
+    stamina: 50,
+    effect: {
+      armour: 10,
+    },
+    icon: icon_shieldBlock,
   },
 ]

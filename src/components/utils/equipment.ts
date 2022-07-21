@@ -100,6 +100,6 @@ export const calculateEnemyDamage = (
   const damageDone = preModifiers - defence
 
   damageData.attack = damageDone
-
+  console.log(damageData)
   return damageData
 }

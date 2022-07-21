@@ -174,19 +174,17 @@ export const CatCombat = (props) => {
         const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const enemeyStats = props.enemyData.enemies.get(props.combatData ? props.combatData.enemyID : 1)
 
-        let jobLevel: number, damageData; // get
+        let jobLevel: number, damageData;
         if (playerTurn) {
             jobLevel = 1
             damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevel, false)
 
             props.playerData.setSkillExp(attackData.type, Math.floor(damageData.attack) * 3)
-            console.log(props.playerData)
-
         } else {
             damageData = calculateEnemyDamage(enemeyStats, playerStats, attackData)
         }
 
-        return damageData.attack
+        return damageData
     }
 
     const staminaHandler = (stamina, value: number): void => {
@@ -201,38 +199,92 @@ export const CatCombat = (props) => {
         }
     }
 
-    const resolveDamageDealt = (activePlayer: string, attackData: Attack, damage: number): void => {
+    const statusEffectResovlePlayer = (data: any, status: string) => {
+        switch (status) {
+            case ("lifesteal"):
+                props.playerData.status.health.setCurrent(props.playerData.status.health.getCurrent() + data)
+                if (props.playerData.status.health.getCurrent() > props.playerData.status.health.getBase()) {
+                    props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
+                }
+                console.log(`player ${status}: +${data}`)
+                break;
+            case ("bleed"):
+                props.combatData.status.health.setCurrent(props.combatData.status.health.getCurrent() - data)
+                console.log(`enemy ${status}: -${data}`)
+                break;
+            case ("elemental"):
+                props.combatData.status.armour.setCurrent(props.combatData.status.armour.getCurrent() - data)
+                if (props.combatData.status.armour.getCurrent() < 0) {
+                    props.combatData.status.armour.setCurrent(0)
+                }
+                console.log(`enemy ${status}: -${data}`)
+                break;
+            case ("attack"):
+                let damage = Math.floor(data)
+                let armourValue = props.combatData.status.armour.getCurrent() - damage
+
+                if (armourValue < 0) {
+                    setDamageOverlay({
+                        playerHealth: null,
+                        playerArmour: null,
+                        enemyHealth: - damage,
+                        enemyArmour: props.combatData.status.armour.getCurrent()
+                    })
+
+                    props.combatData.status.health.setCurrent(props.combatData.status.health.getCurrent() + armourValue)
+                    props.combatData.status.armour.setCurrent(0)
+                } else {
+                    setDamageOverlay({
+                        playerHealth: null,
+                        playerArmour: null,
+                        enemyHealth: 0,
+                        enemyArmour: - damage
+                    })
+
+                    props.combatData.status.armour.setCurrent(armourValue)
+                }
+                console.log(`enemy ${status}: -${data}`)
+                break;
+            case ("enfeeable"):
+                console.log(`enemy ${status}: ${data}`)
+                break;
+            case ("armour"):
+                props.playerData.status.armour.setCurrent(props.playerData.status.armour.getCurrent() + data)
+                console.log(`player ${status}: +${data}`)
+                break;
+            case ("stun"):
+                console.log(`enemy ${status}: ${data}`)
+                break;
+            case ("drain"):
+                props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getCurrent() - data)
+                if (props.combatData.status.stamina.getCurrent() < 0) {
+                    props.combatData.status.stamina.setCurrent(0)
+                }
+                console.log(`enemy ${status}: -${data}`)
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    const resolveDamageDealt = (activePlayer: string, attackData: Attack, damageData: any): void => {
+        const damageOrder = ["lifesteal", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
+        console.log({ damageData })
         if (activePlayer === "player") {
-            let armourValue = props.combatData.status.armour.getCurrent() - damage
-            if (armourValue < 0) {
-                setDamageOverlay({
-                    playerHealth: null,
-                    playerArmour: null,
-                    enemyHealth: - damage,
-                    enemyArmour: props.combatData.status.armour.getCurrent()
-                })
-
-                props.combatData.status.health.setCurrent(props.combatData.status.health.getCurrent() + armourValue)
-                props.combatData.status.armour.setCurrent(0)
-            } else {
-                setDamageOverlay({
-                    playerHealth: null,
-                    playerArmour: null,
-                    enemyHealth: 0,
-                    enemyArmour: - damage
-                })
-
-                props.combatData.status.armour.setCurrent(armourValue)
+            for (let damage of damageOrder) {
+                statusEffectResovlePlayer(damageData[damage], damage)
             }
+
             staminaHandler(props.playerData.status.stamina, attackData.stamina)
             setStaminaOverlay({ player: tempBaseStaminaRegen - attackData.stamina, enemy: null })
 
         } else {
             // setters
-            let armourValue = props.playerData.status.armour.getCurrent() - damage
+            let armourValue = props.playerData.status.armour.getCurrent() - attackData.damage
             if (armourValue < 0) {
                 setDamageOverlay({
-                    playerHealth: - damage,
+                    playerHealth: - attackData.damage,
                     playerArmour: props.playerData.status.armour.getCurrent(),
                     enemyHealth: null,
                     enemyArmour: null
@@ -243,7 +295,7 @@ export const CatCombat = (props) => {
             } else {
                 setDamageOverlay({
                     playerHealth: "0",
-                    playerArmour: - damage,
+                    playerArmour: - attackData.damage,
                     enemyHealth: null,
                     enemyArmour: null
                 })
@@ -284,11 +336,10 @@ export const CatCombat = (props) => {
         const attackData: Attack = props.attackData.getAttackById(attackID)
 
         // work out attack damage
-        const damage = Math.round(attackDamageCalculator(attackData))
-        console.log(activePlayer, " dealt: ", damage)
+        const damageData = attackDamageCalculator(attackData)
 
         // do calcs on attack
-        resolveDamageDealt(activePlayer, attackData, damage)
+        resolveDamageDealt(activePlayer, attackData, damageData)
 
         // handle cooldowns resetting per turn 
         handleCooldowns(attackID, activePlayer)
@@ -334,12 +385,12 @@ export const CatCombat = (props) => {
         if (randomNumber < coins.chance) {
             const coinsReceived = randomInteger(coins.min, coins.max)
             props.playerData.playerBank.addToCoins(coinsReceived)
-            notifyWithImage(`${coinsReceived} coins added to bank`, require("../../../images/items/coins.svg"))
+            notifyWithImage(`+ ${coinsReceived} coins`, require("../../../images/items/coins.svg"))
         }
         // need to work out loot randomness
         const item = props.itemData.getItemById(drops[0].id)
         props.playerData.playerBank.addItemtoBank(drops[0].id, drops[0].qty, item)
-        notifyWithImage(`${drops[0].qty} ${item.name} added to bank`, item.icon)
+        notifyWithImage(`+ ${drops[0].qty} ${item.name}`, item.icon)
 
 
     }
@@ -416,7 +467,7 @@ export const CatCombat = (props) => {
     const notifyWithImage = (value: string, url: string): void => {
         toast(value, {
             position: "bottom-right",
-            autoClose: 5000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,

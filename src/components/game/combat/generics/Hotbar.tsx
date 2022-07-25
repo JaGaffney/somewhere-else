@@ -9,6 +9,8 @@ export const Hotbar = (props) => {
         e.dataTransfer.setData("text/plain", e.target.id)
     }
 
+    console.log(props.attackSelectedID)
+
     return (
         <div className="catcombat__hotbar-attacks">
             {Object.keys(props.playerData.classes.findJobClass(props.playerData.classes.equippedJobClass).equippedAttacks).map((id, k) => {
@@ -34,7 +36,7 @@ export const Hotbar = (props) => {
                         onClick={() => props.onAttackHandler(attackID)}
                         onMouseEnter={() => props.onSelectedSkillHandler(attackID)}
                     >
-                        <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default") }}
+                        <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default"), transform: `${props.attackSelectedID === attackID && "scale(1.1)"}` }}
 
                         >
                             <img className="attacks__button-icon" src={attackData && attackData.icon} />

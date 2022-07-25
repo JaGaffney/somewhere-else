@@ -34,8 +34,8 @@ export const calculateDamage = (
   attackData: Attack,
   jobLevel: number,
   damageDisplay: boolean
-): IEquipmentStats => {
-  const damageData = IEquipmentStatsKeys
+) => {
+  const damageData = {}
   // https://gamerant.com/pokemon-damage-calculation-help-guide/
   const levelMultiplyer = (2 * jobLevel) / 5 + 2
 
@@ -85,8 +85,8 @@ export const calculateEnemyDamage = (
   enemyStats,
   playerStats: IEquipmentStats,
   attackData: Attack
-): IEquipmentStats => {
-  const damageData = IEquipmentStatsKeys
+) => {
+  const damageData = {}
 
   // https://gamerant.com/pokemon-damage-calculation-help-guide/
   const levelMultiplyer = (2 * enemyStats.level) / 5 + 2

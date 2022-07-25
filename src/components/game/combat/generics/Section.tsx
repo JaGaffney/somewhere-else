@@ -67,6 +67,7 @@ export const Section = (props) => {
                         onAttackHandler={props.onAttackHandler}
                         cooldowns={props.cooldowns}
                         maxDamgeCalc={maxDamgeCalc}
+                        attackSelectedID={props.attackSelectedID}
                     />
                 </div>
             ) : (

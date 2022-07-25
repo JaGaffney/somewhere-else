@@ -3,6 +3,8 @@ import icon_basic from "../../../images/combat/attacks/basic.svg"
 import icon_shieldBash from "../../../images/combat/attacks/shieldBash.svg"
 import icon_rend from "../../../images/combat/attacks/rend.svg"
 import icon_shieldBlock from "../../../images/combat/attacks/shieldBlock.svg"
+import icon_arrowLightning from "../../../images/combat/attacks/arrowLightning.svg"
+import icon_arrowLeech from "../../../images/combat/attacks/arrowLeech.svg"
 
 export const attackSeed = [
   {
@@ -54,5 +56,31 @@ export const attackSeed = [
       armour: 10,
     },
     icon: icon_shieldBlock,
+  },
+  {
+    id: 5,
+    name: "Lightning Arrow",
+    type: "archer",
+    minDamage: 1,
+    maxDamage: 5,
+    cooldown: 2,
+    stamina: 50,
+    effect: {
+      elemental: 10,
+    },
+    icon: icon_arrowLightning,
+  },
+  {
+    id: 6,
+    name: "Leeching Arrow",
+    type: "archer",
+    minDamage: 1,
+    maxDamage: 10,
+    cooldown: 2,
+    stamina: 50,
+    effect: {
+      lifesteal: 3,
+    },
+    icon: icon_arrowLeech,
   },
 ]

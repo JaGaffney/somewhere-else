@@ -90,7 +90,7 @@ export const enemySeed = [
     speed: 10,
     coins: [0, 10, 100],
     drops: [{ id: 1, qty: 1, chance: 100 }],
-    attacks: [1, 2, 3],
+    attacks: [1, 6, 3],
     rotation: [3, 2, 1],
     image: adamIcon,
     requirement: 0,

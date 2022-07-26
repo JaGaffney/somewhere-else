@@ -75,6 +75,7 @@ export const Section = (props) => {
                     data={props.data ? props.data : null}
                     onSelectedSkillHandler={onSelectedSkillHandler}
                     cooldowns={props.cooldowns}
+                    attackSelectedID={props.attackSelectedID}
                 />
             )}
 

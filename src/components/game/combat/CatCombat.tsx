@@ -28,7 +28,8 @@ export const CatCombat = (props) => {
     const [autoCombat, setAutoCombat] = useState(true)
     const [playerTurn, setPlayerTurn] = useState(true)
     const [timer, setTimer] = useState(0)
-    const [attackSelectedID, setAttackSelectedID] = useState(null)
+    const [attackSelectedID, setAttackSelectedID] = useState<null | number>(null)
+    const [enemyAttackSelectedID, setEnemyAttackSelectedID] = useState<null | number>(null)
     const [attackErrors, setAttackErrors] = useState({
         stamina: false,
         cooldown: false
@@ -267,13 +268,12 @@ export const CatCombat = (props) => {
 
     }
 
-    const resolveDamageDealt = (activePlayer: string, attackData: Attack): void => {
+    const resolveDamageDealt = (activePlayer: string, attackData: Attack, attackID: number): void => {
         // TODO: damage is happening irregarldess of stamina
         // work out attack damage
         const damageData = attackDamageCalculator(attackData)
-        console.log({ activePlayer })
-        console.log({ damageData })
 
+        console.log(attackData)
         const damageOrder = ["lifesteal", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
 
         const tempOverlay = {
@@ -284,6 +284,8 @@ export const CatCombat = (props) => {
             enemyStatus: null
         }
         if (activePlayer === "player") {
+            setAttackSelectedID(attackID)
+            setEnemyAttackSelectedID(null)
             for (let damage of damageOrder) {
                 if (damageData[damage]) {
                     const overlayValues = statusEffectResovlePlayer(damageData[damage], damage)
@@ -299,8 +301,10 @@ export const CatCombat = (props) => {
             setStaminaOverlay({ player: tempBaseStaminaRegen - attackData.stamina, enemy: null })
 
         } else {
+            // for ui purposes only
+            setAttackSelectedID(null)
+            setEnemyAttackSelectedID(attackID)
             // setters
-            console.log(damageData)
             let damage = Math.floor(damageData.attack)
             let armourValue = props.playerData.status.armour.getCurrent() - damage
             if (armourValue < 0) {
@@ -356,11 +360,9 @@ export const CatCombat = (props) => {
     const handleAttackInput = (attackID: number, activePlayer: string): string => {
         const attackData: Attack = props.attackData.getAttackById(attackID)
 
-        setAttackSelectedID(attackID)
-
 
         // do calcs on attack
-        resolveDamageDealt(activePlayer, attackData)
+        resolveDamageDealt(activePlayer, attackData, attackID)
 
         // handle cooldowns resetting per turn 
         handleCooldowns(attackID, activePlayer)
@@ -427,7 +429,7 @@ export const CatCombat = (props) => {
     const gameEngineStart = (): void => {
         if (!enemyDead() && !playerDead() && combatInProcess) {
             let whoseGoIsIt = currentTurn()
-            setAttackSelectedID(null)
+            //setAttackSelectedID(null)
 
             if (autoCombat || whoseGoIsIt === "enemy") {
                 // find first viable attack?
@@ -541,6 +543,7 @@ export const CatCombat = (props) => {
                 damageOverlay={damageOverlay}
                 staminaOverlay={staminaOverlay}
                 onDropInfoHandler={props.onDropInfoHandler}
+                attackSelectedID={enemyAttackSelectedID}
             />
         </div >
     )

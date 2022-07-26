@@ -7,6 +7,10 @@ export const EnemyInfo = (props) => {
     const [enemyData, setEnemyData] = useState(null)
 
     useEffect(() => {
+    }, [props.attackSelectedID])
+
+
+    useEffect(() => {
         setEnemyData(props.enemies.enemies.get(props.data ? props.data.enemyID : 1))
     }, [])
 
@@ -35,7 +39,7 @@ export const EnemyInfo = (props) => {
                                     onClick={() => props.onSelectedSkillHandler(id)}
                                     onMouseEnter={() => props.onSelectedSkillHandler(id)}
                                 >
-                                    <div className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default") }}
+                                    <div className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default"), transform: `${props.attackSelectedID === id ? "scale(1.3)" : "scale(1)"}` }}
                                     >
                                         <img className="attacks__button-icon" src={attackData && attackData.icon} />
                                         {attackData &&

@@ -38,7 +38,7 @@ export const Hotbar = (props) => {
                         onClick={() => props.onAttackHandler(attackID)}
                         onMouseEnter={() => props.onSelectedSkillHandler(attackID)}
                     >
-                        <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default"), transform: `${props.attackSelectedID === attackID ? "scale(1.3)" : "scale(1)"}` }}
+                        <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default"), transform: `${props.attackSelectedID === attackID && props.attackSelectedID !== null ? "scale(1.3)" : "scale(1)"}` }}
 
                         >
                             <img className="attacks__button-icon" src={attackData && attackData.icon} />

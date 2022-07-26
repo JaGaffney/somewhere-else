@@ -29,7 +29,7 @@ export class JobClass {
     }
   }
 
-  changeAttackLocation(attackID: number, location: number): void {
+  changeAttackLocation(attackID: number | null, location: number): void {
     // resets previous location if applicable
     for (const attack in this.equippedAttacks) {
       if (this.equippedAttacks[attack] === attackID) {

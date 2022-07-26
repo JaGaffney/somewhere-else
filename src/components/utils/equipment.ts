@@ -9,6 +9,7 @@ import {
 
 import { Attack } from "../data/attacks/Attack"
 
+// gets stats from equipped gear/items
 export const currentStatCalculator = (itemData, inventory): IEquipmentStats => {
   const totalEquippedStats = {}
   for (const [key, value] of Object.entries(Slot)) {
@@ -28,6 +29,7 @@ export const currentStatCalculator = (itemData, inventory): IEquipmentStats => {
   return totalEquippedStats
 }
 
+// calcualtes the players damage based on all parameters: gear, level, attack data, enemy defence
 export const calculateDamage = (
   playerStats: IEquipmentStats,
   enemyStats,
@@ -68,6 +70,7 @@ export const calculateDamage = (
   return damageData
 }
 
+// calcualtes the enemys damage based on all parameters: gear, level, attack data, players defence
 const calculateEffect = (attackData: Attack, playerStats: IEquipmentStats) => {
   const effects = playerStats
 

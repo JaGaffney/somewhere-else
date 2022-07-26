@@ -43,7 +43,17 @@ export const AttackLoadout = (props) => {
                             return (
                                 <div className="attackloadout__equipped-slot"
                                     key={k}
-                                    onClick={() => props.onSelectedSkillHandler(attackID)}
+                                    onClick={(e) => {
+                                        if (e.detail === 1) {
+                                            props.onSelectedSkillHandler(attackID)
+                                        }
+                                        if (e.detail === 2) {
+                                            console.log("double click")
+                                            props.playerData.classes.findJobClass(props.activePage).changeAttackLocation(parseInt(null), slot)
+                                            props.onSelectedSkillHandler(null)
+                                        }
+
+                                    }}
                                 >
                                     <div className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default") }}
                                         onDragOver={dragOver}
@@ -51,7 +61,8 @@ export const AttackLoadout = (props) => {
                                         onDragLeave={dragLeave}
                                         onDrop={(e) => attackDrop(e, slot)}
                                     >
-                                        <img className="attacks__button-icon" src={attackData && attackData.icon} />
+                                        {attackData && <img className="attacks__button-icon" src={attackData && attackData.icon} />}
+
                                         {attackData &&
                                             <div className="attacks__button-stats">
                                                 <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>

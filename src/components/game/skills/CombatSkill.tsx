@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import EXP from "./generics/EXP"
-import Talents from "./generics/Talents"
+import Passives from "./generics/Passives"
 import Attack from "./generics/Attack"
 import AttackLoadout from './generics/AttackLoadout'
 
@@ -26,7 +26,7 @@ export const CombatSkill = (props) => {
                         )
                     })}
                 </div>
-                <Talents />
+                <Passives />
             </div>
         )
     )

@@ -7,7 +7,7 @@ export class JobClass {
     5: null,
     6: null,
   }
-  rotation: Array<number> = new Array(6)
+  rotation: Array<number | null> = new Array(6)
 
   constructor() {}
 

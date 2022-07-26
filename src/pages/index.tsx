@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
-import { loadSkills, loadItems, loadResearch, loadAttacks, loadEnemies, loadPlayer, allDataLoaded, saveAllDataToLocalStorage, onLoadDataFromLocalStorage } from "../components/actions/startup"
+import { loadSkills, loadItems, loadResearch, loadAttacks, loadPassives, loadEnemies, loadPlayer, allDataLoaded, saveAllDataToLocalStorage, onLoadDataFromLocalStorage } from "../components/actions/startup"
 import { setDeltaTime, resetActionTime, setActionTime } from "../components/actions/api"
 
 import Layout from "../components/layout"
@@ -13,6 +13,7 @@ import Structure from "../components/game/Structure"
 import { ItemData } from "../components/data/ItemData"
 import { SkillData } from "../components/data/SkillData"
 import { AttackData } from "../components/data/AttackData"
+import { PassiveData } from "../components/data/PassiveData"
 import { EnemyData } from "../components/data/EnemyData"
 import { ResearchData } from "../components/data/ResearchData"
 import { PlayerData } from "../components/data/PlayerData"
@@ -36,6 +37,7 @@ const IndexPage = props => {
     // creates all skill data not pertaining to the player
     const skillData = new SkillData()
     const attackData = new AttackData()
+    const passiveData = new PassiveData()
     const enemyData = new EnemyData(attackData)
     const researchData = new ResearchData()
 
@@ -52,6 +54,7 @@ const IndexPage = props => {
     props.loadItems(itemData)
     props.loadResearch(researchData)
     props.loadAttacks(attackData)
+    props.loadPassives(passiveData)
     props.loadEnemies(enemyData)
     props.loadPlayer(playerData)
 
@@ -237,7 +240,7 @@ const mapStateToProps = (state) => ({
 
 
 const mapDispatchToProps = {
-  loadSkills, loadItems, loadResearch, loadAttacks, loadEnemies, loadPlayer, allDataLoaded, setDeltaTime, resetActionTime, setActionTime
+  loadSkills, loadItems, loadResearch, loadAttacks, loadPassives, loadEnemies, loadPlayer, allDataLoaded, setDeltaTime, resetActionTime, setActionTime
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(IndexPage)

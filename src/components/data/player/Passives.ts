@@ -1,24 +1,24 @@
 // on load creates all of the ingame data for the player.
 export class Passives {
-  unlockedPassives: Map<string, boolean> = new Map()
-  equippedPassives: object = { 1: "", 2: "", 3: "", 4: "" }
+  unlockedPassives: Map<number, boolean> = new Map()
+  equippedPassives: Object = { 1: null, 2: null, 3: null, 4: null }
 
   constructor() {}
 
-  addNewUnlockedPassive(passiveId: string) {
+  addNewUnlockedPassive(passiveId: number) {
     this.unlockedPassives[passiveId] = true
   }
-  getUnlockedPassive(id: string) {
+  getUnlockedPassive(id: number) {
     return this.unlockedPassives[id]
   }
 
-  changeEquippedPassives(location: number, id: string) {
+  changeEquippedPassives(location: number, id: number) {
     if (!Object.values(this.equippedPassives).includes(id)) {
       this.equippedPassives[location] = id
     }
   }
 
-  getEquippedPassiveAtLocation(location: number): object {
+  getEquippedPassiveAtLocation(location: number): number | null {
     return this.equippedPassives[location]
   }
 }

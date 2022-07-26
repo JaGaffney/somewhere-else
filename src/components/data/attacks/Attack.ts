@@ -1,6 +1,3 @@
-import { Effect } from "./Effect"
-import { ClassesEnum } from "../enums/ClassesEnum"
-
 export class Attack {
   name: string
   type: string

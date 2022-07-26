@@ -1,6 +1,6 @@
 // different classes in the game
 export enum ClassesEnum {
-  Warrior = "WARRIOR",
-  Archer = "ARCHER",
-  Magician = "MAGICIAN",
+  WARRIOR = "WARRIOR",
+  ARCHER = "ARCHER",
+  MAGICIAN = "MAGICIAN",
 }

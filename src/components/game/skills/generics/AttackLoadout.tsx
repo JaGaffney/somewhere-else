@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+
+import ReactTooltip from 'react-tooltip';
+
 import { setActionTime, resetActionTime } from "../../../actions/api"
 
 import AttackInfo from './AttackInfo';
@@ -42,13 +45,13 @@ export const AttackLoadout = (props) => {
                             const slot: number = k + 1
                             return (
                                 <div className="attackloadout__equipped-slot"
+                                    data-tip={attackData && attackData.name}
                                     key={k}
                                     onClick={(e) => {
                                         if (e.detail === 1) {
                                             props.onSelectedSkillHandler(attackID)
                                         }
                                         if (e.detail === 2) {
-                                            console.log("double click")
                                             props.playerData.classes.findJobClass(props.activePage).changeAttackLocation(parseInt(null), slot)
                                             props.onSelectedSkillHandler(null)
                                         }
@@ -79,16 +82,30 @@ export const AttackLoadout = (props) => {
 
                 <div className="attackloadout__equipped-talents">
                     <div className="attackloadout__equipped-slot">
-                        <div className="attacks__button">
-                            <img className="attacks__button-icon" src={""} />
-                        </div>
+                        {Object.keys(props.playerData.passives.equippedPassives).map((i, k) => {
+                            const data = props.playerData.passives.getEquippedPassiveAtLocation(i)
+                            return (
+                                <div className="attacks__button"
+                                    data-tip={data && props.passiveData.getPassiveById(data) && data && props.passiveData.getPassiveById(data).name}>
+                                    <img className="attacks__button-icon" src={data && props.passiveData.getPassiveById(data).icon} />
+                                </div>
+                            )
+
+
+
+                        })}
+
                     </div>
                 </div>
+
+                <button onClick={() => props.playerData.passives.changeEquippedPassives(1, 1)}>test</button>
 
 
             </div>
 
             <AttackInfo selectedSkill={props.selectedSkill} />
+
+            <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />
         </div>
     )
 }
@@ -97,8 +114,9 @@ export const AttackLoadout = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
+    passiveData: state.passives.passiveData,
     attackData: state.attacks.attackData,
-    activePage: state.engine.activePage
+    activePage: state.engine.activePage,
 })
 
 const mapDispatchToProps = {

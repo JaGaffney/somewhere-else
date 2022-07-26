@@ -22,6 +22,12 @@ export const loadAttacks = data => dispatch => {
     payload: data,
   })
 }
+export const loadPassives = data => dispatch => {
+  return dispatch({
+    type: "LOAD_PASSIVES",
+    payload: data,
+  })
+}
 export const loadEnemies = data => dispatch => {
   return dispatch({
     type: "LOAD_ENEMIES",
@@ -50,7 +56,7 @@ export const allDataLoaded = () => dispatch => {
 
 export const onLoadDataFromLocalStorage = () => {
   if (typeof Storage !== "undefined") {
-    let retrievedObject = null
+    let retrievedObject: any = null
     if (typeof window !== "undefined") {
       retrievedObject = localStorage.getItem("data")
     } else {

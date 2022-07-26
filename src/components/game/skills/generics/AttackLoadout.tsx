@@ -86,6 +86,7 @@ export const AttackLoadout = (props) => {
                             const data = props.playerData.passives.getEquippedPassiveAtLocation(i)
                             return (
                                 <div className="attacks__button"
+                                    key={k}
                                     data-tip={data && props.passiveData.getPassiveById(data) && data && props.passiveData.getPassiveById(data).name}>
                                     <img className="attacks__button-icon" src={data && props.passiveData.getPassiveById(data).icon} />
                                 </div>

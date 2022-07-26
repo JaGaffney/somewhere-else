@@ -12,6 +12,15 @@ export class Passives {
     return this.unlockedPassives[id]
   }
 
+  getAllUnlockedPassivesID(): Array<number> {
+    const unlockedPassiveID = []
+    Object.values(this.equippedPassives).forEach(function (key: number, val) {
+      unlockedPassiveID.push(key)
+    })
+
+    return unlockedPassiveID
+  }
+
   changeEquippedPassives(location: number, id: number) {
     if (!Object.values(this.equippedPassives).includes(id)) {
       this.equippedPassives[location] = id

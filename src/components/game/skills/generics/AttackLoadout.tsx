@@ -112,7 +112,7 @@ export const AttackLoadout = (props) => {
                                     onClick={(e) => {
                                         props.onSelectedSkillHandler(null)
                                         if (e.detail === 1) {
-                                            props.onSelectedPassiveHandler(data)
+                                            props.onSelectedPassiveHandler(props.passiveData.getPassiveById(data))
                                         }
                                         if (e.detail === 2) {
                                             props.playerData.passives.changeEquippedPassives(slot, null)

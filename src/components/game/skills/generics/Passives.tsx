@@ -3,27 +3,36 @@ import { connect } from 'react-redux'
 
 import ReactTooltip from 'react-tooltip';
 
+import { getBackgroundColor } from '../../../utils/color';
+
 
 export const Passives = (props) => {
 
     function onDragStart(e) {
-        e.dataTransfer.setData("text/plain", e.target.id)
+        const id = e.target.id
+        e.dataTransfer.setData("text/plain", `passive-${id}`)
     }
+
 
     return (
         <div className="attacks__container">
-            {props.playerData.passives.getAllUnlockedPassivesID().map((id, k) => {
+            {props.playerData.passives.unlockedPassives.map((id, k) => {
                 if (id !== null) {
                     const passive = props.passiveData.getPassiveById(id)
                     return (
-
-                        <button className="attacks__button attacks__button-general" draggable={true}
+                        <button
+                            className="attacks__button attacks__button-general"
+                            draggable={true}
+                            onDragStart={e => onDragStart(e)}
                             id={id}
-                            data-tip={passive.name && passive.name}>
+                            key={k}
+                            data-tip={passive.name && passive.name}
+                            style={{ borderColor: getBackgroundColor(passive.job) }}
+                        >
                             <img className="attacks__button-icon"
-
                                 src={passive.icon}
                                 alt={passive.name}
+                                id={id}
                             />
                         </button>
                     )

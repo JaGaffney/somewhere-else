@@ -53,7 +53,7 @@ export const Stats = (props) => {
         <div className="equipment__container-stats">
             {Object.keys(IEquipmentStatsKeys).map((i, k) => {
                 return (
-                    <StatValue statType={[i]} currentValue={currentStats[i]} getStatDifference={getStatDifference} />
+                    <StatValue statType={[i]} currentValue={currentStats[i]} getStatDifference={getStatDifference} key={k} />
 
                 )
             })}

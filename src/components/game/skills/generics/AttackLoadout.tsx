@@ -29,8 +29,21 @@ export const AttackLoadout = (props) => {
         e.preventDefault()
         setComponentHover(false)
         const attackDataID = e.dataTransfer.getData("text")
+        if (!isNaN(attackDataID)) {
+            props.playerData.classes.findJobClass(props.activePage).changeAttackLocation(parseInt(attackDataID), slot)
+        }
 
-        props.playerData.classes.findJobClass(props.activePage).changeAttackLocation(parseInt(attackDataID), slot)
+
+    }
+    const passiveDrop = (e, slot: number) => {
+        e.preventDefault()
+        setComponentHover(false)
+        const passiveDataID = e.dataTransfer.getData("text").split("-")
+
+        if (isNaN(passiveDataID)) {
+            const id = parseInt(passiveDataID[1])
+            props.playerData.passives.changeEquippedPassives(id, slot)
+        }
     }
 
     return (
@@ -84,10 +97,19 @@ export const AttackLoadout = (props) => {
                     <div className="attackloadout__equipped-slot">
                         {Object.keys(props.playerData.passives.equippedPassives).map((i, k) => {
                             const data = props.playerData.passives.getEquippedPassiveAtLocation(i)
+                            const slot: number = k + 1
                             return (
-                                <div className="attacks__button"
+                                <div
+                                    onDragOver={dragOver}
+                                    onDragEnter={dragEnter}
+                                    onDragLeave={dragLeave}
+                                    onDrop={(e) => passiveDrop(e, slot)}
+                                    className="attacks__button"
                                     key={k}
-                                    data-tip={data && props.passiveData.getPassiveById(data) && data && props.passiveData.getPassiveById(data).name}>
+                                    data-tip={data && props.passiveData.getPassiveById(data) && data && props.passiveData.getPassiveById(data).name}
+                                    style={{ borderColor: getBackgroundColor(data && props.passiveData.getPassiveById(data) && data && props.passiveData.getPassiveById(data).job) }}
+
+                                >
                                     <img className="attacks__button-icon" src={data && props.passiveData.getPassiveById(data).icon} />
                                 </div>
                             )
@@ -98,10 +120,6 @@ export const AttackLoadout = (props) => {
 
                     </div>
                 </div>
-
-                <button onClick={() => props.playerData.passives.changeEquippedPassives(1, 1)}>test</button>
-
-
             </div>
 
             <AttackInfo selectedSkill={props.selectedSkill} />

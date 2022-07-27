@@ -114,9 +114,8 @@ export class PlayerData {
   }
 
   private loadPassives(passiveData): void {
-    for (const name in passiveData.unlockedPassives) {
-      this.passives.addNewUnlockedPassive(name)
-    }
+    this.passives.unlockedPassives = passiveData.unlockedPassives
+
     for (const location in passiveData.equippedPassives) {
       this.passives.changeEquippedPassives(
         parseInt(location),

@@ -362,6 +362,16 @@
 .attacksloadout__stats {
   display: flex;
   flex-wrap: wrap;
+  &-info {
+    margin: 0.1rem 0;
+    width: 100%;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: var(--gray500);
+    font-size: 0.8rem;
+    line-height: 1rem;
+    font-style: italic;
+  }
   &-description {
     margin: 0.1rem 0;
     width: 100%;

@@ -10,9 +10,18 @@ export class Passives {
   }
 
   changeEquippedPassives(location: number, id: number) {
-    if (!Object.values(this.equippedPassives).includes(id)) {
-      this.equippedPassives[location] = id
+    // if (!Object.values(this.equippedPassives).includes(id)) {
+    //   this.equippedPassives[location] = id
+    // }
+
+    // resets previous location if applicable
+    for (const passive in this.equippedPassives) {
+      if (this.equippedPassives[passive] === id) {
+        this.equippedPassives[passive] = null
+      }
     }
+
+    this.equippedPassives[location] = id
   }
 
   getEquippedPassiveAtLocation(location: number): number | null {

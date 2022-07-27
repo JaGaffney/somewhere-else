@@ -7,12 +7,10 @@ import { getBackgroundColor } from '../../../utils/color';
 
 
 export const Passives = (props) => {
-
     function onDragStart(e) {
         const id = e.target.id
         e.dataTransfer.setData("text/plain", `passive-${id}`)
     }
-
 
     return (
         <div className="attacks__container">
@@ -28,6 +26,10 @@ export const Passives = (props) => {
                             key={k}
                             data-tip={passive.name && passive.name}
                             style={{ borderColor: getBackgroundColor(passive.job) }}
+                            onClick={() => {
+                                props.onSelectedSkillHandler(null)
+                                props.onSelectedPassiveHandler(passive)
+                            }}
                         >
                             <img className="attacks__button-icon"
                                 src={passive.icon}

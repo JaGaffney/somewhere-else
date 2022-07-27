@@ -13,7 +13,14 @@ export const Attack = (props) => {
 
     return (
         <>
-            <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(props.attackData.getAttackById(props.attackID).type) }} onClick={() => props.onSelectedSkillHandler(props.attackID)} draggable={true}
+            <button className="attacks__button attacks__button-general"
+                style={{ borderColor: getBackgroundColor(props.attackData.getAttackById(props.attackID).type) }}
+                onClick={() => {
+                    props.onSelectedPassiveHandler(null)
+                    props.onSelectedSkillHandler(props.attackID)
+                }}
+
+                draggable={true}
                 onDragStart={e => onDragStart(e)}
                 id={props.attackID}
                 data-tip={props.attackData.getAttackById(props.attackID).name && props.attackData.getAttackById(props.attackID).name}>

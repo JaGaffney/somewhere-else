@@ -8,6 +8,7 @@ import { setActionTime, resetActionTime } from "../../../actions/api"
 import AttackInfo from './AttackInfo';
 
 import { getBackgroundColor } from '../../../utils/color';
+import PassiveInfo from './PassiveInfo';
 
 export const AttackLoadout = (props) => {
     const [componentHover, setComponentHover] = useState(false)
@@ -39,10 +40,10 @@ export const AttackLoadout = (props) => {
         e.preventDefault()
         setComponentHover(false)
         const passiveDataID = e.dataTransfer.getData("text").split("-")
-
+        console.log({ passiveDataID }, { slot })
         if (isNaN(passiveDataID)) {
             const id = parseInt(passiveDataID[1])
-            props.playerData.passives.changeEquippedPassives(id, slot)
+            props.playerData.passives.changeEquippedPassives(slot, id)
         }
     }
 
@@ -61,6 +62,7 @@ export const AttackLoadout = (props) => {
                                     data-tip={attackData && attackData.name}
                                     key={k}
                                     onClick={(e) => {
+                                        props.onSelectedPassiveHandler(null)
                                         if (e.detail === 1) {
                                             props.onSelectedSkillHandler(attackID)
                                         }
@@ -68,7 +70,6 @@ export const AttackLoadout = (props) => {
                                             props.playerData.classes.findJobClass(props.activePage).changeAttackLocation(parseInt(null), slot)
                                             props.onSelectedSkillHandler(null)
                                         }
-
                                     }}
                                 >
                                     <div className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default") }}
@@ -108,7 +109,16 @@ export const AttackLoadout = (props) => {
                                     key={k}
                                     data-tip={data && props.passiveData.getPassiveById(data) && data && props.passiveData.getPassiveById(data).name}
                                     style={{ borderColor: getBackgroundColor(data && props.passiveData.getPassiveById(data) && data && props.passiveData.getPassiveById(data).job) }}
-
+                                    onClick={(e) => {
+                                        props.onSelectedSkillHandler(null)
+                                        if (e.detail === 1) {
+                                            props.onSelectedPassiveHandler(data)
+                                        }
+                                        if (e.detail === 2) {
+                                            props.playerData.passives.changeEquippedPassives(slot, null)
+                                            props.onSelectedPassiveHandler(null)
+                                        }
+                                    }}
                                 >
                                     <img className="attacks__button-icon" src={data && props.passiveData.getPassiveById(data).icon} />
                                 </div>
@@ -121,8 +131,8 @@ export const AttackLoadout = (props) => {
                     </div>
                 </div>
             </div>
+            {props.selectedPassive ? <PassiveInfo selectedPassive={props.selectedPassive} /> : <AttackInfo selectedSkill={props.selectedSkill} />}
 
-            <AttackInfo selectedSkill={props.selectedSkill} />
 
             <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />
         </div>

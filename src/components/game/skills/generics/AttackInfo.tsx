@@ -41,16 +41,18 @@ export const AttackInfo = (props) => {
                     </span>
                 </span>
                 <span className="attacksloadout__stats-description">
-                    Effect
-                    <span>
-                        {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).effect.value} {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).effect.type}
-                    </span>
+                    {props.selectedSkill && Object.keys(props.attackData.getAttackById(props.selectedSkill).effect).map((i, k) => {
+                        return (
+                            <React.Fragment key={k}>
+                                {i}
+                                <span>
+                                    {props.attackData.getAttackById(props.selectedSkill).effect[i]}
+                                </span>
+                            </React.Fragment>
+                        )
+                    })}
                 </span>
             </div>
-
-            <button className="attackloadout__eqiup">Equip</button>
-
-
         </div>
     )
 }

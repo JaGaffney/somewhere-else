@@ -1,7 +1,8 @@
 export const getBackgroundColor = (color: string): string => {
-    if (color === null) {
+    if (color === null || color === undefined) {
         return ""
     }
+
 
     switch (color.toLowerCase()) {
         case ("shop"): {
@@ -35,9 +36,10 @@ export const getBackgroundColor = (color: string): string => {
 
 
 export const getTextColor = (color: string): string => {
-    if (color === null) {
+    if (color === null || color === undefined) {
         return ""
     }
+
 
 
     switch (color.toLowerCase()) {
@@ -63,7 +65,7 @@ export const getTextColor = (color: string): string => {
 
 
 export const getResearchBorderColor = (color: string): string => {
-    if (color === null) {
+    if (color === null || color === undefined) {
         return ""
     }
 

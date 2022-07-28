@@ -12,9 +12,9 @@ export const Details = (props) => {
     const [xValue, setXValue] = useState<number>(0)
 
     const onSellHandler = (amount: number) => {
-        const qty = props.playerData.playerBank.findItemInBank(props.activeItemID).qty
+        const qty = props.playerData.playerBank.findItemInBank(props.activeBankItemID).qty
         if (amount <= qty) {
-            props.playerData.playerBank.sellItemFromBank(props.activeItemID, amount, props.activeBankItem.price)
+            props.playerData.playerBank.sellItemFromBank(props.activeBankItemID, amount, props.activeBankItem.price)
 
             if (amount === qty) {
                 props.bankItemSelectedHandler(null)
@@ -23,6 +23,8 @@ export const Details = (props) => {
         }
     }
 
+    console.log(props.playerData.playerBank.findItemInBank(1))
+
     return (
         <div className="bank__details">
             {props.activeBankItem && (
@@ -30,7 +32,7 @@ export const Details = (props) => {
                     <div className="bank__details-content">
                         <div className="bank__details-icon">
                             <img src={props.activeBankItem.icon} />
-                            <span className="bank__details-icon-qty">{props.playerData.playerBank.findItemInBank(props.activeItemID).qty}</span>
+                            <span className="bank__details-icon-qty">{props.playerData.playerBank.findItemInBank(props.activeBankItemID) && props.playerData.playerBank.findItemInBank(props.activeBankItemID).qty}</span>
                         </div>
 
                         <div className="bank__details-body" style={{ color: getRarityColor(props.activeBankItem.rarity) }}>
@@ -52,9 +54,9 @@ export const Details = (props) => {
 
                         <div className="bank__details-sale-buttons">
                             <button className="generic__button" onClick={() => onSellHandler(1)}>Sell 1</button>
-                            <button className="generic__button" onClick={() => onSellHandler(props.playerData.playerBank.findItemInBank(props.activeItemID).qty - 1)}>All but 1</button>
+                            <button className="generic__button" onClick={() => onSellHandler(props.playerData.playerBank.findItemInBank(props.activeBankItemID) && props.playerData.playerBank.findItemInBank(props.activeBankItemID).qty - 1)}>All but 1</button>
                             <button className="generic__button" onClick={() => onSellHandler(xValue)}>X</button>
-                            <button className="generic__button generic__button-fit " onClick={() => onSellHandler(props.playerData.playerBank.findItemInBank(props.activeItemID).qty)}>All</button>
+                            <button className="generic__button generic__button-fit " onClick={() => onSellHandler(props.playerData.playerBank.findItemInBank(props.activeBankItemID).qty)}>All</button>
                         </div>
 
                     </div>

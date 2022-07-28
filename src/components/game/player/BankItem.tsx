@@ -33,7 +33,7 @@ export const BankItem = (props) => {
             if (props.sellMode) {
                 onSellModeHandler()
             } else {
-                props.bankItemSelectedHandler(props.itemData)
+                props.bankItemSelectedHandler(props.itemData, props.id)
                 props.setActiveItemID(props.id)
             }
         }

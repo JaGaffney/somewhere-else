@@ -8,15 +8,19 @@ import Details from './Details'
 
 export const PlayerBank = (props) => {
     const [activeBankItem, setActiveBankItem] = useState(null)
+    const [activeBankItemID, setActiveBankItemID] = useState(null)
     const [activeItemID, setActiveItemID] = useState<number>(0)
     const [sellMode, setSellMode] = useState<boolean>(false)
 
     useEffect(() => {
     }, [props.playerData.playerBank.bankItems, props.playerUpdated])
 
-    const bankItemSelectedHandler = (itemData) => {
+    const bankItemSelectedHandler = (itemData, id) => {
         setActiveBankItem(itemData)
+        setActiveBankItemID(id)
     }
+
+    console.log(activeBankItem)
 
     return (
         <div className="game__normal">
@@ -27,7 +31,7 @@ export const PlayerBank = (props) => {
                     <Storage setActiveItemID={setActiveItemID} bankItemSelectedHandler={bankItemSelectedHandler} sellMode={sellMode} />
                 )}
 
-                <Details activeBankItem={activeBankItem} activeItemID={activeItemID} bankItemSelectedHandler={bankItemSelectedHandler} />
+                <Details activeBankItem={activeBankItem} activeBankItemID={activeBankItemID} activeItemID={activeItemID} bankItemSelectedHandler={bankItemSelectedHandler} />
 
             </div>
         </div>

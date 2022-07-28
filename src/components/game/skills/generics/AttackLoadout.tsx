@@ -31,7 +31,7 @@ export const AttackLoadout = (props) => {
         setComponentHover(false)
         const attackDataID = e.dataTransfer.getData("text")
         if (!isNaN(attackDataID)) {
-            props.playerData.classes.findJobClass(props.activePage).changeAttackLocation(parseInt(attackDataID), slot)
+            props.playerData.loadout.getLoadoutByNumber(currentLoadout).changeAttackLocation(parseInt(attackDataID), slot)
         }
 
 
@@ -47,14 +47,17 @@ export const AttackLoadout = (props) => {
         }
     }
 
+
+    console.log(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks)
+
     return (
         <div className="attackloadout">
             <div className="attackloadout__equipped">
 
                 {props.playerData &&
                     <div className="attackloadout__equipped-attacks">
-                        {Object.keys(props.playerData.classes.findJobClass(props.activePage).equippedAttacks).map((id, k) => {
-                            const attackID: number = props.playerData.classes.findJobClass(props.activePage).equippedAttacks[id]
+                        {Object.keys(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks).map((id, k) => {
+                            const attackID: number = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks[id]
                             const attackData = props.attackData.getAttackById(attackID)
                             const slot: number = k + 1
                             return (
@@ -67,7 +70,8 @@ export const AttackLoadout = (props) => {
                                             props.onSelectedSkillHandler(attackID)
                                         }
                                         if (e.detail === 2) {
-                                            props.playerData.classes.findJobClass(props.activePage).changeAttackLocation(parseInt(null), slot)
+                                            props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).changeAttackLocation(parseInt(null), slot)
+                                            props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).removeAttackFromRotation(slot)
                                             props.onSelectedSkillHandler(null)
                                         }
                                     }}

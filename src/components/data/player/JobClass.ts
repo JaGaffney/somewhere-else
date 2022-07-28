@@ -1,4 +1,5 @@
 export class JobClass {
+  name: string = ""
   equippedAttacks: object = {
     1: 1,
     2: null,
@@ -9,7 +10,13 @@ export class JobClass {
   }
   rotation: Array<number | null> = new Array(6)
 
-  constructor() {}
+  constructor(defaultName: number) {
+    this.name = defaultName.toString()
+  }
+
+  setName(name) {
+    this.name = name
+  }
 
   // when data loads
   setEquippedAttacks(equippedAttacks: object): void {
@@ -49,5 +56,9 @@ export class JobClass {
     }
     tempData[location] = attackID
     this.rotation = tempData
+  }
+
+  removeAttackFromRotation(location: number): void {
+    this.rotation[location] = null
   }
 }

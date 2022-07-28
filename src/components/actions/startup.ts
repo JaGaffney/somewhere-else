@@ -81,7 +81,7 @@ export const saveAllDataToLocalStorage = (
     passives,
     inventory,
     status,
-    classes,
+    loadout,
     settlement,
     settings,
     research,
@@ -94,11 +94,6 @@ export const saveAllDataToLocalStorage = (
   }
   const skillData = skillExp.skillExp
 
-  const classData = {
-    ...classes,
-    jobClass: JSON.stringify([...classes.jobClass]),
-  }
-
   const data = {
     skillExp: skillData,
     playerBank: playerData,
@@ -106,7 +101,7 @@ export const saveAllDataToLocalStorage = (
     inventory,
     actionTime,
     status,
-    classes: classData,
+    loadout,
     settlement,
     settings,
     research,

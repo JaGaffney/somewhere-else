@@ -4,7 +4,7 @@ import { Settlement } from "./player/Settlement"
 import { SkillEXP } from "./player/SkillExp"
 import { Passives } from "./player/Passives"
 import { Inventory } from "./player/Inventory"
-import { Classes } from "./player/Classes"
+import { Loadout } from "./player/Loadout"
 import { Status } from "./player/Status"
 import { EXP } from "./player/Exp"
 import { Research } from "./player/Research"
@@ -16,20 +16,20 @@ export class PlayerData {
   passives: Passives
   inventory: Inventory
   status: Status
-  classes: Classes
+  loadout: Loadout
   levelChecker: EXP = new EXP()
   research: Research
   settings: Object
 
   // creates the player with no data inside
-  constructor(skillNames: Array<string>, jobClassID: Array<number>) {
+  constructor(skillNames: Array<string>) {
     this.settlement = new Settlement()
     this.playerBank = new Bank()
     this.skillExp = new SkillEXP(skillNames)
     this.passives = new Passives()
     this.status = new Status()
     this.inventory = new Inventory()
-    this.classes = new Classes(jobClassID)
+    this.loadout = new Loadout()
     this.research = new Research()
     this.settings = {}
   }
@@ -78,7 +78,7 @@ export class PlayerData {
     this.loadInventory(data.inventory)
     this.loadPassives(data.passives)
     this.loadStatus(data.status)
-    this.loadClasses(data.classes)
+    this.loadLoadout(data.loadout)
     this.loadSettings(data.settings)
     this.loadResearch(data?.research)
   }
@@ -128,12 +128,8 @@ export class PlayerData {
     this.status.loadStatus(data)
   }
 
-  private loadClasses(data): void {
-    let deserialized = new Map(JSON.parse(data.jobClass))
-    deserialized.forEach((k: any, v: any) => {
-      this.classes.findJobClass(v).setRotation(k.rotation)
-      this.classes.findJobClass(v).setEquippedAttacks(k.equippedAttacks)
-    })
+  private loadLoadout(data): void {
+    this.loadout.loadLoadout(data)
   }
 
   private loadResearch(data): void {

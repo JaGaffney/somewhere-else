@@ -15,8 +15,8 @@ export const Hotbar = (props) => {
 
     return (
         <div className="catcombat__hotbar-attacks">
-            {Object.keys(props.playerData.classes.findJobClass(props.playerData.classes.equippedJobClass).equippedAttacks).map((id, k) => {
-                const attackID = props.playerData.classes.findJobClass(props.playerData.classes.equippedJobClass).equippedAttacks[id]
+            {Object.keys(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks).map((id, k) => {
+                const attackID = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks[id]
                 const attackData = props.attackData.getAttackById(attackID)
                 let cooldownRemaining;
                 if (props.cooldowns) {

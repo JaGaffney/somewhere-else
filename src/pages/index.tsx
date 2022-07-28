@@ -42,7 +42,7 @@ const IndexPage = props => {
     const researchData = new ResearchData()
 
     // creates the default player with no data
-    const playerData = new PlayerData(skillData.getAllSkills(), skillData.getAllCombatSkills())
+    const playerData = new PlayerData(skillData.getAllSkills())
     const dataFromStorage = onLoadDataFromLocalStorage()
 
     if (dataFromStorage !== null) {

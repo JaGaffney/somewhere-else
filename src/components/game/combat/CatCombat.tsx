@@ -70,7 +70,7 @@ export const CatCombat = (props) => {
         }
 
         if (props.playerData) {
-            const rotation = props.playerData.classes.findJobClass(props.playerData.classes.equippedJobClass).rotation
+            const rotation = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).rotation
             for (const attack in rotation) {
                 const attackAsNumber: number = parseInt(attack)
                 const attackInfo = props.attackData.getAttackById(parseInt(rotation[attackAsNumber]))

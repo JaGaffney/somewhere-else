@@ -25,7 +25,7 @@ export const RotationItems = (props) => {
         const attackDataID = e.dataTransfer.getData("text")
 
         if (props.editable) {
-            props.data.classes.findJobClass(props.data.classes.equippedJobClass).changeRotation(attackDataID, slot)
+            props.data.loadout.getLoadoutByNumber(props.data.loadout.activeLoadout).changeRotation(attackDataID, slot)
         }
 
 

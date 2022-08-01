@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import ReactTooltip from 'react-tooltip';
@@ -13,6 +13,9 @@ import PassiveInfo from './PassiveInfo';
 export const AttackLoadout = (props) => {
     const [componentHover, setComponentHover] = useState(false)
 
+    useEffect(() => {
+
+    }, [props.playerUpdated])
 
     const dragOver = e => {
         e.preventDefault()
@@ -31,7 +34,7 @@ export const AttackLoadout = (props) => {
         setComponentHover(false)
         const attackDataID = e.dataTransfer.getData("text")
         if (!isNaN(attackDataID)) {
-            props.playerData.loadout.getLoadoutByNumber(currentLoadout).changeAttackLocation(parseInt(attackDataID), slot)
+            props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).changeAttackLocation(parseInt(attackDataID), slot)
         }
 
 
@@ -43,7 +46,7 @@ export const AttackLoadout = (props) => {
         console.log({ passiveDataID }, { slot })
         if (isNaN(passiveDataID)) {
             const id = parseInt(passiveDataID[1])
-            props.playerData.passives.changeEquippedPassives(slot, id)
+            props.playerData.loadout.loadout[props.playerData.loadout.activeLoadout].changePassiveLocation(id, slot)
         }
     }
 
@@ -52,8 +55,8 @@ export const AttackLoadout = (props) => {
 
     return (
         <div className="attackloadout">
-            <div className="attackloadout__equipped">
 
+            <div className="attackloadout__equipped">
                 {props.playerData &&
                     <div className="attackloadout__equipped-attacks">
                         {Object.keys(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks).map((id, k) => {
@@ -100,8 +103,8 @@ export const AttackLoadout = (props) => {
 
                 <div className="attackloadout__equipped-talents">
                     <div className="attackloadout__equipped-slot">
-                        {Object.keys(props.playerData.passives.equippedPassives).map((i, k) => {
-                            const data = props.playerData.passives.getEquippedPassiveAtLocation(i)
+                        {Object.keys(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedPassives).map((i, k) => {
+                            const data = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).getEquippedPassiveAtLocation(i)
                             const slot: number = k + 1
                             return (
                                 <div
@@ -150,6 +153,7 @@ const mapStateToProps = (state) => ({
     passiveData: state.passives.passiveData,
     attackData: state.attacks.attackData,
     activePage: state.engine.activePage,
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = {

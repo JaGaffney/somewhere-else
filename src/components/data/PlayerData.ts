@@ -115,13 +115,6 @@ export class PlayerData {
 
   private loadPassives(passiveData): void {
     this.passives.unlockedPassives = passiveData.unlockedPassives
-
-    for (const location in passiveData.equippedPassives) {
-      this.passives.changeEquippedPassives(
-        parseInt(location),
-        passiveData.equippedPassives[location]
-      )
-    }
   }
 
   private loadStatus(data): void {

@@ -16,6 +16,8 @@ export class Loadout {
         data.loadout[loadoutNumber].equippedAttacks
       this.loadout[loadoutNumber].rotation =
         data.loadout[loadoutNumber].rotation
+      this.loadout[loadoutNumber].equippedPassives =
+        data.loadout[loadoutNumber].equippedPassives
     }
   }
 
@@ -29,7 +31,7 @@ export class Loadout {
     this.loadout[currentTotalLoadouts] = newLoadout
   }
 
-  public setActiveLoadout(layout: number): void {
-    this.activeLoadout = layout
+  public setActiveLoadout(loadout: number): void {
+    this.activeLoadout = loadout
   }
 }

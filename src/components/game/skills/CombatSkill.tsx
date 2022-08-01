@@ -5,6 +5,7 @@ import EXP from "./generics/EXP"
 import Passives from "./generics/Passives"
 import Attack from "./generics/Attack"
 import AttackLoadout from './generics/AttackLoadout'
+import LoadoutControls from './generics/LoadoutControls'
 
 export const CombatSkill = (props) => {
     const [selectedSkill, setSelecetedSkill] = useState(null)
@@ -13,7 +14,8 @@ export const CombatSkill = (props) => {
     return (
         props.attackData.length !== 0 && (
             <div>
-                <EXP />
+                {/* <EXP /> */}
+                <LoadoutControls />
                 <AttackLoadout selectedSkill={selectedSkill} selectedPassive={selectedPassive} onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
                 <div className="attacks__container">
                     {[...props.attackData.attacks.keys()].map((i, k) => {

@@ -41,6 +41,29 @@
       gap: 0.1rem;
       margin-right: 1rem;
     }
+    &-smallIcons {
+      padding: 0.5rem;
+      width: 2rem;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow100);
+      border: none;
+      border-radius: 3px;
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow900);
+      }
+    }
+    &-smallIconsAlt {
+      background-color: inherit;
+      color: var(--gray100);
+      box-shadow: none;
+      &:hover {
+        transform: translateY(-2px);
+        color: var(--blue600);
+        box-shadow: none;
+      }
+    }
   }
 
   &-right {

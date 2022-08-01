@@ -29,12 +29,12 @@ export const LoadoutControls = (props) => {
             <div className="topPanel__controls-left">
                 {Object.keys(props.playerData.loadout.loadout).map((i, k) => {
                     return (
-                        <button key={k} className="topPanel__controls-left-icons" onClick={() => onActiveLoadoutHandler(i)}>
+                        <button key={k} className={`topPanel__controls-left-icons topPanel__controls-left-smallIcons ${i === props.playerData.loadout.activeLoadout ? "generic__button-active" : "generic__button-primary"}`} onClick={() => onActiveLoadoutHandler(i)}>
                             <span>{props.playerData.loadout.loadout[i].name}</span>
                         </button>
                     )
                 })}
-                <button className="topPanel__controls-left-icons" onClick={addNewLoadOut}>
+                <button className="topPanel__controls-left-icons topPanel__controls-left-smallIcons topPanel__controls-left-smallIconsAlt" onClick={addNewLoadOut}>
                     <span>+</span>
                 </button>
             </div>
@@ -43,7 +43,7 @@ export const LoadoutControls = (props) => {
 
             <div className="topPanel__controls-right">
                 <button
-                    className={`generic__button generic__button-active`}
+                    className={`generic__button generic__button-primary`}
                     onClick={onRenameHandler}>
                     rename
                 </button>

@@ -14,29 +14,32 @@ export const Passives = (props) => {
 
     return (
         <div className="attacks__container">
+            <h3>Passives</h3>
             {props.playerData.passives.unlockedPassives.map((id, k) => {
                 if (id !== null) {
                     const passive = props.passiveData.getPassiveById(id)
                     return (
-                        <button
-                            className="attacks__button attacks__button-general"
-                            draggable={true}
-                            onDragStart={e => onDragStart(e)}
-                            id={id}
-                            key={k}
-                            data-tip={passive.name && passive.name}
-                            style={{ borderColor: getBackgroundColor(passive.job) }}
-                            onClick={() => {
-                                props.onSelectedSkillHandler(null)
-                                props.onSelectedPassiveHandler(passive)
-                            }}
-                        >
-                            <img className="attacks__button-icon"
-                                src={passive.icon}
-                                alt={passive.name}
+                        <div className="attackloadout__equipped-slot">
+                            <button
+                                className="attacks__button attacks__button-general"
+                                draggable={true}
+                                onDragStart={e => onDragStart(e)}
                                 id={id}
-                            />
-                        </button>
+                                key={k}
+                                data-tip={passive.name && passive.name}
+                                style={{ borderColor: getBackgroundColor(passive.job) }}
+                                onClick={() => {
+                                    props.onSelectedSkillHandler(null)
+                                    props.onSelectedPassiveHandler(passive)
+                                }}
+                            >
+                                <img className="attacks__button-icon"
+                                    src={passive.icon}
+                                    alt={passive.name}
+                                    id={id}
+                                />
+                            </button>
+                        </div>
                     )
                 }
             })}

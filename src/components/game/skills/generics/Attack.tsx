@@ -37,7 +37,6 @@ export const Attack = (props) => {
                     </div>
                 }
             </button>
-            <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />
         </>
     )
 }

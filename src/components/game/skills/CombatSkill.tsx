@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 
 import EXP from "./generics/EXP"
 import Passives from "./generics/Passives"
-import Attack from "./generics/Attack"
 import AttackLoadout from './generics/AttackLoadout'
+import SkillBook from './generics/SkillBook'
 import LoadoutControls from './generics/LoadoutControls'
+import PassiveInfo from './generics/PassiveInfo'
+import AttackInfo from './generics/AttackInfo'
 
 export const CombatSkill = (props) => {
     const [selectedSkill, setSelecetedSkill] = useState(null)
@@ -16,16 +18,14 @@ export const CombatSkill = (props) => {
             <div>
                 {/* <EXP /> */}
                 <LoadoutControls />
-                <AttackLoadout selectedSkill={selectedSkill} selectedPassive={selectedPassive} onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
-                <div className="attacks__container">
-                    {[...props.attackData.attacks.keys()].map((i, k) => {
+                <div className="combatSkill__container">
+                    <AttackLoadout selectedSkill={selectedSkill} selectedPassive={selectedPassive} onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
+                    {selectedPassive ? <PassiveInfo selectedPassive={selectedPassive} /> : <AttackInfo selectedSkill={selectedSkill} />}
 
-                        return (
-                            <Attack attackID={i} key={k} onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
-                        )
-                    })}
+
+                    <SkillBook onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
+                    <Passives onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
                 </div>
-                <Passives onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
             </div>
         )
     )

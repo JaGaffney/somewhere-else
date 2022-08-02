@@ -136,15 +136,11 @@ export const AttackLoadout = (props) => {
                                 </div>
                             )
                         })}
-
-
                     </div>
                 </div>
             </div>
-            {props.selectedPassive ? <PassiveInfo selectedPassive={props.selectedPassive} /> : <AttackInfo selectedSkill={props.selectedSkill} />}
 
 
-            <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />
         </div >
     )
 }

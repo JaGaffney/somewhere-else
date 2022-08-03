@@ -23,8 +23,6 @@ export const Details = (props) => {
         }
     }
 
-    console.log(props.playerData.playerBank.findItemInBank(1))
-
     return (
         <div className="bank__details">
             {props.activeBankItem && (

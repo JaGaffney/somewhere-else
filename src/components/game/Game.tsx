@@ -8,6 +8,7 @@ import CombatSkill from "./skills/CombatSkill"
 import Status from "./status/Status"
 import Playerbank from "./player/Playerbank"
 import Combat from "./combat/Combat"
+import JobInfo from "./job/JobInfo"
 import Shop from "./shop/Shop"
 import Inventory from "./inventory/Inventory"
 
@@ -22,10 +23,12 @@ export const Game = props => {
       case "metalwork":
       case "scholar":
         return <NoncombatSkill />
+      case "loadout":
+        return <CombatSkill />
       case "warrior":
       case "archer":
       case "magician":
-        return <CombatSkill />
+        return <JobInfo />
       case "equipment":
         return <Inventory />
       case "health":

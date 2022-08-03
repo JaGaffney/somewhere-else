@@ -43,7 +43,6 @@ export const Slot = (props) => {
         if (itemDataID) {
             const data = props.itemData.getItemById(parseInt(props.activeEquipmentDrag))
             const slot = data.slot.replace(/\s/g, '')
-            console.log(slot, props.location)
             if (!validLocation(slot, props.location)) {
                 setErrorBorder(true)
             }

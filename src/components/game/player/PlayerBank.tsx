@@ -20,8 +20,6 @@ export const PlayerBank = (props) => {
         setActiveBankItemID(id)
     }
 
-    console.log(activeBankItem)
-
     return (
         <div className="game__normal">
             <Controls setSellMode={setSellMode} sellMode={sellMode} />

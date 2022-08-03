@@ -33,10 +33,6 @@ export const NonSkillPanel = (props) => {
                 <span className={`skillpanel__name ${props.activePage === "combat" ? "skillpanel__name-active" : null}`}>Combat</span>
             </button>
 
-            <button className="skillpanel" onClick={() => props.setActivePage("equipment")}>
-                <img className="skillpanel__icon" src={require("../../images/sidepanel/equipment.svg")} />
-                <span className={`skillpanel__name ${props.activePage === "inventory" ? "skillpanel__name-active" : null}`}>Equipment</span>
-            </button>
 
             <button className="skillpanel" onClick={() => props.setActivePage("settlement")}>
                 <img className="skillpanel__icon" src={require("../../images/sidepanel/castle.svg")} />

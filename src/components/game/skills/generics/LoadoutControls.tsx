@@ -6,6 +6,12 @@ import ReactTooltip from 'react-tooltip';
 import { setPlayerUpdated } from '../../../actions/api'
 
 export const LoadoutControls = (props) => {
+    const [activeLoadout, setActiveLoadout] = useState(props.playerData.loadout.activeLoadout)
+
+    useEffect(() => {
+        console.log("got here")
+        setActiveLoadout(props.playerData.loadout.activeLoadout)
+    }, [props.playerUpdated])
 
     const onActiveLoadoutHandler = (newLoadOutNumber: number) => {
         if (!props.combatData) {
@@ -13,6 +19,8 @@ export const LoadoutControls = (props) => {
             props.setPlayerUpdated()
         }
     }
+
+    console.log(activeLoadout)
 
     const addNewLoadOut = () => {
         props.playerData.loadout.createNewLoadout()
@@ -34,7 +42,7 @@ export const LoadoutControls = (props) => {
             <div className="topPanel__controls-left">
                 {Object.keys(props.playerData.loadout.loadout).map((i, k) => {
                     return (
-                        <button key={k} className={`topPanel__controls-left-icons topPanel__controls-left-smallIcons ${i === props.playerData.loadout.activeLoadout ? "generic__button-active" : "generic__button-primary"}`} onClick={() => onActiveLoadoutHandler(i)}>
+                        <button key={k} className={`topPanel__controls-left-icons topPanel__controls-left-smallIcons ${i === activeLoadout ? "generic__button-active" : "generic__button-primary"}`} onClick={() => onActiveLoadoutHandler(i)}>
                             <span>{props.playerData.loadout.loadout[i].name}</span>
                         </button>
                     )

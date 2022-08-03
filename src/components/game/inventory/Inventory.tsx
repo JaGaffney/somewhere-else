@@ -30,7 +30,6 @@ export const Inventory = (props) => {
     }
 
     const handleItemEquipStatus = (ID) => {
-        console.log(`Equipping ${ID} to ${activeEquipmentSlot}`)
         props.playerData.inventory.setEquippedItem(activeEquipmentSlot.replace(/\s/g, ''), ID)
         props.setPlayerUpdated()
     }

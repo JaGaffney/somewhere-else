@@ -97,7 +97,18 @@ export const SidePanel = (props) => {
                         <>
 
                             <div className="sidepanel__skill">
-                                <span className="sidepanel__skill-title" onClick={() => setShowStatus(!showStatus)}>Status {showStatus ? <FiEyeOff /> : <FiEye />}</span>
+                                <span className="sidepanel__skill-title" onClick={() => setShowStatus(!showStatus)}>Info {showStatus ? <FiEyeOff /> : <FiEye />}</span>
+                                {showStatus && (
+                                    <>
+                                        <button className="skillpanel" onClick={() => props.setActivePage("loadout")}>
+                                            <img className="skillpanel__icon" src={require("../../images/sidepanel/spellbook.svg")} />
+                                            <span className={`skillpanel__name ${props.activePage === "loadout" ? "skillpanel__name-active" : null}`}>Actions and spells</span>
+                                        </button>
+
+                                        <button className="skillpanel" onClick={() => props.setActivePage("equipment")}>
+                                            <img className="skillpanel__icon" src={require("../../images/sidepanel/equipment.svg")} />
+                                            <span className={`skillpanel__name ${props.activePage === "inventory" ? "skillpanel__name-active" : null}`}>Equipment</span>
+                                        </button></>)}
                                 {showStatus && props.skills.getAllStatusSkills().map((i, k) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("status", i)} type={"status"} />)}
                             </div>
 

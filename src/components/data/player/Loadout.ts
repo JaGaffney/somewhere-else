@@ -31,6 +31,11 @@ export class Loadout {
     this.loadout[currentTotalLoadouts] = newLoadout
   }
 
+  public deleteLoadout() {
+    delete this.loadout[this.activeLoadout]
+    this.activeLoadout = Object.keys(this.loadout).length
+  }
+
   public setActiveLoadout(loadout: number): void {
     this.activeLoadout = loadout
   }

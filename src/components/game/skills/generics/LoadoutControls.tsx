@@ -24,6 +24,11 @@ export const LoadoutControls = (props) => {
         console.log("onRenameHandler")
     }
 
+    const onDeleteHandler = () => {
+        props.playerData.loadout.deleteLoadout()
+        props.setPlayerUpdated()
+    }
+
     return (
         <div className="topPanel topPanel__controls">
             <div className="topPanel__controls-left">
@@ -46,6 +51,11 @@ export const LoadoutControls = (props) => {
                     className={`generic__button generic__button-primary`}
                     onClick={onRenameHandler}>
                     rename
+                </button>
+                <button
+                    className={`generic__button generic__button-secondary`}
+                    onClick={onDeleteHandler}>
+                    delete
                 </button>
             </div>
         </div>

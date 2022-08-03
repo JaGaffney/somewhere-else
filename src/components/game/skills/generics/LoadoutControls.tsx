@@ -9,7 +9,6 @@ export const LoadoutControls = (props) => {
     const [activeLoadout, setActiveLoadout] = useState(props.playerData.loadout.activeLoadout)
 
     useEffect(() => {
-        console.log("got here")
         setActiveLoadout(props.playerData.loadout.activeLoadout)
     }, [props.playerUpdated])
 
@@ -20,16 +19,12 @@ export const LoadoutControls = (props) => {
         }
     }
 
-    console.log(activeLoadout)
-
     const addNewLoadOut = () => {
         props.playerData.loadout.createNewLoadout()
         props.setPlayerUpdated()
-        console.log("addNewLoadOut")
     }
 
     const onRenameHandler = () => {
-        console.log("onRenameHandler")
     }
 
     const onDeleteHandler = () => {

@@ -29,7 +29,6 @@ export const ResearchSingle = (props) => {
 
 
                         if (!props.researchFilter.includes(data.type)) {
-                            console.log(data.type)
                             return (
                                 <div key={k}
                                     className="research__panel-single-item research__panel-data-action"

@@ -41,7 +41,6 @@ export const AttackLoadout = (props) => {
         e.preventDefault()
         setComponentHover(false)
         const passiveDataID = e.dataTransfer.getData("text").split("-")
-        console.log({ passiveDataID }, { slot })
         if (isNaN(passiveDataID)) {
             const id = parseInt(passiveDataID[1])
             props.playerData.loadout.loadout[props.playerData.loadout.activeLoadout].changePassiveLocation(id, slot)

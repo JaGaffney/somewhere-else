@@ -4,13 +4,7 @@ import { connect } from 'react-redux'
 import ReactTooltip from 'react-tooltip';
 import { getBackgroundColor } from '../../utils/color';
 
-
 export const PassivesUnlock = (props) => {
-    function onDragStart(e) {
-        const id = e.target.id
-        e.dataTransfer.setData("text/plain", `passive-${id}`)
-    }
-
     return (
         <div className="attacks__container">
             <h3>Passives</h3>
@@ -22,8 +16,7 @@ export const PassivesUnlock = (props) => {
                             <div className="attackloadout__equipped-slot">
                                 <button
                                     className="attacks__button attacks__button-general"
-                                    draggable={true}
-                                    onDragStart={e => onDragStart(e)}
+                                    draggable={false}
                                     id={id}
                                     key={k}
                                     data-tip={passive.name && passive.name}
@@ -42,7 +35,6 @@ export const PassivesUnlock = (props) => {
                             </div>
                         )
                     }
-
                 }
             })}
 

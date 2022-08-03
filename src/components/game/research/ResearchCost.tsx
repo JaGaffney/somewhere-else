@@ -15,8 +15,6 @@ import {
 } from "../../data/seed/icons/itemSeedIcons"
 
 export const ResearchCost = (props) => {
-    console.log(props.activeResearch)
-
     const researchColor = {
         red: researchRed,
         green: researchGreen,

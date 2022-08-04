@@ -15,6 +15,7 @@ export const CombatSkill = (props) => {
 
     const [search, setSearch] = useState<string>("")
 
+
     return (
         props.attackData.length !== 0 && (
             <div>

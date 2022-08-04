@@ -12,6 +12,8 @@ export const PlayerBank = (props) => {
     const [activeItemID, setActiveItemID] = useState<number>(0)
     const [sellMode, setSellMode] = useState<boolean>(false)
 
+    const [search, setSearch] = useState<string>("")
+
     useEffect(() => {
     }, [props.playerData.playerBank.bankItems, props.playerUpdated])
 
@@ -22,11 +24,11 @@ export const PlayerBank = (props) => {
 
     return (
         <div className="game__normal">
-            <Controls setSellMode={setSellMode} sellMode={sellMode} />
+            <Controls setSellMode={setSellMode} sellMode={sellMode} search={search} setSearch={setSearch} />
 
             <div className="bank__container">
                 {props.playerData.playerBank !== null && (
-                    <Storage setActiveItemID={setActiveItemID} bankItemSelectedHandler={bankItemSelectedHandler} sellMode={sellMode} />
+                    <Storage setActiveItemID={setActiveItemID} bankItemSelectedHandler={bankItemSelectedHandler} sellMode={sellMode} search={search} />
                 )}
 
                 <Details activeBankItem={activeBankItem} activeBankItemID={activeBankItemID} activeItemID={activeItemID} bankItemSelectedHandler={bankItemSelectedHandler} />

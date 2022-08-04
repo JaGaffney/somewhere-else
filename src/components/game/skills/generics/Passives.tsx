@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import ReactTooltip from 'react-tooltip';
 
 import { getBackgroundColor } from '../../../utils/color';
+import { validFilterQuery } from '../../../utils/generic';
 
 
 export const Passives = (props) => {
@@ -18,29 +19,33 @@ export const Passives = (props) => {
             {props.playerData.passives.unlockedPassives.map((id, k) => {
                 if (id !== null) {
                     const passive = props.passiveData.getPassiveById(id)
-                    return (
-                        <div className="attackloadout__equipped-slot">
-                            <button
-                                className="attacks__button attacks__button-general"
-                                draggable={true}
-                                onDragStart={e => onDragStart(e)}
-                                id={id}
-                                key={k}
-                                data-tip={passive.name && passive.name}
-                                style={{ borderColor: getBackgroundColor(passive.job) }}
-                                onClick={() => {
-                                    props.onSelectedSkillHandler(null)
-                                    props.onSelectedPassiveHandler(passive)
-                                }}
-                            >
-                                <img className="attacks__button-icon"
-                                    src={passive.icon}
-                                    alt={passive.name}
+                    if (validFilterQuery(passive.name, props.search) || validFilterQuery(passive.job, props.search)) {
+                        return (
+                            <div className="attackloadout__equipped-slot" key={k}>
+                                <button
+                                    className="attacks__button attacks__button-general"
+                                    draggable={true}
+                                    onDragStart={e => onDragStart(e)}
                                     id={id}
-                                />
-                            </button>
-                        </div>
-                    )
+
+                                    data-tip={passive.name && passive.name}
+                                    style={{ borderColor: getBackgroundColor(passive.job) }}
+                                    onClick={() => {
+                                        props.onSelectedSkillHandler(null)
+                                        props.onSelectedPassiveHandler(passive)
+                                    }}
+                                >
+                                    <img className="attacks__button-icon"
+                                        src={passive.icon}
+                                        alt={passive.name}
+                                        id={id}
+                                    />
+                                </button>
+                            </div>
+                        )
+                    }
+
+
                 }
             })}
 

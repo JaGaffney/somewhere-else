@@ -11,7 +11,7 @@ import { getBackgroundColor } from '../../../utils/color';
 import PassiveInfo from './PassiveInfo';
 
 export const AttackLoadout = (props) => {
-    const [componentHover, setComponentHover] = useState(false)
+    const [componentHover, setComponentHover] = useState<boolean>(false)
 
     useEffect(() => {
 
@@ -46,9 +46,6 @@ export const AttackLoadout = (props) => {
             props.playerData.loadout.loadout[props.playerData.loadout.activeLoadout].changePassiveLocation(id, slot)
         }
     }
-
-
-    console.log(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks)
 
     return (
         <div className="attackloadout">
@@ -109,14 +106,13 @@ export const AttackLoadout = (props) => {
                             const data = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).getEquippedPassiveAtLocation(i)
                             const slot: number = k + 1
                             return (
-                                <div className="attackloadout__equipped-slot">
+                                <div className="attackloadout__equipped-slot" key={k}>
                                     <div
                                         onDragOver={dragOver}
                                         onDragEnter={dragEnter}
                                         onDragLeave={dragLeave}
                                         onDrop={(e) => passiveDrop(e, slot)}
                                         className="attacks__button"
-                                        key={k}
                                         data-tip={data && props.passiveData.getPassiveById(data) && data && props.passiveData.getPassiveById(data).name}
                                         style={{ borderColor: getBackgroundColor(data && props.passiveData.getPassiveById(data) && data && props.passiveData.getPassiveById(data).job) }}
                                         onClick={(e) => {

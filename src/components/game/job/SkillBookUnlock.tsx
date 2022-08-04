@@ -10,7 +10,7 @@ export const SkillBookUnlock = (props) => {
             {[...props.attackData.attacks.keys()].map((i, k) => {
                 if (props.attackData.getAttackById(i).type === props.activePage.toLowerCase()) {
                     return (
-                        <div className="attackloadout__equipped-slot">
+                        <div className="attackloadout__equipped-slot" key={k}>
                             <Attack attackID={i} key={k} onSelectedSkillHandler={props.onSelectedSkillHandler} onSelectedPassiveHandler={props.onSelectedPassiveHandler} />
                         </div>)
                 }

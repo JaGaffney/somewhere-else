@@ -13,12 +13,11 @@ export const PassivesUnlock = (props) => {
                     const passive = props.passiveData.getPassiveById(id)
                     if (passive.job === props.activePage.toUpperCase()) {
                         return (
-                            <div className="attackloadout__equipped-slot">
+                            <div className="attackloadout__equipped-slot" key={k}>
                                 <button
                                     className="attacks__button attacks__button-general"
                                     draggable={false}
                                     id={id}
-                                    key={k}
                                     data-tip={passive.name && passive.name}
                                     style={{ borderColor: getBackgroundColor(passive.job) }}
                                     onClick={() => {

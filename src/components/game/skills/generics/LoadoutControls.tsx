@@ -50,6 +50,9 @@ export const LoadoutControls = (props) => {
             <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />
 
             <div className="topPanel__controls-right">
+                <form>
+                    <input type="text" value={props.search} placeholder="filter..." onChange={(e) => props.setSearch(e.target.value)} />
+                </form>
                 <button
                     className={`generic__button generic__button-primary`}
                     onClick={onRenameHandler}>

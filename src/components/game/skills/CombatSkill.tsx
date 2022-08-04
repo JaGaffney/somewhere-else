@@ -13,18 +13,20 @@ export const CombatSkill = (props) => {
     const [selectedSkill, setSelecetedSkill] = useState(null)
     const [selectedPassive, setSelecetedPassive] = useState(null)
 
+    const [search, setSearch] = useState<string>("")
+
     return (
         props.attackData.length !== 0 && (
             <div>
                 {/* <EXP /> */}
-                <LoadoutControls />
+                <LoadoutControls search={search} setSearch={setSearch} />
                 <div className="combatSkill__container">
                     <AttackLoadout selectedSkill={selectedSkill} selectedPassive={selectedPassive} onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
                     {selectedPassive ? <PassiveInfo selectedPassive={selectedPassive} /> : <AttackInfo selectedSkill={selectedSkill} />}
 
 
-                    <SkillBook onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
-                    <Passives onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
+                    <SkillBook onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} search={search} />
+                    <Passives onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} search={search} />
                 </div>
             </div>
         )

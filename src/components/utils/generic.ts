@@ -33,8 +33,11 @@ export const costPerAction = (value: number): number => {
       break
     case value < 91:
       returnValue = value * 600
-    case value > 91:
+    case value < 100:
       returnValue = value * 1000
+      break
+    case value > 100:
+      returnValue = value * 5000
       break
     default:
       break
@@ -71,5 +74,19 @@ export const intToString = (num): string => {
     retValue = tempRetValue[0] + numberValue
   }
 
+  return retValue
+}
+
+export const validFilterQuery = (
+  item: string,
+  searchParam: string
+): boolean => {
+  let retValue: boolean = false
+  if (searchParam.trim() === "") {
+    return true
+  }
+  if (item.toLocaleLowerCase().includes(searchParam.toLocaleLowerCase())) {
+    retValue = true
+  }
   return retValue
 }

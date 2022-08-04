@@ -68,6 +68,11 @@
 
   &-right {
     padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    form {
+      margin: 0;
+    }
   }
   img {
     width: 1.2rem;

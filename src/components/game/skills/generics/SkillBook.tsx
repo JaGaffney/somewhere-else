@@ -10,12 +10,16 @@ export const SkillBook = (props) => {
       <h3>Skillbook</h3>
       {[...props.attackData.attacks.keys()].map((i, k) => {
         const attackData = props.attackData.getAttackById(i)
-        console.log(attackData)
+        const currentLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(attackData.type))
+
         if (validFilterQuery(attackData.name, props.search) || validFilterQuery(attackData.type, props.search)) {
-          return (
-            <div className="attackloadout__equipped-slot" key={k}>
-              <Attack attackID={i} key={k} onSelectedSkillHandler={props.onSelectedSkillHandler} onSelectedPassiveHandler={props.onSelectedPassiveHandler} />
-            </div>)
+          if (currentLevel >= attackData.levelRequired) {
+            return (
+              <div className="attackloadout__equipped-slot" key={k}>
+                <Attack attackID={i} key={k} onSelectedSkillHandler={props.onSelectedSkillHandler} onSelectedPassiveHandler={props.onSelectedPassiveHandler} />
+              </div>)
+          }
+
         }
 
       })}
@@ -25,6 +29,7 @@ export const SkillBook = (props) => {
 
 const mapStateToProps = (state) => ({
   attackData: state.attacks.attackData,
+  playerData: state.player.playerData
 })
 
 const mapDispatchToProps = {}

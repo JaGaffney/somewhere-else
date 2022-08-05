@@ -4,7 +4,14 @@ import { connect } from 'react-redux'
 import ReactTooltip from 'react-tooltip';
 import { getBackgroundColor } from '../../utils/color';
 
-export const PassivesUnlock = (props) => {
+interface IPassiveUnlock {
+    passiveData: any;
+    activePage: string;
+    onSelectedSkillHandler: any;
+    onSelectedPassiveHandler: any
+}
+
+export const PassivesUnlock = (props: IPassiveUnlock) => {
     return (
         <div className="attacks__container">
             <h3>Passives</h3>

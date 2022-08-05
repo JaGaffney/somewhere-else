@@ -17,6 +17,7 @@ export const attackSeed = [
     stamina: 0,
     effect: { crit: 10 },
     icon: icon_basic,
+    levelRequired: 1,
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ export const attackSeed = [
       drain: 25,
     },
     icon: icon_shieldBash,
+    levelRequired: 1,
   },
   {
     id: 3,
@@ -43,6 +45,7 @@ export const attackSeed = [
       bleed: 10,
     },
     icon: icon_rend,
+    levelRequired: 5,
   },
   {
     id: 4,
@@ -56,6 +59,7 @@ export const attackSeed = [
       armour: 10,
     },
     icon: icon_shieldBlock,
+    levelRequired: 10,
   },
   {
     id: 5,
@@ -69,6 +73,7 @@ export const attackSeed = [
       elemental: 10,
     },
     icon: icon_arrowLightning,
+    levelRequired: 1,
   },
   {
     id: 6,
@@ -82,5 +87,6 @@ export const attackSeed = [
       lifesteal: 3,
     },
     icon: icon_arrowLeech,
+    levelRequired: 5,
   },
 ]

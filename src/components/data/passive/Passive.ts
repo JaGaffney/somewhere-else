@@ -8,6 +8,7 @@ export class Passive {
   description: string
   rarity: Rarity | any
   effect: Object
+  levelRequired: number
 
   constructor(
     name: string,
@@ -15,7 +16,8 @@ export class Passive {
     icon: any,
     description: string,
     rarity: string,
-    effect: string
+    effect: string,
+    levelRequired: number
   ) {
     this.name = name
     this.job = job
@@ -23,5 +25,6 @@ export class Passive {
     this.description = description
     this.rarity = enumFromValue(rarity, Rarity)
     this.effect = effect
+    this.levelRequired = levelRequired
   }
 }

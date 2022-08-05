@@ -7,10 +7,9 @@ import SkillBookUnlock from './SkillBookUnlock'
 import PassiveInfo from '../skills/generics/PassiveInfo'
 import AttackInfo from '../skills/generics/AttackInfo'
 
-export const JobInfo = (props) => {
+export const JobInfo = (props: { attackData }) => {
     const [selectedSkill, setSelecetedSkill] = useState(null)
     const [selectedPassive, setSelecetedPassive] = useState(null)
-
 
     return (
         props.attackData.length !== 0 && (
@@ -31,7 +30,6 @@ export const JobInfo = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    playerData: state.player.playerData,
     attackData: state.attacks.attackData
 })
 

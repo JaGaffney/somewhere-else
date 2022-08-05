@@ -20,7 +20,8 @@ export class PassiveData {
           passiveSeed[key].icon,
           passiveSeed[key].description,
           passiveSeed[key].rarity,
-          passiveSeed[key].effect
+          passiveSeed[key].effect,
+          passiveSeed[key].levelRequired
         )
       )
     }

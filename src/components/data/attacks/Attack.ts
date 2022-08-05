@@ -7,6 +7,7 @@ export class Attack {
   stamina: number
   effect: Object
   icon: string
+  levelRequired: number
 
   constructor(
     name: string,
@@ -16,7 +17,8 @@ export class Attack {
     cooldown: number,
     stamina: number,
     effect: Object,
-    icon: string
+    icon: string,
+    levelRequired: number
   ) {
     this.name = name
     this.type = type
@@ -26,5 +28,6 @@ export class Attack {
     this.stamina = stamina
     this.effect = effect
     this.icon = icon
+    this.levelRequired = levelRequired
   }
 }

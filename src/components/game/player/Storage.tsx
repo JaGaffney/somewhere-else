@@ -4,7 +4,7 @@ import { validFilterQuery } from '../../utils/generic'
 
 import BankItem from "./BankItem"
 
-export const Storage = (props) => {
+export const Storage = (props: { playerData, itemData, search: string, sellMode: boolean, bankItemSelectedHandler: void, setActiveItemID: void }) => {
     return (
         <div className="bank__items">
             <div className="bank__items-inner">

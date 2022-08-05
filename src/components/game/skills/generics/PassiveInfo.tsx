@@ -21,6 +21,12 @@ export const PassiveInfo = (props) => {
                     </span>
                 </span>
                 <span className="attacksloadout__stats-description">
+                    Unlocked
+                    <span>
+                        level {props.selectedPassive && props.selectedPassive.levelRequired}
+                    </span>
+                </span>
+                <span className="attacksloadout__stats-description">
                     Rarity
                     <span style={{ color: getRarityColor(props.selectedPassive ? props.selectedPassive.job : "default") }}>
                         {props.selectedPassive && props.selectedPassive.rarity}

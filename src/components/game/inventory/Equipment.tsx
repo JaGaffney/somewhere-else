@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { validFilterQuery } from '../../utils/generic'
 
 import BankItem from '../player/BankItem'
 
-export const Equipment = (props) => {
+export const Equipment = (props: { playerData, itemData, search: string, activeEquipmentSlot, onItemSelectedHandler, setActiveItemID, handleItemEquipStatus }) => {
     return (
         <div className="equipment__container-equipment">
             <div className="bank__items">
@@ -16,22 +17,24 @@ export const Equipment = (props) => {
                         }
 
                         if (data.slot === props.activeEquipmentSlot) {
-                            return (
-                                data &&
-                                <BankItem
-                                    key={k}
-                                    id={id}
-                                    name={data.name}
-                                    icon={data.icon}
-                                    qty={props.playerData.playerBank.bankItems.get(id).qty}
-                                    itemData={data}
-                                    bankItemSelectedHandler={props.onItemSelectedHandler}
-                                    setActiveItemID={props.setActiveItemID}
-                                    sellMode={false}
-                                    doubleClickHandler={props.handleItemEquipStatus}
-                                />
+                            if (validFilterQuery(data.name, props.search)) {
+                                return (
+                                    data &&
+                                    <BankItem
+                                        key={k}
+                                        id={id}
+                                        name={data.name}
+                                        icon={data.icon}
+                                        qty={props.playerData.playerBank.bankItems.get(id).qty}
+                                        itemData={data}
+                                        bankItemSelectedHandler={props.onItemSelectedHandler}
+                                        setActiveItemID={props.setActiveItemID}
+                                        sellMode={false}
+                                        doubleClickHandler={props.handleItemEquipStatus}
+                                    />
 
-                            )
+                                )
+                            }
                         }
                     })}
                 </div>

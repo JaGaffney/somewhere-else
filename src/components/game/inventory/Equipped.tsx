@@ -18,7 +18,7 @@ import LEGS from "../../../images/items/template/legs.svg"
 import FEET from "../../../images/items/template/feet.svg"
 import TRINKET from "../../../images/items/template/trinket.svg"
 
-export const Equipped = (props) => {
+export const Equipped = (props: { activeEquipmentSlot: string, onActiveEquipmentSlotHandler }) => {
     return (
         <div className="equipment__container-equipped">
             <Slot activeSlot={props.activeEquipmentSlot} placeholderIcon={MAINHAND} onActiveEquipmentSlotHandler={props.onActiveEquipmentSlotHandler} location={SlotEnum.MAIN_HAND} row="2" column="left" />

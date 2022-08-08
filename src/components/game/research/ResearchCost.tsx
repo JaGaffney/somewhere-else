@@ -28,7 +28,7 @@ export const ResearchCost = (props) => {
         props.activeResearch ?
             (
                 <div className="research__singleItem">
-                    <button className="generic__button generic__button-fit generic__button-primary">Purchase</button>
+                    <button disabled={!props.validatePurchase(props.activeResearch.cost, 1)} className="generic__button generic__button-fit generic__button-primary" onClick={() => props.onBuyHandler(props.activeResearch, 1, "singular")}>Purchase</button>
 
                     <h4 className="research__singleItem-title">Currency</h4>
                     <span ><img src={gp} />{intToString(props.activeResearch.cost.gp)}</span>

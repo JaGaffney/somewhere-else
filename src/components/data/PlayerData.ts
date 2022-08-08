@@ -2,7 +2,6 @@
 import { Bank } from "./player/bank/Bank"
 import { Settlement } from "./player/Settlement"
 import { SkillEXP } from "./player/SkillExp"
-import { Passives } from "./player/Passives"
 import { Inventory } from "./player/Inventory"
 import { Loadout } from "./player/Loadout"
 import { Status } from "./player/Status"
@@ -13,7 +12,6 @@ export class PlayerData {
   playerBank: Bank
   settlement: Settlement
   skillExp: SkillEXP
-  passives: Passives
   inventory: Inventory
   status: Status
   loadout: Loadout
@@ -26,7 +24,6 @@ export class PlayerData {
     this.settlement = new Settlement()
     this.playerBank = new Bank()
     this.skillExp = new SkillEXP(skillNames)
-    this.passives = new Passives()
     this.status = new Status()
     this.inventory = new Inventory()
     this.loadout = new Loadout()
@@ -76,7 +73,6 @@ export class PlayerData {
     this.loadBank(data.playerBank, itemData)
     this.loadSettlment(data.settlement)
     this.loadInventory(data.inventory)
-    this.loadPassives(data.passives)
     this.loadStatus(data.status)
     this.loadLoadout(data.loadout)
     this.loadSettings(data.settings)
@@ -111,10 +107,6 @@ export class PlayerData {
     for (const slot in inventoryData) {
       this.inventory.setEquippedItem(slot, inventoryData[slot])
     }
-  }
-
-  private loadPassives(passiveData): void {
-    this.passives.unlockedPassives = passiveData.unlockedPassives
   }
 
   private loadStatus(data): void {

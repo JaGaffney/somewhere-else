@@ -16,7 +16,7 @@ export const Passives = (props) => {
     return (
         <div className="attacks__container">
             <h3>Passives</h3>
-            {props.playerData.passives.unlockedPassives.map((id, k) => {
+            {[...props.passiveData.passives.keys()].map((id: string, k) => {
                 if (id !== null) {
                     const passive = props.passiveData.getPassiveById(id)
                     const currentLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(passive.job))
@@ -29,7 +29,6 @@ export const Passives = (props) => {
                                         draggable={true}
                                         onDragStart={e => onDragStart(e)}
                                         id={id}
-
                                         data-tip={passive.name && passive.name}
                                         style={{ borderColor: getBackgroundColor(passive.job) }}
                                         onClick={() => {

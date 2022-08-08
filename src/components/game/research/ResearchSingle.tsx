@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
+import { setPlayerUpdated } from '../../actions/api'
+
 import ResearchCost from './ResearchCost'
 
 import { getResearchBorderColor } from "../../utils/color"
@@ -9,6 +11,7 @@ export const ResearchSingle = (props) => {
     const [activeResearch, setActiveResearch] = useState<Object | null>(null)
 
     const onActiveResearchHandler = (name: string): void => {
+        console.log("got here")
         setActiveResearch(props.researchData["singular"][name])
     }
 
@@ -17,7 +20,7 @@ export const ResearchSingle = (props) => {
             <h2>One time buy</h2>
             <div className="research__panel-single">
                 <div className="research__panel-single-cost">
-                    <ResearchCost activeResearch={activeResearch} />
+                    <ResearchCost activeResearch={activeResearch} onBuyHandler={props.onBuyHandler} validatePurchase={props.validatePurchase} />
                 </div>
 
                 <div className="research__panel">
@@ -57,6 +60,6 @@ const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = { setPlayerUpdated }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResearchSingle)

@@ -28,7 +28,7 @@ export const Controls = (props: { playerData, itemData, activeEquipmentSlot: str
 
             <div className="topPanel__controls-right">
                 <form>
-                    <input type="text" value={props.search} placeholder="filter..." onChange={(e) => props.setSearch(e.target.value)} />
+                    <input type="text" value={props.search} placeholder="search..." onChange={(e) => props.setSearch(e.target.value)} />
                 </form>
             </div>
         </div>

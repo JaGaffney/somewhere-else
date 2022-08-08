@@ -121,7 +121,7 @@ export const AttackLoadout = (props) => {
                                                 props.onSelectedPassiveHandler(props.passiveData.getPassiveById(data))
                                             }
                                             if (e.detail === 2) {
-                                                props.playerData.passives.changeEquippedPassives(slot, null)
+                                                props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).changePassiveLocation(null, slot)
                                                 props.onSelectedPassiveHandler(null)
                                             }
                                         }}

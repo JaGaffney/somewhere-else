@@ -9,7 +9,7 @@ export interface IEquipmentStats {
   elemental: number
   drain: number
   stun: number
-  lifesteal: number
+  regeneration: number
   bleed: number
   enfeeable: number
 }
@@ -24,7 +24,7 @@ export const IEquipmentStatsKeys: IEquipmentStats = {
   elemental: 0,
   drain: 0,
   stun: 0,
-  lifesteal: 0,
+  regeneration: 0,
   bleed: 0,
   enfeeable: 0,
 }

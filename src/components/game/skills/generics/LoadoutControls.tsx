@@ -51,7 +51,7 @@ export const LoadoutControls = (props) => {
 
             <div className="topPanel__controls-right">
                 <form>
-                    <input type="text" value={props.search} placeholder="filter..." onChange={(e) => props.setSearch(e.target.value)} />
+                    <input type="text" value={props.search} placeholder="search..." onChange={(e) => props.setSearch(e.target.value)} />
                 </form>
                 <button
                     className={`generic__button generic__button-primary`}

@@ -1,4 +1,8 @@
 // @ts-nocheck
+import { ClassesEnum } from "../enums/ClassesEnum"
+
+import placeholder from "../../../images/placeholder.svg"
+
 import icon_basic from "../../../images/combat/attacks/basic.svg"
 import icon_shieldBash from "../../../images/combat/attacks/shieldBash.svg"
 import icon_rend from "../../../images/combat/attacks/rend.svg"
@@ -22,7 +26,7 @@ export const attackSeed = [
   {
     id: 2,
     name: "shield bash",
-    type: "warrior",
+    type: ClassesEnum.WARRIOR,
     minDamage: 1,
     maxDamage: 10,
     cooldown: 2,
@@ -36,7 +40,7 @@ export const attackSeed = [
   {
     id: 3,
     name: "rend",
-    type: "warrior",
+    type: ClassesEnum.WARRIOR,
     minDamage: 1,
     maxDamage: 10,
     cooldown: 2,
@@ -50,7 +54,7 @@ export const attackSeed = [
   {
     id: 4,
     name: "shield block",
-    type: "warrior",
+    type: ClassesEnum.WARRIOR,
     minDamage: 1,
     maxDamage: 1,
     cooldown: 0,
@@ -64,7 +68,7 @@ export const attackSeed = [
   {
     id: 5,
     name: "Lightning Arrow",
-    type: "archer",
+    type: ClassesEnum.ARCHER,
     minDamage: 1,
     maxDamage: 5,
     cooldown: 2,
@@ -78,15 +82,53 @@ export const attackSeed = [
   {
     id: 6,
     name: "Leeching Arrow",
-    type: "archer",
+    type: ClassesEnum.ARCHER,
     minDamage: 1,
     maxDamage: 10,
     cooldown: 2,
     stamina: 50,
     effect: {
-      lifesteal: 3,
+      regeneration: 3,
     },
     icon: icon_arrowLeech,
+    levelRequired: 5,
+  },
+  {
+    id: 7,
+    name: "Tincture",
+    type: ClassesEnum.ARCHER,
+    minDamage: 0,
+    maxDamage: 0,
+    cooldown: 2,
+    stamina: 50,
+    effect: {
+      regeneration: 50,
+    },
+    icon: icon_arrowLeech,
+    levelRequired: 10,
+  },
+  {
+    id: 8,
+    name: "Arcane blast",
+    type: ClassesEnum.MAGICIAN,
+    minDamage: 10,
+    maxDamage: 10,
+    cooldown: 2,
+    stamina: 50,
+    effect: { elemental: 2 },
+    icon: placeholder,
+    levelRequired: 1,
+  },
+  {
+    id: 9,
+    name: "Arcane Missle",
+    type: ClassesEnum.MAGICIAN,
+    minDamage: 10,
+    maxDamage: 10,
+    cooldown: 2,
+    stamina: 50,
+    effect: { elemental: 7 },
+    icon: placeholder,
     levelRequired: 5,
   },
 ]

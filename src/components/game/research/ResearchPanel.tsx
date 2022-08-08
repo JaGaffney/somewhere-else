@@ -7,22 +7,6 @@ import ResearchItem from './ResearchItem'
 
 
 export const ResearchPanel = (props) => {
-    const onBuyHandler = (data, currentLevel: number, researchType: string): void => {
-        let name = data.name
-        let cost = data.cost
-
-        if (props.validatePurchase(cost, currentLevel)) {
-            props.handlePurchase(cost, currentLevel)
-
-            if (researchType === "repeat") {
-                props.playerData.research.updateResearchRepeat(name, 1)
-            } else {
-                props.playerData.research.updateResearchSingle(name, true)
-            }
-
-            props.setPlayerUpdated()
-        }
-    }
 
     return (
         <div className="settlement__assignments research__assignments">
@@ -38,7 +22,7 @@ export const ResearchPanel = (props) => {
 
                     if (!props.researchFilter.includes(data.type)) {
                         return (
-                            <ResearchItem data={data} k={k} onBuyHandler={onBuyHandler} key={k} researchType={props.researchType} validatePurchase={props.validatePurchase} />
+                            <ResearchItem data={data} k={k} onBuyHandler={props.onBuyHandler} key={k} researchType={props.researchType} validatePurchase={props.validatePurchase} />
                         )
                     }
 

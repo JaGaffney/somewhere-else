@@ -5,6 +5,10 @@ export class Research {
 
   constructor() {}
 
+  public getRepeatValue(key: string) {
+    return this.repeat[key]
+  }
+
   public setRepeat(data): void {
     this.repeat = data
   }

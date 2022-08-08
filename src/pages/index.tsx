@@ -176,23 +176,29 @@ const IndexPage = props => {
   const handleAddToBank = (activeData: SkillAction, amount: number): void => {
     if (activeData.itemsReceived.length > 0) {
       for (const value in activeData.itemsReceived) {
-        const qty = (activeData.itemsReceived[value].qty * amount) * randomSucess() // adds random chance if applicable
-        const id = activeData.itemsReceived[value].id
-        const item = props.itemData.getItemById(id)
 
-        // research cannot be sold
-        if (item.rarity === "RESEARCH") {
-          let name = item.name.split(" ")[0]
-          props.playerData.playerBank.addToResearch(name, qty)
-        } else {
-          if (props.playerData.getSettingValue("autoSell") || item.rarity === "BANK") {
-            let val = item.price * qty
-            if (!val) {
-              val = 1
-            }
-            props.playerData.playerBank.addToCoins(val)
+        // wont add any more items if bank is full, but will allow for items to keep being stored
+        const maxBankSpace = props.playerData.playerBank.getBankSpace() + props.playerData.research.getRepeatValue("capacity")
+        if (props.playerData.playerBank.totalItemsInBank() + 1 < maxBankSpace) {
+
+          const qty = (activeData.itemsReceived[value].qty * amount) * randomSucess() // adds random chance if applicable
+          const id = activeData.itemsReceived[value].id
+          const item = props.itemData.getItemById(id)
+
+          // research cannot be sold
+          if (item.rarity === "RESEARCH") {
+            let name = item.name.split(" ")[0]
+            props.playerData.playerBank.addToResearch(name, qty)
           } else {
-            props.playerData.playerBank.addItemtoBank(id, qty, item)
+            if (props.playerData.getSettingValue("autoSell") || item.rarity === "BANK") {
+              let val = item.price * qty
+              if (!val) {
+                val = 1
+              }
+              props.playerData.playerBank.addToCoins(val)
+            } else {
+              props.playerData.playerBank.addItemtoBank(id, qty, item)
+            }
           }
         }
       }

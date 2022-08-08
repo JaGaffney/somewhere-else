@@ -5,17 +5,23 @@ import { IEquipmentStatsKeys } from '../../data/items/EquipmentStats'
 
 import StatValue from './StatValue'
 
-import { currentStatCalculator } from "../../utils/equipment"
+import { currentPassiveStatCalculator, currentStatCalculator } from "../../utils/equipment"
 
 export const Stats = (props) => {
     const [currentStats, setCurrentStats] = useState({})
 
     useEffect(() => {
-        setCurrentStats(currentStatCalculator(props.itemData, props.playerData.inventory))
+        const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
+        const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
+        const stats = { ...currentStats, ...passiveStats }
+        setCurrentStats(stats)
     }, [])
 
     useEffect(() => {
-        setCurrentStats(currentStatCalculator(props.itemData, props.playerData.inventory))
+        const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
+        const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
+        const stats = { ...currentStats, ...passiveStats }
+        setCurrentStats(stats)
     }, [props.playerUpdated])
 
     const getStatDifference = (location: string) => {
@@ -64,6 +70,7 @@ export const Stats = (props) => {
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
     itemData: state.items.itemData,
+    passiveData: state.passives.passiveData,
     playerUpdated: state.engine.playerUpdated
 })
 

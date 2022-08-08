@@ -9,6 +9,30 @@ import {
 
 import { Attack } from "../data/attacks/Attack"
 
+// gets stats from passives
+export const currentPassiveStatCalculator = (
+  loadout,
+  passiveData
+): IEquipmentStats => {
+  const totalPassiveStats = {}
+  const equippedPassives = loadout.equippedPassives
+  for (const passive in equippedPassives) {
+    if (equippedPassives[passive] !== null) {
+      const data = passiveData.getPassiveById(equippedPassives[passive])
+      for (const effect in data.effect) {
+        const effectData = data.effect[effect]
+        if (totalPassiveStats[effect]) {
+          totalPassiveStats[effect] = totalPassiveStats[effect] + effectData
+        } else {
+          totalPassiveStats[effect] = effectData
+        }
+      }
+    }
+  }
+
+  return totalPassiveStats
+}
+
 // gets stats from equipped gear/items
 export const currentStatCalculator = (itemData, inventory): IEquipmentStats => {
   const totalEquippedStats = {}

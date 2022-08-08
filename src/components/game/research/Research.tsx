@@ -45,6 +45,24 @@ export const Research = (props) => {
         return costValue
     }
 
+    const onBuyHandler = (data, currentLevel: number, researchType: string): void => {
+        let name = data.name
+        let cost = data.cost
+
+        if (validatePurchase(cost, currentLevel)) {
+            handlePurchase(cost, currentLevel)
+
+            if (researchType === "repeat") {
+                props.playerData.research.updateResearchRepeat(name, 1)
+            } else {
+                props.playerData.research.updateResearchSingle(name, true)
+            }
+
+            props.setPlayerUpdated()
+        }
+    }
+
+
     const controlHandler = (value: string) => {
         if (researchFilter.includes(value)) {
             setResearchFilter([researchFilter.filter(i => i !== value)])
@@ -56,8 +74,8 @@ export const Research = (props) => {
     return (
         <div className="game__normal">
             <Controls controlHandler={controlHandler} researchFilter={researchFilter} />
-            <ResearchPanel validatePurchase={validatePurchase} handlePurchase={handlePurchase} data={props.researchData.repeat} researchType={"repeat"} researchFilter={researchFilter} />
-            <ResearchSingle validatePurchase={validatePurchase} handlePurchase={handlePurchase} data={props.researchData.singular} researchFilter={researchFilter} />
+            <ResearchPanel validatePurchase={validatePurchase} onBuyHandler={onBuyHandler} data={props.researchData.repeat} researchType={"repeat"} researchFilter={researchFilter} />
+            <ResearchSingle validatePurchase={validatePurchase} onBuyHandler={onBuyHandler} data={props.researchData.singular} researchFilter={researchFilter} />
         </div>
     )
 }

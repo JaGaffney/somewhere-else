@@ -101,10 +101,11 @@ export const CatCombat = (props) => {
     }, [])
 
     useEffect(() => {
+        const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const intervalRefresh = setInterval(() => {
             updateTime()
             if (combatInProcess) {
-                if (timer > 2500) {
+                if (timer > playerStats.speed) { // * 10
                     console.log("Attacking")
 
                     if (props.combatData && props.playerData) {
@@ -167,12 +168,28 @@ export const CatCombat = (props) => {
         combatData[activePlayer][attackID].cooldown.current = combatData[activePlayer][attackID].cooldown.base
     }
 
+    const getPassiveBenefits = () => {
+        const passiveData = {}
+        const passives = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedPassives
+        console.log(passives)
+        // TODO: added passives data to damage
+        for (const passive in passives) {
+            console.log(passive)
+            if (passives[passive] !== null) {
+                passiveData
+            }
+        }
+        return passiveData
+    }
+
+
     // can also be used to estimate how much damage an attack would do to the enemy before hand
     // could grey out the enemy hp in the avg dmg would do
     const attackDamageCalculator = (attackData: Attack): number => {
         // TODO: damage here is not correct
         // TODO: all effects are happening at once
 
+        const passiveStats = getPassiveBenefits()
         const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const enemeyStats = props.enemyData.enemies.get(props.combatData ? props.combatData.enemyID : 1)
 

@@ -1,0 +1,21 @@
+WARRIOR
+defence, armour
+shields
+more damage in exchange for taking more damage
+fitness - reduce sttamina cost
+
+
+ARCHER
+snares - traps
+posion
+stamina regen slow
+
+
+MAGE
+arcane spells
+cool down reduction
+stamina regen larger
+
+SUMMNOER
+minion has preset skills that override normal spells
+minion has its own hp and defence etc

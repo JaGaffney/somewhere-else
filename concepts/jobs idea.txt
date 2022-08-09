@@ -4,11 +4,10 @@ shields
 more damage in exchange for taking more damage
 fitness - reduce sttamina cost
 
-
 ARCHER
-snares - traps
+snares/slow - traps
 posion
-stamina regen slow
+stamina regen 
 
 
 MAGE
@@ -19,3 +18,10 @@ stamina regen larger
 SUMMNOER
 minion has preset skills that override normal spells
 minion has its own hp and defence etc
+
+CLERIC
+healing, 
+passive regeneration, 
+armour
+low damage
+(tie into divination)

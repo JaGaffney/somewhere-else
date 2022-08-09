@@ -10,18 +10,19 @@ import { currentPassiveStatCalculator, currentStatCalculator } from "../../utils
 export const Stats = (props) => {
     const [currentStats, setCurrentStats] = useState({})
 
-    useEffect(() => {
+    const onLoad = () => {
         const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
         const stats = { ...currentStats, ...passiveStats }
         setCurrentStats(stats)
+    }
+
+    useEffect(() => {
+        onLoad()
     }, [])
 
     useEffect(() => {
-        const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
-        const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
-        const stats = { ...currentStats, ...passiveStats }
-        setCurrentStats(stats)
+        onLoad()
     }, [props.playerUpdated])
 
     const getStatDifference = (location: string) => {

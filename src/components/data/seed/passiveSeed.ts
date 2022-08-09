@@ -42,7 +42,7 @@ export const passiveSeed = [
     icon: placeholder,
     description: "your phiscal prowess allows you to have reduced stamina cost",
     rarity: Rarity.COMMON,
-    effect: { weight: -30 },
+    effect: { encumbrance: -30 },
     levelRequired: 75,
   },
   {
@@ -73,7 +73,7 @@ export const passiveSeed = [
     icon: placeholder,
     description: "",
     rarity: Rarity.COMMON,
-    effect: { speed: 50, weight: -10 },
+    effect: { speed: 50, encumbrance: -10 },
     levelRequired: 25,
   },
   {

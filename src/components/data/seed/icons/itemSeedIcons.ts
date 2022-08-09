@@ -23,7 +23,8 @@ export const researchPurple = RESEARCH_PURPLE
 
 // Items
 // Weapons
-import DAGGER_BONE from "../../../../images/items/weapons/dagger-bone.svg"
+//import DAGGER_BONE from "../../../../images/items/weapons/dagger-bone.svg"
+import DAGGER_BONE from "../../../../images/mogs/10.png"
 import DAGGER_BRONZE from "../../../../images/items/weapons/dagger-bronze.svg"
 import DAGGER_IRON from "../../../../images/items/weapons/dagger-iron.svg"
 import DAGGER_STEEL from "../../../../images/items/weapons/dagger-steel.svg"

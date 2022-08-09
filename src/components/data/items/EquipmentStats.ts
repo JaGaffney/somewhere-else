@@ -3,7 +3,7 @@ export interface IEquipmentStats {
   attack: number
   defence: number
   armour: number
-  weight: number
+  encumbrance: number
   speed: number
   crit: number
   elemental: number
@@ -18,7 +18,7 @@ export const IEquipmentStatsKeys: IEquipmentStats = {
   attack: 0,
   defence: 0,
   armour: 0,
-  weight: 0,
+  encumbrance: 0,
   speed: 0,
   crit: 0,
   elemental: 0,

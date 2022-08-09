@@ -6,7 +6,7 @@ import { setCombatData } from "../../actions/api"
 import Section from './generics/Section'
 
 import { randomInteger } from "../../utils/generic"
-import { calculateDamage, currentStatCalculator, calculateEnemyDamage } from "../../utils/equipment"
+import { calculateDamage, currentStatCalculator, calculateEnemyDamage, currentPassiveStatCalculator } from "../../utils/equipment"
 import { Attack } from "../../data/attacks/Attack"
 
 // @ts-ignore
@@ -124,11 +124,13 @@ export const CatCombat = (props) => {
     const attackPossibleStamina = (activePlayer: string, attackData: Attack): boolean => {
         let currentStamina: number = 0
         if (activePlayer === "player") {
-            currentStamina = props.playerData.status.stamina.getCurrent()
+
+            currentStamina = props.playerData.status.stamina.getCurrent() - currentStatCalculator(props.itemData, props.playerData.inventory).encumbrance
         } else {
             currentStamina = props.combatData.status.stamina.getCurrent()
         }
         console.log(currentStamina, " ", attackData.stamina)
+
         if (currentStamina < attackData.stamina) {
             console.log("Attack failed due to lack of stamina")
             setAttackErrors({ ...attackErrors, stamina: true })
@@ -148,10 +150,20 @@ export const CatCombat = (props) => {
 
     // reduces cooldowns by 1 round
     const handleCooldowns = (attackID: number, activePlayer: string): void => {
+        let attackLocation = 1
         if (activePlayer === "player") {
+            console.log(combatData[activePlayer])
             for (const attack in combatData[activePlayer]) {
-                if (combatData[activePlayer][attack].cooldown.base) {
+                console.log(combatData[activePlayer][attack])
+
+                if (combatData[activePlayer][attack]) {
+                    if (combatData[activePlayer][attack].id === attackID) {
+                        attackLocation = parseInt(attack)
+                    }
+
                     if (combatData[activePlayer][attack].cooldown.base !== 0) {
+
+                        // removes the cd of each none used attack by 1
                         if (combatData[activePlayer][attack].cooldown.current > 0) {
                             combatData[activePlayer][attack].cooldown.current = combatData[activePlayer][attack].cooldown.current - 1
                             console.log(combatData[activePlayer][attack].cooldown)
@@ -164,33 +176,23 @@ export const CatCombat = (props) => {
         } else {
 
         }
-
-        combatData[activePlayer][attackID].cooldown.current = combatData[activePlayer][attackID].cooldown.base
+        console.log({ attackID })
+        console.log({ combatData })
+        // starts the cooldown of the attack after being used
+        combatData[activePlayer][attackLocation].cooldown.current = combatData[activePlayer][attackLocation].cooldown.base
     }
-
-    const getPassiveBenefits = () => {
-        const passiveData = {}
-        const passives = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedPassives
-        console.log(passives)
-        // TODO: added passives data to damage
-        for (const passive in passives) {
-            console.log(passive)
-            if (passives[passive] !== null) {
-                passiveData
-            }
-        }
-        return passiveData
-    }
-
 
     // can also be used to estimate how much damage an attack would do to the enemy before hand
     // could grey out the enemy hp in the avg dmg would do
     const attackDamageCalculator = (attackData: Attack): number => {
         // TODO: damage here is not correct
         // TODO: all effects are happening at once
+        const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
+        const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
+        const playerStats = { ...currentStats, ...passiveStats }
 
-        const passiveStats = getPassiveBenefits()
-        const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
+        // const passiveStats = getPassiveBenefits()
+        // const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const enemeyStats = props.enemyData.enemies.get(props.combatData ? props.combatData.enemyID : 1)
 
         let damageData;
@@ -571,6 +573,7 @@ const mapStateToProps = (state) => ({
     combatData: state.engine.combatData,
     playerData: state.player.playerData,
     attackData: state.attacks.attackData,
+    passiveData: state.passives.passiveData,
     enemyData: state.enemies.enemyData,
     itemData: state.items.itemData,
 

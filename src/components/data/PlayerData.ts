@@ -49,8 +49,9 @@ export class PlayerData {
 
   // setters
   public setSkillExp(skillName: string, amount: number): void {
-    this.skillExp.skillExp[skillName] =
+    this.skillExp.skillExp[skillName] = Math.round(
       this.skillExp.skillExp[skillName] + amount
+    )
   }
 
   public setManpower(amount: number): void {

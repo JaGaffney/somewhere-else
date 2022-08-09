@@ -22,6 +22,7 @@ export const attackSeed = [
     effect: { crit: 10 },
     icon: icon_basic,
     levelRequired: 1,
+    exp: 1,
   },
   {
     id: 2,
@@ -36,6 +37,7 @@ export const attackSeed = [
     },
     icon: icon_shieldBash,
     levelRequired: 1,
+    exp: 1,
   },
   {
     id: 3,
@@ -50,13 +52,14 @@ export const attackSeed = [
     },
     icon: icon_rend,
     levelRequired: 5,
+    exp: 1,
   },
   {
     id: 4,
     name: "shield block",
     type: ClassesEnum.WARRIOR,
-    minDamage: 1,
-    maxDamage: 1,
+    minDamage: 0,
+    maxDamage: 0,
     cooldown: 0,
     stamina: 50,
     effect: {
@@ -64,6 +67,7 @@ export const attackSeed = [
     },
     icon: icon_shieldBlock,
     levelRequired: 10,
+    exp: 35,
   },
   {
     id: 5,
@@ -78,6 +82,7 @@ export const attackSeed = [
     },
     icon: icon_arrowLightning,
     levelRequired: 1,
+    exp: 1,
   },
   {
     id: 6,
@@ -92,6 +97,7 @@ export const attackSeed = [
     },
     icon: icon_arrowLeech,
     levelRequired: 5,
+    exp: 1,
   },
   {
     id: 7,
@@ -106,6 +112,7 @@ export const attackSeed = [
     },
     icon: icon_arrowLeech,
     levelRequired: 10,
+    exp: 35,
   },
   {
     id: 8,
@@ -118,6 +125,7 @@ export const attackSeed = [
     effect: { elemental: 2 },
     icon: placeholder,
     levelRequired: 1,
+    exp: 1,
   },
   {
     id: 9,
@@ -130,5 +138,6 @@ export const attackSeed = [
     effect: { elemental: 7 },
     icon: placeholder,
     levelRequired: 5,
+    exp: 1,
   },
 ]

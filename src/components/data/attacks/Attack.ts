@@ -8,6 +8,7 @@ export class Attack {
   effect: Object
   icon: string
   levelRequired: number
+  exp: number
 
   constructor(
     name: string,
@@ -18,7 +19,8 @@ export class Attack {
     stamina: number,
     effect: Object,
     icon: string,
-    levelRequired: number
+    levelRequired: number,
+    exp: number
   ) {
     this.name = name
     this.type = type
@@ -29,5 +31,6 @@ export class Attack {
     this.effect = effect
     this.icon = icon
     this.levelRequired = levelRequired
+    this.exp = exp
   }
 }

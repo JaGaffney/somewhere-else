@@ -24,7 +24,8 @@ export class AttackData {
           attackSeed[key].stamina,
           attackSeed[key].effect,
           attackSeed[key].icon,
-          attackSeed[key].levelRequired
+          attackSeed[key].levelRequired,
+          attackSeed[key].exp
         )
       )
     }

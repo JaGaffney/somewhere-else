@@ -152,9 +152,7 @@ export const CatCombat = (props) => {
     const handleCooldowns = (attackID: number, activePlayer: string): void => {
         let attackLocation = 1
         if (activePlayer === "player") {
-            console.log(combatData[activePlayer])
             for (const attack in combatData[activePlayer]) {
-                console.log(combatData[activePlayer][attack])
 
                 if (combatData[activePlayer][attack]) {
                     if (combatData[activePlayer][attack].id === attackID) {
@@ -176,10 +174,39 @@ export const CatCombat = (props) => {
         } else {
 
         }
-        console.log({ attackID })
-        console.log({ combatData })
+
         // starts the cooldown of the attack after being used
         combatData[activePlayer][attackLocation].cooldown.current = combatData[activePlayer][attackLocation].cooldown.base
+    }
+
+    const getValidCombatSkills = () => {
+        const tempCombatSkills = props.skills.getAllCombatSkills()
+        const tempResearchSkills = Object.keys(props.playerData.research.singular)
+        let unlockedSkills = []
+
+        if (tempResearchSkills.length <= 0) {
+            return unlockedSkills
+        }
+
+        for (let skill in tempCombatSkills) {
+            if (tempResearchSkills.includes(tempCombatSkills[skill])) {
+                unlockedSkills.push(tempCombatSkills[skill])
+            }
+        }
+        return unlockedSkills
+    }
+
+    const handleExpGained = (damage, attackData) => {
+        const expGained = Math.floor(damage) * 3 + attackData.exp
+        if (attackData.type.toLocaleLowerCase() === "general") {
+            const unlockedCombatSkills = getValidCombatSkills()
+            for (let skill in unlockedCombatSkills) {
+                props.playerData.setSkillExp(unlockedCombatSkills[skill], Math.floor(expGained / 3))
+            }
+        } else {
+            props.playerData.setSkillExp(attackData.type.toLocaleLowerCase(), expGained)
+        }
+
     }
 
     // can also be used to estimate how much damage an attack would do to the enemy before hand
@@ -205,7 +232,8 @@ export const CatCombat = (props) => {
 
             damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevelMultiplyer, false)
 
-            props.playerData.setSkillExp(attackData.type, Math.floor(damageData.attack) * 3)
+            handleExpGained(damageData.attack, attackData)
+
         } else {
             damageData = calculateEnemyDamage(enemeyStats, playerStats, attackData)
         }
@@ -292,7 +320,6 @@ export const CatCombat = (props) => {
         // work out attack damage
         const damageData = attackDamageCalculator(attackData)
 
-        console.log(attackData)
         const damageOrder = ["lifesteal", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
 
         const tempOverlay = {
@@ -576,6 +603,7 @@ const mapStateToProps = (state) => ({
     passiveData: state.passives.passiveData,
     enemyData: state.enemies.enemyData,
     itemData: state.items.itemData,
+    skills: state.skills.skillData,
 
 })
 

@@ -23,7 +23,7 @@ export const passiveSeed = [
     description: "deal more damage, but at what cost",
     rarity: Rarity.COMMON,
     effect: { attack: 10, defence: -10 },
-    levelRequired: 25,
+    levelRequired: 20,
   },
   {
     id: 3,

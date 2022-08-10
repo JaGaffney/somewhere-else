@@ -19,7 +19,8 @@ export const Passives = (props) => {
             {[...props.passiveData.passives.keys()].map((id: string, k) => {
                 if (id !== null) {
                     const passive = props.passiveData.getPassiveById(id)
-                    const currentLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(passive.job))
+                    const currentLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(passive.job.toLocaleLowerCase()))
+
                     if (validFilterQuery(passive.name, props.search) || validFilterQuery(passive.job, props.search)) {
                         if (currentLevel >= passive.levelRequired) {
                             return (

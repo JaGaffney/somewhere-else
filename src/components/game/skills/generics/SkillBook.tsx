@@ -10,8 +10,7 @@ export const SkillBook = (props) => {
       <h3>Skillbook</h3>
       {[...props.attackData.attacks.keys()].map((i, k) => {
         const attackData = props.attackData.getAttackById(i)
-        const currentLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(attackData.type))
-
+        const currentLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(attackData.type.toLowerCase()))
         if (validFilterQuery(attackData.name, props.search) || validFilterQuery(attackData.type, props.search)) {
           if (currentLevel >= attackData.levelRequired) {
             return (

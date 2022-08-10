@@ -242,15 +242,11 @@ export const CatCombat = (props) => {
             stamina.setCurrent(stamina.getCurrent() - value)
         } else {
             if (activePlayer === "player") {
-                stamina.setCurrent(stamina.getCurrent() - value - currentStatCalculator(props.itemData, props.playerData.inventory).encumbrance)
+                stamina.setCurrent(stamina.getCurrent() - value)
             } else {
                 stamina.setCurrent(stamina.getCurrent() - value)
             }
         }
-
-
-
-
 
         // stamina regen
         if ((stamina.getCurrent() + tempBaseStaminaRegen) >= (stamina.getBase() + 100)) {
@@ -343,14 +339,14 @@ export const CatCombat = (props) => {
                 if (damageData[damage]) {
                     const overlayValues = statusEffectResovlePlayer(damageData[damage], damage)
                     for (let value in overlayValues) {
-                        tempOverlay[value] = tempOverlay[value] + overlayValues[value]
+                        tempOverlay[value] = parseInt(tempOverlay[value] + overlayValues[value])
                     }
                 }
             }
 
             setDamageOverlay(tempOverlay)
 
-            staminaHandler(props.playerData.status.stamina, attackData.stamina, activePlayer)
+            staminaHandler(props.playerData.status.stamina, attackData.stamina + currentStatCalculator(props.itemData, props.playerData.inventory).encumbrance, activePlayer)
             setStaminaOverlay({ player: tempBaseStaminaRegen - attackData.stamina, enemy: null })
 
         } else {
@@ -363,7 +359,7 @@ export const CatCombat = (props) => {
             if (armourValue < 0) {
                 setDamageOverlay({
                     playerHealth: - damage,
-                    playerArmour: props.playerData.status.armour.getCurrent(),
+                    playerArmour: parseInt(props.playerData.status.armour.getCurrent()),
                     enemyHealth: null,
                     enemyArmour: null
                 })
@@ -373,7 +369,7 @@ export const CatCombat = (props) => {
             } else {
                 setDamageOverlay({
                     playerHealth: "0",
-                    playerArmour: - damageData.damage,
+                    playerArmour: parseInt(- damageData.damage),
                     enemyHealth: null,
                     enemyArmour: null
                 })
@@ -493,6 +489,7 @@ export const CatCombat = (props) => {
                     handleAttackInput(attackID, whoseGoIsIt)
                 } else {
                     if (whoseGoIsIt === "player") {
+                        console.log("got here: ",)
                         staminaHandler(props.playerData.status.stamina, 0, whoseGoIsIt)
                         setStaminaOverlay({ player: tempBaseStaminaRegen, enemy: null })
                     } else {

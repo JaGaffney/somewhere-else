@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { getBackgroundColor } from '../../../utils/color';
+import { currentStatCalculator } from '../../../utils/equipment';
 
 
 export const Hotbar = (props) => {
@@ -45,7 +46,7 @@ export const Hotbar = (props) => {
                             {attackData &&
                                 <div className="attacks__button-stats">
                                     <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>
-                                    <span className="attacks__button-stats-topRight">{attackData.stamina}</span>
+                                    <span className="attacks__button-stats-topRight">{attackData.stamina + currentStatCalculator(props.itemData, props.playerData.inventory).encumbrance}</span>
                                     <span className="attacks__button-stats-bottomRight">{props.maxDamgeCalc(attackData)}</span>
                                     {cooldownRemaining !== 0 && (<span className="attacks__button-stats-overlay">{cooldownRemaining}</span>)}
                                 </div>
@@ -61,6 +62,7 @@ export const Hotbar = (props) => {
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
     attackData: state.attacks.attackData,
+    itemData: state.items.itemData,
 })
 
 const mapDispatchToProps = {

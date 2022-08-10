@@ -22,7 +22,7 @@ import 'reactjs-popup/dist/index.css';
 
 
 export const CatCombat = (props) => {
-    const tempBaseStaminaRegen = 10
+    const tempBaseStaminaRegen = 1
 
     const [combatInProcess, setCombatInProcess] = useState<boolean>(false)
     const [autoCombat, setAutoCombat] = useState(true)
@@ -124,24 +124,19 @@ export const CatCombat = (props) => {
     const attackPossibleStamina = (activePlayer: string, attackData: Attack): boolean => {
         let currentStamina: number = 0
         if (activePlayer === "player") {
-
             currentStamina = props.playerData.status.stamina.getCurrent() - currentStatCalculator(props.itemData, props.playerData.inventory).encumbrance
         } else {
             currentStamina = props.combatData.status.stamina.getCurrent()
         }
-        console.log(currentStamina, " ", attackData.stamina)
 
         if (currentStamina < attackData.stamina) {
-            console.log("Attack failed due to lack of stamina")
             setAttackErrors({ ...attackErrors, stamina: true })
             return false
         }
         return true
     }
     const attackPossibleCooldown = (attackID: number, activePlayer: string): boolean => {
-        // console.log(combatData[activePlayer][attackID].cooldown.current)
-        if (combatData[activePlayer][attackID].cooldown.current >= 2) {
-            console.log("Attack failed due to still being on cooldown")
+        if (combatData[activePlayer][attackID].cooldown.current > 0) {
             setAttackErrors({ ...attackErrors, cooldown: true })
             return false
         }
@@ -241,9 +236,21 @@ export const CatCombat = (props) => {
         return damageData
     }
 
-    const staminaHandler = (stamina, value: number): void => {
+    const staminaHandler = (stamina, value: number, activePlayer: string): void => {
         // stamina cost of attack
-        stamina.setCurrent(stamina.getCurrent() - value)
+        if (value === 0) {
+            stamina.setCurrent(stamina.getCurrent() - value)
+        } else {
+            if (activePlayer === "player") {
+                stamina.setCurrent(stamina.getCurrent() - value - currentStatCalculator(props.itemData, props.playerData.inventory).encumbrance)
+            } else {
+                stamina.setCurrent(stamina.getCurrent() - value)
+            }
+        }
+
+
+
+
 
         // stamina regen
         if ((stamina.getCurrent() + tempBaseStaminaRegen) >= (stamina.getBase() + 100)) {
@@ -343,7 +350,7 @@ export const CatCombat = (props) => {
 
             setDamageOverlay(tempOverlay)
 
-            staminaHandler(props.playerData.status.stamina, attackData.stamina)
+            staminaHandler(props.playerData.status.stamina, attackData.stamina, activePlayer)
             setStaminaOverlay({ player: tempBaseStaminaRegen - attackData.stamina, enemy: null })
 
         } else {
@@ -374,7 +381,7 @@ export const CatCombat = (props) => {
                 props.playerData.status.armour.setCurrent(armourValue)
             }
 
-            staminaHandler(props.combatData.status.stamina, attackData.stamina)
+            staminaHandler(props.combatData.status.stamina, attackData.stamina, activePlayer)
             setStaminaOverlay({ player: tempBaseStaminaRegen - attackData.stamina, enemy: null })
         }
     }
@@ -422,6 +429,7 @@ export const CatCombat = (props) => {
             handleLoot(enemyData)
 
             // spawn "new" monster
+            // TODO: setting stamina to lower value than it should be
             props.combatData.status.health.setCurrent(props.combatData.status.health.getBase())
             props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getBase())
             props.combatData.status.armour.setCurrent(props.combatData.status.armour.getBase())
@@ -480,9 +488,19 @@ export const CatCombat = (props) => {
             if (autoCombat || whoseGoIsIt === "enemy") {
                 // find first viable attack?
                 const attackID = rotationHandler(whoseGoIsIt)
+                if (attackID !== null) {
+                    // calculate damage + resolve damage
+                    handleAttackInput(attackID, whoseGoIsIt)
+                } else {
+                    if (whoseGoIsIt === "player") {
+                        staminaHandler(props.playerData.status.stamina, 0, whoseGoIsIt)
+                        setStaminaOverlay({ player: tempBaseStaminaRegen, enemy: null })
+                    } else {
+                        staminaHandler(props.combatData.status.stamina, 0, whoseGoIsIt)
+                        setStaminaOverlay({ enemy: tempBaseStaminaRegen, player: null })
+                    }
+                }
 
-                // calculate damage + resolve damage
-                handleAttackInput(attackID, whoseGoIsIt)
 
                 // handle death + loot
 

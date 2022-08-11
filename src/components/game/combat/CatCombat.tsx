@@ -6,7 +6,7 @@ import { setCombatData } from "../../actions/api"
 import Section from './generics/Section'
 
 import { randomInteger } from "../../utils/generic"
-import { calculateDamage, currentStatCalculator, calculateEnemyDamage, currentPassiveStatCalculator } from "../../utils/equipment"
+import { calculateDamage, currentStatCalculator, calculateEnemyDamage, currentPassiveStatCalculator, statMerge } from "../../utils/equipment"
 import { Attack } from "../../data/attacks/Attack"
 
 // @ts-ignore
@@ -22,7 +22,7 @@ import 'reactjs-popup/dist/index.css';
 
 
 export const CatCombat = (props) => {
-    const tempBaseStaminaRegen = 1
+    const tempBaseStaminaRegen = 25
 
     const [combatInProcess, setCombatInProcess] = useState<boolean>(false)
     const [autoCombat, setAutoCombat] = useState(true)
@@ -46,8 +46,16 @@ export const CatCombat = (props) => {
         enemy: null
     })
     const [playerDeadPopup, setPlayerDeadPopup] = useState<boolean>(false)
+    const [playerStats, setPlayerStats] = useState<Object>(null)
 
     const playerDeadModal = () => setPlayerDeadPopup(false)
+
+    useEffect(() => {
+        const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
+        const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
+        const totalPlayerStats = statMerge(currentStats, passiveStats)
+        setPlayerStats(totalPlayerStats)
+    }, [playerTurn])
 
     useEffect(() => {
         console.log("start up")
@@ -101,7 +109,6 @@ export const CatCombat = (props) => {
     }, [])
 
     useEffect(() => {
-        const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const intervalRefresh = setInterval(() => {
             updateTime()
             if (combatInProcess) {
@@ -209,12 +216,7 @@ export const CatCombat = (props) => {
     const attackDamageCalculator = (attackData: Attack): number => {
         // TODO: damage here is not correct
         // TODO: all effects are happening at once
-        const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
-        const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
-        const playerStats = { ...currentStats, ...passiveStats }
 
-        // const passiveStats = getPassiveBenefits()
-        // const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const enemeyStats = props.enemyData.enemies.get(props.combatData ? props.combatData.enemyID : 1)
 
         let damageData;
@@ -299,7 +301,9 @@ export const CatCombat = (props) => {
                 console.log(`enemy ${status}: ${data}`)
                 return { enemyStatus: data }
             case ("armour"):
-                props.playerData.status.armour.setCurrent(props.playerData.status.armour.getCurrent() + data)
+                const currentStamina = props.playerData.status.armour.getCurrent()
+                props.playerData.status.armour.setCurrent(null)
+                props.playerData.status.armour.setCurrent(currentStamina + data)
                 return { playerArmour: data }
             case ("stun"):
                 console.log(`enemy ${status}: ${data}`)
@@ -321,8 +325,11 @@ export const CatCombat = (props) => {
     const resolveDamageDealt = (activePlayer: string, attackData: Attack, attackID: number): void => {
         // TODO: damage is happening irregarldess of stamina
         // work out attack damage
-        const damageData = attackDamageCalculator(attackData)
 
+
+
+        const damageData = attackDamageCalculator(attackData)
+        console.log({ damageData })
         const damageOrder = ["lifesteal", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
 
         const tempOverlay = {
@@ -336,6 +343,7 @@ export const CatCombat = (props) => {
             setAttackSelectedID(attackID)
             setEnemyAttackSelectedID(null)
             for (let damage of damageOrder) {
+                console.log(damage, damageData[damage])
                 if (damageData[damage]) {
                     const overlayValues = statusEffectResovlePlayer(damageData[damage], damage)
                     for (let value in overlayValues) {
@@ -346,8 +354,9 @@ export const CatCombat = (props) => {
 
             setDamageOverlay(tempOverlay)
 
-            staminaHandler(props.playerData.status.stamina, attackData.stamina + currentStatCalculator(props.itemData, props.playerData.inventory).encumbrance, activePlayer)
-            setStaminaOverlay({ player: tempBaseStaminaRegen - attackData.stamina, enemy: null })
+            const attackStaminaCost = attackData.stamina + playerStats.encumbrance
+            staminaHandler(props.playerData.status.stamina, attackStaminaCost, activePlayer)
+            setStaminaOverlay({ player: - attackStaminaCost, enemy: null })
 
         } else {
             // for ui purposes only
@@ -425,12 +434,11 @@ export const CatCombat = (props) => {
             handleLoot(enemyData)
 
             // spawn "new" monster
-            // TODO: setting stamina to lower value than it should be
             props.combatData.status.health.setCurrent(props.combatData.status.health.getBase())
-            props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getBase())
+            props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getBase() + 100)
             props.combatData.status.armour.setCurrent(props.combatData.status.armour.getBase())
 
-
+            console.log(props.combatData)
             setDamageOverlay({ playerHealth: null, playerArmour: null, enemyHealth: null, enemyArmour: null })
             setStaminaOverlay({ player: null, enemy: null })
             return "Enemy dead"

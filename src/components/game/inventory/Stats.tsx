@@ -5,7 +5,7 @@ import { IEquipmentStatsKeys } from '../../data/items/EquipmentStats'
 
 import StatValue from './StatValue'
 
-import { currentPassiveStatCalculator, currentStatCalculator } from "../../utils/equipment"
+import { currentPassiveStatCalculator, currentStatCalculator, statMerge } from "../../utils/equipment"
 
 export const Stats = (props) => {
     const [currentStats, setCurrentStats] = useState({})
@@ -13,7 +13,8 @@ export const Stats = (props) => {
     const onLoad = () => {
         const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
-        const stats = { ...currentStats, ...passiveStats }
+
+        const stats = statMerge(currentStats, passiveStats)
         setCurrentStats(stats)
     }
 

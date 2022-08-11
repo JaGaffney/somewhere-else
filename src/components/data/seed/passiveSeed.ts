@@ -3,13 +3,16 @@ import { ClassesEnum } from "../enums/ClassesEnum"
 
 // @ts-nocheck
 import placeholder from "../../../images/placeholder.svg"
+import WARRIOR from "../../../images/mogs/1.png"
+import ARCHER from "../../../images/mogs/6.png"
+import MAGICIAN from "../../../images/mogs/2.png"
 
 export const passiveSeed = [
   {
     id: 1,
     name: "aspect of the warrior",
     job: ClassesEnum.WARRIOR,
-    icon: placeholder,
+    icon: WARRIOR,
     description: "starting passive for warrior, regenerates armour each turn",
     rarity: Rarity.COMMON,
     effect: { armour: 3 },
@@ -49,7 +52,7 @@ export const passiveSeed = [
     id: 5,
     name: "true aspect of the warrior",
     job: ClassesEnum.WARRIOR,
-    icon: placeholder,
+    icon: WARRIOR,
     description: "regenerates armour each turn",
     rarity: Rarity.COMMON,
     effect: { armour: 15 },
@@ -59,7 +62,7 @@ export const passiveSeed = [
     id: 6,
     name: "aspect of the archer",
     job: ClassesEnum.ARCHER,
-    icon: placeholder,
+    icon: ARCHER,
     description:
       "starting passive for archer, increased chance to land a crital hit",
     rarity: Rarity.COMMON,
@@ -101,7 +104,7 @@ export const passiveSeed = [
     id: 10,
     name: "true aspect of the archer",
     job: ClassesEnum.ARCHER,
-    icon: placeholder,
+    icon: ARCHER,
     description: "",
     rarity: Rarity.COMMON,
     effect: { crit: 50 },
@@ -111,7 +114,7 @@ export const passiveSeed = [
     id: 11,
     name: "aspect of the magician",
     job: ClassesEnum.MAGICIAN,
-    icon: placeholder,
+    icon: MAGICIAN,
     description: "",
     rarity: Rarity.COMMON,
     effect: { elemental: 5 },
@@ -151,7 +154,7 @@ export const passiveSeed = [
     id: 15,
     name: "true aspect of the magician",
     job: ClassesEnum.MAGICIAN,
-    icon: placeholder,
+    icon: MAGICIAN,
     description: "",
     rarity: Rarity.COMMON,
     effect: { elemental: 25 },

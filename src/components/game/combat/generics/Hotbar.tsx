@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { getBackgroundColor } from '../../../utils/color';
-import { currentStatCalculator } from '../../../utils/equipment';
+import { currentPassiveStatCalculator, currentStatCalculator, statMerge } from '../../../utils/equipment';
 
 
 export const Hotbar = (props) => {
@@ -13,6 +13,11 @@ export const Hotbar = (props) => {
     function onDragStart(e) {
         e.dataTransfer.setData("text/plain", e.target.id)
     }
+
+    const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
+    const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
+    const playerStats = statMerge(currentStats, passiveStats)
+
 
     return (
         <div className="catcombat__hotbar-attacks">
@@ -46,7 +51,7 @@ export const Hotbar = (props) => {
                             {attackData &&
                                 <div className="attacks__button-stats">
                                     <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>
-                                    <span className="attacks__button-stats-topRight">{attackData.stamina + currentStatCalculator(props.itemData, props.playerData.inventory).encumbrance}</span>
+                                    <span className="attacks__button-stats-topRight">{attackData.stamina + playerStats.encumbrance}</span>
                                     <span className="attacks__button-stats-bottomRight">{props.maxDamgeCalc(attackData)}</span>
                                     {cooldownRemaining !== 0 && (<span className="attacks__button-stats-overlay">{cooldownRemaining}</span>)}
                                 </div>
@@ -63,6 +68,7 @@ const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
     attackData: state.attacks.attackData,
     itemData: state.items.itemData,
+    passiveData: state.passives.passiveData,
 })
 
 const mapDispatchToProps = {

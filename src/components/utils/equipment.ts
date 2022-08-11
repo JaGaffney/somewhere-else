@@ -130,3 +130,20 @@ export const calculateEnemyDamage = (
   damageData["attack"] = damageDone
   return damageData
 }
+
+export const statMerge = (object1: Object, object2: Object): Object => {
+  const returnValue = {}
+  for (const stat in IEquipmentStatsKeys) {
+    if (object1[stat]) {
+      returnValue[stat] = parseInt(object1[stat])
+    }
+    if (object2[stat]) {
+      if (returnValue[stat]) {
+        returnValue[stat] = returnValue[stat] + parseInt(object2[stat])
+      } else {
+        returnValue[stat] = parseInt(object2[stat])
+      }
+    }
+  }
+  return returnValue
+}

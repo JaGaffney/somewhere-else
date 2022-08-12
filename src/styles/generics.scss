@@ -168,6 +168,12 @@
     transform: translateY(-2px);
     box-shadow: var(--shadow900);
   }
+  &:disabled {
+    color: var(--gray600);
+    background-color: var(--gray900);
+    box-shadow: var(--shadow500);
+    cursor: auto;
+  }
 }
 .generic__button-fit {
   width: 100%;

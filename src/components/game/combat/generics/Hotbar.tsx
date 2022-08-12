@@ -14,14 +14,23 @@ export const Hotbar = (props) => {
         e.dataTransfer.setData("text/plain", e.target.id)
     }
 
+    // handles no loadouts being avaialable
+    const activeLoadout = () => {
+        let stats = {}
+        if (props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout)) {
+            stats = (props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
+        }
+        return stats
+    }
+
     const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
-    const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
+    const passiveStats = activeLoadout()
     const playerStats = statMerge(currentStats, passiveStats)
 
 
     return (
         <div className="catcombat__hotbar-attacks">
-            {Object.keys(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks).map((id, k) => {
+            {props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout) ? Object.keys(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks).map((id, k) => {
                 const attackID = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks[id]
                 const attackData = props.attackData.getAttackById(attackID)
                 let cooldownRemaining;
@@ -59,7 +68,7 @@ export const Hotbar = (props) => {
                         </button>
                     </div>
                 )
-            })}
+            }) : <h3>You need some actions and spells to start combat</h3>}
         </div>
     )
 }

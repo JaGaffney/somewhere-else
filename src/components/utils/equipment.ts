@@ -15,16 +15,18 @@ export const currentPassiveStatCalculator = (
   passiveData
 ): IEquipmentStats => {
   const totalPassiveStats = {}
-  const equippedPassives = loadout.equippedPassives
-  for (const passive in equippedPassives) {
-    if (equippedPassives[passive] !== null) {
-      const data = passiveData.getPassiveById(equippedPassives[passive])
-      for (const effect in data.effect) {
-        const effectData = data.effect[effect]
-        if (totalPassiveStats[effect]) {
-          totalPassiveStats[effect] = totalPassiveStats[effect] + effectData
-        } else {
-          totalPassiveStats[effect] = effectData
+  if (loadout) {
+    const equippedPassives = loadout.equippedPassives
+    for (const passive in equippedPassives) {
+      if (equippedPassives[passive] !== null) {
+        const data = passiveData.getPassiveById(equippedPassives[passive])
+        for (const effect in data.effect) {
+          const effectData = data.effect[effect]
+          if (totalPassiveStats[effect]) {
+            totalPassiveStats[effect] = totalPassiveStats[effect] + effectData
+          } else {
+            totalPassiveStats[effect] = effectData
+          }
         }
       }
     }

@@ -19,18 +19,21 @@ import 'react-toastify/dist/ReactToastify.css';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-
+interface IAttackErrors {
+    stamina: boolean
+    cooldown: boolean
+}
 
 export const CatCombat = (props) => {
     const tempBaseStaminaRegen = 25
 
     const [combatInProcess, setCombatInProcess] = useState<boolean>(false)
-    const [autoCombat, setAutoCombat] = useState(true)
-    const [playerTurn, setPlayerTurn] = useState(true)
-    const [timer, setTimer] = useState(0)
+    const [autoCombat, setAutoCombat] = useState<boolean>(true)
+    const [playerTurn, setPlayerTurn] = useState<boolean>(true)
+    const [timer, setTimer] = useState<number>(0)
     const [attackSelectedID, setAttackSelectedID] = useState<null | number>(null)
     const [enemyAttackSelectedID, setEnemyAttackSelectedID] = useState<null | number>(null)
-    const [attackErrors, setAttackErrors] = useState({
+    const [attackErrors, setAttackErrors] = useState<IAttackErrors>({
         stamina: false,
         cooldown: false
     }) // not in use
@@ -78,28 +81,31 @@ export const CatCombat = (props) => {
         }
 
         if (props.playerData) {
-            const rotation = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).rotation
-            for (const attack in rotation) {
-                const attackAsNumber: number = parseInt(attack)
-                const attackInfo = props.attackData.getAttackById(parseInt(rotation[attackAsNumber]))
-                if (attackInfo !== undefined) {
-                    attacks[attackAsNumber + 1] = {
-                        id: parseInt(rotation[attackAsNumber]),
-                        cooldown: {
-                            base: attackInfo.cooldown,
-                            current: 0
+            if (props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout)) {
+                const rotation = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).rotation
+                for (const attack in rotation) {
+                    const attackAsNumber: number = parseInt(attack)
+                    const attackInfo = props.attackData.getAttackById(parseInt(rotation[attackAsNumber]))
+                    if (attackInfo !== undefined) {
+                        attacks[attackAsNumber + 1] = {
+                            id: parseInt(rotation[attackAsNumber]),
+                            cooldown: {
+                                base: attackInfo.cooldown,
+                                current: 0
+                            }
                         }
-                    }
-                } else {
-                    attacks[attackAsNumber + 1] = {
-                        id: null,
-                        cooldown: {
-                            base: null,
-                            current: null
+                    } else {
+                        attacks[attackAsNumber + 1] = {
+                            id: null,
+                            cooldown: {
+                                base: null,
+                                current: null
+                            }
                         }
                     }
                 }
             }
+
         }
 
         if (props.combatData && props.playerData) {

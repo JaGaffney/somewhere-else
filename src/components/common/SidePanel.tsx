@@ -102,7 +102,7 @@ export const SidePanel = (props) => {
                                     <>
                                         <button className="skillpanel" onClick={() => props.setActivePage("loadout")}>
                                             <img className="skillpanel__icon" src={require("../../images/sidepanel/spellbook.svg")} />
-                                            <span className={`skillpanel__name ${props.activePage === "loadout" ? "skillpanel__name-active" : null}`}>Actions and spells</span>
+                                            <span className={`skillpanel__name ${props.activePage === "loadout" ? "skillpanel__name-active" : null}`}>Actions & spells</span>
                                         </button>
 
                                         <button className="skillpanel" onClick={() => props.setActivePage("equipment")}>

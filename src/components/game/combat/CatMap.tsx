@@ -55,29 +55,33 @@ export const CatMap = (props) => {
     ]
 
     const onFightHandler = (id, data) => {
-        const enemy = new CombatData(id)
-        const values = {
-            health: {
-                base: data.health,
-                current: data.health
-            },
-            stamina: {
-                base: data.stamina,
-                current: data.stamina
-            },
-            armour: {
-                base: data.defence,
-                current: data.defence
-            },
-            divination: {
-                base: 1,
-                current: 1
-            }
-        }
+        if (props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout)) {
 
-        enemy.status.loadStatus(values)
-        props.setCombatData(enemy)
-        props.onFightStart({ type: props.types.CAT_COMBAT })
+
+            const enemy = new CombatData(id)
+            const values = {
+                health: {
+                    base: data.health,
+                    current: data.health
+                },
+                stamina: {
+                    base: data.stamina,
+                    current: data.stamina
+                },
+                armour: {
+                    base: data.defence,
+                    current: data.defence
+                },
+                divination: {
+                    base: 1,
+                    current: 1
+                }
+            }
+
+            enemy.status.loadStatus(values)
+            props.setCombatData(enemy)
+            props.onFightStart({ type: props.types.CAT_COMBAT })
+        }
     }
 
     return (
@@ -119,7 +123,7 @@ export const CatMap = (props) => {
 
                                         <div className="map__enemy-buttons">
                                             <button className="generic__button generic__button-primary" onClick={() => props.onDropInfoHandler(data)}>Drops</button>
-                                            <button className="generic__button generic__button-secondary" onClick={() => onFightHandler(i, data)}>Fight</button>
+                                            <button className="generic__button generic__button-secondary" onClick={() => onFightHandler(i, data)} disabled={!props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout)}>Fight</button>
                                         </div>
                                     </div>
 
@@ -163,7 +167,8 @@ export const CatMap = (props) => {
 
 
 const mapStateToProps = (state) => ({
-    enemies: state.enemies.enemyData
+    enemies: state.enemies.enemyData,
+    playerData: state.player.playerData,
 })
 
 const mapDispatchToProps = {

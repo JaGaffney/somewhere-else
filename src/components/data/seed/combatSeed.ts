@@ -1,28 +1,28 @@
 // @ts-nocheck
 import { ClassesEnum } from "../enums/ClassesEnum"
-
-import WARRIOR from "../../../images/mogs/1.png"
-import ARCHER from "../../../images/mogs/6.png"
-import MAGICIAN from "../../../images/mogs/2.png"
-// import WARRIOR from "../../../images/classes/warrior.svg"
-// import ARCHER from "../../../images/classes/archer.svg"
-// import MAGICIAN from "../../../images/classes/magician.svg"
+import * as icon from "./icons/classesSeedIcon"
 
 export const warrior = [
   {
-    name: ClassesEnum.Warrior,
-    icon: WARRIOR,
+    name: ClassesEnum.WARRIOR,
+    icon: icon.icon_warrior,
   },
 ]
 export const archer = [
   {
-    name: ClassesEnum.Archer,
-    icon: ARCHER,
+    name: ClassesEnum.ARCHER,
+    icon: icon.icon_archer,
   },
 ]
 export const magician = [
   {
-    name: ClassesEnum.Magician,
-    icon: MAGICIAN,
+    name: ClassesEnum.MAGICIAN,
+    icon: icon.icon_magician,
+  },
+]
+export const cleric = [
+  {
+    name: ClassesEnum.CLERIC,
+    icon: icon.icon_cleric,
   },
 ]

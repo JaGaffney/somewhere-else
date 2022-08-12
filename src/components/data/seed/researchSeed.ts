@@ -1,10 +1,7 @@
-import { efficiency, production, capacity } from "./icons/researchSeedIcons"
-// @ts-nocheck
-import WARRIOR from "../../../images/classes/warrior.svg"
-import ARCHER from "../../../images/classes/archer.svg"
-import MAGICIAN from "../../../images/classes/magician.svg"
-
 import { ResearchType } from "../enums/ResearchType"
+
+import * as icon_research from "./icons/researchSeedIcons"
+import * as icon_class from "./icons/classesSeedIcon"
 
 export const researchRepeat = [
   {
@@ -20,7 +17,7 @@ export const researchRepeat = [
       },
       other: {},
     },
-    icon: efficiency,
+    icon: icon_research.efficiency,
     description: "Reduce the time required for all non-combat actions.",
     type: ResearchType.Job,
   },
@@ -37,7 +34,7 @@ export const researchRepeat = [
       },
       other: {},
     },
-    icon: production,
+    icon: icon_research.production,
     description: "Increase the chance of gaining more resources.",
     type: ResearchType.Job,
   },
@@ -54,7 +51,7 @@ export const researchRepeat = [
       },
       other: {},
     },
-    icon: capacity,
+    icon: icon_research.capacity,
     description: "Increase the amount of things you can store.",
     type: ResearchType.Global,
   },
@@ -71,7 +68,7 @@ export const researchSingular = [
       },
       other: {},
     },
-    icon: WARRIOR,
+    icon: icon_class.icon_warrior,
     description: "Unlocks the Warrior class",
     type: ResearchType.Combat,
   },
@@ -86,7 +83,7 @@ export const researchSingular = [
       },
       other: {},
     },
-    icon: ARCHER,
+    icon: icon_class.icon_archer,
     description: "Unlocks the Archer class",
     type: ResearchType.Combat,
   },
@@ -101,7 +98,7 @@ export const researchSingular = [
       },
       other: {},
     },
-    icon: MAGICIAN,
+    icon: icon_class.icon_magician,
     description: "Unlocks the Magician class",
     type: ResearchType.Combat,
   },
@@ -119,7 +116,7 @@ export const researchSingular = [
         2: 21,
       },
     },
-    icon: MAGICIAN,
+    icon: icon_class.icon_magician,
     description: "Unlocks the summoner class",
     type: ResearchType.Combat,
   },

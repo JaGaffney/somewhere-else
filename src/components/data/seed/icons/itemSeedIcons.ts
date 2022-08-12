@@ -1,8 +1,4 @@
 // @ts-nocheck
-import ITEM_PLACEHOLDER from "../../../../images/placeholder.svg"
-
-export const placeholder = ITEM_PLACEHOLDER
-
 // BANK
 import GP from "../../../../images/items/coins.svg"
 
@@ -24,7 +20,7 @@ export const researchPurple = RESEARCH_PURPLE
 // Items
 // Weapons
 //import DAGGER_BONE from "../../../../images/items/weapons/dagger-bone.svg"
-import DAGGER_BONE from "../../../../images/mogs/10.png"
+import DAGGER_BONE from "../../../../images/items/weapons/dagger-bone.svg"
 import DAGGER_BRONZE from "../../../../images/items/weapons/dagger-bronze.svg"
 import DAGGER_IRON from "../../../../images/items/weapons/dagger-iron.svg"
 import DAGGER_STEEL from "../../../../images/items/weapons/dagger-steel.svg"

@@ -1,14 +1,8 @@
 // @ts-nocheck
 import { ClassesEnum } from "../enums/ClassesEnum"
+import * as icon from "./icons/attackSeedIcon"
 
 import placeholder from "../../../images/placeholder.svg"
-
-import icon_basic from "../../../images/combat/attacks/basic.svg"
-import icon_shieldBash from "../../../images/combat/attacks/shieldBash.svg"
-import icon_rend from "../../../images/combat/attacks/rend.svg"
-import icon_shieldBlock from "../../../images/combat/attacks/shieldBlock.svg"
-import icon_arrowLightning from "../../../images/combat/attacks/arrowLightning.svg"
-import icon_arrowLeech from "../../../images/combat/attacks/arrowLeech.svg"
 
 export const attackSeed = [
   {
@@ -20,7 +14,7 @@ export const attackSeed = [
     cooldown: 0,
     stamina: 0,
     effect: { crit: 10 },
-    icon: icon_basic,
+    icon: icon.icon_basic,
     levelRequired: 1,
     exp: 1,
   },
@@ -35,7 +29,7 @@ export const attackSeed = [
     effect: {
       drain: 25,
     },
-    icon: icon_shieldBash,
+    icon: icon.icon_shieldBash,
     levelRequired: 1,
     exp: 1,
   },
@@ -50,7 +44,7 @@ export const attackSeed = [
     effect: {
       bleed: 10,
     },
-    icon: icon_rend,
+    icon: icon.icon_rend,
     levelRequired: 5,
     exp: 1,
   },
@@ -65,7 +59,7 @@ export const attackSeed = [
     effect: {
       armour: 10,
     },
-    icon: icon_shieldBlock,
+    icon: icon.icon_shieldBlock,
     levelRequired: 10,
     exp: 35,
   },
@@ -80,7 +74,7 @@ export const attackSeed = [
     effect: {
       elemental: 10,
     },
-    icon: icon_arrowLightning,
+    icon: icon.icon_arrowLightning,
     levelRequired: 1,
     exp: 1,
   },
@@ -95,7 +89,7 @@ export const attackSeed = [
     effect: {
       regeneration: 3,
     },
-    icon: icon_arrowLeech,
+    icon: icon.icon_arrowLeech,
     levelRequired: 5,
     exp: 1,
   },
@@ -110,7 +104,7 @@ export const attackSeed = [
     effect: {
       regeneration: 50,
     },
-    icon: icon_arrowLeech,
+    icon: icon.icon_arrowLeech,
     levelRequired: 10,
     exp: 35,
   },

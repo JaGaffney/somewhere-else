@@ -1,9 +1,5 @@
 // @ts-nocheck
-import goblinIcon from "../../../images/enemy/goblin.svg"
-import goblinBruteIcon from "../../../images/enemy/goblinBrute.svg"
-import zombieCrawlIcon from "../../../images/enemy/zombieCrawl.svg"
-import zombieWalkIcon from "../../../images/enemy/zombieWalk.svg"
-import adamIcon from "../../../images/enemy/adam.svg"
+import * as icon from "./icons/enemySeedIcon"
 
 export const enemySeed = [
   {
@@ -24,7 +20,7 @@ export const enemySeed = [
     ],
     attacks: [1],
     rotation: [1],
-    image: goblinIcon,
+    image: icon.goblin_icon,
     requirement: 0,
   },
   {
@@ -41,7 +37,7 @@ export const enemySeed = [
     drops: [{ id: 20, qty: 1, chance: 100 }],
     attacks: [1],
     rotation: [1],
-    image: goblinBruteIcon,
+    image: icon.goblinBrute_icon,
     requirement: 0,
   },
   {
@@ -58,7 +54,7 @@ export const enemySeed = [
     drops: [{ id: 1, qty: 1, chance: 100 }],
     attacks: [1, 2],
     rotation: [2, 1],
-    image: zombieCrawlIcon,
+    image: icon.zombieCrawl_icon,
     requirement: 0,
   },
   {
@@ -75,7 +71,7 @@ export const enemySeed = [
     drops: [{ id: 1, qty: 1, chance: 100 }],
     attacks: [1],
     rotation: [1],
-    image: zombieWalkIcon,
+    image: icon.zombieWalk_icon,
     requirement: 0,
   },
   {
@@ -92,7 +88,7 @@ export const enemySeed = [
     drops: [{ id: 1, qty: 1, chance: 100 }],
     attacks: [1, 6, 3],
     rotation: [3, 2, 1],
-    image: adamIcon,
+    image: icon.adam_icon,
     requirement: 0,
   },
 ]

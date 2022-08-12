@@ -26,21 +26,21 @@ export const PassiveInfo = (props) => {
                         level {props.selectedPassive && props.selectedPassive.levelRequired}
                     </span>
                 </span>
-                <span className="attacksloadout__stats-description">
+                {/* <span className="attacksloadout__stats-description">
                     Rarity
                     <span style={{ color: getRarityColor(props.selectedPassive ? props.selectedPassive.job : "default") }}>
                         {props.selectedPassive && props.selectedPassive.rarity}
                     </span>
-                </span>
+                </span> */}
                 <span className="attacksloadout__stats-description">
                     {props.selectedPassive && Object.keys(props.selectedPassive.effect).map((i, k) => {
                         return (
-                            <React.Fragment key={k}>
+                            <div className="attacksloadout__stats-description" key={k}>
                                 {i}
                                 <span>
                                     {props.selectedPassive.effect[i]}
                                 </span>
-                            </React.Fragment>
+                            </div>
                         )
                     })}
                 </span>

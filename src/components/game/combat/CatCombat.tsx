@@ -176,7 +176,6 @@ export const CatCombat = (props) => {
         } else {
 
         }
-
         // starts the cooldown of the attack after being used
         combatData[activePlayer][attackLocation].cooldown.current = combatData[activePlayer][attackLocation].cooldown.base
     }
@@ -200,14 +199,18 @@ export const CatCombat = (props) => {
 
     const handleExpGained = (damage, attackData) => {
         const expGained = Math.floor(damage) * 3 + attackData.exp
-        if (attackData.type.toLocaleLowerCase() === "general") {
-            const unlockedCombatSkills = getValidCombatSkills()
-            for (let skill in unlockedCombatSkills) {
-                props.playerData.setSkillExp(unlockedCombatSkills[skill], Math.floor(expGained / 3))
+        // when player dies it resets exp unless this is checked?
+        if (!playerDead() && playerTurn) {
+            if (attackData.type.toLocaleLowerCase() === "general") {
+                const unlockedCombatSkills = getValidCombatSkills()
+                for (let skill in unlockedCombatSkills) {
+                    props.playerData.setSkillExp(unlockedCombatSkills[skill], Math.floor(expGained / 3))
+                }
+            } else {
+                props.playerData.setSkillExp(attackData.type.toLowerCase(), expGained)
             }
-        } else {
-            props.playerData.setSkillExp(attackData.type.toLocaleLowerCase(), expGained)
         }
+
 
     }
 
@@ -228,7 +231,6 @@ export const CatCombat = (props) => {
             }
 
             damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevelMultiplyer, false)
-
             handleExpGained(damageData.attack, attackData)
 
         } else {
@@ -443,6 +445,7 @@ export const CatCombat = (props) => {
             setStaminaOverlay({ player: null, enemy: null })
             return "Enemy dead"
         }
+        // TODO: when a player dies all there stats are reset to null, some how?
         if (playerDead()) {
             console.log("Player dead")
             runAwayHandler()

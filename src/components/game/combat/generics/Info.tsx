@@ -13,13 +13,19 @@ export const Info = (props) => {
 
             <div className="attacksloadout__stats">
                 <span className="attacksloadout__stats-description">
+                    attack power
+                    <span>
+                        {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).maxDamage}
+                    </span>
+                </span>
+                <span className="attacksloadout__stats-description">
                     min damage
                     <span>
                         {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).minDamage}
                     </span>
                 </span>
                 <span className="attacksloadout__stats-description" style={{ color: "var(--red700)" }}>
-                    max damage
+                    damage
                     <span>
                         {props.selectedSkill && props.maxDamgeCalc(props.attackData.getAttackById(props.selectedSkill))}
                     </span>

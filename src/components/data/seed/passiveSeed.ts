@@ -1,18 +1,14 @@
 import { Rarity } from "../enums/Rarity"
 import { ClassesEnum } from "../enums/ClassesEnum"
 
-// @ts-nocheck
-import placeholder from "../../../images/placeholder.svg"
-import WARRIOR from "../../../images/mogs/1.png"
-import ARCHER from "../../../images/mogs/6.png"
-import MAGICIAN from "../../../images/mogs/2.png"
+import * as icon from "./icons/classesSeedIcon"
 
 export const passiveSeed = [
   {
     id: 1,
     name: "aspect of the warrior",
     job: ClassesEnum.WARRIOR,
-    icon: WARRIOR,
+    icon: icon.icon_warrior,
     description: "starting passive for warrior, regenerates armour each turn",
     rarity: Rarity.COMMON,
     effect: { armour: 3 },
@@ -22,7 +18,7 @@ export const passiveSeed = [
     id: 2,
     name: "inner rage",
     job: ClassesEnum.WARRIOR,
-    icon: placeholder,
+    icon: icon.icon_warrior,
     description: "deal more damage, but at what cost",
     rarity: Rarity.COMMON,
     effect: { attack: 10, defence: -10 },
@@ -32,7 +28,7 @@ export const passiveSeed = [
     id: 3,
     name: "shield wall",
     job: ClassesEnum.WARRIOR,
-    icon: placeholder,
+    icon: icon.icon_warrior,
     description: "take less damage",
     rarity: Rarity.COMMON,
     effect: { defence: 20 },
@@ -42,7 +38,7 @@ export const passiveSeed = [
     id: 4,
     name: "second wind",
     job: ClassesEnum.WARRIOR,
-    icon: placeholder,
+    icon: icon.icon_warrior,
     description: "your phiscal prowess allows you to have reduced stamina cost",
     rarity: Rarity.COMMON,
     effect: { encumbrance: -30 },
@@ -52,7 +48,7 @@ export const passiveSeed = [
     id: 5,
     name: "true aspect of the warrior",
     job: ClassesEnum.WARRIOR,
-    icon: WARRIOR,
+    icon: icon.icon_warrior,
     description: "regenerates armour each turn",
     rarity: Rarity.COMMON,
     effect: { armour: 15 },
@@ -62,7 +58,7 @@ export const passiveSeed = [
     id: 6,
     name: "aspect of the archer",
     job: ClassesEnum.ARCHER,
-    icon: ARCHER,
+    icon: icon.icon_archer,
     description:
       "starting passive for archer, increased chance to land a crital hit",
     rarity: Rarity.COMMON,
@@ -73,7 +69,7 @@ export const passiveSeed = [
     id: 7,
     name: "grace",
     job: ClassesEnum.ARCHER,
-    icon: placeholder,
+    icon: icon.icon_archer,
     description: "",
     rarity: Rarity.COMMON,
     effect: { speed: 50, encumbrance: -10 },
@@ -83,7 +79,7 @@ export const passiveSeed = [
     id: 8,
     name: "way of the leaf",
     job: ClassesEnum.ARCHER,
-    icon: placeholder,
+    icon: icon.icon_archer,
     description:
       "your skills of being outdoors allows you to heal from wounds faster",
     rarity: Rarity.COMMON,
@@ -92,9 +88,9 @@ export const passiveSeed = [
   },
   {
     id: 9,
-    name: "",
+    name: "archer lvl 75",
     job: ClassesEnum.ARCHER,
-    icon: placeholder,
+    icon: icon.icon_archer,
     description: "",
     rarity: Rarity.COMMON,
     effect: { elemental: 10, drain: 10, bleed: 10 },
@@ -104,7 +100,7 @@ export const passiveSeed = [
     id: 10,
     name: "true aspect of the archer",
     job: ClassesEnum.ARCHER,
-    icon: ARCHER,
+    icon: icon.icon_archer,
     description: "",
     rarity: Rarity.COMMON,
     effect: { crit: 50 },
@@ -114,7 +110,7 @@ export const passiveSeed = [
     id: 11,
     name: "aspect of the magician",
     job: ClassesEnum.MAGICIAN,
-    icon: MAGICIAN,
+    icon: icon.icon_magician,
     description: "",
     rarity: Rarity.COMMON,
     effect: { elemental: 5 },
@@ -122,9 +118,9 @@ export const passiveSeed = [
   },
   {
     id: 12,
-    name: "",
+    name: "MAGICIAN 25",
     job: ClassesEnum.MAGICIAN,
-    icon: placeholder,
+    icon: icon.icon_magician,
     description: "",
     rarity: Rarity.COMMON,
     effect: { crit: 50 },
@@ -132,9 +128,9 @@ export const passiveSeed = [
   },
   {
     id: 13,
-    name: "",
+    name: "MAGICIAN 50",
     job: ClassesEnum.MAGICIAN,
-    icon: placeholder,
+    icon: icon.icon_magician,
     description: "",
     rarity: Rarity.COMMON,
     effect: { crit: 50 },
@@ -142,9 +138,9 @@ export const passiveSeed = [
   },
   {
     id: 14,
-    name: "",
+    name: "MAGICIAN 75",
     job: ClassesEnum.MAGICIAN,
-    icon: placeholder,
+    icon: icon.icon_magician,
     description: "",
     rarity: Rarity.COMMON,
     effect: { crit: 50 },
@@ -154,7 +150,7 @@ export const passiveSeed = [
     id: 15,
     name: "true aspect of the magician",
     job: ClassesEnum.MAGICIAN,
-    icon: MAGICIAN,
+    icon: icon.icon_magician,
     description: "",
     rarity: Rarity.COMMON,
     effect: { elemental: 25 },

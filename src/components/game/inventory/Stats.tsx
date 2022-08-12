@@ -13,7 +13,6 @@ export const Stats = (props) => {
     const onLoad = () => {
         const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
-
         const stats = statMerge(currentStats, passiveStats)
         setCurrentStats(stats)
     }

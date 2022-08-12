@@ -1,31 +1,26 @@
-// @ts-nocheck
-
-import HEALTH from "../../../images/sidepanel/health.svg"
-import STAMINA from "../../../images/sidepanel/stamina.svg"
-import ARMOUR from "../../../images/combat/shield.svg"
-import DIVINIATION from "../../../images/sidepanel/divination.svg"
+import * as icon from "./icons/statusSeedIcon"
 
 export const health = [
   {
     name: "health",
-    icon: HEALTH,
+    icon: icon.health_icon,
   },
 ]
 export const stamina = [
   {
     name: "stamina",
-    icon: STAMINA,
+    icon: icon.stamina_icon,
   },
 ]
 export const armour = [
   {
     name: "armour",
-    icon: ARMOUR,
+    icon: icon.armour_icon,
   },
 ]
 export const divination = [
   {
     name: "divination",
-    icon: DIVINIATION,
+    icon: icon.diviniation_icon,
   },
 ]

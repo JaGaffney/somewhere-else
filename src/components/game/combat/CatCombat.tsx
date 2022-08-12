@@ -18,14 +18,29 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { IEquipmentStats } from '../../data/items/EquipmentStats'
 
 interface IAttackErrors {
     stamina: boolean
     cooldown: boolean
 }
+interface IDamageOverlay {
+    playerHealth: null | number
+    playerArmour: null | number
+    enemyHealth: null | number
+    enemyArmour: null | number
+}
+interface IStaminaOverlay {
+    player: null | number
+    enemy: null | number
+}
+interface ICombatData {
+    enemy: Object | null
+    player: Object | null
+}
 
 export const CatCombat = (props) => {
-    const tempBaseStaminaRegen = 25
+    const tempBaseStaminaRegen = 61
 
     const [combatInProcess, setCombatInProcess] = useState<boolean>(false)
     const [autoCombat, setAutoCombat] = useState<boolean>(true)
@@ -37,19 +52,19 @@ export const CatCombat = (props) => {
         stamina: false,
         cooldown: false
     }) // not in use
-    const [combatData, setCombatData] = useState(null)
-    const [damageOverlay, setDamageOverlay] = useState({
+    const [combatData, setCombatData] = useState<ICombatData | null>(null)
+    const [damageOverlay, setDamageOverlay] = useState<IDamageOverlay>({
         playerHealth: null,
         playerArmour: null,
         enemyHealth: null,
         enemyArmour: null,
     })
-    const [staminaOverlay, setStaminaOverlay] = useState({
+    const [staminaOverlay, setStaminaOverlay] = useState<IStaminaOverlay>({
         player: null,
         enemy: null
     })
     const [playerDeadPopup, setPlayerDeadPopup] = useState<boolean>(false)
-    const [playerStats, setPlayerStats] = useState<Object>(null)
+    const [playerStats, setPlayerStats] = useState<IEquipmentStats>({}) // changed from null to {} - did it break anything
 
     const playerDeadModal = () => setPlayerDeadPopup(false)
 
@@ -58,6 +73,7 @@ export const CatCombat = (props) => {
         const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
         const totalPlayerStats = statMerge(currentStats, passiveStats)
         setPlayerStats(totalPlayerStats)
+        console.log(combatData)
     }, [playerTurn])
 
     useEffect(() => {

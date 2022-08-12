@@ -18,7 +18,7 @@ export const Hotbar = (props) => {
     const activeLoadout = () => {
         let stats = {}
         if (props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout)) {
-            stats = (props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
+            stats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
         }
         return stats
     }

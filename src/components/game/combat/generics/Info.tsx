@@ -2,8 +2,23 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { getBackgroundColor } from '../../../utils/color'
+import { currentPassiveStatCalculator, currentStatCalculator, statMerge } from '../../../utils/equipment'
 
 export const Info = (props) => {
+    // handles no loadouts being avaialable
+    const activeLoadout = () => {
+        let stats = {}
+        if (props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout)) {
+            stats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
+        }
+        return stats
+    }
+
+
+    const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
+    const passiveStats = activeLoadout()
+    const playerStats = statMerge(currentStats, passiveStats)
+
     return (
         <div className="catcombat__description-info">
             <h3>{props.selectedSkill ? props.attackData.getAttackById(props.selectedSkill).name : "Attack"}</h3>
@@ -39,7 +54,7 @@ export const Info = (props) => {
                 <span className="attacksloadout__stats-description" style={{ color: "var(--green600)" }}>
                     stamina
                     <span>
-                        {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).stamina}
+                        {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).stamina + playerStats.encumbrance >= 0 ? props.attackData.getAttackById(props.selectedSkill).stamina + playerStats.encumbrance : 0}
                     </span>
                 </span>
                 <span className="attacksloadout__stats-description">
@@ -49,6 +64,8 @@ export const Info = (props) => {
                                 {i}
                                 <span>
                                     {props.attackData.getAttackById(props.selectedSkill).effect[i]}
+                                    {playerStats[i] && (
+                                        <span className="equipment__container-stats-single-difference equipment__container-stats-single-difference-positive"> (+{playerStats[i]})</span>)}
                                 </span>
                             </React.Fragment>
                         )
@@ -63,7 +80,8 @@ export const Info = (props) => {
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
     attackData: state.attacks.attackData,
-    activePage: state.engine.activePage,
+    itemData: state.items.itemData,
+    passiveData: state.passives.passiveData,
 })
 
 const mapDispatchToProps = {

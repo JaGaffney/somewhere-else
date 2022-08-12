@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
+import { setPlayerUpdated } from '../../actions/api'
+
 import Controls from './Controls'
 import ResearchPanel from './ResearchPanel'
 import ResearchSingle from './ResearchSingle'
@@ -85,6 +87,6 @@ const mapStateToProps = (state) => ({
     researchData: state.research.researchData,
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = { setPlayerUpdated }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Research)

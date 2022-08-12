@@ -1,17 +1,17 @@
 // on loads creates all of the items in game data.
 export interface IEquipmentStats {
-  attack: number
-  defence: number
-  armour: number
-  encumbrance: number
-  speed: number
-  crit: number
-  elemental: number
-  drain: number
-  stun: number
-  regeneration: number
-  bleed: number
-  enfeeable: number
+  attack?: number
+  defence?: number
+  armour?: number
+  encumbrance?: number
+  speed?: number
+  crit?: number
+  elemental?: number
+  drain?: number
+  stun?: number
+  regeneration?: number
+  bleed?: number
+  enfeeable?: number
 }
 
 export const IEquipmentStatsKeys: IEquipmentStats = {

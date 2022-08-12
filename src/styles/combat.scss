@@ -413,6 +413,7 @@
     width: 100%;
     text-transform: capitalize;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     span {
       font-weight: 800;

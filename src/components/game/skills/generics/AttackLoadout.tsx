@@ -55,7 +55,7 @@ export const AttackLoadout = (props) => {
                     <h3>Active Skills</h3>
                     {props.playerData &&
                         <div className="attackloadout__equipped-attacks">
-                            {Object.keys(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks).map((id, k) => {
+                            {props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout) && Object.keys(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks).map((id, k) => {
                                 const attackID: number = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks[id]
                                 const attackData = props.attackData.getAttackById(attackID)
                                 const slot: number = k + 1
@@ -102,7 +102,7 @@ export const AttackLoadout = (props) => {
                     <h3>Active Passives</h3>
                     <div className="attackloadout__equipped-attacks">
 
-                        {Object.keys(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedPassives).map((i, k) => {
+                        {props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout) && Object.keys(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedPassives).map((i, k) => {
                             const data = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).getEquippedPassiveAtLocation(i)
                             const slot: number = k + 1
                             return (

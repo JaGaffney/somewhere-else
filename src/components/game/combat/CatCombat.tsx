@@ -370,7 +370,7 @@ export const CatCombat = (props) => {
             if (armourValue < 0) {
                 setDamageOverlay({
                     playerHealth: - damage,
-                    playerArmour: parseInt(props.playerData.status.armour.getCurrent()),
+                    playerArmour: props.playerData.status.armour.getCurrent(),
                     enemyHealth: null,
                     enemyArmour: null
                 })
@@ -380,7 +380,7 @@ export const CatCombat = (props) => {
             } else {
                 setDamageOverlay({
                     playerHealth: "0",
-                    playerArmour: parseInt(- damageData.damage),
+                    playerArmour: - damageData.damage,
                     enemyHealth: null,
                     enemyArmour: null
                 })

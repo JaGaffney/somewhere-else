@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 export const AttackInfo = (props) => {
     return (
-        <div className="attackloadout__info catcombat__description-info">
+        <div className="attackloadout__info catcombat__description-info" data-cy="passiveAndSkillsInformation">
             <h3>{props.selectedSkill ? props.attackData.getAttackById(props.selectedSkill).name : "Information"}</h3>
             {props.selectedSkill && (
                 <>

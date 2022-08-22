@@ -5,7 +5,7 @@ import Attack from '../skills/generics/Attack'
 
 export const SkillBookUnlock = (props) => {
     return (
-        <div className="attacks__container attacks__container-skillbook">
+        <div className="attacks__container attacks__container-skillbook" data-cy="jobSkillbook">
             <h3>Skillbook</h3>
             {[...props.attackData.attacks.keys()].map((i, k) => {
                 if (props.attackData.getAttackById(i).type.toLowerCase() === props.activePage.toLowerCase()) {

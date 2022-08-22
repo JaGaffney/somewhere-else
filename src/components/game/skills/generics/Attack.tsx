@@ -21,7 +21,9 @@ export const Attack = (props) => {
             draggable={true}
             onDragStart={e => onDragStart(e)}
             id={props.attackID}
-            data-tip={props.attackData.getAttackById(props.attackID).name && props.attackData.getAttackById(props.attackID).name}>
+            data-tip={props.attackData.getAttackById(props.attackID).name && props.attackData.getAttackById(props.attackID).name}
+            data-cy="attack"
+        >
             <img className="attacks__button-icon"
 
                 src={props.attackData.getAttackById(props.attackID).icon}
@@ -29,9 +31,9 @@ export const Attack = (props) => {
             />
             {props.attackData &&
                 <div className="attacks__button-stats">
-                    <span className="attacks__button-stats-topLeft">{props.attackData.getAttackById(props.attackID).cooldown}</span>
-                    <span className="attacks__button-stats-topRight">{props.attackData.getAttackById(props.attackID).stamina}</span>
-                    <span className="attacks__button-stats-bottomRight">{props.attackData.getAttackById(props.attackID).maxDamage}</span>
+                    <span data-cy="cooldown" className="attacks__button-stats-topLeft">{props.attackData.getAttackById(props.attackID).cooldown}</span>
+                    <span data-cy="stamina" className="attacks__button-stats-topRight">{props.attackData.getAttackById(props.attackID).stamina}</span>
+                    <span data-cy="damage" className="attacks__button-stats-bottomRight">{props.attackData.getAttackById(props.attackID).maxDamage}</span>
                 </div>
             }
         </button>

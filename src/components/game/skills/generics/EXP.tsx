@@ -24,7 +24,7 @@ export const EXP = (props) => {
     }, [props.playerData.getSkillExp(props.activePage), props.playerUpdated])
 
     return (
-        <div className="topPanel exp">
+        <div className="topPanel exp" data-cy="exp">
             <div className="exp__level">
                 <span>Level</span>
                 <span>{props.playerData.levelChecker.getLevelFromExp(props.playerData.getSkillExp(props.activePage))} / 99</span>

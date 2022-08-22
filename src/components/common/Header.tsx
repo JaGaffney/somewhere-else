@@ -1,10 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { useTour } from '@reactour/tour'
+import { FiHelpCircle } from "react-icons/fi";
+
 
 import { getTextColor, getBackgroundColor } from '../utils/color'
 
 export const Header = (props) => {
-
+    const { setIsOpen } = useTour()
 
     // TEMP Debug mode
     const healTesting = () => {
@@ -23,7 +26,6 @@ export const Header = (props) => {
         props.combatData.status.armour.setCurrent(0)
     }
 
-
     return (
         <div className="header__container">
             <div className="header__container-title"><span>Somewhere else</span></div>
@@ -36,8 +38,13 @@ export const Header = (props) => {
                     <button onClick={healTesting}>Heal player</button>
                     <button onClick={killPlayer}>Kill player</button>
                     <button onClick={killTesting}>Kill</button>
+
                 </div>
-                <span>Character info</span>
+                <div>
+                    <button onClick={() => setIsOpen(true)}><FiHelpCircle /></button>
+                    <span>Character info</span>
+                </div>
+
             </div>
 
         </div>
@@ -52,7 +59,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-
-
 import { useTour } from '@reactour/tour'
 
 import { setPlayerUpdated } from '../../actions/api'
@@ -13,7 +11,6 @@ import Stats from "./Stats"
 import Controls from './Controls'
 
 export const Inventory = (props: { playerData, setPlayerUpdated: any }) => {
-    const { setIsOpen } = useTour()
     const { setSteps, setCurrentStep } = useTour();
 
     useEffect(() => {
@@ -85,7 +82,7 @@ export const Inventory = (props: { playerData, setPlayerUpdated: any }) => {
                 <Stats activeEquipmentSlot={activeEquipmentSlot} activeEquipmentItemID={activeEquipmentItemID} />
             </div>
 
-            <button onClick={() => setIsOpen(true)}>Open Tour</button>
+
         </div>
     )
 }

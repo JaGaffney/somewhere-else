@@ -13,7 +13,7 @@ interface IPassiveUnlock {
 
 export const PassivesUnlock = (props: IPassiveUnlock) => {
     return (
-        <div className="attacks__container">
+        <div className="attacks__container" data-cy="jobPassive">
             <h3>Passives</h3>
             {[...props.passiveData.passives.keys()].map((id, k) => {
                 if (id !== null) {

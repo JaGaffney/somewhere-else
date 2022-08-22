@@ -4,7 +4,7 @@ import { getBackgroundColor, getRarityColor } from '../../../utils/color'
 
 export const PassiveInfo = (props) => {
     return (
-        <div className="attackloadout__info catcombat__description-info">
+        <div className="attackloadout__info catcombat__description-info" data-cy="passiveAndSkillsInformation">
             <h3>{props.selectedPassive ? props.selectedPassive.name : "Passive"}</h3>
             <div className="attacks__button">
                 <img className="attacks__button-icon" src={props.selectedPassive && props.selectedPassive.icon} />

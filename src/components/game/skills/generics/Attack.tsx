@@ -4,8 +4,6 @@ import { setActionTime, resetActionTime } from "../../../actions/api"
 
 import { getBackgroundColor } from '../../../utils/color';
 
-import ReactTooltip from 'react-tooltip';
-
 export const Attack = (props) => {
     function onDragStart(e) {
         e.dataTransfer.setData("text/plain", e.target.id)

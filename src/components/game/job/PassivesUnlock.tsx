@@ -13,12 +13,12 @@ interface IPassiveUnlock {
 
 export const PassivesUnlock = (props: IPassiveUnlock) => {
     return (
-        <div className="attacks__container" data-cy="jobPassive">
+        <div className="attacks__container" data-cy="classPassive">
             <h3>Passives</h3>
             {[...props.passiveData.passives.keys()].map((id, k) => {
                 if (id !== null) {
                     const passive = props.passiveData.getPassiveById(id)
-                    if (passive.job === props.activePage.toUpperCase()) {
+                    if (passive.job.toUpperCase() === props.activePage.toUpperCase()) {
                         return (
                             <div className="attackloadout__equipped-slot" key={k}>
                                 <button

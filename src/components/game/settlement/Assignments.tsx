@@ -5,7 +5,7 @@ import Jobs from './Jobs'
 
 export const Assignments = (props) => {
     return (
-        <div className="settlement__assignments">
+        <div className="settlement__assignments" data-cy="settlementAssignment">
             {Object.keys(props.skillData.gatheringSkill).map((i, k) => {
 
                 return (

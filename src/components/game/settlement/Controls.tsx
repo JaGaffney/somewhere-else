@@ -32,17 +32,17 @@ export const Controls = (props) => {
     }
 
     return (
-        <div className="topPanel topPanel__controls">
-            <div className="topPanel__controls-left">
+        <div className="topPanel topPanel__controls" data-cy="settlementControls">
+            <div className="topPanel__controls-left" data-cy="settlementControls-manpower">
                 <span>{props.playerData.getActiveManpower()} / {props.playerData.getManpower()} Manpower</span>
                 <span className="topPanel__controls-left-info">Salary: {costPerAction(props.playerData.getActiveManpower())} GP</span>
             </div>
 
 
             <div className="topPanel__controls-right">
-                <button disabled={props.playerData.playerBank.getCoins() <= manpowerCost} className="generic__button generic__button-primary" onClick={addManpower}>Hire for {intToString(manpowerCost)} GP</button>
-                <button className={`generic__button generic__button-primary ${props.playerData.getSettingValue("autoSell") ? "generic__button-active" : null}`} onClick={handleAutoSell}>Auto Sell</button>
-                <button className="generic__button generic__button-secondary" onClick={resetAllTasks}>Reset</button>
+                <button data-cy="settlementControls-hire" disabled={props.playerData.playerBank.getCoins() <= manpowerCost} className="generic__button generic__button-primary" onClick={addManpower}>Hire for {intToString(manpowerCost)} GP</button>
+                <button data-cy="settlementControls-sell" className={`generic__button generic__button-primary ${props.playerData.getSettingValue("autoSell") ? "generic__button-active" : null}`} onClick={handleAutoSell}>Auto Sell</button>
+                <button data-cy="settlementControls-reset" className="generic__button generic__button-secondary" onClick={resetAllTasks}>Reset</button>
             </div>
         </div>
     )

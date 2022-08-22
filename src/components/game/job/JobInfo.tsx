@@ -15,20 +15,20 @@ export const JobInfo = (props: { attackData }) => {
         setCurrentStep(0);
         setSteps([
             {
-                selector: '[data-cy="jobSkillbook"]',
-                content: "Displays all Actions & Skills you have currently unlocked for a Job.",
+                selector: '[data-cy="classSkillbook"]',
+                content: "Displays all Actions & Skills you have currently unlocked for a Class.",
             },
             {
-                selector: '[data-cy="jobPassive"]',
-                content: "Displays all Passives you have currently unlocked for a Job.",
+                selector: '[data-cy="classPassive"]',
+                content: "Displays all Passives you have currently unlocked for a Class.",
             },
             {
                 selector: '[data-cy="exp"]',
-                content: "Shows your current exp for the equipped job and how much exp to you need until your next level. Exp is gained from using the releveant actions & spells in combat.",
+                content: "Shows your current exp for the equipped Class and how much exp to you need until your next level. Exp is gained from using the releveant actions & spells in combat.",
             },
             {
                 selector: '[data-cy="passiveAndSkillsInformation"]',
-                content: "Shows your current exp for the equipped job and how much exp to you need until your next level. Exp is gained from using the releveant actions & spells in combat.",
+                content: "Shows your current exp for the equipped Class and how much exp to you need until your next level. Exp is gained from using the releveant actions & spells in combat.",
             },
             {
                 selector: '[data-cy="attack"]',

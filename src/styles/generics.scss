@@ -198,6 +198,13 @@
   color: var(--teal100);
   opacity: 0.4;
 }
+.generic__button-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  gap: 0.1rem;
+  margin-right: 1rem;
+}
 
 .fadeOut {
   opacity: 0;

@@ -101,7 +101,10 @@ export const Slot = (props) => {
                             ${props.activeSlot === props.location && "equipment__container-equipped-equippedSlot-active"}
                             ${errorBorder && "equipment__container-equipped-equippedSlot-error"}
                             
-                            `}>
+                            `}
+                data-cy={props.tourSelector && props.tourSelector}
+
+            >
                 <img src={icon} alt={name} style={{ opacity: opactiy }} />
             </div>
 

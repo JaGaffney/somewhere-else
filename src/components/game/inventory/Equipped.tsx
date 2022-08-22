@@ -20,8 +20,8 @@ import TRINKET from "../../../images/items/template/trinket.svg"
 
 export const Equipped = (props: { activeEquipmentSlot: string, onActiveEquipmentSlotHandler }) => {
     return (
-        <div className="equipment__container-equipped">
-            <Slot activeSlot={props.activeEquipmentSlot} placeholderIcon={MAINHAND} onActiveEquipmentSlotHandler={props.onActiveEquipmentSlotHandler} location={SlotEnum.MAIN_HAND} row="2" column="left" />
+        <div className="equipment__container-equipped" data-cy="equipmentInventory">
+            <Slot activeSlot={props.activeEquipmentSlot} placeholderIcon={MAINHAND} onActiveEquipmentSlotHandler={props.onActiveEquipmentSlotHandler} location={SlotEnum.MAIN_HAND} row="2" column="left" tourSelector={"equipmentSlot"} />
             <Slot activeSlot={props.activeEquipmentSlot} placeholderIcon={OFFHAND} onActiveEquipmentSlotHandler={props.onActiveEquipmentSlotHandler} location={SlotEnum.OFF_HAND} row="2" column="right" />
             <Slot activeSlot={props.activeEquipmentSlot} placeholderIcon={BACK} onActiveEquipmentSlotHandler={props.onActiveEquipmentSlotHandler} location={SlotEnum.BACK} row="1" column="left" />
             <Slot activeSlot={props.activeEquipmentSlot} placeholderIcon={HEAD} onActiveEquipmentSlotHandler={props.onActiveEquipmentSlotHandler} location={SlotEnum.HEAD} row="1" column="center" />

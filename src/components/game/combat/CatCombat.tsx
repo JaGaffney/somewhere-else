@@ -232,8 +232,6 @@ export const CatCombat = (props) => {
                 props.playerData.setSkillExp(attackData.type.toLowerCase(), expGained)
             }
         }
-
-
     }
 
     // can also be used to estimate how much damage an attack would do to the enemy before hand
@@ -363,6 +361,7 @@ export const CatCombat = (props) => {
             enemyArmour: null,
             enemyStatus: null
         }
+        // TODO: not applying status effects into the damage calcs
         if (activePlayer === "player") {
             setAttackSelectedID(attackID)
             setEnemyAttackSelectedID(null)

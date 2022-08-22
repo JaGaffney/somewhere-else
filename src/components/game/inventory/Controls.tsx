@@ -21,13 +21,13 @@ export const Controls = (props: { playerData, itemData, activeEquipmentSlot: str
 
     return (
         <div className="topPanel topPanel__controls">
-            <div className="topPanel__controls-left">
+            <div className="topPanel__controls-left" data-cy="equipmentName">
                 <span>{name}</span>
                 <span className="topPanel__controls-left-info">{props.activeEquipmentSlot}</span>
             </div>
 
             <div className="topPanel__controls-right">
-                <form>
+                <form data-cy="equipmentSearch">
                     <input type="text" value={props.search} placeholder="search..." onChange={(e) => props.setSearch(e.target.value)} />
                 </form>
             </div>

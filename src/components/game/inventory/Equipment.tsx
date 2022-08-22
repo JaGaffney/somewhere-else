@@ -6,7 +6,7 @@ import BankItem from '../player/BankItem'
 
 export const Equipment = (props: { playerData, itemData, search: string, activeEquipmentSlot, onItemSelectedHandler, setActiveItemID, handleItemEquipStatus }) => {
     return (
-        <div className="equipment__container-equipment">
+        <div className="equipment__container-equipment" data-cy="equipmentStorage">
             <div className="bank__items">
                 <div className="bank__items-inner">
                     {[...props.playerData.playerBank.bankItems.keys()].map((id, k) => {

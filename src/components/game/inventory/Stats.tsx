@@ -57,7 +57,7 @@ export const Stats = (props) => {
 
 
     return (
-        <div className="equipment__container-stats">
+        <div className="equipment__container-stats" data-cy="equipmentStats">
             {Object.keys(IEquipmentStatsKeys).map((i, k) => {
                 return (
                     <StatValue statType={[i]} currentValue={currentStats[i]} getStatDifference={getStatDifference} key={k} />

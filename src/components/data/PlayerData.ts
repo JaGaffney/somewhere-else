@@ -7,6 +7,7 @@ import { Loadout } from "./player/Loadout"
 import { Status } from "./player/Status"
 import { EXP } from "./player/Exp"
 import { Research } from "./player/Research"
+import { Offline } from "./player/Offline"
 
 export class PlayerData {
   playerBank: Bank
@@ -18,6 +19,7 @@ export class PlayerData {
   levelChecker: EXP = new EXP()
   research: Research
   settings: Object
+  offline: Offline
 
   // creates the player with no data inside
   constructor(skillNames: Array<string>) {
@@ -29,6 +31,7 @@ export class PlayerData {
     this.loadout = new Loadout()
     this.research = new Research()
     this.settings = {}
+    this.offline = new Offline()
   }
 
   // getters

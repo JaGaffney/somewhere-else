@@ -9,7 +9,7 @@ export const NonSkillPanel = (props) => {
     }, [props.playerUpdated])
 
     return (
-        <div className="sidepanel__skill">
+        <div className="sidepanel__skill" data-cy="sidepanelNonSkill">
             <span className="sidepanel__skill-title"></span>
 
             <button className="skillpanel" onClick={() => props.setActivePage("shop")}>

@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 
+import Home from "./home/Home"
 import Settlement from "./settlement/Settlement"
 import Research from "./research/research"
 import NoncombatSkill from "./skills/NoncombatSkill"
@@ -11,6 +12,7 @@ import Combat from "./combat/Combat"
 import JobInfo from "./job/JobInfo"
 import Shop from "./shop/Shop"
 import Inventory from "./inventory/Inventory"
+
 
 export const Game = props => {
   const LoadComponent = () => {
@@ -44,7 +46,7 @@ export const Game = props => {
         //return <Shop />
         return null
       default:
-        return null
+        return <Home />
     }
   }
 

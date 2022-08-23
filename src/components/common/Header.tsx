@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { useTour } from '@reactour/tour'
 import { FiHelpCircle } from "react-icons/fi";
 
-
+import { setActivePage } from '../actions/api';
 import { getTextColor, getBackgroundColor } from '../utils/color'
 
 export const Header = (props) => {
@@ -28,7 +28,7 @@ export const Header = (props) => {
 
     return (
         <div className="header__container">
-            <div className="header__container-title"><span>Somewhere else</span></div>
+            <div className="header__container-title"><span onClick={() => props.setActivePage(null)}>Somewhere else</span></div>
             <div className="header__container-info" style={{ background: getBackgroundColor(props.activePage), color: getTextColor(props.activePage) }}>
 
 
@@ -58,6 +58,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
+    setActivePage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

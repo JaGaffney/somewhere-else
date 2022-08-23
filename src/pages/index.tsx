@@ -120,11 +120,12 @@ const IndexPage = props => {
     if (deltaTime > actionTimeInMs) {
       // TODO: check if required level
 
+
       if (costPerAction(props.playerData.getActiveManpower()) <= props.playerData.playerBank.getCoins()) {
         const amount = Math.round(deltaTime / actionTimeInMs)
         // const activeData = skillData.getItemIdBySkillId(skill, id)
 
-
+        props.playerData.offline.reset()
         for (const task in props.playerData.settlement.tasks) {
           const activeData = skillData.getActionDataBySkillID(task).filter((i => i !== undefined))[0]
           const activeWorkers = amount * Math.floor(props.playerData.settlement.tasks[task] / activeData.manpower)
@@ -138,7 +139,9 @@ const IndexPage = props => {
 
         // salary cost
         if (Object.keys(props.playerData.settlement.tasks).length > 0) {
-          props.playerData.playerBank.removeFromCoins(costPerAction(props.playerData.getActiveManpower()))
+          const salaryCost = costPerAction(props.playerData.getActiveManpower())
+          props.playerData.playerBank.removeFromCoins(salaryCost)
+          props.playerData.offline.setSalary(salaryCost)
         }
 
 
@@ -189,6 +192,7 @@ const IndexPage = props => {
           if (item.rarity === "RESEARCH") {
             let name = item.name.split(" ")[0]
             props.playerData.playerBank.addToResearch(name, qty)
+            props.playerData.offline.setItems(name, qty)
           } else {
             if (props.playerData.getSettingValue("autoSell") || item.rarity === "BANK") {
               let val = item.price * qty
@@ -196,8 +200,10 @@ const IndexPage = props => {
                 val = 1
               }
               props.playerData.playerBank.addToCoins(val)
+              props.playerData.offline.setCoins(val)
             } else {
               props.playerData.playerBank.addItemtoBank(id, qty, item)
+              props.playerData.offline.setItems(id, qty)
             }
           }
         }
@@ -216,7 +222,9 @@ const IndexPage = props => {
 
 
   const handleExp = (activeData: SkillAction, amount: number, skill: string): void => {
-    props.playerData.setSkillExp(skill, activeData.exp * amount)
+    const expValue = activeData.exp * amount
+    props.playerData.setSkillExp(skill, expValue)
+    props.playerData.offline.setExp(skill, expValue)
   }
 
   const handleReset = (): void => {

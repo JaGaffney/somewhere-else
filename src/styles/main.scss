@@ -569,3 +569,23 @@
     }
   }
 }
+
+.offlineProgression {
+  &-gp {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    color: var(--teal600);
+    span {
+      width: 100%;
+    }
+    &-negative {
+      color: var(--red600);
+    }
+    img {
+      height: 1rem;
+      margin-right: 0.2rem;
+    }
+  }
+}

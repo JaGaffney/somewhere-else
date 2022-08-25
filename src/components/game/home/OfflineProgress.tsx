@@ -33,12 +33,21 @@ export const OfflineProgress = (props) => {
             <h3>Heres what your settlement has produced since you have been away! </h3>
             <p>{time} ago</p>
 
-            <div className="offlineProgression-gp">
-                <span>Income <img src={COINS} alt="income" />{props.playerData.offline && intToString(props.playerData.offline.coins)}</span>
-                <span className="offlineProgression-gp-negative">Salary<img src={COINS} alt="salary" />-{props.playerData.offline && intToString(props.playerData.offline.salary)}</span>
-                <span className={`${props.playerData.offline && props.playerData.offline.coins - props.playerData.offline.salary > 0 ? "" : "offlineProgression-gp-negative"}`}>
-                    Total<img src={COINS} alt="total" />{props.playerData.offline && intToString(props.playerData.offline.coins - props.playerData.offline.salary)}
-                </span>
+            <div className="offlineProgression-gp settlement__stats-balance-items">
+                <h4>Coins</h4>
+                <div>
+                    <span><img src={COINS} alt="income" />Income</span>
+                    <span className="offlineProgression-gp-positive offlineProgression-gp-value">{props.playerData.offline && intToString(props.playerData.offline.coins)}</span>
+                </div>
+
+                <div>
+                    <span><img src={COINS} alt="salary" />Salary</span>
+                    <span className="offlineProgression-gp-negative offlineProgression-gp-value">-{props.playerData.offline && intToString(props.playerData.offline.salary)}</span>
+                </div>
+                <div>
+                    <span><img src={COINS} alt="total" />Total</span>
+                    <span className={`offlineProgression-gp-value ${props.playerData.offline && props.playerData.offline.coins - props.playerData.offline.salary > 0 ? "offlineProgression-gp-positive" : "offlineProgression-gp-negative"}`}>{props.playerData.offline && intToString(props.playerData.offline.coins - props.playerData.offline.salary)}</span>
+                </div>
             </div>
 
             <div className="offlineProgression-gp settlement__stats-balance-items">
@@ -48,7 +57,7 @@ export const OfflineProgress = (props) => {
                     return (
                         <div key={k}>
                             <span><img src={icon} />{i}</span>
-                            <span style={{ textAlign: "right" }}>{props.playerData.offline.exp[i]}</span>
+                            <span className="offlineProgression-gp-value">{props.playerData.offline.exp[i]}</span>
                         </div>
                     )
                 })}
@@ -61,7 +70,7 @@ export const OfflineProgress = (props) => {
                     return (
                         <div key={k}>
                             <span><img src={data.icon} />{data.name}</span>
-                            <span style={{ textAlign: "right" }}>{qty}</span>
+                            <span className="offlineProgression-gp-value">{qty}</span>
                         </div>
                     )
                 })}
@@ -74,7 +83,7 @@ export const OfflineProgress = (props) => {
 
 
             OfflineProgress
-        </div>
+        </div >
     )
 }
 

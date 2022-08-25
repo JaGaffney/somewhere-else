@@ -575,21 +575,29 @@
   h3 {
     padding: 1rem;
   }
+  p {
+    text-align: center;
+  }
   &-gp {
     padding: 1rem;
-    width: 60%;
+    margin: 1rem;
+    width: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    color: var(--teal600);
     background-color: var(--gray900);
-
     span {
       width: 100%;
     }
     &-negative {
       color: var(--red600);
+    }
+    &-positive {
+      color: var(--teal600);
+    }
+    &-value {
+      text-align: right;
     }
     img {
       height: 1rem;

@@ -571,12 +571,20 @@
 }
 
 .offlineProgression {
+  width: 50%;
+  h3 {
+    padding: 1rem;
+  }
   &-gp {
+    padding: 1rem;
+    width: 60%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
     color: var(--teal600);
+    background-color: var(--gray900);
+
     span {
       width: 100%;
     }

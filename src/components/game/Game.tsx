@@ -44,9 +44,9 @@ export const Game = props => {
         return <Combat />
       case "shop":
         //return <Shop />
-        return null
-      default:
         return <Home />
+      default:
+        return null
     }
   }
 

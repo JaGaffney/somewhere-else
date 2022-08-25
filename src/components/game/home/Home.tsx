@@ -9,6 +9,13 @@ import News from './News';
 export const Home = (props) => {
     const { setSteps, setCurrentStep } = useTour();
 
+    const time = () => {
+        var utcSeconds = 1639876543;
+        var date = new Date(utcSeconds * 1000);
+        var resultFormat = date.toISOString().split('T')[0]
+        console.log(resultFormat);
+    }
+
     useEffect(() => {
         setCurrentStep(0);
         setSteps([
@@ -43,8 +50,6 @@ export const Home = (props) => {
         ]);
     }, []);
 
-    console.log(props.playerData.offline)
-
     return (
         <div className="game__normal">
             <OfflineProgress />
@@ -55,7 +60,7 @@ export const Home = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-    playerData: state.player.playerData
+
 })
 
 const mapDispatchToProps = {}

@@ -118,6 +118,7 @@ const IndexPage = props => {
     }
 
     if (deltaTime > actionTimeInMs) {
+      props.playerData.offline.setTime(previousTime)
       // TODO: check if required level
 
 
@@ -139,7 +140,7 @@ const IndexPage = props => {
 
         // salary cost
         if (Object.keys(props.playerData.settlement.tasks).length > 0) {
-          const salaryCost = costPerAction(props.playerData.getActiveManpower())
+          const salaryCost = costPerAction(props.playerData.getActiveManpower()) * amount
           props.playerData.playerBank.removeFromCoins(salaryCost)
           props.playerData.offline.setSalary(salaryCost)
         }

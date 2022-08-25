@@ -3,6 +3,7 @@ export class Offline {
   salary: number = 0
   exp: Object = {}
   items: Object = {}
+  time: number = 0
 
   constructor() {}
 
@@ -11,6 +12,7 @@ export class Offline {
     this.coins = 0
     this.exp = {}
     this.items = {}
+    //this.time = 0
   }
 
   public setSalary(value: number): void {
@@ -24,5 +26,11 @@ export class Offline {
   }
   public setItems(key, value): void {
     this.items[key] = value
+  }
+  public setTime(value): void {
+    console.log("setting time: ", value)
+    console.log(typeof value)
+    this.time = value
+    console.log(this.time)
   }
 }

@@ -91,7 +91,7 @@ export const validFilterQuery = (
   return retValue
 }
 
-export const convertSecondsToReadableString = seconds => {
+export const convertSecondsToReadableString = (seconds: number): string => {
   seconds = seconds || 0
   seconds = Number(seconds)
   seconds = Math.abs(seconds)
@@ -100,7 +100,7 @@ export const convertSecondsToReadableString = seconds => {
   const h = Math.floor((seconds % (3600 * 24)) / 3600)
   const m = Math.floor((seconds % 3600) / 60)
   const s = Math.floor(seconds % 60)
-  const parts = []
+  const parts: string[] = []
 
   if (d > 0) {
     parts.push(d + " day" + (d > 1 ? "s" : ""))

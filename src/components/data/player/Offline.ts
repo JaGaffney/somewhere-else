@@ -28,9 +28,6 @@ export class Offline {
     this.items[key] = value
   }
   public setTime(value): void {
-    console.log("setting time: ", value)
-    console.log(typeof value)
     this.time = value
-    console.log(this.time)
   }
 }

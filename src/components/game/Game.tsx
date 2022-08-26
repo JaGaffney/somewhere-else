@@ -10,41 +10,40 @@ import Status from "./status/Status"
 import Playerbank from "./player/Playerbank"
 import Combat from "./combat/Combat"
 import JobInfo from "./job/JobInfo"
-import Shop from "./shop/Shop"
 import Inventory from "./inventory/Inventory"
 
 
 export const Game = props => {
   const LoadComponent = () => {
     switch (props.activePage) {
-      case "research":
-        return <Research />
-      case "settlement":
-        return <Settlement />
-      case "forestry":
-      case "metalwork":
-      case "scholar":
-        return <NoncombatSkill />
-      case "loadout":
-        return <CombatSkill />
-      case "warrior":
-      case "archer":
-      case "magician":
-        return <JobInfo />
-      case "equipment":
-        return <Inventory />
-      case "health":
-      case "stamina":
-      case "armour":
-      case "divination":
-        return <Status />
-      case "bank":
-        return <Playerbank />
-      case "combat":
-        return <Combat />
-      case "shop":
-        //return <Shop />
-        return null
+      // case "research":
+      //   return <Research />
+      // case "settlement":
+      //   return <Settlement />
+      // case "forestry":
+      // case "metalwork":
+      // case "scholar":
+      //   return <NoncombatSkill />
+      // case "loadout":
+      //   return <CombatSkill />
+      // case "warrior":
+      // case "archer":
+      // case "magician":
+      //   return <JobInfo />
+      // case "equipment":
+      //   return <Inventory />
+      // case "health":
+      // case "stamina":
+      // case "armour":
+      // case "divination":
+      //   return <Status />
+      // case "bank":
+      //   return <Playerbank />
+      // case "combat":
+      //   return <Combat />
+      // case "shop":
+      //   //return <Shop />
+      //   return null
       default:
         return <Home />
     }

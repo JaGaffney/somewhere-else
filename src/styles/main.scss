@@ -570,8 +570,14 @@
   }
 }
 
+.home__container {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
 .offlineProgression {
-  width: 50%;
+  width: 40%;
   h3 {
     padding: 1rem;
   }

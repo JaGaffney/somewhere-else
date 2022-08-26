@@ -7,14 +7,8 @@ import OfflineProgress from './OfflineProgress';
 import News from './News';
 
 export const Home = (props) => {
+    const { setIsOpen } = useTour()
     const { setSteps, setCurrentStep } = useTour();
-
-    const time = () => {
-        var utcSeconds = 1639876543;
-        var date = new Date(utcSeconds * 1000);
-        var resultFormat = date.toISOString().split('T')[0]
-        console.log(resultFormat);
-    }
 
     useEffect(() => {
         setCurrentStep(0);
@@ -50,11 +44,22 @@ export const Home = (props) => {
         ]);
     }, []);
 
+
     return (
         <div className="game__normal">
-            <OfflineProgress />
-            <div>not sure what to do, click here to get started</div>
-            <News />
+            <div className="topPanel topPanel__controls">
+                <div className="topPanel__controls-left">
+                    <span onClick={() => setIsOpen(true)}>not sure what to do, click here to get started</span>
+                    <span className="topPanel__controls-left-info"></span>
+                </div>
+            </div>
+
+            <div className="home__container">
+                <OfflineProgress />
+                <News />
+            </div>
+
+
         </div>
     )
 }

@@ -24,8 +24,8 @@ export const OfflineProgress = (props) => {
             const differenceData = dateConverter(utcSeconds, new Date())
             setTime(convertSecondsToReadableString(differenceData))
         }
+    }, [props.playerUpdated])
 
-    }, [])
 
     // TODO: get this working
     return (
@@ -44,10 +44,10 @@ export const OfflineProgress = (props) => {
                     <span><img src={COINS} alt="salary" />Salary</span>
                     <span className="offlineProgression-gp-negative offlineProgression-gp-value">-{props.playerData.offline && intToString(props.playerData.offline.salary)}</span>
                 </div>
-                <div>
+                {/* <div>
                     <span><img src={COINS} alt="total" />Total</span>
                     <span className={`offlineProgression-gp-value ${props.playerData.offline && props.playerData.offline.coins - props.playerData.offline.salary > 0 ? "offlineProgression-gp-positive" : "offlineProgression-gp-negative"}`}>{props.playerData.offline && intToString(props.playerData.offline.coins - props.playerData.offline.salary)}</span>
-                </div>
+                </div> */}
             </div>
 
             <div className="offlineProgression-gp settlement__stats-balance-items">
@@ -75,14 +75,6 @@ export const OfflineProgress = (props) => {
                     )
                 })}
             </div>
-
-
-
-
-
-
-
-            OfflineProgress
         </div >
     )
 }
@@ -91,6 +83,7 @@ const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
     itemData: state.items.itemData,
     skills: state.skills.skillData,
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = {}

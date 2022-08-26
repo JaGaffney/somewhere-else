@@ -41,7 +41,7 @@ export const Header = (props) => {
 
                 </div>
                 <div>
-                    <button onClick={() => setIsOpen(true)} className="generic__button-icon" style={{ background: getBackgroundColor(props.activePage), color: getTextColor(props.activePage) }}><FiHelpCircle /></button>
+                    <button onClick={() => setIsOpen(true)} className="generic__button-icon" data-cy="helpToggle" style={{ background: getBackgroundColor(props.activePage), color: getTextColor(props.activePage) }}><FiHelpCircle /></button>
                 </div>
 
             </div>

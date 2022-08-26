@@ -14,32 +14,36 @@ export const Home = (props) => {
         setCurrentStep(0);
         setSteps([
             {
+                selector: '[data-cy="helpToggle"]',
+                content: "If your ever stuck on a page, just click here.",
+            },
+            {
                 selector: '[data-cy="sidepanel"]',
-                content: "TODO.",
+                content: "This is your main hub of controls.",
             },
             {
                 selector: '[data-cy="sidepanelNonSkill"]',
-                content: "TODO",
+                content: "This area contains your none key areas, such as combat and settlement management. You will spend most of your time in this area",
             },
             {
                 selector: '[data-cy="sidepanelInfo"]',
-                content: "HTODO",
+                content: "The Info section contains all the information inregards to your current character, keep an eye out on this area while doing other actions to keep upto date on your characters health!",
             },
             {
                 selector: '[data-cy="sidepanelClasses"]',
-                content: "TODO",
+                content: "The Classes area allows you see what actions & spells your Classes will unlock and at what level.",
             },
             {
                 selector: '[data-cy="sidepanelJobs"]',
-                content: "TODO",
+                content: "The Jobs area allows you to assign your workers to certain jobs in order to gather more resources or to produce items",
             },
             {
                 selector: '[data-cy="sidepanelLogs"]',
-                content: "TTODO",
+                content: "The Logs area will show you stats for your character",
             },
             {
                 selector: '[data-cy="sidepanelOther"]',
-                content: "TODO",
+                content: "Contains settings and other account related features",
             },
         ]);
     }, []);

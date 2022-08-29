@@ -30,8 +30,8 @@ export const Game = props => {
       // case "archer":
       // case "magician":
       //   return <JobInfo />
-      // case "equipment":
-      //   return <Inventory />
+      case "equipment":
+        return <Inventory />
       // case "health":
       // case "stamina":
       // case "armour":
@@ -39,8 +39,8 @@ export const Game = props => {
       //   return <Status />
       // case "bank":
       //   return <Playerbank />
-      case "combat":
-        return <Combat />
+      // case "combat":
+      //   return <Combat />
       // case "shop":
       //   //return <Shop />
       //   return null

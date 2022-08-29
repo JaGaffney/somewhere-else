@@ -7,7 +7,7 @@ import Research from "./research/Research"
 import NoncombatSkill from "./skills/NoncombatSkill"
 import CombatSkill from "./skills/CombatSkill"
 import Status from "./status/Status"
-import Playerbank from "./player/Playerbank"
+import Playerbank from "./player/PlayerBank"
 import Combat from "./combat/Combat"
 import JobInfo from "./job/JobInfo"
 import Inventory from "./inventory/Inventory"
@@ -32,11 +32,11 @@ export const Game = props => {
         return JobInfo ? <JobInfo /> : null
       case "equipment":
         return <Inventory />
-      case "health":
-      case "stamina":
-      case "armour":
-      case "divination":
-        return <Status />
+      // case "health":
+      // case "stamina":
+      // case "armour":
+      // case "divination":
+      //   return <Status />
       case "bank":
         return <Playerbank />
       case "combat":

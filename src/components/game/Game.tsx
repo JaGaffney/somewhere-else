@@ -39,8 +39,8 @@ export const Game = props => {
       //   return <Status />
       // case "bank":
       //   return <Playerbank />
-      // case "combat":
-      //   return <Combat />
+      case "combat":
+        return <Combat />
       // case "shop":
       //   //return <Shop />
       //   return null

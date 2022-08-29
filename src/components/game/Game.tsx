@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import Home from "./home/Home"
 import Settlement from "./settlement/Settlement"
 import Research from "./research/Research"
-import NoncombatSkill from "./skills/NoncombatSkill"
+import NonCombatSkill from "./skills/NonCombatSkill"
 import CombatSkill from "./skills/CombatSkill"
 import Status from "./status/Status"
 import Playerbank from "./player/PlayerBank"
@@ -17,26 +17,26 @@ export const Game = props => {
   const LoadComponent = () => {
     switch (props.activePage) {
       case "research":
-        return Research ? <Research /> : null
+        return <Research />
       case "settlement":
         return <Settlement />
       case "forestry":
       case "metalwork":
       case "scholar":
-        return NoncombatSkill ? <NoncombatSkill /> : null
+        return <NonCombatSkill />
       case "loadout":
         return <CombatSkill />
       case "warrior":
       case "archer":
       case "magician":
-        return JobInfo ? <JobInfo /> : null
+        return <JobInfo />
       case "equipment":
         return <Inventory />
-      // case "health":
-      // case "stamina":
-      // case "armour":
-      // case "divination":
-      //   return <Status />
+      case "health":
+      case "stamina":
+      case "armour":
+      case "divination":
+        return <Status />
       case "bank":
         return <Playerbank />
       case "combat":

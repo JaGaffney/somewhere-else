@@ -53,7 +53,7 @@ export const JobInfo = (props: { attackData }) => {
     const [selectedPassive, setSelecetedPassive] = useState(null)
 
     return (
-        props.attackData.length !== 0 && (
+        props.attackData.length !== 0 ? (
             <div>
                 <EXP />
                 <div className="combatSkill__container">
@@ -64,7 +64,7 @@ export const JobInfo = (props: { attackData }) => {
                     <PassivesUnlock onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
                 </div>
             </div>
-        )
+        ) : null
     )
 }
 

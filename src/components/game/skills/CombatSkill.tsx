@@ -17,9 +17,8 @@ export const CombatSkill = (props) => {
 
 
     return (
-        props.attackData.length !== 0 && (
+        props.attackData.length !== 0 ? (
             <div>
-                {/* <EXP /> */}
                 <LoadoutControls search={search} setSearch={setSearch} />
                 <div className="combatSkill__container">
                     <AttackLoadout selectedSkill={selectedSkill} selectedPassive={selectedPassive} onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} />
@@ -30,7 +29,7 @@ export const CombatSkill = (props) => {
                     <Passives onSelectedSkillHandler={setSelecetedSkill} onSelectedPassiveHandler={setSelecetedPassive} search={search} />
                 </div>
             </div>
-        )
+        ) : null
     )
 }
 

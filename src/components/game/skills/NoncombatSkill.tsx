@@ -5,7 +5,7 @@ import EXP from "./generics/EXP"
 import Actions from "./generics/Actions"
 import Progression from "./generics/Progression"
 
-export const Noncombat = (props) => {
+export const NonCombatSkill = (props) => {
     const [activeData, setActiveData] = useState(null)
 
     useEffect(() => {
@@ -16,16 +16,17 @@ export const Noncombat = (props) => {
     }, [props.skills])
 
     return (
-        props.skills.length !== 0 && (
-            activeData !== null &&
-            (
-                <div>
-                    <EXP />
-                    {/* <Upgrades /> */}
-                    {/* <Progression /> */}
-                    <Actions gather={activeData.gatheringName} skillData={activeData} />
-                </div>)
-        )
+        props.skills.length !== 0 ? (
+            activeData !== null ?
+                (
+                    <div>
+                        <EXP />
+                        {/*
+ // @ts-ignore */}
+                        <Actions gather={activeData.gatheringName} skillData={activeData} />
+                    </div>
+                ) : null
+        ) : null
     )
 }
 
@@ -40,4 +41,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Noncombat)
+export default connect(mapStateToProps, mapDispatchToProps)(NonCombatSkill)

@@ -9,6 +9,12 @@ import { setActivePage } from '../actions/api';
 import SkillPanel from './SkillPanel'
 import NonSkillPanel from "./NonSkillPanel"
 
+// Info
+import ACTIONS from "../../images/sidepanel/spellbook.svg"
+import EQUIPMENT from "../../images/sidepanel/equipment.svg"
+
+
+
 // logs
 import COLLECTION from "../../images/sidepanel/collectionLog.svg"
 import COMBAT from "../../images/sidepanel/combatLog.svg"
@@ -101,12 +107,12 @@ export const SidePanel = (props) => {
                                 {showStatus && (
                                     <>
                                         <button className="skillpanel" onClick={() => props.setActivePage("loadout")}>
-                                            <img className="skillpanel__icon" src={require("../../images/sidepanel/spellbook.svg")} />
+                                            <img className="skillpanel__icon" src={ACTIONS} />
                                             <span className={`skillpanel__name ${props.activePage === "loadout" ? "skillpanel__name-active" : null}`}>Actions & spells</span>
                                         </button>
 
                                         <button className="skillpanel" onClick={() => props.setActivePage("equipment")}>
-                                            <img className="skillpanel__icon" src={require("../../images/sidepanel/equipment.svg")} />
+                                            <img className="skillpanel__icon" src={EQUIPMENT} />
                                             <span className={`skillpanel__name ${props.activePage === "inventory" ? "skillpanel__name-active" : null}`}>Equipment</span>
                                         </button></>)}
                                 {showStatus && props.skills.getAllStatusSkills().map((i, k) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("status", i)} type={"status"} />)}

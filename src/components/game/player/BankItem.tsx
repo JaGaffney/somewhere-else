@@ -53,23 +53,23 @@ export const BankItem = (props) => {
 
 
     return (
-        props.qty > 0 &&
-        <>
-            <button className={`bank__items-singleItem ${props.sellMode ? "bank__items-sellMode" : null}`}
-                key={props.key}
-                onClick={(e) => onClickHandler(e)}
-                data-tip={props.name && props.name}
-                onMouseEnter={(e) => onMouseEnterHandler(props.id)}
-                onMouseLeave={onMouseLeaveHandler}
+        props.qty > 0 ? (
+            <>
+                <button className={`bank__items-singleItem ${props.sellMode ? "bank__items-sellMode" : null}`}
+                    key={props.key}
+                    onClick={(e) => onClickHandler(e)}
+                    data-tip={props.name && props.name}
+                    onMouseEnter={(e) => onMouseEnterHandler(props.id)}
+                    onMouseLeave={onMouseLeaveHandler}
 
-            >
-                <img className="bank__items-image" src={props.icon} onDragStart={onDragStart}
-                    id={props.id && props.id} />
-                <span className="bank__items-qty">{props.qty && intToString(props.qty)}</span>
-            </button>
-            <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />
-        </>
-    )
+                >
+                    <img className="bank__items-image" src={props.icon} onDragStart={onDragStart}
+                        id={props.id && props.id} />
+                    <span className="bank__items-qty">{props.qty && intToString(props.qty)}</span>
+                </button>
+                <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />
+            </>
+        ) : null)
 }
 
 const mapStateToProps = (state) => ({

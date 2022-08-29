@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import StatusBar from './statusBar'
+import StatusBar from './StatusBar'
 import Armour from "./Armour"
 
 import Hotbar from './Hotbar'

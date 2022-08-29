@@ -26,10 +26,10 @@ export const Game = props => {
       //   return <NoncombatSkill />
       // case "loadout":
       //   return <CombatSkill />
-      // case "warrior":
-      // case "archer":
-      // case "magician":
-      //   return <JobInfo />
+      case "warrior":
+      case "archer":
+      case "magician":
+        return JobInfo ? <JobInfo /> : null
       case "equipment":
         return <Inventory />
       // case "health":
@@ -42,7 +42,6 @@ export const Game = props => {
       // case "combat":
       //   return <Combat />
       // case "shop":
-      //   //return <Shop />
       //   return null
       default:
         return <Home />

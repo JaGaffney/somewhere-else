@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 import Home from "./home/Home"
 import Settlement from "./settlement/Settlement"
-import Research from "./research/research"
+import Research from "./research/Research"
 import NoncombatSkill from "./skills/NoncombatSkill"
 import CombatSkill from "./skills/CombatSkill"
 import Status from "./status/Status"

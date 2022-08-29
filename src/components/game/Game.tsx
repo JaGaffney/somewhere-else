@@ -18,31 +18,31 @@ export const Game = props => {
     switch (props.activePage) {
       case "research":
         return Research ? <Research /> : null
-      // case "settlement":
-      //   return <Settlement />
+      case "settlement":
+        return <Settlement />
       case "forestry":
       case "metalwork":
       case "scholar":
         return NoncombatSkill ? <NoncombatSkill /> : null
-      // case "loadout":
-      //   return <CombatSkill />
+      case "loadout":
+        return <CombatSkill />
       case "warrior":
       case "archer":
       case "magician":
         return JobInfo ? <JobInfo /> : null
       case "equipment":
         return <Inventory />
-      // case "health":
-      // case "stamina":
-      // case "armour":
-      // case "divination":
-      //   return <Status />
-      // case "bank":
-      //   return <Playerbank />
-      // case "combat":
-      //   return <Combat />
-      // case "shop":
-      //   return null
+      case "health":
+      case "stamina":
+      case "armour":
+      case "divination":
+        return <Status />
+      case "bank":
+        return <Playerbank />
+      case "combat":
+        return <Combat />
+      case "shop":
+        return null
       default:
         return <Home />
     }

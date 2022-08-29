@@ -16,8 +16,8 @@ import Inventory from "./inventory/Inventory"
 export const Game = props => {
   const LoadComponent = () => {
     switch (props.activePage) {
-      // case "research":
-      //   return <Research />
+      case "research":
+        return Research ? <Research /> : null
       // case "settlement":
       //   return <Settlement />
       case "forestry":

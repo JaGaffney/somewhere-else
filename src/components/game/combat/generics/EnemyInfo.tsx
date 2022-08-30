@@ -24,16 +24,16 @@ export const EnemyInfo = (props) => {
                     <div className="catcombat__enemy-description">
                         {props.data && (
                             <>
-                                <h3>{enemyData.name}</h3>
+                                <h3>{enemyData?.name}</h3>
                                 <div className="map__enemy-statValue">
                                     <img src={LEVEL} alt="level" />
-                                    <span>{enemyData.level}</span>
+                                    <span>{enemyData?.level}</span>
                                 </div>
                             </>)}
                     </div>
 
                     {props.data && (
-                        enemyData.attacks.map((id, k) => {
+                        enemyData && enemyData.attacks.map((id, k) => {
                             const attackData = props.attackData.getAttackById(id)
                             return (
                                 <div className="attackloadout__equipped-slot"

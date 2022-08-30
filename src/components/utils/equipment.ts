@@ -91,8 +91,14 @@ export const calculateDamage = (
     damageData[effect] = effects[effect]
   }
 
-  damageData["attack"] = damageDone
+  let defaultDamageDone = 1
+  if (damageDone) {
+    defaultDamageDone = damageDone
+  }
+
+  damageData["attack"] = defaultDamageDone
   damageData["crit"] = critDamage
+
   return damageData
 }
 

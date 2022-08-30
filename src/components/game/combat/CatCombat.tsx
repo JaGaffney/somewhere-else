@@ -131,13 +131,20 @@ export const CatCombat = (props) => {
     }, [])
 
     useEffect(() => {
+
         const intervalRefresh = setInterval(() => {
             updateTime()
+            let speed = 200
+            if (playerStats.speed) {
+                speed = playerStats.speed
+            }
+            console.log(playerStats)
             if (combatInProcess) {
-                if (timer > playerStats.speed) { // * 10
+                if (timer > speed) { // * 10
                     console.log("Attacking")
 
                     if (props.combatData && props.playerData) {
+                        console.log("timer")
                         gameEngineStart()
                     }
                     setTimer(0)
@@ -513,6 +520,7 @@ export const CatCombat = (props) => {
             let whoseGoIsIt = currentTurn()
             //setAttackSelectedID(null)
 
+            console.log(autoCombat, whoseGoIsIt)
             if (autoCombat || whoseGoIsIt === "enemy") {
                 // find first viable attack?
                 const attackID = rotationHandler(whoseGoIsIt)

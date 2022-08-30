@@ -35,7 +35,9 @@ export const Section = (props) => {
         copiedAttackData.minDamage = attackData.maxDamage
 
         const damageData = calculateDamage(playerStats, placeholderEnemeyStats, copiedAttackData, jobLevelMultiplyer, true)
-
+        if (!damageData.attack) {
+            damageData["attack"] = 1
+        }
         return Math.floor(damageData.attack)
     }
 

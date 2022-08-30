@@ -55,7 +55,7 @@ export const Game = props => {
       case "forestry":
       case "metalwork":
       case "scholar":
-        return <NonCombatSkill />
+        return <NonCombatSkill skills={props.skills} activePage={props.activePage} />
       case "loadout":
         return <CombatSkill />
       case "warrior":

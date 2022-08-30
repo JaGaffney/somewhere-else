@@ -11,7 +11,6 @@ export const ResearchSingle = (props) => {
     const [activeResearch, setActiveResearch] = useState<Object | null>(null)
 
     const onActiveResearchHandler = (name: string): void => {
-        console.log("got here")
         setActiveResearch(props.researchData["singular"][name])
     }
 

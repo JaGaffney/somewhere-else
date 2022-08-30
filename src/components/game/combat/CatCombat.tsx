@@ -521,7 +521,6 @@ export const CatCombat = (props) => {
                     handleAttackInput(attackID, whoseGoIsIt)
                 } else {
                     if (whoseGoIsIt === "player") {
-                        console.log("got here: ",)
                         staminaHandler(props.playerData.status.stamina, 0, whoseGoIsIt)
                         setStaminaOverlay({ player: tempBaseStaminaRegen, enemy: null })
                     } else {

@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 import EXP from "./generics/EXP"
 import Actions from "./generics/Actions"
-import Progression from "./generics/Progression"
 
 export const NonCombatSkill = (props) => {
     const [activeData, setActiveData] = useState(null)

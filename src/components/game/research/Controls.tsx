@@ -35,7 +35,7 @@ export const Controls = (props) => {
     return (
         <div className="topPanel topPanel__controls">
             <div className="topPanel__controls-left">
-                {Object.keys(researchVials).map((i, k) => {
+                {researchVials && Object.keys(researchVials).map((i, k) => {
                     return (
                         <div key={k} className="topPanel__controls-left-icons" data-tip={researchVials[i] && researchVials[i]}>
                             <img src={researchColor[i]} />

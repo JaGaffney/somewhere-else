@@ -176,7 +176,6 @@ const IndexPage = props => {
     return () => clearInterval(intervalRefresh);
   }, [props.skillData, props.actionTime, timer]);
 
-
   const handleAddToBank = (activeData: SkillAction, amount: number): void => {
     if (activeData.itemsReceived.length > 0) {
       for (const value in activeData.itemsReceived) {

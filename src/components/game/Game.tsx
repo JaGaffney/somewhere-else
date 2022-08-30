@@ -30,6 +30,8 @@ export const NonCombatSkill = (props) => {
 
   }, [props.skills])
 
+  console.log(props.skills)
+
   return (
     props.skills?.length !== 0 ? (
       activeData !== null ?

@@ -54,9 +54,10 @@ export const OfflineProgress = (props) => {
                 <h4>Experince gained</h4>
                 {props.playerData.offline && Object.keys(props.playerData.offline.exp).map((i, k) => {
                     const icon = props.skills.getSkillIconByName("gathering", i)
+
                     return (
                         <div key={k}>
-                            <span><img src={icon} />{i}</span>
+                            <span><img src={icon && icon} />{i}</span>
                             <span className="offlineProgression-gp-value">{props.playerData.offline.exp[i]}</span>
                         </div>
                     )
@@ -69,8 +70,8 @@ export const OfflineProgress = (props) => {
                     const data = props.itemData.getItemById(parseInt(i))
                     return (
                         <div key={k}>
-                            <span><img src={data.icon} />{data.name}</span>
-                            <span className="offlineProgression-gp-value">{qty}</span>
+                            <span><img src={data && data.icon} />{data && data.name}</span>
+                            <span className="offlineProgression-gp-value">{qty && qty}</span>
                         </div>
                     )
                 })}

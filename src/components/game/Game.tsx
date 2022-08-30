@@ -21,14 +21,17 @@ export const NonCombatSkill = (props) => {
   const [activeData, setActiveData] = useState(null)
 
   useEffect(() => {
-    if (props.skills.length !== 0) {
-      setActiveData(props.skills.getSkillByName("gathering", props.activePage))
+    if (props.skills) {
+      if (props.skills.length !== 0) {
+        setActiveData(props.skills.getSkillByName("gathering", props.activePage))
+      }
     }
+
 
   }, [props.skills])
 
   return (
-    props.skills.length !== 0 ? (
+    props.skills?.length !== 0 ? (
       activeData !== null ?
         (
           <div>

@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { getBackgroundColor } from '../../../utils/color'
 
+import LEVEL from "../../../../images/combat/level.svg"
+
 export const EnemyInfo = (props) => {
     const [enemyData, setEnemyData] = useState(null)
 
@@ -24,7 +26,7 @@ export const EnemyInfo = (props) => {
                             <>
                                 <h3>{enemyData.name}</h3>
                                 <div className="map__enemy-statValue">
-                                    <img src={require("../../../../images/combat/level.svg")} alt="level" />
+                                    <img src={LEVEL} alt="level" />
                                     <span>{enemyData.level}</span>
                                 </div>
                             </>)}

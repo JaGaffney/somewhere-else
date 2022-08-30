@@ -8,6 +8,12 @@ import { getBackgroundColor } from '../../utils/color'
 
 // @ts-expect-error
 import backgroundImage from "../../../images/combat/map.jpg"
+import LEVEL from "../../../images/combat/level.svg"
+import ATTACK from "../../../images/combat/attack.svg"
+import DEFENCE from "../../../images/sidepanel/defence.svg"
+import HEALTH from "../../../images/sidepanel/health.svg"
+import STAMINA from "../../../images/sidepanel/stamina.svg"
+import SPEED from "../../../images/combat/speed.svg"
 
 
 
@@ -129,27 +135,27 @@ export const CatMap = (props) => {
 
                                     <div className="map__enemy-stats">
                                         <div className="map__enemy-statValue">
-                                            <img src={require("../../../images/combat/level.svg")} alt="level" />
+                                            <img src={LEVEL} alt="level" />
                                             <span>{data.level}</span>
                                         </div>
                                         <div className="map__enemy-statValue">
-                                            <img src={require("../../../images/combat/attack.svg")} alt="attack" />
+                                            <img src={ATTACK} alt="attack" />
                                             <span>{data.attack}</span>
                                         </div>
                                         <div className="map__enemy-statValue">
-                                            <img src={require("../../../images/sidepanel/defence.svg")} alt="defence" />
+                                            <img src={DEFENCE} alt="defence" />
                                             <span>{data.defence}</span>
                                         </div>
                                         <div className="map__enemy-statValue">
-                                            <img src={require("../../../images/sidepanel/health.svg")} alt="health" />
+                                            <img src={HEALTH} alt="health" />
                                             <span>{data.health}</span>
                                         </div>
                                         <div className="map__enemy-statValue">
-                                            <img src={require("../../../images/sidepanel/stamina.svg")} alt="stamina" />
+                                            <img src={STAMINA} alt="stamina" />
                                             <span>{data.stamina}</span>
                                         </div>
                                         <div className="map__enemy-statValue">
-                                            <img src={require("../../../images/combat/speed.svg")} alt="speed" />
+                                            <img src={SPEED} alt="speed" />
                                             <span>{data.speed}</span>
                                         </div>
                                     </div>

@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import Home from "./home/Home"
 import Settlement from "./settlement/Settlement"
 import Research from "./research/Research"
-import Test from "./skills/NonCombatSkill"
+import NonCombatSkill from "./skills/NonCombatSkill"
 import CombatSkill from "./skills/CombatSkill"
 import Status from "./status/Status"
 import Playerbank from "./player/PlayerBank"
@@ -20,10 +20,10 @@ export const Game = props => {
         return <Research />
       case "settlement":
         return <Settlement />
-      case "forestry":
-      case "metalwork":
-      case "scholar":
-        return <Test />
+      // case "forestry":
+      // case "metalwork":
+      // case "scholar":
+      //   return <NonCombatSkill />
       case "loadout":
         return <CombatSkill />
       case "warrior":

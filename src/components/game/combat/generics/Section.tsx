@@ -41,17 +41,20 @@ export const Section = (props) => {
         return Math.floor(damageData.attack)
     }
 
+
+    console.log(props.data)
+
     return (
         <div className={`catcombat__section ${props.type === props.currentTurn() ? "catcombat__section-active" : ""}`}>
             <div className="catcombat__status">
                 <StatusBar
                     type="health"
-                    maxValue={props.data && props.data.status.getValue("health").getBase()}
-                    currentValue={props.data && props.data.status.getValue("health").getCurrent()}
+                    maxValue={props.data && props.data?.status.getValue("health").getBase()}
+                    currentValue={props.data && props.data?.status.getValue("health").getCurrent()}
                     damageOverlay={props.type === "player" ? props.damageOverlay.playerHealth : props.damageOverlay.enemyHealth}
                 />
                 <Armour
-                    value={props.data && props.data.status.getValue("armour").getCurrent()}
+                    value={props.data && props.data?.status.getValue("armour").getCurrent()}
                     damageOverlay={props.type === "player" ? props.damageOverlay.playerArmour : props.damageOverlay.enemyArmour}
                 />
                 <StatusBar

@@ -36,8 +36,9 @@ export const currentPassiveStatCalculator = (
 }
 
 // gets stats from equipped gear/items
-export const currentStatCalculator = (itemData, inventory): IEquipmentStats => {
+export const currentStatCalculator = (itemData, inventory) => {
   const totalEquippedStats = {}
+
   for (const [key, value] of Object.entries(Slot)) {
     const id = inventory.getEquippedItem(value.replace(/\s/g, ""))
     if (id !== 0 && id !== undefined) {
@@ -142,6 +143,7 @@ export const calculateEnemyDamage = (
 export const statMerge = (object1: Object, object2: Object): Object => {
   const returnValue = {}
   for (const stat in IEquipmentStatsKeys) {
+    returnValue[stat] = null
     if (object1[stat]) {
       returnValue[stat] = parseInt(object1[stat])
     }

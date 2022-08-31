@@ -35,12 +35,12 @@ interface IStaminaOverlay {
     enemy: null | number
 }
 interface ICombatData {
-    enemy: Object | null
-    player: Object | null
+    enemy: Object
+    player: Object
 }
 
 export const CatCombat = (props) => {
-    const tempBaseStaminaRegen = 61
+    const tempBaseStaminaRegen = 5
 
     const [combatInProcess, setCombatInProcess] = useState<boolean>(false)
     const [autoCombat, setAutoCombat] = useState<boolean>(true)
@@ -52,7 +52,10 @@ export const CatCombat = (props) => {
         stamina: false,
         cooldown: false
     }) // not in use
-    const [combatData, setCombatData] = useState<ICombatData | null>(null)
+    const [combatData, setCombatData] = useState<ICombatData>({
+        enemy: {},
+        player: {}
+    })
     const [damageOverlay, setDamageOverlay] = useState<IDamageOverlay>({
         playerHealth: null,
         playerArmour: null,
@@ -134,11 +137,10 @@ export const CatCombat = (props) => {
 
         const intervalRefresh = setInterval(() => {
             updateTime()
-            let speed = 200
+            let speed = 2000
             if (playerStats.speed) {
                 speed = playerStats.speed
             }
-            console.log(playerStats)
             if (combatInProcess) {
                 if (timer > speed) { // * 10
                     console.log("Attacking")
@@ -160,7 +162,11 @@ export const CatCombat = (props) => {
     const attackPossibleStamina = (activePlayer: string, attackData: Attack): boolean => {
         let currentStamina: number = 0
         if (activePlayer === "player") {
-            currentStamina = props.playerData.status.stamina.getCurrent() - currentStatCalculator(props.itemData, props.playerData.inventory).encumbrance
+            let staminaFromStats = 0
+            if (currentStatCalculator(props.itemData, props.playerData.inventory)["encumbrance"]) {
+                staminaFromStats = currentStatCalculator(props.itemData, props.playerData.inventory)["encumbrance"]
+            }
+            currentStamina = props.playerData.status.stamina.getCurrent() - staminaFromStats
         } else {
             currentStamina = props.combatData.status.stamina.getCurrent()
         }
@@ -601,8 +607,6 @@ export const CatCombat = (props) => {
             icon: () => <img style={{ margin: 0 }} src={url} />
         });
     };
-
-
 
     return (
         <div className="catcombat__container">

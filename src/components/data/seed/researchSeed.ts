@@ -69,7 +69,8 @@ export const researchSingular = [
       other: {},
     },
     icon: icon_class.icon_warrior,
-    description: "Unlocks the Warrior class",
+    description:
+      "Unlocks the Warrior class, the default class for all adventurers.",
     type: ResearchType.Combat,
   },
   {
@@ -84,7 +85,8 @@ export const researchSingular = [
       other: {},
     },
     icon: icon_class.icon_archer,
-    description: "Unlocks the Archer class",
+    description:
+      "Unlocks the Archer class, which has a focus for critical strikes and stamina regeneration.",
     type: ResearchType.Combat,
   },
   {
@@ -99,7 +101,8 @@ export const researchSingular = [
       other: {},
     },
     icon: icon_class.icon_magician,
-    description: "Unlocks the Magician class",
+    description:
+      "Unlocks the Magician class, which has a focus on reducing cooldowns and hitting through armour.",
     type: ResearchType.Combat,
   },
   {
@@ -118,6 +121,25 @@ export const researchSingular = [
     },
     icon: icon_class.icon_magician,
     description: "Unlocks the summoner class",
+    type: ResearchType.Combat,
+  },
+  {
+    name: "cleric",
+    cost: {
+      gp: 10000,
+      researchPoints: {
+        red: 5000,
+        green: 1000,
+        blue: 5000000,
+      },
+      other: {
+        1: 100,
+        2: 21,
+      },
+    },
+    icon: icon_class.icon_cleric,
+    description:
+      "Unlocks the Cleric class, which has a focus on restoring health and defence",
     type: ResearchType.Combat,
   },
 ]

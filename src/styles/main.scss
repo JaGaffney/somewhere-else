@@ -48,7 +48,7 @@
     }
     &-name {
       width: 100%;
-      text-transform: capitalize;
+      //// text-transform: capitalize;
       font-size: 1.2rem;
     }
     &-data {
@@ -72,7 +72,7 @@
     border-radius: 0 0 10px 10px;
   }
   &__title {
-    text-transform: uppercase;
+    //text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: 2px;
     font-weight: 900;
@@ -314,7 +314,7 @@
     background-color: var(--gray900);
     border-radius: 4px;
     h4 {
-      text-transform: capitalize;
+      // text-transform: capitalize;
       font-size: 1.8rem;
       margin-bottom: 0;
     }
@@ -410,7 +410,7 @@
   }
   &-name {
     width: 100%;
-    text-transform: capitalize;
+    // text-transform: capitalize;
   }
   &-detail {
     display: flex;
@@ -423,7 +423,7 @@
       border-radius: 5px;
     }
     &-rarity {
-      text-transform: capitalize;
+      // text-transform: capitalize;
       width: 100%;
       background-color: var(--blue900);
       color: var(--blue100);
@@ -465,7 +465,7 @@
       border-radius: 10px;
       background-color: var(--gray900);
       box-shadow: var(--shadow900);
-      text-transform: capitalize;
+      // text-transform: capitalize;
       position: relative;
       cursor: pointer;
       transform: scale(100%);
@@ -556,7 +556,7 @@
       width: 100%;
       background-color: var(--gray900);
       border-radius: 4px;
-      text-transform: capitalize;
+      // text-transform: capitalize;
       display: flex;
       &-difference {
         &-positive {

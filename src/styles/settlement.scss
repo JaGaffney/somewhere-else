@@ -46,7 +46,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        text-transform: capitalize;
+        // text-transform: capitalize;
         border-bottom: solid 1px var(--gray800);
         margin-bottom: 0.5rem;
       }
@@ -68,10 +68,10 @@
   display: flex;
   justify-content: flex-start;
   &-title {
-    text-transform: capitalize;
     min-width: 7rem;
     width: 7rem;
     text-align: center;
+    text-transform: capitalize;
   }
   &-data {
     display: flex;
@@ -94,7 +94,7 @@
         flex-wrap: nowrap;
         align-items: center;
         justify-content: space-between;
-        text-transform: capitalize;
+        // text-transform: capitalize;
       }
       &-title {
       }
@@ -145,7 +145,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   &-title {
-    text-transform: capitalize;
+    // text-transform: capitalize;
     min-width: 7rem;
     width: 7rem;
     text-align: center;
@@ -172,7 +172,7 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        text-transform: capitalize;
+        // text-transform: capitalize;
       }
       &-title {
         width: 100%;

@@ -12,7 +12,7 @@
 .topPanel__controls {
   display: flex;
   justify-content: space-between;
-  text-transform: capitalize;
+  //text-transform: capitalize;
   &-left {
     width: auto;
     max-width: 70%;
@@ -86,7 +86,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    text-transform: uppercase;
+    //text-transform: uppercase;
     font-size: 0.9rem;
     letter-spacing: 2px;
     font-weight: 900;
@@ -156,7 +156,7 @@
 
 .generic__button {
   cursor: pointer;
-  text-transform: capitalize;
+  //text-transform: capitalize;
   background-color: var(--blue700);
   color: var(--blue100);
   box-shadow: var(--shadow100);
@@ -219,5 +219,9 @@
 }
 
 .react__tooltips-override {
+  //text-transform: capitalize;
+}
+
+span::first-letter {
   text-transform: capitalize;
 }

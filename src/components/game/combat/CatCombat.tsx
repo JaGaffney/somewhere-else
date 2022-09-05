@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { setCombatData } from "../../actions/api"
 
 import Section from './generics/Section'
+import { attackPossibleCooldown, handleExpGained, rotationHandler } from './CatCombat.util'
 
 import { randomInteger } from "../../utils/generic"
 import { calculateDamage, currentStatCalculator, calculateEnemyDamage, currentPassiveStatCalculator, statMerge } from "../../utils/equipment"
@@ -40,22 +41,25 @@ interface ICombatData {
 }
 
 export const CatCombat = (props) => {
-    const tempBaseStaminaRegen = 5
+    const tempBaseStaminaRegen = 25
 
+    // engine
+    const [timer, setTimer] = useState<number>(0)
     const [combatInProcess, setCombatInProcess] = useState<boolean>(false)
     const [autoCombat, setAutoCombat] = useState<boolean>(true)
     const [playerTurn, setPlayerTurn] = useState<boolean>(true)
-    const [timer, setTimer] = useState<number>(0)
+
+    // combat data
     const [attackSelectedID, setAttackSelectedID] = useState<null | number>(null)
     const [enemyAttackSelectedID, setEnemyAttackSelectedID] = useState<null | number>(null)
-    const [attackErrors, setAttackErrors] = useState<IAttackErrors>({
-        stamina: false,
-        cooldown: false
-    }) // not in use
     const [combatData, setCombatData] = useState<ICombatData>({
         enemy: {},
         player: {}
     })
+    const [playerDeadPopup, setPlayerDeadPopup] = useState<boolean>(false)
+    const [playerStats, setPlayerStats] = useState<IEquipmentStats>({}) // changed from null to {} - did it break anything
+
+    // ui data
     const [damageOverlay, setDamageOverlay] = useState<IDamageOverlay>({
         playerHealth: null,
         playerArmour: null,
@@ -66,17 +70,18 @@ export const CatCombat = (props) => {
         player: null,
         enemy: null
     })
-    const [playerDeadPopup, setPlayerDeadPopup] = useState<boolean>(false)
-    const [playerStats, setPlayerStats] = useState<IEquipmentStats>({}) // changed from null to {} - did it break anything
+    const [attackErrors, setAttackErrors] = useState<IAttackErrors>({
+        stamina: false,
+        cooldown: false
+    }) // not in use
 
-    const playerDeadModal = () => setPlayerDeadPopup(false)
+
 
     useEffect(() => {
         const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
         const totalPlayerStats = statMerge(currentStats, passiveStats)
         setPlayerStats(totalPlayerStats)
-        console.log(combatData)
     }, [playerTurn])
 
     useEffect(() => {
@@ -133,8 +138,8 @@ export const CatCombat = (props) => {
         }
     }, [])
 
+    // engine
     useEffect(() => {
-
         const intervalRefresh = setInterval(() => {
             updateTime()
             let speed = 2000
@@ -158,32 +163,27 @@ export const CatCombat = (props) => {
     }, [timer, playerTurn]);
 
 
-    // work out if attack is possible
-    const attackPossibleStamina = (activePlayer: string, attackData: Attack): boolean => {
-        let currentStamina: number = 0
-        if (activePlayer === "player") {
-            let staminaFromStats = 0
-            if (currentStatCalculator(props.itemData, props.playerData.inventory)["encumbrance"]) {
-                staminaFromStats = currentStatCalculator(props.itemData, props.playerData.inventory)["encumbrance"]
-            }
-            currentStamina = props.playerData.status.stamina.getCurrent() - staminaFromStats
-        } else {
-            currentStamina = props.combatData.status.stamina.getCurrent()
-        }
+    const playerDeadModal = () => setPlayerDeadPopup(false)
 
-        if (currentStamina < attackData.stamina) {
-            setAttackErrors({ ...attackErrors, stamina: true })
-            return false
-        }
-        return true
-    }
-    const attackPossibleCooldown = (attackID: number, activePlayer: string): boolean => {
-        if (combatData[activePlayer][attackID].cooldown.current > 0) {
-            setAttackErrors({ ...attackErrors, cooldown: true })
-            return false
-        }
-        return true
-    }
+    // // work out if attack is possible
+    // const attackPossibleStamina = (activePlayer: string, attackData: Attack): boolean => {
+    //     let currentStamina: number = 0
+    //     if (activePlayer === "player") {
+    //         let staminaFromStats = 0
+    //         if (currentStatCalculator(props.itemData, props.playerData.inventory)["encumbrance"]) {
+    //             staminaFromStats = currentStatCalculator(props.itemData, props.playerData.inventory)["encumbrance"]
+    //         }
+    //         currentStamina = props.playerData.status.stamina.getCurrent() - staminaFromStats
+    //     } else {
+    //         currentStamina = props.combatData.status.stamina.getCurrent()
+    //     }
+
+    //     if (currentStamina < attackData.stamina) {
+    //         setAttackErrors({ ...attackErrors, stamina: true })
+    //         return false
+    //     }
+    //     return true
+    // }
 
     // reduces cooldowns by 1 round
     const handleCooldowns = (attackID: number, activePlayer: string): void => {
@@ -215,41 +215,12 @@ export const CatCombat = (props) => {
         combatData[activePlayer][attackLocation].cooldown.current = combatData[activePlayer][attackLocation].cooldown.base
     }
 
-    const getValidCombatSkills = () => {
-        const tempCombatSkills = props.skills.getAllCombatSkills()
-        const tempResearchSkills = Object.keys(props.playerData.research.singular)
-        let unlockedSkills = []
 
-        if (tempResearchSkills.length <= 0) {
-            return unlockedSkills
-        }
 
-        for (let skill in tempCombatSkills) {
-            if (tempResearchSkills.includes(tempCombatSkills[skill])) {
-                unlockedSkills.push(tempCombatSkills[skill])
-            }
-        }
-        return unlockedSkills
-    }
-
-    const handleExpGained = (damage, attackData) => {
-        const expGained = Math.floor(damage) * 3 + attackData.exp
-        // when player dies it resets exp unless this is checked?
-        if (!playerDead() && playerTurn) {
-            if (attackData.type.toLocaleLowerCase() === "general") {
-                const unlockedCombatSkills = getValidCombatSkills()
-                for (let skill in unlockedCombatSkills) {
-                    props.playerData.setSkillExp(unlockedCombatSkills[skill], Math.floor(expGained / 3))
-                }
-            } else {
-                props.playerData.setSkillExp(attackData.type.toLowerCase(), expGained)
-            }
-        }
-    }
 
     // can also be used to estimate how much damage an attack would do to the enemy before hand
     // could grey out the enemy hp in the avg dmg would do
-    const attackDamageCalculator = (attackData: Attack): number => {
+    const attackDamageCalculator = (attackData: Attack): Object => {
         // TODO: damage here is not correct
         // TODO: all effects are happening at once
 
@@ -264,7 +235,7 @@ export const CatCombat = (props) => {
             }
 
             damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevelMultiplyer, false)
-            handleExpGained(damageData.attack, attackData)
+            handleExpGained(damageData.attack, attackData, playerDead(), playerTurn, props.skills, props.playerData)
 
         } else {
             damageData = calculateEnemyDamage(enemeyStats, playerStats, attackData)
@@ -350,7 +321,7 @@ export const CatCombat = (props) => {
                 }
                 console.log(`enemy ${status}: -${data}`)
                 // TEMP
-                setStaminaOverlay({ enemy: - data, })
+                setStaminaOverlay({ ...staminaOverlay, enemy: - data, })
             default:
                 return {}
         }
@@ -399,7 +370,7 @@ export const CatCombat = (props) => {
             setAttackSelectedID(null)
             setEnemyAttackSelectedID(attackID)
             // setters
-            let damage = Math.floor(damageData.attack)
+            let damage = Math.floor(damageData["attack"])
             let armourValue = props.playerData.status.armour.getCurrent() - damage
             if (armourValue < 0) {
                 setDamageOverlay({
@@ -427,24 +398,7 @@ export const CatCombat = (props) => {
         }
     }
 
-    const rotationHandler = (activePlayer: string): number | null => {
-        let validAttack = null
-        for (const attack in combatData[activePlayer]) {
-            const attackID = combatData[activePlayer][attack].id
-            const attackData: Attack = props.attackData.getAttackById(attackID)
-            // handle empty roation spots
-            if (attackID !== null) {
-                const stamina = attackPossibleStamina(activePlayer, attackData)
-                const cooldown = attackPossibleCooldown(parseInt(attack), activePlayer)
-                // find first viable attack
-                if (stamina && cooldown) {
-                    validAttack = attackID
-                    break
-                }
-            }
-        }
-        return validAttack
-    }
+
 
     const onAttackHandler = (attackID: number): void => {
         setAttackSelectedID(attackID)
@@ -529,7 +483,7 @@ export const CatCombat = (props) => {
             console.log(autoCombat, whoseGoIsIt)
             if (autoCombat || whoseGoIsIt === "enemy") {
                 // find first viable attack?
-                const attackID = rotationHandler(whoseGoIsIt)
+                const attackID = rotationHandler(whoseGoIsIt, combatData, props)
                 if (attackID !== null) {
                     // calculate damage + resolve damage
                     handleAttackInput(attackID, whoseGoIsIt)
@@ -554,7 +508,7 @@ export const CatCombat = (props) => {
                 //     // handle empty roation spots
                 //     if (attackID !== null) {
                 //         const stamina = attackPossibleStamina(whoseGoIsIt, attackData)
-                //         const cooldown = attackPossibleCooldown(parseInt(attack), whoseGoIsIt)
+                //         const cooldown = attackPossibleCooldown(combatData[whoseGoIsIt][parseInt(attack)])
 
                 // }
             }

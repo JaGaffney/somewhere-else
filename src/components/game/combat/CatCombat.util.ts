@@ -1,18 +1,20 @@
 import { Attack } from "../../data/attacks/Attack"
 import { currentStatCalculator } from "../../utils/equipment"
-interface ICombatData {
+
+interface IAttackCooldownData {
   enemy: Object
   player: Object
+  turn: number
 }
 
 /**
  * Tells you if the attack your trying to make is possible based it on its
  * current cooldown.
- * @param combatData
+ * @param attackCooldownData
  * @returns boolean
  */
-export const attackPossibleCooldown = (combatData): boolean => {
-  if (combatData.cooldown.current > 0) {
+export const attackPossibleCooldown = (attackCooldownData): boolean => {
+  if (attackCooldownData.cooldown.current > 0) {
     // TODO: show errors if attack not possible
     //setAttackErrors({ ...attackErrors, cooldown: true })
     return false
@@ -123,12 +125,12 @@ const attackPossibleStamina = (
  */
 export const rotationHandler = (
   activePlayer: string,
-  combatData: ICombatData,
+  attackCooldownData: IAttackCooldownData,
   props
 ): number | null => {
   let validAttack = null
-  for (const attack in combatData[activePlayer]) {
-    const attackID = combatData[activePlayer][attack].id
+  for (const attack in attackCooldownData[activePlayer]) {
+    const attackID = attackCooldownData[activePlayer][attack].id
     const attackData: Attack = props.attackData.getAttackById(attackID)
     // handle empty roation spots
     if (attackID !== null) {
@@ -140,7 +142,7 @@ export const rotationHandler = (
         props.combatData
       )
       const cooldown = attackPossibleCooldown(
-        combatData[activePlayer][parseInt(attack)]
+        attackCooldownData[activePlayer][parseInt(attack)]
       )
       // find first viable attack
       if (stamina && cooldown) {

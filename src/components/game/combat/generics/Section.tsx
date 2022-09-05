@@ -41,9 +41,6 @@ export const Section = (props) => {
         return Math.floor(damageData.attack)
     }
 
-
-    console.log(props.data)
-
     return (
         <div className={`catcombat__section ${props.type === props.currentTurn() ? "catcombat__section-active" : ""}`}>
             <div className="catcombat__status">

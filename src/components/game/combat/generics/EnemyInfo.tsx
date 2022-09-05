@@ -35,6 +35,17 @@ export const EnemyInfo = (props) => {
                     {props.data && (
                         enemyData && enemyData.attacks.map((id, k) => {
                             const attackData = props.attackData.getAttackById(id)
+                            let cooldownRemaining;
+                            if (props.cooldowns) {
+                                for (const attack in props.cooldowns["enemy"]) {
+                                    if (props.cooldowns["enemy"][attack]) {
+                                        if (props.cooldowns["enemy"][attack].id === id) {
+                                            cooldownRemaining = props.cooldowns["enemy"][attack].cooldown.current
+                                        }
+                                    }
+
+                                }
+                            }
                             return (
                                 <div className="attackloadout__equipped-slot"
                                     key={k}
@@ -49,6 +60,7 @@ export const EnemyInfo = (props) => {
                                                 <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>
                                                 <span className="attacks__button-stats-topRight">{attackData.stamina}</span>
                                                 <span className="attacks__button-stats-bottomRight">{attackData.maxDamage}</span>
+                                                {cooldownRemaining !== 0 && (<span className="attacks__button-stats-overlay">{cooldownRemaining}</span>)}
                                             </div>
                                         }
                                     </div>

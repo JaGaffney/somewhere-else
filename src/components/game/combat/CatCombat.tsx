@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { setCombatData } from "../../actions/api"
+import { setAttackCooldownData } from "../../actions/api"
 
 import Section from './generics/Section'
 import { attackPossibleCooldown, handleExpGained, rotationHandler } from './CatCombat.util'
@@ -35,9 +35,10 @@ interface IStaminaOverlay {
     player: null | number
     enemy: null | number
 }
-interface ICombatData {
+interface IAttackCooldownData {
     enemy: Object
     player: Object
+    turn: number
 }
 
 export const CatCombat = (props) => {
@@ -52,9 +53,10 @@ export const CatCombat = (props) => {
     // combat data
     const [attackSelectedID, setAttackSelectedID] = useState<null | number>(null)
     const [enemyAttackSelectedID, setEnemyAttackSelectedID] = useState<null | number>(null)
-    const [combatData, setCombatData] = useState<ICombatData>({
+    const [attackCooldownData, setAttackCooldownData] = useState<IAttackCooldownData>({
         enemy: {},
-        player: {}
+        player: {},
+        turn: 0
     })
     const [playerDeadPopup, setPlayerDeadPopup] = useState<boolean>(false)
     const [playerStats, setPlayerStats] = useState<IEquipmentStats>({}) // changed from null to {} - did it break anything
@@ -133,7 +135,7 @@ export const CatCombat = (props) => {
         }
 
         if (props.combatData && props.playerData) {
-            setCombatData({ ...combatData, player: attacks, enemy: enemyAttacks })
+            setAttackCooldownData({ ...attackCooldownData, player: attacks, enemy: enemyAttacks })
             setCombatInProcess(true)
         }
     }, [])
@@ -165,43 +167,24 @@ export const CatCombat = (props) => {
 
     const playerDeadModal = () => setPlayerDeadPopup(false)
 
-    // // work out if attack is possible
-    // const attackPossibleStamina = (activePlayer: string, attackData: Attack): boolean => {
-    //     let currentStamina: number = 0
-    //     if (activePlayer === "player") {
-    //         let staminaFromStats = 0
-    //         if (currentStatCalculator(props.itemData, props.playerData.inventory)["encumbrance"]) {
-    //             staminaFromStats = currentStatCalculator(props.itemData, props.playerData.inventory)["encumbrance"]
-    //         }
-    //         currentStamina = props.playerData.status.stamina.getCurrent() - staminaFromStats
-    //     } else {
-    //         currentStamina = props.combatData.status.stamina.getCurrent()
-    //     }
-
-    //     if (currentStamina < attackData.stamina) {
-    //         setAttackErrors({ ...attackErrors, stamina: true })
-    //         return false
-    //     }
-    //     return true
-    // }
 
     // reduces cooldowns by 1 round
     const handleCooldowns = (attackID: number, activePlayer: string): void => {
         let attackLocation = 1
         if (activePlayer === "player") {
-            for (const attack in combatData[activePlayer]) {
+            for (const attack in attackCooldownData[activePlayer]) {
 
-                if (combatData[activePlayer][attack]) {
-                    if (combatData[activePlayer][attack].id === attackID) {
+                if (attackCooldownData[activePlayer][attack]) {
+                    if (attackCooldownData[activePlayer][attack].id === attackID) {
                         attackLocation = parseInt(attack)
                     }
 
-                    if (combatData[activePlayer][attack].cooldown.base !== 0) {
+                    if (attackCooldownData[activePlayer][attack].cooldown.base !== 0) {
 
                         // removes the cd of each none used attack by 1
-                        if (combatData[activePlayer][attack].cooldown.current > 0) {
-                            combatData[activePlayer][attack].cooldown.current = combatData[activePlayer][attack].cooldown.current - 1
-                            console.log(combatData[activePlayer][attack].cooldown)
+                        if (attackCooldownData[activePlayer][attack].cooldown.current > 0) {
+                            attackCooldownData[activePlayer][attack].cooldown.current = attackCooldownData[activePlayer][attack].cooldown.current - 1
+                            console.log(attackCooldownData[activePlayer][attack].cooldown)
                         }
                     }
 
@@ -209,10 +192,28 @@ export const CatCombat = (props) => {
                 }
             }
         } else {
+            for (const attack in attackCooldownData[activePlayer]) {
 
+                if (attackCooldownData[activePlayer][attack]) {
+                    if (attackCooldownData[activePlayer][attack].id === attackID) {
+                        attackLocation = parseInt(attack)
+                    }
+
+                    if (attackCooldownData[activePlayer][attack].cooldown.base !== 0) {
+
+                        // removes the cd of each none used attack by 1
+                        if (attackCooldownData[activePlayer][attack].cooldown.current > 0) {
+                            attackCooldownData[activePlayer][attack].cooldown.current = attackCooldownData[activePlayer][attack].cooldown.current - 1
+                            console.log(attackCooldownData[activePlayer][attack].cooldown)
+                        }
+                    }
+
+
+                }
+            }
         }
         // starts the cooldown of the attack after being used
-        combatData[activePlayer][attackLocation].cooldown.current = combatData[activePlayer][attackLocation].cooldown.base
+        attackCooldownData[activePlayer][attackLocation].cooldown.current = attackCooldownData[activePlayer][attackLocation].cooldown.base
     }
 
 
@@ -483,7 +484,7 @@ export const CatCombat = (props) => {
             console.log(autoCombat, whoseGoIsIt)
             if (autoCombat || whoseGoIsIt === "enemy") {
                 // find first viable attack?
-                const attackID = rotationHandler(whoseGoIsIt, combatData, props)
+                const attackID = rotationHandler(whoseGoIsIt, attackCooldownData, props)
                 if (attackID !== null) {
                     // calculate damage + resolve damage
                     handleAttackInput(attackID, whoseGoIsIt)
@@ -533,13 +534,13 @@ export const CatCombat = (props) => {
         setCombatInProcess(false)
         setDamageOverlay({ playerHealth: null, playerArmour: null, enemyHealth: null, enemyArmour: null })
         setStaminaOverlay({ player: null, enemy: null })
-        setCombatData({
+        setAttackCooldownData({
             player: {},
             enemy: {},
             turn: 0
         })
 
-        props.setCombatData(null)
+        props.setAttackCooldownData(null)
         props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
         props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase())
         props.playerData.status.armour.setCurrent(props.playerData.status.armour.getBase())
@@ -576,7 +577,7 @@ export const CatCombat = (props) => {
                 type="player"
                 currentTurn={currentTurn}
                 data={props.playerData}
-                cooldowns={combatData}
+                cooldowns={attackCooldownData}
                 onAttackHandler={onAttackHandler}
                 autoCombatHandler={autoCombatHandler}
                 damageOverlay={damageOverlay}
@@ -596,7 +597,7 @@ export const CatCombat = (props) => {
                 type="enemy"
                 currentTurn={currentTurn}
                 data={props.combatData}
-                cooldowns={combatData}
+                cooldowns={attackCooldownData}
                 runAwayHandler={runAwayHandler}
                 damageOverlay={damageOverlay}
                 staminaOverlay={staminaOverlay}
@@ -620,7 +621,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    setCombatData
+    setAttackCooldownData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CatCombat)

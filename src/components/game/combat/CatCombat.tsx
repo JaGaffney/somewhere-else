@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
+import { setCombatData } from "../../actions/api"
+
 import Section from './generics/Section'
 import { attackPossibleCooldown, handleExpGained, rotationHandler, staminaHandler } from './CatCombat.util'
 
@@ -57,7 +59,7 @@ export const CatCombat = (props) => {
         turn: 0
     })
     const [playerDeadPopup, setPlayerDeadPopup] = useState<boolean>(false)
-    const [playerStats, setPlayerStats] = useState<IEquipmentStats>({}) // changed from null to {} - did it break anything
+    const [playerStats, setPlayerStats] = useState<IEquipmentStats>({}) // changed from null to {} - did it break anything?
 
     // ui data
     const [damageOverlay, setDamageOverlay] = useState<IDamageOverlay>({
@@ -76,7 +78,9 @@ export const CatCombat = (props) => {
     }) // not in use
 
 
-
+    /**
+     * Loads the players data everyturn, can handle for new gear/passives
+     */
     useEffect(() => {
         const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
         const passiveStats = currentPassiveStatCalculator(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout), props.passiveData)
@@ -342,7 +346,7 @@ export const CatCombat = (props) => {
             setDamageOverlay(tempOverlay)
 
             const attackStaminaCost = attackData.stamina + playerStats.encumbrance
-            staminaHandler(props.playerData.status.stamina, attackStaminaCost, activePlayer)
+            staminaHandler(props.playerData.status.stamina, attackStaminaCost, activePlayer, tempBaseStaminaRegen)
             setStaminaOverlay({ player: - attackStaminaCost, enemy: null })
 
         } else {
@@ -511,6 +515,7 @@ export const CatCombat = (props) => {
     const runAwayHandler = (): void => {
         setAutoCombat(false)
         setCombatInProcess(false)
+        setEnemyAttackSelectedID(null)
         setDamageOverlay({ playerHealth: null, playerArmour: null, enemyHealth: null, enemyArmour: null })
         setStaminaOverlay({ player: null, enemy: null })
         setAttackCooldownData({
@@ -518,13 +523,13 @@ export const CatCombat = (props) => {
             enemy: {},
             turn: 0
         })
+        props.setCombatData(null)
 
         props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
-        props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase())
+        props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase() + 100)
         props.playerData.status.armour.setCurrent(props.playerData.status.armour.getBase())
         props.playerData.status.divination.setCurrent(props.playerData.status.divination.getBase())
     }
-
 
 
     const notifyWithImage = (value: string, url: string): void => {
@@ -599,7 +604,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-
+    setCombatData
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CatCombat)

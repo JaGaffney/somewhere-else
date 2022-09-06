@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { setAttackCooldownData } from "../../actions/api"
-
 import Section from './generics/Section'
-import { attackPossibleCooldown, handleExpGained, rotationHandler } from './CatCombat.util'
+import { attackPossibleCooldown, handleExpGained, rotationHandler, staminaHandler } from './CatCombat.util'
 
 import { randomInteger } from "../../utils/generic"
 import { calculateDamage, currentStatCalculator, calculateEnemyDamage, currentPassiveStatCalculator, statMerge } from "../../utils/equipment"
@@ -245,25 +243,7 @@ export const CatCombat = (props) => {
         return damageData
     }
 
-    const staminaHandler = (stamina, value: number, activePlayer: string): void => {
-        // stamina cost of attack
-        if (value === 0) {
-            stamina.setCurrent(stamina.getCurrent() - value)
-        } else {
-            if (activePlayer === "player") {
-                stamina.setCurrent(stamina.getCurrent() - value)
-            } else {
-                stamina.setCurrent(stamina.getCurrent() - value)
-            }
-        }
 
-        // stamina regen
-        if ((stamina.getCurrent() + tempBaseStaminaRegen) >= (stamina.getBase() + 100)) {
-            stamina.setCurrent(stamina.getBase() + 100)
-        } else {
-            stamina.setCurrent(stamina.getCurrent() + tempBaseStaminaRegen)
-        }
-    }
 
     const statusEffectResovlePlayer = (data: any, status: string): Object => {
         switch (status) {
@@ -334,7 +314,6 @@ export const CatCombat = (props) => {
         // work out attack damage
 
 
-
         const damageData = attackDamageCalculator(attackData)
         console.log({ damageData })
         const damageOrder = ["lifesteal", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
@@ -385,7 +364,7 @@ export const CatCombat = (props) => {
                 props.playerData.status.armour.setCurrent(0)
             } else {
                 setDamageOverlay({
-                    playerHealth: "0",
+                    playerHealth: 0,
                     playerArmour: - damageData.damage,
                     enemyHealth: null,
                     enemyArmour: null
@@ -394,7 +373,7 @@ export const CatCombat = (props) => {
                 props.playerData.status.armour.setCurrent(armourValue)
             }
 
-            staminaHandler(props.combatData.status.stamina, attackData.stamina, activePlayer)
+            staminaHandler(props.combatData.status.stamina, attackData.stamina, activePlayer, tempBaseStaminaRegen)
             setStaminaOverlay({ player: tempBaseStaminaRegen - attackData.stamina, enemy: null })
         }
     }
@@ -490,10 +469,10 @@ export const CatCombat = (props) => {
                     handleAttackInput(attackID, whoseGoIsIt)
                 } else {
                     if (whoseGoIsIt === "player") {
-                        staminaHandler(props.playerData.status.stamina, 0, whoseGoIsIt)
+                        staminaHandler(props.playerData.status.stamina, 0, whoseGoIsIt, tempBaseStaminaRegen)
                         setStaminaOverlay({ player: tempBaseStaminaRegen, enemy: null })
                     } else {
-                        staminaHandler(props.combatData.status.stamina, 0, whoseGoIsIt)
+                        staminaHandler(props.combatData.status.stamina, 0, whoseGoIsIt, tempBaseStaminaRegen)
                         setStaminaOverlay({ enemy: tempBaseStaminaRegen, player: null })
                     }
                 }
@@ -540,7 +519,6 @@ export const CatCombat = (props) => {
             turn: 0
         })
 
-        props.setAttackCooldownData(null)
         props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
         props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase())
         props.playerData.status.armour.setCurrent(props.playerData.status.armour.getBase())
@@ -621,7 +599,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    setAttackCooldownData
+
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CatCombat)

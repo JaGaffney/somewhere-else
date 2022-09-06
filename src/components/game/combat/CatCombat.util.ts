@@ -153,3 +153,35 @@ export const rotationHandler = (
   }
   return validAttack
 }
+
+/**
+ * Removes or adds stamina once an attack is used
+ * @param stamina
+ * @param value
+ * @param activePlayer
+ */
+export const staminaHandler = (
+  stamina,
+  value: number,
+  activePlayer: string,
+  tempBaseStaminaRegen: number
+): void => {
+  console.log("got here")
+  // stamina cost of attack
+  if (value === 0) {
+    stamina.setCurrent(stamina.getCurrent() - value)
+  } else {
+    if (activePlayer === "player") {
+      stamina.setCurrent(stamina.getCurrent() - value)
+    } else {
+      stamina.setCurrent(stamina.getCurrent() - value)
+    }
+  }
+
+  // stamina regen
+  if (stamina.getCurrent() + tempBaseStaminaRegen >= stamina.getBase() + 100) {
+    stamina.setCurrent(stamina.getBase() + 100)
+  } else {
+    stamina.setCurrent(stamina.getCurrent() + tempBaseStaminaRegen)
+  }
+}

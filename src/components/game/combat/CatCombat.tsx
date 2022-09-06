@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { setCombatData } from "../../actions/api"
 
 import Section from './generics/Section'
-import { handleExpGained, rotationHandler, staminaHandler } from './CatCombat.util'
+import { handleExpGained, rotationHandler, validRotationSetup, staminaHandler } from './CatCombat.util'
 
 import { randomInteger } from "../../utils/generic"
 import { calculateDamage, currentStatCalculator, calculateEnemyDamage, currentPassiveStatCalculator, statMerge } from "../../utils/equipment"
@@ -238,10 +238,12 @@ export const CatCombat = (props) => {
             }
 
             damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevelMultiplyer, false)
+            console.log({ playerTurn, damageData })
             handleExpGained(damageData.attack, attackData, playerDead(), playerTurn, props.skills, props.playerData)
 
         } else {
             damageData = calculateEnemyDamage(enemeyStats, playerStats, attackData)
+            console.log({ playerTurn, damageData })
         }
 
         return damageData
@@ -392,7 +394,6 @@ export const CatCombat = (props) => {
     const handleAttackInput = (attackID: number, activePlayer: string): string => {
         const attackData: Attack = props.attackData.getAttackById(attackID)
 
-
         // do calcs on attack
         resolveDamageDealt(activePlayer, attackData, attackID)
 
@@ -412,12 +413,12 @@ export const CatCombat = (props) => {
             props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getBase() + 100)
             props.combatData.status.armour.setCurrent(props.combatData.status.armour.getBase())
 
-            console.log(props.combatData)
+
             setDamageOverlay({ playerHealth: null, playerArmour: null, enemyHealth: null, enemyArmour: null })
             setStaminaOverlay({ player: null, enemy: null })
             return "Enemy dead"
         }
-        // TODO: when a player dies all there stats are reset to null, some how?
+
         if (playerDead()) {
             console.log("Player dead")
             runAwayHandler()
@@ -464,17 +465,21 @@ export const CatCombat = (props) => {
             let whoseGoIsIt = currentTurn()
             //setAttackSelectedID(null)
 
-            console.log(autoCombat, whoseGoIsIt)
             if (autoCombat || whoseGoIsIt === "enemy") {
                 // find first viable attack?
                 const attackID = rotationHandler(whoseGoIsIt, attackCooldownData, props)
+                console.log(attackID, whoseGoIsIt)
                 if (attackID !== null) {
                     // calculate damage + resolve damage
                     handleAttackInput(attackID, whoseGoIsIt)
                 } else {
                     if (whoseGoIsIt === "player") {
-                        staminaHandler(props.playerData.status.stamina, 0, whoseGoIsIt, tempBaseStaminaRegen)
-                        setStaminaOverlay({ player: tempBaseStaminaRegen, enemy: null })
+                        console.log("players turn")
+                        if (!validRotationSetup(attackCooldownData["player"])) {
+                            staminaHandler(props.playerData.status.stamina, 0, whoseGoIsIt, tempBaseStaminaRegen)
+                            setStaminaOverlay({ player: tempBaseStaminaRegen, enemy: null })
+                        }
+
                     } else {
                         staminaHandler(props.combatData.status.stamina, 0, whoseGoIsIt, tempBaseStaminaRegen)
                         setStaminaOverlay({ enemy: tempBaseStaminaRegen, player: null })
@@ -497,7 +502,10 @@ export const CatCombat = (props) => {
                 // }
             }
             // next turn
-            setPlayerTurn(!playerTurn) // doesnt work
+            if (validRotationSetup(attackCooldownData["player"])) {
+                setPlayerTurn(!playerTurn)
+            }
+
         }
     }
 

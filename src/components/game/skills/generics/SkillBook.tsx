@@ -17,7 +17,6 @@ export const SkillBook = (props) => {
 
       }
     }
-
     return valid
   }
 

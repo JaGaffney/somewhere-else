@@ -71,7 +71,13 @@ export const calculateDamage = (
   let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage)
 
   const effects = calculateEffect(attackData, playerStats)
-  const preModifiers = (levelMultiplyer * damageRange * effects.attack) / 50 + 2
+
+  // handles case of no weapons being equipped
+  let effectsAttack = 1
+  if (effects.attack) {
+    effectsAttack = effects.attack
+  }
+  const preModifiers = (levelMultiplyer * damageRange * effectsAttack) / 50 + 2
 
   // if just displaying damage no need to show crits
   let crit = false
@@ -89,14 +95,16 @@ export const calculateDamage = (
   const damageDone = preModifiers * critDamage - defence
 
   for (const effect in effects) {
-    damageData[effect] = effects[effect]
+    if (effects[effect]) {
+      damageData[effect] = effects[effect]
+    } else {
+      damageData[effect] = 0
+    }
   }
-
   let defaultDamageDone = 1
   if (damageDone) {
     defaultDamageDone = damageDone
   }
-
   damageData["attack"] = defaultDamageDone
   damageData["crit"] = critDamage
 
@@ -119,11 +127,11 @@ const calculateEffect = (attackData: Attack, playerStats: IEquipmentStats) => {
 
 export const calculateEnemyDamage = (
   enemyStats,
-  playerStats: IEquipmentStats,
+  playerStats,
   attackData: Attack
 ) => {
   const damageData = {}
-
+  console.log(playerStats)
   // https://gamerant.com/pokemon-damage-calculation-help-guide/
   const levelMultiplyer = (2 * enemyStats.level) / 5 + 2
 
@@ -132,11 +140,21 @@ export const calculateEnemyDamage = (
   const preModifiers =
     (levelMultiplyer * damageRange * enemyStats.attack) / 50 + 2
 
-  const defence = preModifiers / playerStats.defence / 100
+  let playerDefence = 1
+  if (playerStats?.defence) {
+    playerDefence = playerStats?.defence
+  }
+
+  const defence = preModifiers / playerDefence / 100
 
   const damageDone = preModifiers - defence
 
-  damageData["attack"] = damageDone
+  let defaultDamageDone = 1
+  if (damageDone) {
+    defaultDamageDone = damageDone
+  }
+  damageData["attack"] = defaultDamageDone
+
   return damageData
 }
 

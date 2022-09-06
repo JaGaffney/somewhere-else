@@ -25,6 +25,19 @@ export const attackPossibleCooldown = (attackCooldownData): boolean => {
   return true
 }
 
+export const validRotationSetup = (rotation): boolean => {
+  let count = 0
+  console.log(rotation)
+  for (let attack in rotation) {
+    console.log(rotation[attack])
+    if (rotation[attack].id === null) {
+      count += 1
+    }
+  }
+
+  return count === 6 ? false : true
+}
+
 /**
  * Gives the player exp based on different parameters, will need tweeking for balance
  * @param damage
@@ -107,6 +120,8 @@ export const rotationHandler = (
   attackCooldownData: IAttackCooldownData,
   props
 ): number | null => {
+  console.log(attackCooldownData)
+
   let validAttack = null
   for (const attack in attackCooldownData[activePlayer]) {
     const attackID = attackCooldownData[activePlayer][attack].id

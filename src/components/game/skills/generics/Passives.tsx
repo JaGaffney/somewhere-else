@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import ReactTooltip from 'react-tooltip';
 
 import { getBackgroundColor } from '../../../utils/color';
+import { getValidCombatSkills } from '../../../utils/equipment';
 import { validFilterQuery } from '../../../utils/generic';
 
 
@@ -13,6 +14,19 @@ export const Passives = (props) => {
         e.dataTransfer.setData("text/plain", `passive-${id}`)
     }
 
+    const validSkill = (passive, currentLevel): boolean => {
+        let valid = false
+        if (validFilterQuery(passive.name, props.search) || validFilterQuery(passive.job, props.search)) {
+            if (currentLevel >= passive.levelRequired) {
+                if (getValidCombatSkills(props.skills, props.playerData).includes(passive.job.toLowerCase())) {
+                    valid = true
+                }
+
+            }
+        }
+        return valid
+    }
+
     return (
         <div className="attacks__container">
             <h3>Passives</h3>
@@ -20,32 +34,30 @@ export const Passives = (props) => {
                 if (id !== null) {
                     const passive = props.passiveData.getPassiveById(id)
                     const currentLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(passive.job.toLocaleLowerCase()))
-
-                    if (validFilterQuery(passive.name, props.search) || validFilterQuery(passive.job, props.search)) {
-                        if (currentLevel >= passive.levelRequired) {
-                            return (
-                                <div className="attackloadout__equipped-slot" key={k}>
-                                    <button
-                                        className="attacks__button attacks__button-general"
-                                        draggable={true}
-                                        onDragStart={e => onDragStart(e)}
+                    if (validSkill(passive, currentLevel)) {
+                        return (
+                            <div className="attackloadout__equipped-slot" key={k}>
+                                <button
+                                    className="attacks__button attacks__button-general"
+                                    draggable={true}
+                                    onDragStart={e => onDragStart(e)}
+                                    id={id}
+                                    data-tip={passive.name && passive.name}
+                                    style={{ borderColor: getBackgroundColor(passive.job) }}
+                                    onClick={() => {
+                                        props.onSelectedSkillHandler(null)
+                                        props.onSelectedPassiveHandler(passive)
+                                    }}
+                                >
+                                    <img className="attacks__button-icon"
+                                        src={passive.icon}
+                                        alt={passive.name}
                                         id={id}
-                                        data-tip={passive.name && passive.name}
-                                        style={{ borderColor: getBackgroundColor(passive.job) }}
-                                        onClick={() => {
-                                            props.onSelectedSkillHandler(null)
-                                            props.onSelectedPassiveHandler(passive)
-                                        }}
-                                    >
-                                        <img className="attacks__button-icon"
-                                            src={passive.icon}
-                                            alt={passive.name}
-                                            id={id}
-                                        />
-                                    </button>
-                                </div>
-                            )
-                        }
+                                    />
+                                </button>
+                            </div>
+                        )
+
                     }
 
 
@@ -59,7 +71,8 @@ export const Passives = (props) => {
 
 const mapStateToProps = (state) => ({
     passiveData: state.passives.passiveData,
-    playerData: state.player.playerData
+    playerData: state.player.playerData,
+    skills: state.skills.skillData
 })
 
 const mapDispatchToProps = {}

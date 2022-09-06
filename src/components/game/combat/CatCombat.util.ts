@@ -1,5 +1,8 @@
 import { Attack } from "../../data/attacks/Attack"
-import { currentStatCalculator } from "../../utils/equipment"
+import {
+  currentStatCalculator,
+  getValidCombatSkills,
+} from "../../utils/equipment"
 
 interface IAttackCooldownData {
   enemy: Object
@@ -20,30 +23,6 @@ export const attackPossibleCooldown = (attackCooldownData): boolean => {
     return false
   }
   return true
-}
-
-/**
- * Checks for all valid combat skills in order to give you data on skills
- * that have been unlocked by the player.
- * @param skills
- * @param playerData
- * @returns String[]
- */
-export const getValidCombatSkills = (skills, playerData): String[] => {
-  const tempCombatSkills = skills.getAllCombatSkills()
-  const tempResearchSkills = Object.keys(playerData.research.singular)
-  let unlockedSkills: string[] = []
-
-  if (tempResearchSkills.length <= 0) {
-    return unlockedSkills
-  }
-
-  for (let skill in tempCombatSkills) {
-    if (tempResearchSkills.includes(tempCombatSkills[skill])) {
-      unlockedSkills.push(tempCombatSkills[skill])
-    }
-  }
-  return unlockedSkills
 }
 
 /**

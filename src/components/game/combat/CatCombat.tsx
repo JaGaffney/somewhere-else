@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { setCombatData } from "../../actions/api"
 
 import Section from './generics/Section'
-import { attackPossibleCooldown, handleExpGained, rotationHandler, staminaHandler } from './CatCombat.util'
+import { handleExpGained, rotationHandler, staminaHandler } from './CatCombat.util'
 
 import { randomInteger } from "../../utils/generic"
 import { calculateDamage, currentStatCalculator, calculateEnemyDamage, currentPassiveStatCalculator, statMerge } from "../../utils/equipment"

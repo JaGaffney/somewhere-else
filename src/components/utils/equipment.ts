@@ -157,3 +157,27 @@ export const statMerge = (object1: Object, object2: Object): Object => {
   }
   return returnValue
 }
+
+/**
+ * Checks for all valid combat skills in order to give you data on skills
+ * that have been unlocked by the player.
+ * @param skills
+ * @param playerData
+ * @returns String[]
+ */
+export const getValidCombatSkills = (skills, playerData): String[] => {
+  const tempCombatSkills = skills.getAllCombatSkills()
+  const tempResearchSkills = Object.keys(playerData.research.singular)
+  let unlockedSkills: string[] = []
+
+  if (tempResearchSkills.length <= 0) {
+    return unlockedSkills
+  }
+
+  for (let skill in tempCombatSkills) {
+    if (tempResearchSkills.includes(tempCombatSkills[skill])) {
+      unlockedSkills.push(tempCombatSkills[skill])
+    }
+  }
+  return unlockedSkills
+}

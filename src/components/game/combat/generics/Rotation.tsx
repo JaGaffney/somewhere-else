@@ -7,7 +7,7 @@ import RotationItems from './RotationItems'
 
 export const Rotation = (props) => {
     return (
-        <div className="catcombat__description-rotation">
+        <div className={`catcombat__description-rotation ${props.type === "player"}`}>
             {props.data && props.type === "player" && (
                 <>
                     <p>Set your rotation for auto-combat</p>

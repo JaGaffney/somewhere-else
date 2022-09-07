@@ -88,6 +88,7 @@ export const Section = (props) => {
                     data={props.data}
                     onButtonHandler={props.type === "enemy" ? props.runAwayHandler : props.autoCombatHandler}
                     onDropInfoHandler={props.type === "enemy" ? props.onDropInfoHandler : null}
+                    cooldowns={props.cooldowns}
                 />
             </div>
 

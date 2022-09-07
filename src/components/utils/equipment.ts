@@ -68,7 +68,7 @@ export const calculateDamage = (
   // https://gamerant.com/pokemon-damage-calculation-help-guide/
   const levelMultiplyer = (2 * jobLevel) / 5 + 2
 
-  let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage)
+  let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage) // TODO: error, not longer using random values, only static values
 
   const effects = calculateEffect(attackData, playerStats)
 

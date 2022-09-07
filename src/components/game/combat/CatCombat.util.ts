@@ -27,9 +27,7 @@ export const attackPossibleCooldown = (attackCooldownData): boolean => {
 
 export const validRotationSetup = (rotation): boolean => {
   let count = 0
-  console.log(rotation)
   for (let attack in rotation) {
-    console.log(rotation[attack])
     if (rotation[attack].id === null) {
       count += 1
     }
@@ -55,9 +53,13 @@ export const handleExpGained = (
   skills,
   playerData
 ) => {
-  const expGained = Math.floor(damage) * 3 + attackData.exp
-  // when player dies it resets exp unless this is checked?
   if (!playerDead && playerTurn) {
+    // handles the -Infinity case
+    let expGained = 0
+    if (damage > 0) {
+      expGained = Math.floor(damage) * 3 + attackData.exp
+    }
+
     if (attackData.type.toLocaleLowerCase() === "general") {
       const unlockedCombatSkills = getValidCombatSkills(skills, playerData)
       for (let skill in unlockedCombatSkills) {

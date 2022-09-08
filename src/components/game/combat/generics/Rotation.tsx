@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import { setCombatData } from "../../../actions/api"
@@ -6,13 +6,19 @@ import { setCombatData } from "../../../actions/api"
 import RotationItems from './RotationItems'
 
 export const Rotation = (props) => {
+    const [rotationItems, setRotationItems] = useState(new Array(6))
+
+    useEffect(() => {
+        setRotationItems(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).rotation)
+    }, [])
+
     return (
         <div className={`catcombat__description-rotation ${props.type === "player"}`}>
             {props.data && props.type === "player" && (
                 <>
                     <p>Set your rotation for auto-combat</p>
                     {props.data.loadout.getLoadoutByNumber(props.data.loadout.activeLoadout) && (
-                        <RotationItems rotation={props.data.loadout.getLoadoutByNumber(props.data.loadout.activeLoadout).rotation} data={props.data} editable={true} />)}
+                        <RotationItems rotation={rotationItems} data={props.playerData} editable={true} />)}
 
                     <button className="generic__button generic__button-primary generic__button-fit" onClick={() => props.onButtonHandler(true)}>Begin auto combat</button>
                 </>
@@ -31,6 +37,7 @@ export const Rotation = (props) => {
 
 const mapStateToProps = (state) => ({
     enemyData: state.enemies.enemyData,
+    playerData: state.player.playerData
 })
 
 const mapDispatchToProps = {

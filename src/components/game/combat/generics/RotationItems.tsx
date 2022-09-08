@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 export const RotationItems = (props) => {
+    useEffect(() => {
+    }, [props.playerUpdated])
+
+
     const [componentHover, setComponentHover] = useState(false)
     const [activeHover, setActiveHover] = useState("")
 
@@ -30,7 +34,7 @@ export const RotationItems = (props) => {
 
 
     }
-
+    console.log(props.rotation)
     return (
         <ul>
             {props.rotation.map((attackID: string, k: number) => {
@@ -62,6 +66,7 @@ export const RotationItems = (props) => {
 
 const mapStateToProps = (state) => ({
     attackData: state.attacks.attackData,
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = {

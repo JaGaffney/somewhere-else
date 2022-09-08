@@ -47,7 +47,7 @@ export const Research = (props) => {
         return costValue
     }
 
-    const onBuyHandler = (data, currentLevel: number, researchType: string): void => {
+    const onBuyHandler = (data, currentLevel: number, researchType: string, setActiveResearch): void => {
         let name = data.name
         let cost = data.cost
 
@@ -61,6 +61,7 @@ export const Research = (props) => {
             }
 
             props.setPlayerUpdated()
+            setActiveResearch(null)
         }
     }
 

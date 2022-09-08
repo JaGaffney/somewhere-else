@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import { FiEye, FiEyeOff } from "react-icons/fi";
@@ -73,6 +73,9 @@ export const SidePanel = (props) => {
             icon: BUG
         },
     ]
+
+    useEffect(() => {
+    }, [props.playerUpdated])
 
     const getValidCombatSkills = () => {
         const tempCombatSkills = props.skills.getAllCombatSkills()
@@ -154,7 +157,8 @@ export const SidePanel = (props) => {
 
 const mapStateToProps = (state) => ({
     skills: state.skills.skillData,
-    playerData: state.player.playerData
+    playerData: state.player.playerData,
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = {

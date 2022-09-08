@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 import { setPlayerUpdated } from '../../actions/api'
@@ -14,12 +14,15 @@ export const ResearchSingle = (props) => {
         setActiveResearch(props.researchData["singular"][name])
     }
 
+    useEffect(() => {
+    }, [props.playerUpdated])
+
     return (
         <div className="settlement__assignments research__assignments">
             <h2>One time buy</h2>
             <div className="research__panel-single">
                 <div className="research__panel-single-cost">
-                    <ResearchCost activeResearch={activeResearch} onBuyHandler={props.onBuyHandler} validatePurchase={props.validatePurchase} />
+                    <ResearchCost activeResearch={activeResearch} onBuyHandler={props.onBuyHandler} validatePurchase={props.validatePurchase} setActiveResearch={setActiveResearch} />
                 </div>
 
                 <div className="research__panel">
@@ -57,6 +60,7 @@ export const ResearchSingle = (props) => {
 const mapStateToProps = (state) => ({
     researchData: state.research.researchData,
     playerData: state.player.playerData,
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = { setPlayerUpdated }

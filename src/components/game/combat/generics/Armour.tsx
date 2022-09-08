@@ -23,10 +23,10 @@ export const Armour = (props) => {
             <div className="catcombat__armour-icon">
                 {props.value ? (
                     <>
-                        <img className="catcobmat__armour-image" src={SHIELD} alt={props.value} />
+                        <img className="catcombat__armour-image" src={SHIELD} alt={props.value} />
                         <span>{props.value}</span>
                     </>
-                ) : (<img className="catcobmat__armour-image" src={SHIELDBROKEN} alt={"0"} />)}
+                ) : (<img className="catcombat__armour-image" src={SHIELDBROKEN} alt={"0"} />)}
             </div>
 
             <div className={`statusBar-innerPopup ${props.damageOverlay ? 'fadeIn' : 'fadeOut'}`}

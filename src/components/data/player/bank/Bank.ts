@@ -6,12 +6,12 @@ export class Bank {
   bankSpace: number = 10
   coins: number = 0
   essence: number = 0
-  research: {
-    red: 0
-    green: 0
-    blue: 0
-    yellow: 0
-    purple: 0
+  research = {
+    red: 0,
+    green: 0,
+    blue: 0,
+    yellow: 0,
+    purple: 0,
   }
 
   constructor() {}

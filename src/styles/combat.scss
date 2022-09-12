@@ -199,14 +199,14 @@
 }
 
 .map__container {
-  background-color: var(--gray800);
-  box-shadow: var(--shadow900);
-  width: 100%;
-  padding: 2rem;
-  gap: 2rem;
+  gap: 1rem;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
+  margin: 0.8rem 0;
+  min-height: 80%;
+  width: 100%;
+  margin-top: 1.5rem;
 }
 // .map__map {
 //   width: 45%;
@@ -234,9 +234,13 @@
 // }
 
 .map__areas {
+  background-color: var(--gray800);
+  box-shadow: var(--shadow900);
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
-
+  width: auto;
+  padding: 1rem;
   &-area {
     border-radius: 4px;
     border: solid 5px transparent;
@@ -270,7 +274,10 @@
   border-color: var(--blue800);
 }
 .map__info {
-  width: 50%;
+  background-color: var(--gray800);
+  box-shadow: var(--shadow900);
+  width: 60%;
+  padding: 1rem;
 }
 .map__enemy {
   display: flex;

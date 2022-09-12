@@ -17,7 +17,7 @@ export const Rotation = (props) => {
             {props.data && props.type === "player" && (
                 <>
                     <p>Set your rotation for auto-combat</p>
-                    {props.data.loadout.getLoadoutByNumber(props.data.loadout.activeLoadout) && (
+                    {props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout) && (
                         <RotationItems rotation={rotationItems} data={props.playerData} editable={true} />)}
 
                     <button className="generic__button generic__button-primary generic__button-fit" onClick={() => props.onButtonHandler(true)}>Begin auto combat</button>

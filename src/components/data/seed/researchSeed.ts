@@ -142,4 +142,23 @@ export const researchSingular = [
       "Unlocks the Cleric class, which has a focus on restoring health and defence",
     type: ResearchType.Combat,
   },
+  {
+    name: "gambler",
+    cost: {
+      gp: 10000,
+      researchPoints: {
+        red: 5000,
+        green: 1000,
+        blue: 5000000,
+      },
+      other: {
+        1: 100,
+        2: 21,
+      },
+    },
+    icon: icon_class.icon_gambler,
+    description:
+      "Unlocks the Gambler class, which has a focus on dealing random damage.",
+    type: ResearchType.Combat,
+  },
 ]

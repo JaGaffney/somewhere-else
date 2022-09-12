@@ -15,7 +15,7 @@ import HEALTH from "../../../images/sidepanel/health.svg"
 import STAMINA from "../../../images/sidepanel/stamina.svg"
 import SPEED from "../../../images/combat/speed.svg"
 
-
+import { mapSeed } from "../../data/seed/mapSeed"
 
 export const CatMap = (props) => {
     const [areaInfo, setAreaInfo] = useState(null)
@@ -92,7 +92,7 @@ export const CatMap = (props) => {
 
     return (
         <div className="map__container">
-            <div className="map__map" style={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "no-repeat" }}>
+            {/* <div className="map__map" style={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "no-repeat" }}>
                 {mapData.map((i, k) => {
                     return (
                         <button
@@ -106,6 +106,22 @@ export const CatMap = (props) => {
                     )
                 })
                 }
+            </div> */}
+            <div className="map__areas">
+                {mapSeed && mapSeed.map((i, k) => {
+                    console.log(areaInfo?.name)
+                    console.log(i.name)
+                    return (
+                        <div className={`map__areas-area ${areaInfo?.name === i.name ? "areaActive" : null}`} onClick={() => setAreaInfo(i)}>
+                            <img src={i.icon} alt={i.name} />
+                            <h3>{i.name}</h3>
+                            <div className="map__enemy-statValue map__areas-areaLevel">
+                                <img src={LEVEL} alt="level" />
+                                <span>{i.recommended}</span>
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
 
             <div className="map__info">
@@ -113,7 +129,8 @@ export const CatMap = (props) => {
                     <div className="map__info-content">
                         <h3>{areaInfo.name} <span></span></h3>
                         <p>{areaInfo.description}</p>
-                        <p>Entry requirements "{areaInfo.requirements}"</p>
+                        <p><i>{areaInfo.effect}</i></p>
+
                         {areaInfo.enemys.map((i, k) => {
                             const data = props.enemies.enemies.get(i)
                             return (

@@ -26,3 +26,9 @@ export const cleric = [
     icon: icon.icon_cleric,
   },
 ]
+export const gambler = [
+  {
+    name: ClassesEnum.GAMBLER,
+    icon: icon.icon_gambler,
+  },
+]

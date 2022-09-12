@@ -54,7 +54,7 @@ export const attackSeed = [
     type: ClassesEnum.WARRIOR,
     minDamage: 0,
     maxDamage: 0,
-    cooldown: 0,
+    cooldown: 2,
     stamina: 50,
     effect: {
       armour: 10,

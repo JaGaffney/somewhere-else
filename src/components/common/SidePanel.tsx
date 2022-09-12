@@ -13,8 +13,6 @@ import NonSkillPanel from "./NonSkillPanel"
 import ACTIONS from "../../images/sidepanel/spellbook.svg"
 import EQUIPMENT from "../../images/sidepanel/equipment.svg"
 
-
-
 // logs
 import COLLECTION from "../../images/sidepanel/collectionLog.svg"
 import COMBAT from "../../images/sidepanel/combatLog.svg"
@@ -28,14 +26,12 @@ import BUG from "../../images/sidepanel/bug.svg"
 
 import LOCKED from "../../images/sidepanel/locked.svg"
 
-
-
 export const SidePanel = (props) => {
     const [showStatus, setShowStatus] = useState<boolean>(true)
     const [showCombat, setShowCombat] = useState<boolean>(true)
     const [showSkills, setShowSkills] = useState<boolean>(true)
-    const [showLogs, setShowLogs] = useState<boolean>(true)
-    const [showOther, setShowOther] = useState<boolean>(true)
+    const [showLogs, setShowLogs] = useState<boolean>(false)
+    const [showOther, setShowOther] = useState<boolean>(false)
 
     const tempNonCombatSklls = [
         "forestry/forestry", "Prowling", "metalwork", "quartermaster", "way of the land", "cat burglar", "botanist"

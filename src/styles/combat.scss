@@ -170,7 +170,12 @@
     background-color: var(--gray900);
     box-shadow: var(--shadow900);
     border-radius: 10px;
-    padding: 1rem;
+    padding: 2rem 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
   }
   &-description {
     h3 {
@@ -203,29 +208,66 @@
   flex-wrap: nowrap;
   justify-content: space-between;
 }
-.map__map {
-  width: 45%;
-  display: grid;
-  gap: 0.1rem;
-  background-color: var(--gray800);
-  grid-template-columns: repeat(20, 1fr);
-  grid-template-rows: repeat(20, 1fr);
-  border-radius: 15% 25%;
-  box-shadow: var(--shadow900);
-  background-color-position: left center;
-  background-color-size: contain;
-  &-item {
-    cursor: pointer;
-    box-shadow: var(--shadow500);
+// .map__map {
+//   width: 45%;
+//   display: grid;
+//   gap: 0.1rem;
+//   background-color: var(--gray800);
+//   grid-template-columns: repeat(20, 1fr);
+//   grid-template-rows: repeat(20, 1fr);
+//   border-radius: 15% 25%;
+//   box-shadow: var(--shadow900);
+//   background-color-position: left center;
+//   background-color-size: contain;
+//   &-item {
+//     cursor: pointer;
+//     box-shadow: var(--shadow500);
+//     background-color: var(--gray900);
+//     color: var(--gray100);
+//     border: none;
+//     border-radius: 8px;
+//     &:hover,
+//     &:focus {
+//       transform: translateY(-2px);
+//     }
+//   }
+// }
+
+.map__areas {
+  display: flex;
+  gap: 1rem;
+
+  &-area {
+    border-radius: 4px;
+    border: solid 5px transparent;
     background-color: var(--gray900);
-    color: var(--gray100);
-    border: none;
-    border-radius: 8px;
-    &:hover,
-    &:focus {
-      transform: translateY(-2px);
+    width: 20rem;
+    height: 12.5rem;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    img {
+      height: 10rem;
+      width: 100%;
+      object-fit: fill;
+    }
+    h3 {
+      margin: 0;
+    }
+    &:hover {
+      border-color: var(--blue900);
     }
   }
+  &-areaLevel {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+}
+.areaActive {
+  border-color: var(--blue800);
 }
 .map__info {
   width: 50%;

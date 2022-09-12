@@ -21,16 +21,7 @@ export const EnemyInfo = (props) => {
             <div className="catcombat__enemy">
                 <div className="catcombat__enemy-info">
 
-                    <div className="catcombat__enemy-description">
-                        {props.data && (
-                            <>
-                                <h3>{enemyData?.name}</h3>
-                                <div className="map__enemy-statValue">
-                                    <img src={LEVEL} alt="level" />
-                                    <span>{enemyData?.level}</span>
-                                </div>
-                            </>)}
-                    </div>
+
 
                     {props.data && (
                         enemyData && enemyData.attacks.map((id, k) => {
@@ -52,7 +43,7 @@ export const EnemyInfo = (props) => {
                                     onClick={() => props.onSelectedSkillHandler(id)}
                                     onMouseEnter={() => props.onSelectedSkillHandler(id)}
                                 >
-                                    <div className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default"), transform: `${props.attackSelectedID === id ? "scale(1.3)" : "scale(1)"}` }}
+                                    <div className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default"), transform: `${props.attackSelectedID === id ? "scale(1.1)" : "scale(1)"}` }}
                                     >
                                         <img className="attacks__button-icon" src={attackData && attackData.icon} />
                                         {attackData &&
@@ -71,8 +62,20 @@ export const EnemyInfo = (props) => {
                 </div>
                 <div className="catcombat__enemy-image">
                     {props.data && (
+                        <>
+                            <div className="catcombat__enemy-description">
+                                {props.data && (
+                                    <>
+                                        <h3>{enemyData?.name}</h3>
+                                        <div className="map__enemy-statValue">
+                                            <img src={LEVEL} alt="level" />
+                                            <span>{enemyData?.level}</span>
+                                        </div>
+                                    </>)}
 
-                        <img src={enemyData.image} />
+                            </div>
+                            <img src={enemyData.image} />
+                        </>
                     )}
                 </div>
             </div>

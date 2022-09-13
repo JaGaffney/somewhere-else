@@ -7,9 +7,8 @@ import { setCombatData } from "../../actions/api"
 import { getBackgroundColor } from '../../utils/color'
 
 // @ts-expect-error
-import backgroundImage from "../../../images/combat/map.jpg"
 import LEVEL from "../../../images/combat/level.svg"
-import ATTACK from "../../../images/combat/attack.svg"
+import ATTACK from "../../../images/combat/strength.svg"
 import DEFENCE from "../../../images/sidepanel/defence.svg"
 import HEALTH from "../../../images/sidepanel/health.svg"
 import STAMINA from "../../../images/sidepanel/stamina.svg"
@@ -22,18 +21,6 @@ export const CatMap = (props) => {
 
     const mapData = [
         {
-            id: 1,
-            name: "Goblin Village",
-            description: "Village of goblins, unleash your inner goblin slayer.",
-            requirements: "none",
-            effect: "none",
-            recommended: 1,
-            enemys: [1, 2],
-            x: 5,
-            y: 5,
-            icon: "",
-        },
-        {
             id: 2,
             name: "Southbay",
             description: "The port town has been destoryed, yet life somehow finds a way, at least until you got there.",
@@ -44,26 +31,11 @@ export const CatMap = (props) => {
             x: 5,
             y: 10,
             icon: "",
-        },
-        {
-            id: 3,
-            name: "Endless Lake",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Opti",
-            requirements: "none",
-            effect: "none",
-            enemys: [1],
-            recommended: 60,
-            x: 16,
-            y: 5,
-            icon: "",
         }
-
     ]
 
     const onFightHandler = (id, data) => {
         if (props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout)) {
-
-
             const enemy = new CombatData(id)
             const values = {
                 health: {
@@ -107,21 +79,27 @@ export const CatMap = (props) => {
                 })
                 }
             </div> */}
-            <div className="map__areas">
-                {mapSeed && mapSeed.map((i, k) => {
-                    console.log(areaInfo?.name)
-                    console.log(i.name)
-                    return (
-                        <div className={`map__areas-area ${areaInfo?.name === i.name ? "areaActive" : null}`} onClick={() => setAreaInfo(i)}>
-                            <img src={i.icon} alt={i.name} />
-                            <h3>{i.name}</h3>
-                            <div className="map__enemy-statValue map__areas-areaLevel">
-                                <img src={LEVEL} alt="level" />
-                                <span>{i.recommended}</span>
+            <div style={{ width: "75%" }}>
+
+                <div className="map__areas">
+                    {mapSeed && mapSeed.map((i, k) => {
+                        console.log(areaInfo?.name)
+                        console.log(i.name)
+                        return (
+                            <div className={`map__areas-area ${areaInfo?.name === i.name ? "areaActive" : ""}`} onClick={() => setAreaInfo(i)}>
+                                <img src={i.icon} alt={i.name} />
+
+                                <h3>{i.name}</h3>
+                                <div className="map__enemy-statValue map__areas-areaLevel">
+                                    <img src={LEVEL} alt="level" />
+                                    <span>{i.recommended}</span>
+                                </div>
+
                             </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+
+                </div>
             </div>
 
             <div className="map__info">
@@ -129,7 +107,7 @@ export const CatMap = (props) => {
                     <div className="map__info-content">
                         <h3>{areaInfo.name} <span></span></h3>
                         <p>{areaInfo.description}</p>
-                        <p><i>{areaInfo.effect}</i></p>
+                        <p>Area Effect: <i>{areaInfo.effect}</i></p>
 
                         {areaInfo.enemys.map((i, k) => {
                             const data = props.enemies.enemies.get(i)
@@ -141,7 +119,7 @@ export const CatMap = (props) => {
                                     <div className="map__enemy-info">
                                         <div>
                                             <h3>{data.name}</h3>
-                                            <p>Combat style: <strong style={{ color: getBackgroundColor(data.style) }}>{data.style}</strong></p>
+                                            <p><strong style={{ color: getBackgroundColor(data.style) }}>{data.style}</strong></p>
                                         </div>
 
                                         <div className="map__enemy-buttons">

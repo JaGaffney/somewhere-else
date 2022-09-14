@@ -126,16 +126,13 @@ export const researchSingular = [
   {
     name: "cleric",
     cost: {
-      gp: 10000,
+      gp: 0,
       researchPoints: {
-        red: 5000,
+        red: 1000,
         green: 1000,
-        blue: 5000000,
+        blue: 1000,
       },
-      other: {
-        1: 100,
-        2: 21,
-      },
+      other: {},
     },
     icon: icon_class.icon_cleric,
     description:
@@ -145,16 +142,13 @@ export const researchSingular = [
   {
     name: "gambler",
     cost: {
-      gp: 10000,
+      gp: 100000000,
       researchPoints: {
-        red: 5000,
-        green: 1000,
-        blue: 5000000,
+        red: 0,
+        green: 0,
+        blue: 0,
       },
-      other: {
-        1: 100,
-        2: 21,
-      },
+      other: {},
     },
     icon: icon_class.icon_gambler,
     description:

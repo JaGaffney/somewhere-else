@@ -26,6 +26,13 @@ export const Header = (props) => {
         props.combatData.status.armour.setCurrent(0)
     }
 
+    const addStuff = () => {
+        props.playerData.playerBank.addToResearch("red", 1000000)
+        props.playerData.playerBank.addToResearch("green", 1000000)
+        props.playerData.playerBank.addToResearch("blue", 1000000)
+        props.playerData.playerBank.addToCoins(1000000)
+    }
+
     return (
         <div className="header__container">
             <div className="header__container-title"><span onClick={() => props.setActivePage(null)}>Somewhere else</span></div>
@@ -38,6 +45,7 @@ export const Header = (props) => {
                     <button onClick={healTesting}>Heal player</button>
                     <button onClick={killPlayer}>Kill player</button>
                     <button onClick={killTesting}>Kill</button>
+                    <button onClick={addStuff}>Add stuff</button>
 
                 </div>
                 <div>

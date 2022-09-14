@@ -1,4 +1,15 @@
 // @ts-nocheck
+// @ts-expect-error
+import FORESTRY from "../../../../images/sidepanel/forestry.svg"
+// @ts-expect-error
+import METALWORK from "../../../../images/sidepanel/metalwork.svg"
+// @ts-expect-error
+import SCHOLAR from "../../../../images/sidepanel/scholar.svg"
+
+export const forestry = FORESTRY
+export const mining = METALWORK
+export const scholar = SCHOLAR
+
 import forestry_IMG_1 from "../../../../images/skill/forestry/bamboo.svg"
 import forestry_IMG_2 from "../../../../images/skill/forestry/beech.svg"
 import forestry_IMG_3 from "../../../../images/skill/forestry/birch.svg"

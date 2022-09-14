@@ -30,8 +30,6 @@ export const NonCombatSkill = (props) => {
 
   }, [props.skills])
 
-  console.log(props.skills)
-
   return (
     props.skills?.length !== 0 ? (
       activeData !== null ?
@@ -53,7 +51,7 @@ export const Game = props => {
       case "settlement":
         return <Settlement />
       case "forestry":
-      case "metalwork":
+      case "mining":
       case "scholar":
         return <NonCombatSkill skills={props.skills} activePage={props.activePage} />
       case "loadout":

@@ -103,7 +103,7 @@ export const forestry = [
   },
 ]
 
-export const metalwork = [
+export const mining = [
   {
     name: "stone",
     level: 1,

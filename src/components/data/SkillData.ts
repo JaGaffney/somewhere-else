@@ -3,7 +3,8 @@ import { CombatSkill } from "./skills/CombatSkill"
 import { StatusSkill } from "./skills/StatusSkill"
 
 // seed data
-import { warrior, archer, magician } from "./seed/combatSeed"
+import * as combatSeed from "./seed/combatSeed"
+import { ClassesEnum } from "../data/enums/ClassesEnum"
 import { health, stamina, armour, divination } from "./seed/statusSeed"
 import { forestry, metalwork, scholar } from "./seed/skillSeed"
 
@@ -31,9 +32,9 @@ export class SkillData {
   }
 
   private createCombatSkills(): void {
-    this.buildCombatSkill("warrior", warrior)
-    this.buildCombatSkill("archer", archer)
-    this.buildCombatSkill("magician", magician)
+    for (const [key, value] of Object.entries(ClassesEnum)) {
+      this.buildCombatSkill(value, combatSeed[value])
+    }
   }
 
   private createStatusSkills(): void {

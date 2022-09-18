@@ -62,11 +62,6 @@ export const Game = props => {
         return <JobInfo />
       case "equipment":
         return <Inventory />
-      // case "health":
-      // case "stamina":
-      // case "armour":
-      // case "divination":
-      //   return <Status />
       case "bank":
         return <Playerbank />
       case "combat":

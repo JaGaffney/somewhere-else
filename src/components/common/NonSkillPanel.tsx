@@ -10,6 +10,8 @@ import BANK from "../../images/sidepanel/bank.svg"
 import COMBAT from "../../images/sidepanel/combat.svg"
 import SETTLEMENT from "../../images/sidepanel/castle.svg"
 import RESEARCH from "../../images/sidepanel/research.svg"
+import ACTIONS from "../../images/sidepanel/spellbook.svg"
+import EQUIPMENT from "../../images/sidepanel/equipment.svg"
 
 export const NonSkillPanel = (props) => {
     useEffect(() => {
@@ -35,12 +37,6 @@ export const NonSkillPanel = (props) => {
                 )}
             </button>
 
-            <button className="skillpanel" onClick={() => props.setActivePage("combat")}>
-                <img className="skillpanel__icon" src={COMBAT} />
-                <span className={`skillpanel__name ${props.activePage === "combat" ? "skillpanel__name-active" : null}`}>Combat</span>
-            </button>
-
-
             <button className="skillpanel" onClick={() => props.setActivePage("settlement")}>
                 <img className="skillpanel__icon" src={SETTLEMENT} />
                 <span className={`skillpanel__name ${props.activePage === "settlement" ? "skillpanel__name-active" : null}`}>Settlement</span>
@@ -53,6 +49,26 @@ export const NonSkillPanel = (props) => {
                 <img className="skillpanel__icon" src={RESEARCH} />
                 <span className={`skillpanel__name ${props.activePage === "research" ? "skillpanel__name-active" : null}`}>Research</span>
             </button>
+
+            <button className="skillpanel" onClick={() => props.setActivePage("combat")}>
+                <img className="skillpanel__icon" src={COMBAT} />
+                <span className={`skillpanel__name ${props.activePage === "combat" ? "skillpanel__name-active" : null}`}>Combat</span>
+            </button>
+
+            <button className="skillpanel" onClick={() => props.setActivePage("loadout")}>
+                <img className="skillpanel__icon" src={ACTIONS} />
+                <span className={`skillpanel__name ${props.activePage === "loadout" ? "skillpanel__name-active" : null}`}>Actions & spells</span>
+            </button>
+
+            <button className="skillpanel" onClick={() => props.setActivePage("equipment")}>
+                <img className="skillpanel__icon" src={EQUIPMENT} />
+                <span className={`skillpanel__name ${props.activePage === "inventory" ? "skillpanel__name-active" : null}`}>Equipment</span>
+            </button>
+
+
+
+
+
 
         </div>
     )

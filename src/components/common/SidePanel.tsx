@@ -9,10 +9,6 @@ import { setActivePage } from '../actions/api';
 import SkillPanel from './SkillPanel'
 import NonSkillPanel from "./NonSkillPanel"
 
-// Info
-import ACTIONS from "../../images/sidepanel/spellbook.svg"
-import EQUIPMENT from "../../images/sidepanel/equipment.svg"
-
 // logs
 import COLLECTION from "../../images/sidepanel/collectionLog.svg"
 import COMBAT from "../../images/sidepanel/combatLog.svg"
@@ -27,7 +23,6 @@ import BUG from "../../images/sidepanel/bug.svg"
 import LOCKED from "../../images/sidepanel/locked.svg"
 
 export const SidePanel = (props) => {
-    const [showStatus, setShowStatus] = useState<boolean>(true)
     const [showCombat, setShowCombat] = useState<boolean>(true)
     const [showSkills, setShowSkills] = useState<boolean>(true)
     const [showLogs, setShowLogs] = useState<boolean>(false)
@@ -100,23 +95,6 @@ export const SidePanel = (props) => {
                 {props.skills.length !== 0 &&
                     (
                         <>
-
-                            <div className="sidepanel__skill" data-cy="sidepanelInfo">
-                                <span className="sidepanel__skill-title" onClick={() => setShowStatus(!showStatus)}>Info {showStatus ? <FiEyeOff /> : <FiEye />}</span>
-                                {showStatus && (
-                                    <>
-                                        <button className="skillpanel" onClick={() => props.setActivePage("loadout")}>
-                                            <img className="skillpanel__icon" src={ACTIONS} />
-                                            <span className={`skillpanel__name ${props.activePage === "loadout" ? "skillpanel__name-active" : null}`}>Actions & spells</span>
-                                        </button>
-
-                                        <button className="skillpanel" onClick={() => props.setActivePage("equipment")}>
-                                            <img className="skillpanel__icon" src={EQUIPMENT} />
-                                            <span className={`skillpanel__name ${props.activePage === "inventory" ? "skillpanel__name-active" : null}`}>Equipment</span>
-                                        </button></>)}
-                                {showStatus && props.skills.getAllStatusSkills().map((i, k) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("status", i)} type={"status"} />)}
-                            </div>
-
                             <div className="sidepanel__skill" data-cy="sidepanelClasses">
                                 <span className="sidepanel__skill-title" onClick={() => setShowCombat(!showCombat)}>Classes {showCombat ? <FiEyeOff /> : <FiEye />}</span>
                                 {showCombat && getValidCombatSkills().length !== 0 ? (

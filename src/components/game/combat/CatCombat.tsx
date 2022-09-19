@@ -252,14 +252,9 @@ export const CatCombat = (props) => {
     const statusEffectResovlePlayer = (data: any, status: string): Object => {
         switch (status) {
             case ("regeneration"):
-                console.log("got hererereeere ", { data })
                 const healthGain = props.playerData.status.health.getCurrent() + data
-                console.log(healthGain)
                 props.playerData.status.health.setCurrent(healthGain)
-
-                console.log(getPlayerBaseHealth(props.playerData))
                 if (props.playerData.status.health.getCurrent() > getPlayerBaseHealth(props.playerData)) {
-                    console.log("got here")
                     props.playerData.status.health.setCurrent(getPlayerBaseHealth(props.playerData))
                 }
                 return { playerHealth: data }

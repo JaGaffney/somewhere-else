@@ -10,7 +10,9 @@ import AttackInfo from './AttackInfo'
 
 // @ts-ignore
 import DIVINIATION from "../../../images/sidepanel/divination.svg"
+// @ts-ignore
 import PASSIVES from "../../../images/sidepanel/passives.svg"
+// @ts-ignore
 import SPELLBOOK from "../../../images/sidepanel/spellbook.svg"
 
 export const CombatSkill = (props) => {

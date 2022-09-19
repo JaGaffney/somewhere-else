@@ -83,10 +83,8 @@ export const CatMap = (props) => {
 
                 <div className="map__areas">
                     {mapSeed && mapSeed.map((i, k) => {
-                        console.log(areaInfo?.name)
-                        console.log(i.name)
                         return (
-                            <div className={`map__areas-area ${areaInfo?.name === i.name ? "areaActive" : ""}`} onClick={() => setAreaInfo(i)}>
+                            <div key={k} className={`map__areas-area ${areaInfo?.name === i.name ? "areaActive" : ""}`} onClick={() => setAreaInfo(i)}>
                                 <img src={i.icon} alt={i.name} />
 
                                 <h3>{i.name}</h3>

@@ -11,6 +11,7 @@ import Rotation from './Rotation'
 import Info from './Info'
 
 import { calculateDamage, currentStatCalculator } from "../../../utils/equipment"
+import { getPlayerBaseHealth } from '../CatCombat.util'
 
 export const Section = (props) => {
     const [selectedSkill, setSelecetedSkill] = useState(null)
@@ -46,7 +47,7 @@ export const Section = (props) => {
             <div className="catcombat__status">
                 <StatusBar
                     type="health"
-                    maxValue={props.data && props.data?.status.getValue("health").getBase()}
+                    maxValue={props.data && props.type === "player" ? getPlayerBaseHealth(props.playerData) : props.data?.status.getValue("health").getBase()}
                     currentValue={props.data && props.data?.status.getValue("health").getCurrent()}
                     damageOverlay={props.type === "player" ? props.damageOverlay.playerHealth : props.damageOverlay.enemyHealth}
                 />

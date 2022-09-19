@@ -71,6 +71,8 @@ export const handleExpGained = (
     } else {
       playerData.setSkillExp(attackData.type.toLowerCase(), expGained)
     }
+
+    playerData.setSkillExp("health", Math.floor(damage))
   }
 }
 
@@ -122,8 +124,6 @@ export const rotationHandler = (
   attackCooldownData: IAttackCooldownData,
   props
 ): number | null => {
-  console.log(attackCooldownData)
-
   let validAttack = null
   for (const attack in attackCooldownData[activePlayer]) {
     const attackID = attackCooldownData[activePlayer][attack].id
@@ -162,7 +162,6 @@ export const staminaHandler = (
   activePlayer: string,
   tempBaseStaminaRegen: number
 ): void => {
-  console.log("got here")
   // stamina cost of attack
   if (value === 0) {
     stamina.setCurrent(stamina.getCurrent() - value)
@@ -180,4 +179,16 @@ export const staminaHandler = (
   } else {
     stamina.setCurrent(stamina.getCurrent() + tempBaseStaminaRegen)
   }
+}
+
+export const getPlayerBaseHealth = (playerData): number => {
+  let retValue = 0
+  retValue = playerData.levelChecker.getLevelFromExp(
+    playerData.skillExp.getCurrentExp("health")
+  )
+  if (retValue < 10) {
+    retValue = 10
+  }
+
+  return retValue
 }

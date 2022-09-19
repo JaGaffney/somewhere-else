@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { setCombatData } from "../../actions/api"
 
 import Section from './generics/Section'
-import { handleExpGained, rotationHandler, validRotationSetup, staminaHandler } from './CatCombat.util'
+import { handleExpGained, rotationHandler, validRotationSetup, staminaHandler, getPlayerBaseHealth } from './CatCombat.util'
 
 import { randomInteger } from "../../utils/generic"
 import { calculateDamage, currentStatCalculator, calculateEnemyDamage, currentPassiveStatCalculator, statMerge } from "../../utils/equipment"
@@ -186,7 +186,7 @@ export const CatCombat = (props) => {
                         // removes the cd of each none used attack by 1
                         if (attackCooldownData[activePlayer][attack].cooldown.current > 0) {
                             attackCooldownData[activePlayer][attack].cooldown.current = attackCooldownData[activePlayer][attack].cooldown.current - 1
-                            console.log(attackCooldownData[activePlayer][attack].cooldown)
+
                         }
                     }
 
@@ -238,12 +238,10 @@ export const CatCombat = (props) => {
             }
 
             damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevelMultiplyer, false)
-            console.log({ playerTurn, damageData })
             handleExpGained(damageData.attack, attackData, playerDead(), playerTurn, props.skills, props.playerData)
 
         } else {
             damageData = calculateEnemyDamage(enemeyStats, playerStats, attackData)
-            console.log({ playerTurn, damageData })
         }
 
         return damageData
@@ -253,10 +251,16 @@ export const CatCombat = (props) => {
 
     const statusEffectResovlePlayer = (data: any, status: string): Object => {
         switch (status) {
-            case ("lifesteal"):
-                props.playerData.status.health.setCurrent(props.playerData.status.health.getCurrent() + data)
-                if (props.playerData.status.health.getCurrent() > props.playerData.status.health.getBase()) {
-                    props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
+            case ("regeneration"):
+                console.log("got hererereeere ", { data })
+                const healthGain = props.playerData.status.health.getCurrent() + data
+                console.log(healthGain)
+                props.playerData.status.health.setCurrent(healthGain)
+
+                console.log(getPlayerBaseHealth(props.playerData))
+                if (props.playerData.status.health.getCurrent() > getPlayerBaseHealth(props.playerData)) {
+                    console.log("got here")
+                    props.playerData.status.health.setCurrent(getPlayerBaseHealth(props.playerData))
                 }
                 return { playerHealth: data }
             case ("bleed"):
@@ -322,7 +326,7 @@ export const CatCombat = (props) => {
 
         const damageData = attackDamageCalculator(attackData)
         console.log({ damageData })
-        const damageOrder = ["lifesteal", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
+        const damageOrder = ["regeneration", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
 
         const tempOverlay = {
             playerHealth: null,
@@ -336,7 +340,6 @@ export const CatCombat = (props) => {
             setAttackSelectedID(attackID)
             setEnemyAttackSelectedID(null)
             for (let damage of damageOrder) {
-                console.log(damage, damageData[damage])
                 if (damageData[damage]) {
                     const overlayValues = statusEffectResovlePlayer(damageData[damage], damage)
                     for (let value in overlayValues) {
@@ -468,13 +471,11 @@ export const CatCombat = (props) => {
             if (autoCombat || whoseGoIsIt === "enemy") {
                 // find first viable attack?
                 const attackID = rotationHandler(whoseGoIsIt, attackCooldownData, props)
-                console.log(attackID, whoseGoIsIt)
                 if (attackID !== null) {
                     // calculate damage + resolve damage
                     handleAttackInput(attackID, whoseGoIsIt)
                 } else {
                     if (whoseGoIsIt === "player") {
-                        console.log("players turn")
                         if (!validRotationSetup(attackCooldownData["player"])) {
                             staminaHandler(props.playerData.status.stamina, 0, whoseGoIsIt, tempBaseStaminaRegen)
                             setStaminaOverlay({ player: tempBaseStaminaRegen, enemy: null })
@@ -533,7 +534,8 @@ export const CatCombat = (props) => {
         })
         props.setCombatData(null)
 
-        props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
+
+        props.playerData.status.health.setCurrent(getPlayerBaseHealth(props.playerData))
         props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase() + 100)
         props.playerData.status.armour.setCurrent(props.playerData.status.armour.getBase())
         props.playerData.status.divination.setCurrent(props.playerData.status.divination.getBase())

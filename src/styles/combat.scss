@@ -387,6 +387,7 @@
 .attackloadout__info {
   grid-column: 2;
   grid-row: 1/-1;
+  border: var(--border);
 }
 .attackloadout__buttons {
   grid-column: 1;
@@ -408,13 +409,16 @@
     justify-content: center;
     align-items: center;
     border-radius: 4px 4px 0 0;
-    border-top: solid 1px black;
-    border-left: solid 1px black;
-    border-right: solid 1px black;
-    &:hover,
-    &:focus {
+    border-top: var(--border);
+    border-left: var(--border);
+    border-right: var(--border);
+    &:hover {
       opacity: 1;
       transform: scale(1.01);
+    }
+    &:focus {
+      opacity: 1;
+      transform: scale(1);
     }
   }
   &-active {
@@ -430,9 +434,9 @@
 .attacks__container {
   grid-column: 1;
   grid-row: 4;
-  border-left: solid 1px black;
-  border-right: solid 1px black;
-  border-bottom: solid 1px black;
+  border-bottom: var(--border);
+  border-left: var(--border);
+  border-right: var(--border);
 }
 
 .attackloadout__equipped {
@@ -441,9 +445,11 @@
   grid-template-columns: 65% 1fr;
   grid-template-rows: 100%;
   gap: 0.5rem;
+
   &-active {
     background-color: var(--gray800);
     box-shadow: var(--shadow900);
+    border: var(--border);
     h3 {
       padding: 1rem 1rem 0 1rem;
       margin-bottom: 0.5rem;

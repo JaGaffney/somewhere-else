@@ -34,7 +34,7 @@ export const RotationItems = (props) => {
 
 
     }
-    console.log(props.rotation)
+
     return (
         <ul>
             {props.rotation.map((attackID: string, k: number) => {

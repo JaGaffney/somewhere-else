@@ -23,11 +23,7 @@ export const Home = (props) => {
             },
             {
                 selector: '[data-cy="sidepanelNonSkill"]',
-                content: "This area contains your none key areas, such as combat and settlement management. You will spend most of your time in this area",
-            },
-            {
-                selector: '[data-cy="sidepanelInfo"]',
-                content: "The Info section contains all the information inregards to your current character, keep an eye out on this area while doing other actions to keep upto date on your characters health!",
+                content: "This area contains your key areas, such as combat and settlement management. You will spend most of your time in this area",
             },
             {
                 selector: '[data-cy="sidepanelClasses"]',

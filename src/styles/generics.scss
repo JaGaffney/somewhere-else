@@ -82,6 +82,7 @@
 }
 
 .exp {
+  border: var(--border);
   &__level {
     padding: 1rem;
     display: flex;

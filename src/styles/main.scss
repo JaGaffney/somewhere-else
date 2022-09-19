@@ -6,19 +6,12 @@
   box-sizing: var(--shadow900);
 }
 
-.talents {
-  height: 8rem;
-  width: 100%;
-  background-color: var(--gray800);
-  box-sizing: var(--shadow900);
-  margin: 0.8rem 0;
-}
-
 .progression {
   width: 100%;
   background-color: var(--gray800);
   box-shadow: var(--shadow500);
   border-radius: 0 0 10px 10px;
+  border: var(--border);
   &__container {
     width: 100%;
 
@@ -118,6 +111,9 @@
   box-shadow: var(--shadow500);
   border: none;
   border-top: solid 10px transparent;
+  border-left: var(--border);
+  border-right: var(--border);
+  border-bottom: var(--border);
   &-buttons {
     width: 100%;
     display: flex;
@@ -197,6 +193,7 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 10px 10px 0 0;
+  border: var(--border);
 }
 .bank__container {
   display: flex;
@@ -210,6 +207,7 @@
   padding: 2rem;
   background-color: var(--gray800);
   box-sizing: var(--shadow900);
+  border: var(--border);
   &-inner {
     display: flex;
     justify-content: flex-start;
@@ -276,6 +274,7 @@
   padding: 2rem;
   background-color: var(--gray800);
   box-sizing: var(--shadow900);
+  border: var(--border);
   &-content {
     display: flex;
     flex-wrap: nowrap;

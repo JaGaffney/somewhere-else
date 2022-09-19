@@ -13,6 +13,7 @@
   box-shadow: var(--shadow900);
   padding: 1rem;
   width: 75%;
+  border: var(--border);
 }
 
 .settlement__stats {
@@ -20,6 +21,7 @@
   box-shadow: var(--shadow900);
   padding: 1rem;
   width: 25%;
+  border: var(--border);
   &-balance {
     width: 95%;
     display: flex;

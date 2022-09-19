@@ -26,7 +26,8 @@ export const Combat = (props) => {
 
     const types = {
         CAT_COMBAT: "CAT_COMBAT",
-        CAT_MAP: "CAT_MAP"
+        CAT_MAP: "CAT_MAP",
+        CAT_ADVENUTE: "CAT_ADVENTURE"
     }
 
     const reducer = (state, action) => {
@@ -53,9 +54,9 @@ export const Combat = (props) => {
     return (
         <div className="game__normal">
             <div className="combat__info">
-                <button onClick={() => dispatch({ type: types.CAT_COMBAT })}><img src={COMBAT} /><span>Battle</span></button>
-                <button onClick={() => dispatch({ type: types.CAT_MAP })}><img src={GLOBE} /><span>Areas</span></button>
-                <button><img src={COMPASS} /> <span>Adventure</span></button>
+                <button className={`combat__info-button ${state.toggle === types.CAT_COMBAT ? "combat__info-active" : ""}`} onClick={() => dispatch({ type: types.CAT_COMBAT })}><img src={COMBAT} /><span>Battle</span></button>
+                <button className={`combat__info-button ${state.toggle === types.CAT_MAP ? "combat__info-active" : ""}`} onClick={() => dispatch({ type: types.CAT_MAP })}><img src={GLOBE} /><span>Areas</span></button>
+                <button className={`combat__info-button ${state.toggle === types.CAT_ADVENUTE ? "combat__info-active" : ""}`} ><img src={COMPASS} /> <span>Adventure</span></button>
             </div>
             <Popup open={displayDrops} closeOnDocumentClick onClose={closeModal} position="right center" modal>
                 <Drop dropData={dropData} />

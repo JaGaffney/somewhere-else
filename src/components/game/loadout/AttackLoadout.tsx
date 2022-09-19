@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import ReactTooltip from 'react-tooltip';
-
-import { setActionTime, resetActionTime } from "../../../actions/api"
-
-import AttackInfo from './AttackInfo';
-
-import { getBackgroundColor } from '../../../utils/color';
-import PassiveInfo from './PassiveInfo';
+import { setActionTime, resetActionTime } from "../../actions/api"
+import { getBackgroundColor } from '../../utils/color';
 
 export const AttackLoadout = (props) => {
     const [componentHover, setComponentHover] = useState<boolean>(false)
@@ -69,7 +63,7 @@ export const AttackLoadout = (props) => {
                                                 props.onSelectedSkillHandler(attackID)
                                             }
                                             if (e.detail === 2) {
-                                                props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).changeAttackLocation(parseInt(null), slot)
+                                                props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).changeAttackLocation(null, slot)
                                                 props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).removeAttackFromRotation(slot)
                                                 props.onSelectedSkillHandler(null)
                                             }

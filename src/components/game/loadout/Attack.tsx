@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setActionTime, resetActionTime } from "../../../actions/api"
+import { setActionTime, resetActionTime } from "../../actions/api"
 
-import { getBackgroundColor } from '../../../utils/color';
+import { getBackgroundColor } from '../../utils/color';
 
 export const Attack = (props) => {
     function onDragStart(e) {

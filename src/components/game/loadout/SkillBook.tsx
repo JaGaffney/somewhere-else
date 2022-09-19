@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getValidCombatSkills } from '../../../utils/equipment'
-import { validFilterQuery } from '../../../utils/generic'
+import { getValidCombatSkills } from '../../utils/equipment'
+import { validFilterQuery } from '../../utils/generic'
 
 import Attack from './Attack'
 
@@ -22,7 +22,6 @@ export const SkillBook = (props) => {
 
   return (
     <div className="attacks__container attacks__container-skillbook">
-      <h3>Skillbook</h3>
       {[...props.attackData.attacks.keys()].map((i, k) => {
         const attackData = props.attackData.getAttackById(i)
         const currentLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(attackData.type.toLowerCase()))

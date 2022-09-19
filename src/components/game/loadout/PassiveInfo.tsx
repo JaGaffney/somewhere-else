@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getBackgroundColor, getRarityColor } from '../../../utils/color'
+import { getBackgroundColor } from '../../utils/color'
 
 export const PassiveInfo = (props) => {
     return (

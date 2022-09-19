@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 
 import ReactTooltip from 'react-tooltip';
 
-import { getBackgroundColor } from '../../../utils/color';
-import { getValidCombatSkills } from '../../../utils/equipment';
-import { validFilterQuery } from '../../../utils/generic';
+import { getBackgroundColor } from '../../utils/color';
+import { getValidCombatSkills } from '../../utils/equipment';
+import { validFilterQuery } from '../../utils/generic';
 
 
 export const Passives = (props) => {
@@ -29,7 +29,6 @@ export const Passives = (props) => {
 
     return (
         <div className="attacks__container">
-            <h3>Passives</h3>
             {[...props.passiveData.passives.keys()].map((id: string, k) => {
                 if (id !== null) {
                     const passive = props.passiveData.getPassiveById(id)

@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 
 import ReactTooltip from 'react-tooltip';
 
-import { setPlayerUpdated } from '../../../actions/api'
+import { setPlayerUpdated } from '../../actions/api'
 
 export const LoadoutControls = (props) => {
-    const [activeLoadout, setActiveLoadout] = useState(props.playerData.loadout.activeLoadout)
+    const [activeLoadout, setActiveLoadout] = useState<number | string>(props.playerData.loadout.activeLoadout)
 
     useEffect(() => {
         setActiveLoadout(props.playerData.loadout.activeLoadout)
@@ -25,6 +25,7 @@ export const LoadoutControls = (props) => {
     }
 
     const onRenameHandler = () => {
+        // TODO: soon, maybe not sure if needed, maybe predetermined icons isntead?
     }
 
     const onDeleteHandler = () => {

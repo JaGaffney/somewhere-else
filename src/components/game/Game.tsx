@@ -5,8 +5,7 @@ import Home from "./home/Home"
 import Settlement from "./settlement/Settlement"
 import Research from "./research/Research"
 //import NonCombatSkill from "./skills/NonCombatSkill"
-import CombatSkill from "./skills/CombatSkill"
-import Status from "./status/Status"
+import Loadout from "./loadout/Loadout"
 import Playerbank from "./player/PlayerBank"
 import Combat from "./combat/Combat"
 import JobInfo from "./job/JobInfo"
@@ -55,7 +54,7 @@ export const Game = props => {
       case "scholar":
         return <NonCombatSkill skills={props.skills} activePage={props.activePage} />
       case "loadout":
-        return <CombatSkill />
+        return <Loadout />
       case "warrior":
       case "archer":
       case "magician":

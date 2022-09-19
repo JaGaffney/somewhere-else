@@ -5,8 +5,8 @@ import { useTour } from '@reactour/tour'
 import EXP from "../skills/generics/EXP"
 import PassivesUnlock from './PassivesUnlock'
 import SkillBookUnlock from './SkillBookUnlock'
-import PassiveInfo from '../skills/generics/PassiveInfo'
-import AttackInfo from '../skills/generics/AttackInfo'
+import PassiveInfo from '../loadout/PassiveInfo'
+import AttackInfo from '../loadout/AttackInfo'
 
 export const JobInfo = (props: { attackData }) => {
     const { setSteps, setCurrentStep } = useTour();

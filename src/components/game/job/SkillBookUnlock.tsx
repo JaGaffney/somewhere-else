@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Attack from '../skills/generics/Attack'
+import Attack from '../loadout/Attack'
 
 export const SkillBookUnlock = (props) => {
     return (

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { getBackgroundColor } from '../../../utils/color'
-import { currentPassiveStatCalculator, currentStatCalculator, statMerge } from '../../../utils/equipment'
+import { currentPassiveStatCalculator, currentStatCalculator, maxDamgeCalc, statMerge } from '../../../utils/equipment'
 
 export const Info = (props) => {
     // handles no loadouts being avaialable
@@ -42,7 +42,7 @@ export const Info = (props) => {
                 <span className="attacksloadout__stats-description" style={{ color: "var(--red700)" }}>
                     damage
                     <span>
-                        {props.selectedSkill && props.maxDamgeCalc(props.attackData.getAttackById(props.selectedSkill))}
+                        {props.selectedSkill && maxDamgeCalc(props.playerData, props.attackData.getAttackById(props.selectedSkill), props.itemData)}
                     </span>
                 </span>
                 <span className="attacksloadout__stats-description" style={{ color: "var(--blue700)" }}>

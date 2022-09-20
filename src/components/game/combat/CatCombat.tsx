@@ -43,7 +43,6 @@ interface IAttackCooldownData {
 
 export const CatCombat = (props) => {
     const tempBaseStaminaRegen = 25
-
     // engine
     const [timer, setTimer] = useState<number>(0)
     const [combatInProcess, setCombatInProcess] = useState<boolean>(false)

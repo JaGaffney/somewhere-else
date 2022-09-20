@@ -70,43 +70,57 @@ export const calculateDamage = (
   damageDisplay: boolean
 ) => {
   // https://gamerant.com/pokemon-damage-calculation-help-guide/
+  const damageData = {}
 
+  // 1. Gather all current effects from gear and attacks
   const effects = calculateEffect(attackData, playerStats)
+
   // handles case of no weapons being equipped
   let effectsAttack = 1
   if (effects.attack) {
     effectsAttack = effects.attack
   }
 
+  // 2. Works out if attack hits or not
   const accuracyRaiting = attackData.accuracy
   const randomness = randomInteger(1, 99)
   let hit = randomness < accuracyRaiting
   if (hit || attackData.accuracy === 0) {
-    const levelMultiplyer = (2 * jobLevel) / 5 + 2
-    let damageRange = attackData.power
-    if (!damageDisplay) {
-      damageRange = calaculateDamageRange(attackData.power)
-    }
-
-    const preModifiers =
-      (levelMultiplyer * damageRange * effectsAttack) / 50 + 2
-
-    // if just displaying damage no need to show crits
-    let crit = false
-    let critDamage = 1
-    if (!damageDisplay) {
-      crit = randomInteger(1, 100) < effects.crit
-      if (crit) {
-        critDamage = 2
+    if (attackData.power > 0) {
+      console.log("got here", attackData)
+      // 3. Works out the damage range of attack
+      const levelMultiplyer = (2 * jobLevel) / 5 + 2
+      let damageRange = attackData.power
+      if (!damageDisplay) {
+        // works out aveage damage for display purposes
+        damageRange = calaculateDamageRange(attackData.power)
       }
+
+      const preModifiers =
+        (levelMultiplyer * damageRange * effectsAttack) / 50 + 2
+
+      // if just displaying damage no need to show crits
+      let crit = false
+      let critDamage = 1
+      if (!damageDisplay) {
+        crit = randomInteger(1, 100) < effects.crit
+        if (crit) {
+          critDamage = 2
+        }
+      }
+
+      // TODO: work this out
+      // is this correct maths, prob not
+      const defence = (preModifiers * critDamage) / enemyStats.defence / 100
+      const damageDone = preModifiers * critDamage - defence
+      let defaultDamageDone = 0
+      if (damageDone) {
+        defaultDamageDone = damageDone
+      }
+      damageData["attack"] = defaultDamageDone
+      damageData["crit"] = critDamage
     }
-
-    // TODO: work this out
-    // is this correct maths, prob not
-    const defence = (preModifiers * critDamage) / enemyStats.defence / 100
-    const damageDone = preModifiers * critDamage - defence
-
-    const damageData = {}
+    delete effects["attack"]
     for (const effect in effects) {
       if (effects[effect]) {
         damageData[effect] = effects[effect]
@@ -114,16 +128,8 @@ export const calculateDamage = (
         damageData[effect] = 0
       }
     }
-    let defaultDamageDone = 1
-    if (damageDone) {
-      defaultDamageDone = damageDone
-    }
-    damageData["attack"] = defaultDamageDone
-    damageData["crit"] = critDamage
-
-    return damageData
   }
-  return { attack: 0 }
+  return damageData
 }
 
 // calcualtes the enemys damage based on all parameters: gear, level, attack data, players defence
@@ -213,4 +219,46 @@ export const getValidCombatSkills = (skills, playerData): String[] => {
     }
   }
   return unlockedSkills
+}
+
+/**
+ *
+ * @param playerData
+ * @param attackData
+ * @param itemData
+ * @returns number
+ */
+export const maxDamgeCalc = (playerData, attackData, itemData): number => {
+  const jobLevel = playerData.levelChecker.getLevelFromExp(
+    playerData.skillExp.getCurrentExp(attackData.type)
+  )
+  let jobLevelMultiplyer = 1
+  if (jobLevel) {
+    jobLevelMultiplyer = jobLevel
+  }
+
+  const playerStats = currentStatCalculator(itemData, playerData.inventory)
+  const placeholderEnemeyStats = { defence: 1 }
+  playerStats.crit = 0
+
+  // need to copy otherwise data is set somewhere else for some reason
+  const copiedAttackData = Object.assign({}, attackData)
+  copiedAttackData.minDamage = attackData.maxDamage
+
+  const damageData = calculateDamage(
+    playerStats,
+    placeholderEnemeyStats,
+    copiedAttackData,
+    jobLevelMultiplyer,
+    true
+  )
+  if (!damageData.attack) {
+    damageData["attack"] = 1
+  }
+
+  if (attackData.accuracy === 0) {
+    damageData["attack"] = 0
+  }
+
+  return Math.floor(damageData.attack)
 }

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
 import { getBackgroundColor } from '../../../utils/color';
-import { currentPassiveStatCalculator, currentStatCalculator, statMerge } from '../../../utils/equipment';
+import { currentPassiveStatCalculator, currentStatCalculator, maxDamgeCalc, statMerge } from '../../../utils/equipment';
 
 
 export const Hotbar = (props) => {
@@ -53,15 +53,19 @@ export const Hotbar = (props) => {
                         onClick={() => props.onAttackHandler(attackID)}
                         onMouseEnter={() => props.onSelectedSkillHandler(attackID)}
                     >
-                        <button className="attacks__button attacks__button-general" style={{ borderColor: getBackgroundColor(attackData ? attackData.type : "default"), transform: `${props.attackSelectedID === attackID && props.attackSelectedID !== null ? "scale(1.1)" : "scale(1)"}` }}
-
+                        <button
+                            className="attacks__button attacks__button-general"
+                            style={{
+                                borderColor: getBackgroundColor(attackData ? attackData.type : "default"),
+                                transform: `${props.attackSelectedID === attackID && props.attackSelectedID !== null ? "scale(1.1)" : "scale(1)"}`
+                            }}
                         >
                             <img className="attacks__button-icon" src={attackData && attackData.icon} />
                             {attackData &&
                                 <div className="attacks__button-stats">
                                     <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>
                                     <span className="attacks__button-stats-topRight">{attackData.stamina + playerStats.encumbrance >= 0 ? attackData.stamina + playerStats.encumbrance : 0}</span>
-                                    <span className="attacks__button-stats-bottomRight">{props.maxDamgeCalc(attackData)}</span>
+                                    <span className="attacks__button-stats-bottomRight">{maxDamgeCalc(props.playerData, attackData, props.itemData)}</span>
                                     {cooldownRemaining !== 0 && (<span className="attacks__button-stats-overlay">{cooldownRemaining}</span>)}
                                 </div>
                             }

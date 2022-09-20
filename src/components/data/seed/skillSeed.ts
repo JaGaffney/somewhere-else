@@ -9,7 +9,8 @@ export const forestry = [
     time: 10.0,
     manpower: 1,
     icon: skillIcon.bamboo,
-    itemsRecieved: [{ id: 1, qty: 1 }],
+    //itemsRecieved: [{ id: 1, qty: 1 }],
+    itemsRecieved: [{ id: 24, qty: 1 }],
   },
   {
     name: "beech tree",

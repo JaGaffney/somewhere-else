@@ -20,28 +20,6 @@ export const Section = (props) => {
         setSelecetedSkill(id)
     }
 
-    const maxDamgeCalc = (attackData): number => {
-        const jobLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(attackData.type))
-        let jobLevelMultiplyer = 1
-        if (jobLevel) {
-            jobLevelMultiplyer = jobLevel
-        }
-
-        const playerStats = currentStatCalculator(props.itemData, props.playerData.inventory)
-        const placeholderEnemeyStats = { defence: 1 }
-        playerStats.crit = 0
-
-        // need to copy otherwise data is set somewhere else for some reason
-        const copiedAttackData = Object.assign({}, attackData)
-        copiedAttackData.minDamage = attackData.maxDamage
-
-        const damageData = calculateDamage(playerStats, placeholderEnemeyStats, copiedAttackData, jobLevelMultiplyer, true)
-        if (!damageData.attack) {
-            damageData["attack"] = 1
-        }
-        return Math.floor(damageData.attack)
-    }
-
     return (
         <div className={`catcombat__section ${props.type === props.currentTurn() ? "catcombat__section-active" : ""}`}>
             <div className="catcombat__status">
@@ -69,7 +47,6 @@ export const Section = (props) => {
                         onSelectedSkillHandler={onSelectedSkillHandler}
                         onAttackHandler={props.onAttackHandler}
                         cooldowns={props.cooldowns}
-                        maxDamgeCalc={maxDamgeCalc}
                         attackSelectedID={props.attackSelectedID}
                     />
                 </div>
@@ -83,7 +60,7 @@ export const Section = (props) => {
             )}
 
             <div className="catcombat__description">
-                <Info selectedSkill={selectedSkill} maxDamgeCalc={maxDamgeCalc} />
+                <Info selectedSkill={selectedSkill} />
                 <Rotation
                     type={props.type}
                     data={props.data}

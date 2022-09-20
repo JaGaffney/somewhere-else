@@ -71,8 +71,9 @@ export const handleExpGained = (
     } else {
       playerData.setSkillExp(attackData.type.toLowerCase(), expGained)
     }
-
-    playerData.setSkillExp("health", Math.floor(damage))
+    if (damage) {
+      playerData.setSkillExp("health", Math.floor(damage))
+    }
   }
 }
 

@@ -58,7 +58,7 @@ export const OfflineProgress = (props) => {
                     return (
                         <div key={k}>
                             <span><img src={icon && icon} />{i}</span>
-                            <span className="offlineProgression-gp-value">{props.playerData.offline.exp[i]}</span>
+                            <span className="offlineProgression-gp-value">{intToString(props.playerData.offline.exp[i])}</span>
                         </div>
                     )
                 })}

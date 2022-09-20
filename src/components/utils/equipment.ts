@@ -56,6 +56,11 @@ export const currentStatCalculator = (itemData, inventory) => {
   return totalEquippedStats
 }
 
+const calaculateDamageRange = (damage: number): number => {
+  let percentage = damage * 0.1
+  return randomInteger(damage - percentage, damage + percentage)
+}
+
 // calcualtes the players damage based on all parameters: gear, level, attack data, enemy defence
 export const calculateDamage = (
   playerStats: IEquipmentStats,
@@ -64,51 +69,61 @@ export const calculateDamage = (
   jobLevel: number,
   damageDisplay: boolean
 ) => {
-  const damageData = {}
   // https://gamerant.com/pokemon-damage-calculation-help-guide/
-  const levelMultiplyer = (2 * jobLevel) / 5 + 2
-
-  let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage) // TODO: error, not longer using random values, only static values
 
   const effects = calculateEffect(attackData, playerStats)
-
   // handles case of no weapons being equipped
   let effectsAttack = 1
   if (effects.attack) {
     effectsAttack = effects.attack
   }
-  const preModifiers = (levelMultiplyer * damageRange * effectsAttack) / 50 + 2
 
-  // if just displaying damage no need to show crits
-  let crit = false
-  let critDamage = 1
-  if (!damageDisplay) {
-    crit = randomInteger(1, 100) < effects.crit
-    if (crit) {
-      critDamage = 2
+  const accuracyRaiting = attackData.accuracy
+  const randomness = randomInteger(1, 99)
+  let hit = randomness < accuracyRaiting
+  if (hit || attackData.accuracy === 0) {
+    const levelMultiplyer = (2 * jobLevel) / 5 + 2
+    let damageRange = attackData.power
+    if (!damageDisplay) {
+      damageRange = calaculateDamageRange(attackData.power)
     }
-  }
 
-  // TODO: work this out
-  // is this correct maths, prob not
-  const defence = (preModifiers * critDamage) / enemyStats.defence / 100
-  const damageDone = preModifiers * critDamage - defence
+    const preModifiers =
+      (levelMultiplyer * damageRange * effectsAttack) / 50 + 2
 
-  for (const effect in effects) {
-    if (effects[effect]) {
-      damageData[effect] = effects[effect]
-    } else {
-      damageData[effect] = 0
+    // if just displaying damage no need to show crits
+    let crit = false
+    let critDamage = 1
+    if (!damageDisplay) {
+      crit = randomInteger(1, 100) < effects.crit
+      if (crit) {
+        critDamage = 2
+      }
     }
-  }
-  let defaultDamageDone = 1
-  if (damageDone) {
-    defaultDamageDone = damageDone
-  }
-  damageData["attack"] = defaultDamageDone
-  damageData["crit"] = critDamage
 
-  return damageData
+    // TODO: work this out
+    // is this correct maths, prob not
+    const defence = (preModifiers * critDamage) / enemyStats.defence / 100
+    const damageDone = preModifiers * critDamage - defence
+
+    const damageData = {}
+    for (const effect in effects) {
+      if (effects[effect]) {
+        damageData[effect] = effects[effect]
+      } else {
+        damageData[effect] = 0
+      }
+    }
+    let defaultDamageDone = 1
+    if (damageDone) {
+      defaultDamageDone = damageDone
+    }
+    damageData["attack"] = defaultDamageDone
+    damageData["crit"] = critDamage
+
+    return damageData
+  }
+  return { attack: 0 }
 }
 
 // calcualtes the enemys damage based on all parameters: gear, level, attack data, players defence
@@ -135,7 +150,7 @@ export const calculateEnemyDamage = (
   // https://gamerant.com/pokemon-damage-calculation-help-guide/
   const levelMultiplyer = (2 * enemyStats.level) / 5 + 2
 
-  let damageRange = randomInteger(attackData.minDamage, attackData.maxDamage)
+  let damageRange = calaculateDamageRange(attackData.power)
 
   const preModifiers =
     (levelMultiplyer * damageRange * enemyStats.attack) / 50 + 2

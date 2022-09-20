@@ -1,8 +1,8 @@
 export class Attack {
   name: string
   type: string
-  minDamage: number
-  maxDamage: number
+  power: number
+  accuracy: number
   cooldown: number
   stamina: number
   effect: Object
@@ -13,8 +13,8 @@ export class Attack {
   constructor(
     name: string,
     type: string,
-    minDamage: number,
-    maxDamage: number,
+    power: number,
+    accuracy: number,
     cooldown: number,
     stamina: number,
     effect: Object,
@@ -24,8 +24,8 @@ export class Attack {
   ) {
     this.name = name
     this.type = type
-    this.minDamage = minDamage
-    this.maxDamage = maxDamage
+    this.power = power
+    this.accuracy = accuracy
     this.cooldown = cooldown
     this.stamina = stamina
     this.effect = effect

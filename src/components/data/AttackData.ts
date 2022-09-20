@@ -18,8 +18,8 @@ export class AttackData {
         new Attack(
           attackSeed[key].name,
           attackSeed[key].type,
-          attackSeed[key].minDamage,
-          attackSeed[key].maxDamage,
+          attackSeed[key].power,
+          attackSeed[key].accuracy,
           attackSeed[key].cooldown,
           attackSeed[key].stamina,
           attackSeed[key].effect,

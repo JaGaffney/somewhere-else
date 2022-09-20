@@ -9,7 +9,7 @@ export const enemySeed = [
     level: 1,
     health: 10,
     defence: 3,
-    attack: 10,
+    attack: 2,
     stamina: 0,
     style: ClassesEnum.WARRIOR,
     speed: 10,

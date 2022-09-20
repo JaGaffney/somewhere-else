@@ -30,13 +30,13 @@ export const Info = (props) => {
                 <span className="attacksloadout__stats-description">
                     attack power
                     <span>
-                        {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).maxDamage}
+                        {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).power}
                     </span>
                 </span>
                 <span className="attacksloadout__stats-description">
-                    min damage
+                    accuracy
                     <span>
-                        {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).minDamage}
+                        {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).accuracy}
                     </span>
                 </span>
                 <span className="attacksloadout__stats-description" style={{ color: "var(--red700)" }}>

@@ -18,10 +18,16 @@ export const AttackInfo = (props) => {
                                 level {props.attackData.getAttackById(props.selectedSkill).levelRequired}
                             </span>
                         </span>
-                        <span className="attacksloadout__stats-description" style={{ color: "var(--red700)" }}>
+                        <span className="attacksloadout__stats-description" style={{ color: "var(--red500)" }}>
                             attack power
                             <span>
-                                {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).maxDamage}
+                                {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).power}
+                            </span>
+                        </span>
+                        <span className="attacksloadout__stats-description">
+                            accuracy
+                            <span>
+                                {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).accuracy}
                             </span>
                         </span>
                         <span className="attacksloadout__stats-description" style={{ color: "var(--blue700)" }}>

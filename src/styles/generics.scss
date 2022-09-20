@@ -166,6 +166,7 @@
   margin: 0.3rem;
   border: none;
   border-radius: 7px;
+  border: var(--border);
   &:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow900);

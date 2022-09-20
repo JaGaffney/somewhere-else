@@ -11,14 +11,24 @@ import SHIELDBLOCK from "../../../../images/combat/attacks/shieldBlock.svg"
 import ARROWLIGHTING from "../../../../images/combat/attacks/arrowLightning.svg"
 import ARROWLEECH from "../../../../images/combat/attacks/arrowLeech.svg"
 
+// magician
+import ARCANEBLAST from "../../../../images/combat/attacks/arcaneBlast.svg"
+import ARCANEMISSLE from "../../../../images/combat/attacks/arcaneMissle.svg"
+import ARCANEPOWER from "../../../../images/combat/attacks/arcanePower.svg"
+
 // basic
-export const icon_basic = BASIC
+export const basic = BASIC
 
 // warrior
-export const icon_shieldBash = SHIELDBASH
-export const icon_rend = REND
-export const icon_shieldBlock = SHIELDBLOCK
+export const shieldBash = SHIELDBASH
+export const rend = REND
+export const shieldBlock = SHIELDBLOCK
 
 // archer
-export const icon_arrowLightning = ARROWLIGHTING
-export const icon_arrowLeech = ARROWLEECH
+export const arrowLightning = ARROWLIGHTING
+export const arrowLeech = ARROWLEECH
+
+// magician
+export const arcaneBlast = ARCANEBLAST
+export const arcaneMissle = ARCANEMISSLE
+export const arcanePower = ARCANEPOWER

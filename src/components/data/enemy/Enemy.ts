@@ -3,12 +3,8 @@ import { Drops } from "./Drops"
 export class Enemy {
   name: string
   level: number
-  health: number
-  defence: number
-  attack: number
-  stamina: number
+  stats: Object
   style: string
-  speed: number
   drops: Drops
   attacks: Array<number>
   rotation: Array<number>
@@ -18,12 +14,8 @@ export class Enemy {
   constructor(
     name: string,
     level: number,
-    health: number,
-    defence: number,
-    attack: number,
-    stamina: number,
+    stats: Object,
     style: string,
-    speed: number,
     drops: Drops,
     attacks: Array<number>,
     rotation: Array<number>,
@@ -32,12 +24,8 @@ export class Enemy {
   ) {
     this.name = name
     this.level = level
-    this.health = health
-    this.defence = defence
-    this.attack = attack
-    this.stamina = stamina
+    this.stats = stats
     this.style = style
-    this.speed = speed
     this.drops = drops
     this.attacks = attacks
     this.rotation = rotation

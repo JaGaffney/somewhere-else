@@ -6,49 +6,28 @@ import { CombatData } from "../../data/CombatData"
 import { setCombatData } from "../../actions/api"
 import { getBackgroundColor } from '../../utils/color'
 
-// @ts-expect-error
-import LEVEL from "../../../images/combat/level.svg"
-import ATTACK from "../../../images/combat/strength.svg"
-import DEFENCE from "../../../images/stats/defence.svg"
-import HEALTH from "../../../images/stats/health.svg"
-import STAMINA from "../../../images/stats/stamina.svg"
-import SPEED from "../../../images/stats/speed.svg"
 
+import * as icon from "../../data/seed/icons/statSeedIcon"
 import { mapSeed } from "../../data/seed/mapSeed"
 
 export const CatMap = (props) => {
     const [areaInfo, setAreaInfo] = useState(null)
-
-    const mapData = [
-        {
-            id: 2,
-            name: "Southbay",
-            description: "The port town has been destoryed, yet life somehow finds a way, at least until you got there.",
-            requirements: "none",
-            effect: "none",
-            enemys: [3, 4, 5],
-            recommended: 10,
-            x: 5,
-            y: 10,
-            icon: "",
-        }
-    ]
 
     const onFightHandler = (id, data) => {
         if (props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout)) {
             const enemy = new CombatData(id)
             const values = {
                 health: {
-                    base: data.health,
-                    current: data.health
+                    base: data.stats.health,
+                    current: data.stats.health
                 },
                 stamina: {
-                    base: data.stamina,
-                    current: data.stamina
+                    base: data.stats.stamina,
+                    current: data.stats.stamina
                 },
                 armour: {
-                    base: data.defence,
-                    current: data.defence
+                    base: data.stats.defence,
+                    current: data.stats.defence
                 },
                 divination: {
                     base: 1,
@@ -89,7 +68,7 @@ export const CatMap = (props) => {
 
                                 <h3>{i.name}</h3>
                                 <div className="map__enemy-statValue map__areas-areaLevel">
-                                    <img src={LEVEL} alt="level" />
+                                    <img src={icon.level} alt="level" />
                                     <span>{i.recommended}</span>
                                 </div>
 
@@ -109,6 +88,7 @@ export const CatMap = (props) => {
 
                         {areaInfo.enemys.map((i, k) => {
                             const data = props.enemies.enemies.get(i)
+                            console.log(data)
                             return (
                                 <div className="map__enemy" key={k}>
 
@@ -128,29 +108,16 @@ export const CatMap = (props) => {
 
                                     <div className="map__enemy-stats">
                                         <div className="map__enemy-statValue">
-                                            <img src={LEVEL} alt="level" />
+                                            <img src={icon.level} alt="level" />
                                             <span>{data.level}</span>
                                         </div>
-                                        <div className="map__enemy-statValue">
-                                            <img src={ATTACK} alt="attack" />
-                                            <span>{data.attack}</span>
-                                        </div>
-                                        <div className="map__enemy-statValue">
-                                            <img src={DEFENCE} alt="defence" />
-                                            <span>{data.defence}</span>
-                                        </div>
-                                        <div className="map__enemy-statValue">
-                                            <img src={HEALTH} alt="health" />
-                                            <span>{data.health}</span>
-                                        </div>
-                                        <div className="map__enemy-statValue">
-                                            <img src={STAMINA} alt="stamina" />
-                                            <span>{data.stamina}</span>
-                                        </div>
-                                        <div className="map__enemy-statValue">
-                                            <img src={SPEED} alt="speed" />
-                                            <span>{data.speed}</span>
-                                        </div>
+                                        {Object.keys(data.stats).map((ii, kk) => {
+                                            return (
+                                                <div className="map__enemy-statValue" key={kk}>
+                                                    <img src={icon[ii]} alt={ii} />
+                                                    <span>{data.stats[ii]}</span>
+                                                </div>)
+                                        })}
                                     </div>
                                 </div>
                             )

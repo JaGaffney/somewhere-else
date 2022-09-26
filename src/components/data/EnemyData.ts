@@ -26,12 +26,8 @@ export class EnemyData {
         new Enemy(
           enemySeed[key].name,
           enemySeed[key].level,
-          enemySeed[key].health,
-          enemySeed[key].defence,
-          enemySeed[key].attack,
-          enemySeed[key].stamina,
+          enemySeed[key].stats,
           enemySeed[key].style,
-          enemySeed[key].speed,
           drops,
           enemySeed[key].attacks,
           enemySeed[key].rotation,

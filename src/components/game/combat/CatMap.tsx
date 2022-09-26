@@ -9,10 +9,10 @@ import { getBackgroundColor } from '../../utils/color'
 // @ts-expect-error
 import LEVEL from "../../../images/combat/level.svg"
 import ATTACK from "../../../images/combat/strength.svg"
-import DEFENCE from "../../../images/sidepanel/defence.svg"
-import HEALTH from "../../../images/sidepanel/health.svg"
-import STAMINA from "../../../images/sidepanel/stamina.svg"
-import SPEED from "../../../images/combat/speed.svg"
+import DEFENCE from "../../../images/stats/defence.svg"
+import HEALTH from "../../../images/stats/health.svg"
+import STAMINA from "../../../images/stats/stamina.svg"
+import SPEED from "../../../images/stats/speed.svg"
 
 import { mapSeed } from "../../data/seed/mapSeed"
 

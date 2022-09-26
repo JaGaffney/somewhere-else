@@ -3,7 +3,7 @@ export enum EffectEnum {
   ATTACK = "Base damage per attack",
   DEFENCE = "Reduces damage taken",
   ARMOUR = "Increase shield", // adds X armour value
-  WEIGHT = "Reduces stamina regeneration",
+  WEIGHT = "Reduces stamina regen",
   SPEED = "Determines who attacks first",
   CRIT = "Increased your chance to deal double damage",
   ELEMENTAL = "Deals increased damage to armour", // deals double damage to armour

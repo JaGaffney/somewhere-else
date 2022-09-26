@@ -250,7 +250,7 @@ export const CatCombat = (props) => {
 
     const statusEffectResovlePlayer = (data: any, status: string): Object => {
         switch (status) {
-            case ("regeneration"):
+            case ("regen"):
                 const healthGain = props.playerData.status.health.getCurrent() + data
                 props.playerData.status.health.setCurrent(healthGain)
                 if (props.playerData.status.health.getCurrent() > getPlayerBaseHealth(props.playerData)) {
@@ -320,7 +320,7 @@ export const CatCombat = (props) => {
 
         const damageData = attackDamageCalculator(attackData)
         console.log({ damageData })
-        const damageOrder = ["regeneration", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
+        const damageOrder = ["regen", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
 
         const tempOverlay = {
             playerHealth: null,
@@ -344,7 +344,7 @@ export const CatCombat = (props) => {
 
             setDamageOverlay(tempOverlay)
 
-            const attackStaminaCost = attackData.stamina + playerStats.encumbrance
+            const attackStaminaCost = attackData.stamina + playerStats.weight
             staminaHandler(props.playerData.status.stamina, attackStaminaCost, activePlayer, tempBaseStaminaRegen)
             setStaminaOverlay({ player: - attackStaminaCost, enemy: null })
 

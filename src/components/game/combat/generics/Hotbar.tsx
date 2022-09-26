@@ -64,7 +64,7 @@ export const Hotbar = (props) => {
                             {attackData &&
                                 <div className="attacks__button-stats">
                                     <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>
-                                    <span className="attacks__button-stats-topRight">{attackData.stamina + playerStats.encumbrance >= 0 ? attackData.stamina + playerStats.encumbrance : 0}</span>
+                                    <span className="attacks__button-stats-topRight">{attackData.stamina + playerStats.weight >= 0 ? attackData.stamina + playerStats.weight : 0}</span>
                                     <span className="attacks__button-stats-bottomRight">{maxDamgeCalc(props.playerData, attackData, props.itemData)}</span>
                                     {cooldownRemaining !== 0 && (<span className="attacks__button-stats-overlay">{cooldownRemaining}</span>)}
                                 </div>

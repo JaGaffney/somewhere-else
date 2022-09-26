@@ -54,7 +54,7 @@ export const Info = (props) => {
                 <span className="attacksloadout__stats-description" style={{ color: "var(--green600)" }}>
                     stamina
                     <span>
-                        {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).stamina + playerStats.encumbrance >= 0 ? props.attackData.getAttackById(props.selectedSkill).stamina + playerStats.encumbrance : 0}
+                        {props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).stamina + playerStats.weight >= 0 ? props.attackData.getAttackById(props.selectedSkill).stamina + playerStats.weight : 0}
                     </span>
                 </span>
                 <span className="attacksloadout__stats-description">

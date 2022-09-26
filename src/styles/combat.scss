@@ -529,16 +529,25 @@
     font-style: italic;
   }
   &-description {
-    margin: 0.1rem 0;
+    margin: 0.2rem 0;
     width: 100%;
     text-transform: capitalize;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
     span {
       font-weight: 800;
       color: var(--gray500);
       font-size: 1rem;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    img {
+      height: 1.5rem;
+      width: 1.5rem;
+      margin-right: 0.5rem;
     }
   }
 }

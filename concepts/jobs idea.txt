@@ -21,7 +21,7 @@ minion has its own hp and defence etc
 
 CLERIC
 healing, 
-passive regeneration, 
+passive regen, 
 armour
 low damage
 (tie into divination)

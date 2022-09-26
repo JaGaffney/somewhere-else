@@ -96,9 +96,9 @@ const attackPossibleStamina = (
   let currentStamina: number = 0
   if (activePlayer === "player") {
     let staminaFromStats = 0
-    if (currentStatCalculator(itemData, playerData.inventory)["encumbrance"]) {
+    if (currentStatCalculator(itemData, playerData.inventory)["weight"]) {
       staminaFromStats = currentStatCalculator(itemData, playerData.inventory)[
-        "encumbrance"
+        "weight"
       ]
     }
     currentStamina = playerData.status.stamina.getCurrent() - staminaFromStats

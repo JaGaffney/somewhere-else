@@ -2,16 +2,16 @@
 export interface IEquipmentStats {
   attack?: number
   defence?: number
+  dodge?: number
   armour?: number
-  regeneration?: number
+  regen?: number
   accuracy?: number
-  encumbrance?: number
+  weight?: number
   speed?: number
   crit?: number
   elemental?: number
   drain?: number
   stun?: number
-
   bleed?: number
   enfeeable?: number
 }
@@ -19,10 +19,11 @@ export interface IEquipmentStats {
 export const IEquipmentStatsKeys: IEquipmentStats = {
   attack: 0,
   defence: 0,
+  dodge: 0,
   armour: 0,
-  regeneration: 0,
+  regen: 0,
   accuracy: 0,
-  encumbrance: 0,
+  weight: 0,
   speed: 0,
   crit: 0,
   elemental: 0,

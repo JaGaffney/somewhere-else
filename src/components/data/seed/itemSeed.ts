@@ -275,7 +275,7 @@ export const itemSeed = [
     rarity: "COMMON",
     requirementLevel: 1,
     slot: Slot.CHEST,
-    equipmentStats: { defence: 5, encumbrance: 10 },
+    equipmentStats: { defence: 5, weight: 10 },
     effect: "",
   },
   {
@@ -288,7 +288,7 @@ export const itemSeed = [
     rarity: "COMMON",
     requirementLevel: 1,
     slot: Slot.MAIN_HAND,
-    equipmentStats: { attack: 1, encumbrance: 1, speed: 200, bleed: 1 },
+    equipmentStats: { attack: 1, weight: 1, speed: 200, bleed: 1 },
     effect: "",
   },
   {
@@ -301,7 +301,7 @@ export const itemSeed = [
     rarity: "COMMON",
     requirementLevel: 10,
     slot: Slot.MAIN_HAND,
-    equipmentStats: { attack: 2, encumbrance: 1, speed: 200, bleed: 2 },
+    equipmentStats: { attack: 2, weight: 1, speed: 200, bleed: 2 },
     effect: "",
   },
   {
@@ -316,7 +316,7 @@ export const itemSeed = [
     slot: Slot.MAIN_HAND,
     equipmentStats: {
       attack: 3,
-      encumbrance: 1,
+      weight: 1,
       speed: 200,
       bleed: 3,
       crit: 5,
@@ -333,7 +333,7 @@ export const itemSeed = [
     rarity: "COMMON",
     requirementLevel: 30,
     slot: Slot.MAIN_HAND,
-    equipmentStats: { attack: 4, defence: 1, encumbrance: 1 },
+    equipmentStats: { attack: 4, defence: 1, weight: 1 },
     effect: "",
   },
 ]

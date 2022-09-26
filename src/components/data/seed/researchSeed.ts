@@ -86,7 +86,7 @@ export const researchSingular = [
     },
     icon: icon_class.icon_archer,
     description:
-      "Unlocks the Archer class, which has a focus for critical strikes and stamina regeneration.",
+      "Unlocks the Archer class, which has a focus for critical strikes and stamina regen.",
     type: ResearchType.Combat,
   },
   {

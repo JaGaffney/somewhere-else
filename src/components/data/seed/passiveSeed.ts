@@ -41,7 +41,7 @@ export const passiveSeed = [
     icon: icon.icon_warrior,
     description: "your phiscal prowess allows you to have reduced stamina cost",
     rarity: Rarity.COMMON,
-    effect: { encumbrance: -30 },
+    effect: { weight: -30 },
     levelRequired: 75,
   },
   {
@@ -72,7 +72,7 @@ export const passiveSeed = [
     icon: icon.icon_archer,
     description: "",
     rarity: Rarity.COMMON,
-    effect: { speed: 50, encumbrance: -10 },
+    effect: { speed: 50, weight: -10 },
     levelRequired: 25,
   },
   {
@@ -83,7 +83,7 @@ export const passiveSeed = [
     description:
       "your skills of being outdoors allows you to heal from wounds faster",
     rarity: Rarity.COMMON,
-    effect: { regeneration: 5 },
+    effect: { regen: 5 },
     levelRequired: 50,
   },
   {

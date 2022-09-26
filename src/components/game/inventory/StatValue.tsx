@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import * as icon from "../../data/seed/icons/statSeedIcon"
+
 export const StatValue = (props) => {
     return (
         <div className="attacksloadout__stats-description">
-            <span className="equipment__container-stats-single-current">{props.statType}:</span>
+            <span className="equipment__container-stats-single-current"><img src={icon[props.statType]} />{props.statType}:</span>
             <div>
                 <span>{props.currentValue ? props.currentValue : 0} </span>
                 {props.getStatDifference(props.statType) !== null && props.getStatDifference(props.statType) !== 0 ? (

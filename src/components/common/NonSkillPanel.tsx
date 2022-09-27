@@ -47,7 +47,7 @@ export const NonSkillPanel = (props) => {
 
             <button className="skillpanel" onClick={() => props.setActivePage("research")}>
                 <img className="skillpanel__icon" src={RESEARCH} />
-                <span className={`skillpanel__name ${props.activePage === "research" ? "skillpanel__name-active" : null}`}>Research</span>
+                <span className={`skillpanel__name ${props.activePage === "research" ? "skillpanel__name-active" : null}`}>Upgrades</span>
             </button>
 
             <button className="skillpanel" onClick={() => props.setActivePage("combat")}>

@@ -19,7 +19,6 @@ export const ResearchSingle = (props) => {
 
     return (
         <div className="settlement__assignments research__assignments">
-            <h2>One time buy</h2>
             <div className="research__panel-single">
                 <div className="research__panel-single-cost">
                     <ResearchCost activeResearch={activeResearch} onBuyHandler={props.onBuyHandler} validatePurchase={props.validatePurchase} setActiveResearch={setActiveResearch} />

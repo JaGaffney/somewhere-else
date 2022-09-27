@@ -408,9 +408,10 @@
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   &-button {
-    width: 33%;
+    width: 30%;
     border: none;
     margin: 0;
     padding: 1rem;
@@ -428,6 +429,7 @@
     &:hover {
       opacity: 1;
       transform: scale(1.01);
+      transform: translateY(3px);
     }
     &:focus {
       opacity: 1;

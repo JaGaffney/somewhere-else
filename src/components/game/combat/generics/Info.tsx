@@ -14,7 +14,6 @@ export const Info = (props) => {
         return stats
     }
 
-
     const currentStats = currentStatCalculator(props.itemData, props.playerData.inventory)
     const passiveStats = activeLoadout()
     const playerStats = statMerge(currentStats, passiveStats)

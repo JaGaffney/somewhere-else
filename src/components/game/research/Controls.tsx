@@ -14,6 +14,8 @@ import {
     researchYellow,
     researchPurple,
 } from "../../data/seed/icons/itemSeedIcons"
+import ESSENCE from "../../../images/items/essence.svg"
+
 
 export const Controls = (props) => {
     const [researchVials, setResearchVials] = useState<Object>(props.playerData.playerBank.getResearch())
@@ -33,7 +35,7 @@ export const Controls = (props) => {
     const controlButtons = ["GLOBAL", "COMBAT", "JOB", "SKILL"]
 
     return (
-        <div className="topPanel topPanel__controls">
+        <div className="topPanel topPanel__controls topPanel__marginBottom">
             <div className="topPanel__controls-left">
                 {researchVials && Object.keys(researchVials).map((i, k) => {
                     return (
@@ -43,6 +45,16 @@ export const Controls = (props) => {
                         </div>
                     )
                 })}
+                <div className="topPanel__controls-left-icons">
+                    <span></span>
+                </div>
+                <div className="topPanel__controls-left-icons" data-tip={"Essence"}>
+                    <img src={ESSENCE} />
+                    <span>{props.playerData.playerBank.getEssence()}</span>
+                </div>
+
+
+
             </div>
 
             <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />

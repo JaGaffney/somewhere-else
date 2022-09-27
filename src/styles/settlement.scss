@@ -133,7 +133,10 @@
 .research__assignments {
   width: auto;
   padding: 1rem;
-  margin: 0.5rem 0;
+  border: none;
+  border-bottom: var(--border);
+  border-left: var(--border);
+  border-right: var(--border);
 }
 
 .research__panel {
@@ -141,11 +144,14 @@
   box-shadow: var(--shadow900);
   margin: 0;
   padding: 1rem;
-  border-radius: 10px;
+  border-radius: 4px;
   gap: 1rem;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  border-bottom: var(--border);
+  border-left: var(--border);
+  border-right: var(--border);
   &-title {
     // text-transform: capitalize;
     min-width: 7rem;
@@ -161,7 +167,7 @@
       min-width: 10rem;
       width: 15rem;
       padding: 0.5rem;
-      border-radius: 5px;
+      border-radius: 4px;
       background-color: var(--gray800);
       display: flex;
       flex-wrap: wrap;
@@ -254,7 +260,7 @@
     width: 20%;
     min-width: 15%;
     background-color: var(--gray900);
-    border-radius: 10px;
+    border-radius: 4px;
   }
 
   &-item {

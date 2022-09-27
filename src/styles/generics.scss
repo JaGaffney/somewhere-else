@@ -10,6 +10,10 @@
   border: var(--border);
 }
 
+.topPanel__marginBottom {
+  margin-bottom: 1.5rem;
+}
+
 .topPanel__controls {
   display: flex;
   justify-content: space-between;

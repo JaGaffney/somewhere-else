@@ -542,7 +542,7 @@
 
   &-stats {
     background-color: var(--gray800);
-    max-width: 10rem;
+    max-width: 13rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -556,13 +556,13 @@
       background-color: var(--gray900);
       border-radius: 4px;
       // text-transform: capitalize;
-      display: flex;
       &-difference {
+        margin-left: 0.3rem;
         &-positive {
           color: var(--teal600) !important;
         }
         &-negative {
-          color: var(--red700) !important;
+          color: var(--red500) !important;
         }
       }
     }

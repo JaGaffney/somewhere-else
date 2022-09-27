@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import ReactTooltip from 'react-tooltip';
 
 import { CombatData } from "../../data/CombatData"
 
@@ -107,18 +108,22 @@ export const CatMap = (props) => {
                                     </div>
 
                                     <div className="map__enemy-stats">
-                                        <div className="map__enemy-statValue">
+                                        <div className="map__enemy-statValue" data-tip={"Level"}>
                                             <img src={icon.level} alt="level" />
                                             <span>{data.level}</span>
                                         </div>
                                         {Object.keys(data.stats).map((ii, kk) => {
+                                            const capitalized =
+                                                ii.charAt(0).toUpperCase()
+                                                + ii.slice(1)
                                             return (
-                                                <div className="map__enemy-statValue" key={kk}>
+                                                <div className="map__enemy-statValue" key={kk} data-tip={ii && capitalized}>
                                                     <img src={icon[ii]} alt={ii} />
                                                     <span>{data.stats[ii]}</span>
                                                 </div>)
                                         })}
                                     </div>
+                                    <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />
                                 </div>
                             )
                         })}

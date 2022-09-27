@@ -19,8 +19,12 @@ export class EnemyData {
         max: enemySeed[key].coins[1],
         chance: enemySeed[key].coins[2],
       }
-      const drops = new Drops(coins, enemySeed[key].drops)
-
+      const drops = new Drops(
+        coins,
+        enemySeed[key].drops,
+        enemySeed[key].essence
+      )
+      console.log(drops)
       this.enemies.set(
         enemySeed[key].id,
         new Enemy(

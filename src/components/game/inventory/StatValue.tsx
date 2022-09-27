@@ -1,13 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import ReactTooltip from 'react-tooltip';
 
 import * as icon from "../../data/seed/icons/statSeedIcon"
+import * as description from "../../data/seed/text/statTextSeed"
 
 export const StatValue = (props) => {
     return (
-        <div className="attacksloadout__stats-description">
+        <div className="attacksloadout__stats-description" data-tip={description[props.statType]}>
             <span className="equipment__container-stats-single-current"><img src={icon[props.statType]} />{props.statType}:</span>
-            <div>
+            <div className="attacksloadout__stats-description-value">
                 <span>{props.currentValue ? props.currentValue : 0} </span>
                 {props.getStatDifference(props.statType) !== null && props.getStatDifference(props.statType) !== 0 ? (
                     props.getStatDifference(props.statType) > 0 ? (
@@ -17,7 +19,7 @@ export const StatValue = (props) => {
                     )) : null}
 
             </div>
-
+            <ReactTooltip className="react__tooltips-override" type="dark" effect="solid" />
         </div>
     )
 }

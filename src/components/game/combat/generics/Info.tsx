@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { getBackgroundColor } from '../../../utils/color'
-import { currentPassiveStatCalculator, currentStatCalculator, maxDamgeCalc, statMerge } from '../../../utils/equipment'
+import { currentPassiveStatCalculator, currentStatCalculator, statMerge } from '../../../utils/equipment'
 import AttackInfo from '../../loadout/AttackInfo'
 
 export const Info = (props) => {

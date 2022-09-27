@@ -434,18 +434,24 @@ export const CatCombat = (props) => {
     const handleLoot = (data) => {
         const coins = data.drops.coins
         const drops = data.drops.drops
+        const essence = data.drops.essence
         const randomNumber = randomInteger(1, 100)
 
+        // coins
         if (randomNumber < coins.chance) {
             const coinsReceived = randomInteger(coins.min, coins.max)
             props.playerData.playerBank.addToCoins(coinsReceived)
             notifyWithImage(`+ ${coinsReceived} coins`, require("../../../images/items/coins.svg"))
         }
+
+        // loot
         // need to work out loot randomness
         const item = props.itemData.getItemById(drops[0].id)
         props.playerData.playerBank.addItemtoBank(drops[0].id, drops[0].qty, item)
         notifyWithImage(`+ ${drops[0].qty} ${item.name}`, item.icon)
 
+        // essence
+        props.playerData.playerBank.addToEssence(essence)
 
     }
 

@@ -9,8 +9,8 @@ export const enemySeed = [
     level: 1,
     stats: {
       health: 10,
-      defence: 3,
-      attack: 2,
+      defence: 1,
+      attack: 1,
       dodge: 5,
       stamina: 0,
       speed: 10,

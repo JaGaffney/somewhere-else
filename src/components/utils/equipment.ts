@@ -74,7 +74,7 @@ export const calculateDamage = (
 
   // 1. Gather all current effects from gear and attacks
   const effects = calculateEffect(attackData, playerStats)
-  console.log({ playerStats, attackData })
+
   // handles case of no weapons being equipped
   let effectsAttack = 1
   if (effects.attack) {
@@ -112,7 +112,6 @@ export const calculateDamage = (
       // is this correct maths, prob not
       const defence = (preModifiers * critDamage) / enemyStats.defence / 100
       const damageDone = preModifiers * critDamage - defence
-      console.log("damag done: damageDone", damageDone)
       let defaultDamageDone = 0
       if (damageDone) {
         defaultDamageDone = damageDone
@@ -120,10 +119,9 @@ export const calculateDamage = (
       damageData["attack"] = defaultDamageDone
       damageData["crit"] = critDamage
     }
-    //delete effects["attack"]
+
     for (const effect in effects) {
       if (effect === "attack") {
-        console.log("attack")
       } else if (effects[effect]) {
         damageData[effect] = effects[effect]
       } else {
@@ -158,9 +156,9 @@ export const calculateEnemyDamage = (
   const levelMultiplyer = (2 * enemyStats.level) / 5 + 2
 
   let damageRange = calaculateDamageRange(attackData.power)
-
+  console.log(enemyStats)
   const preModifiers =
-    (levelMultiplyer * damageRange * enemyStats.attack) / 50 + 2
+    (levelMultiplyer * damageRange * enemyStats.stats.attack) / 50 + 2
 
   let playerDefence = 1
   if (playerStats?.defence) {
@@ -176,7 +174,7 @@ export const calculateEnemyDamage = (
     defaultDamageDone = damageDone
   }
   damageData["attack"] = defaultDamageDone
-
+  console.log("enemy data: ", damageData)
   return damageData
 }
 

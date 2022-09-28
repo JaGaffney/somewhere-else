@@ -24,7 +24,6 @@ export class EnemyData {
         enemySeed[key].drops,
         enemySeed[key].essence
       )
-      console.log(drops)
       this.enemies.set(
         enemySeed[key].id,
         new Enemy(

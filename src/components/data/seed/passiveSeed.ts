@@ -11,7 +11,7 @@ export const passiveSeed = [
     icon: icon.icon_warrior,
     description: "starting passive for warrior, regenerates armour each turn",
     rarity: Rarity.COMMON,
-    effect: { armour: 3 },
+    effect: { armour: 1 },
     levelRequired: 1,
   },
   {
@@ -51,7 +51,7 @@ export const passiveSeed = [
     icon: icon.icon_warrior,
     description: "regenerates armour each turn",
     rarity: Rarity.COMMON,
-    effect: { armour: 15 },
+    effect: { armour: 10 },
     levelRequired: 99,
   },
   {

@@ -1,8 +1,10 @@
 // @ts-nocheck
 // BANK
 import GP from "../../../../images/items/coins.svg"
+import ESSENCE from "../../../../images/items/essence.svg"
 
 export const gp = GP
+export const essence = ESSENCE
 
 // RESEARCH
 import RESEARCH_RED from "../../../../images/research/researchRed.svg"

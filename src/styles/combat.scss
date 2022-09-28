@@ -151,6 +151,8 @@
     ul {
       margin: 0;
       li {
+        display: flex;
+        align-items: center;
         text-transform: capitalize;
         text-align: left;
         width: auto;

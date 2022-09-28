@@ -205,7 +205,6 @@ export const CatCombat = (props) => {
                         // removes the cd of each none used attack by 1
                         if (attackCooldownData[activePlayer][attack].cooldown.current > 0) {
                             attackCooldownData[activePlayer][attack].cooldown.current = attackCooldownData[activePlayer][attack].cooldown.current - 1
-                            console.log(attackCooldownData[activePlayer][attack].cooldown)
                         }
                     }
 
@@ -235,7 +234,7 @@ export const CatCombat = (props) => {
             if (jobLevel) {
                 jobLevelMultiplyer = jobLevel
             }
-
+            console.log(playerStats)
             damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevelMultiplyer, false)
             handleExpGained(damageData.attack, attackData, playerDead(), playerTurn, props.skills, props.playerData)
 
@@ -319,7 +318,6 @@ export const CatCombat = (props) => {
 
 
         const damageData = attackDamageCalculator(attackData)
-        console.log({ damageData })
         const damageOrder = ["regen", "bleed", "elemental", "enfeeable", "armour", "stun", "drain", "attack"]
 
         const tempOverlay = {

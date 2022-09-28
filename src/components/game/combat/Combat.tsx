@@ -47,7 +47,6 @@ export const Combat = (props) => {
 
 
     const onDropInfoHandler = (data) => {
-        console.log(data)
         setDropData(data)
         setDisplayDrops(true)
     }

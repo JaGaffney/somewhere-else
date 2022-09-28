@@ -89,7 +89,6 @@ export const CatMap = (props) => {
 
                         {areaInfo.enemys.map((i, k) => {
                             const data = props.enemies.enemies.get(i)
-                            console.log(data)
                             return (
                                 <div className="map__enemy" key={k}>
 

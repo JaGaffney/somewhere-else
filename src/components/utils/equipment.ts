@@ -156,7 +156,6 @@ export const calculateEnemyDamage = (
   const levelMultiplyer = (2 * enemyStats.level) / 5 + 2
 
   let damageRange = calaculateDamageRange(attackData.power)
-  console.log(enemyStats)
   const preModifiers =
     (levelMultiplyer * damageRange * enemyStats.stats.attack) / 50 + 2
 

@@ -71,7 +71,6 @@ export const handleExpGained = (
     } else {
       playerData.setSkillExp(attackData.type.toLowerCase(), expGained)
     }
-    console.log("got here helath exp: ", damage)
     if (damage) {
       playerData.setSkillExp("health", Math.floor(damage))
     }

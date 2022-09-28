@@ -1,0 +1,5 @@
+to fix on thursday
+
+1. HP isnt added to max health when gaining a level
+2. Enemy damage is not showing on there attacks
+3. Enemy attacks info page is using player attack data

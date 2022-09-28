@@ -34,7 +34,7 @@ export const Armour = (props) => {
                     color: handleDamageType(),
                 }}
             >
-                {props.damageOverlay && props.damageOverlay}
+                {props.damageOverlay && props.value > 0 ? props.damageOverlay : `-${props.damageOverlay}`}
             </div>
         </div>
     )
@@ -49,3 +49,7 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Armour)
+function normalize(currentValue: any, maxValue: any) {
+    throw new Error('Function not implemented.')
+}
+

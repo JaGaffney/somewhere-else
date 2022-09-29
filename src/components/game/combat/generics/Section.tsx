@@ -10,7 +10,6 @@ import EnemyInfo from "./EnemyInfo"
 import Rotation from './Rotation'
 import Info from './Info'
 
-import { calculateDamage, currentStatCalculator } from "../../../utils/equipment"
 import { getPlayerBaseHealth } from '../CatCombat.util'
 
 export const Section = (props) => {
@@ -66,6 +65,7 @@ export const Section = (props) => {
                     data={props.data}
                     onButtonHandler={props.type === "enemy" ? props.runAwayHandler : props.autoCombatHandler}
                     onDropInfoHandler={props.type === "enemy" ? props.onDropInfoHandler : null}
+                    autoCombat={props.type === " enemy" ? "" : props.autoCombat}
                     cooldowns={props.cooldowns}
                 />
             </div>

@@ -178,7 +178,6 @@ const IndexPage = props => {
 
   const handleAddToBank = (activeData: SkillAction, amount: number): void => {
     if (activeData.itemsReceived.length > 0) {
-      console.log(activeData)
       for (const value in activeData.itemsReceived) {
 
         // wont add any more items if bank is full, but will allow for items to keep being stored

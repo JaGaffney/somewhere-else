@@ -234,8 +234,9 @@ export const CatCombat = (props) => {
             if (jobLevel) {
                 jobLevelMultiplyer = jobLevel
             }
-            console.log(playerStats)
-            damageData = calculateDamage(playerStats, enemeyStats, attackData, jobLevelMultiplyer, false)
+            // enemy stats are not being passed down, only defence
+            console.log(enemeyStats)
+            damageData = calculateDamage(playerStats, enemeyStats.stats, attackData, jobLevelMultiplyer, false)
             handleExpGained(damageData.attack, attackData, playerDead(), playerTurn, props.skills, props.playerData)
 
         } else {
@@ -356,7 +357,7 @@ export const CatCombat = (props) => {
             if (armourValue < 0) {
                 setDamageOverlay({
                     playerHealth: - damage,
-                    playerArmour: props.playerData.status.armour.getCurrent(),
+                    playerArmour: - props.playerData.status.armour.getCurrent(),
                     enemyHealth: null,
                     enemyArmour: null
                 })
@@ -364,9 +365,10 @@ export const CatCombat = (props) => {
                 props.playerData.status.health.setCurrent(props.playerData.status.health.getCurrent() + armourValue)
                 props.playerData.status.armour.setCurrent(0)
             } else {
+                const negativeNumber = 0 - damage
                 setDamageOverlay({
                     playerHealth: 0,
-                    playerArmour: -damage,
+                    playerArmour: negativeNumber,
                     enemyHealth: null,
                     enemyArmour: null
                 })
@@ -461,10 +463,12 @@ export const CatCombat = (props) => {
             return "enemy"
         }
     }
+
     const gameEngineStart = (): void => {
         if (!enemyDead() && !playerDead() && combatInProcess) {
             let whoseGoIsIt = currentTurn()
             //setAttackSelectedID(null)
+
 
             if (autoCombat || whoseGoIsIt === "enemy") {
                 // find first viable attack?
@@ -515,8 +519,10 @@ export const CatCombat = (props) => {
 
 
     const autoCombatHandler = (): void => {
-        setAutoCombat(true)
-        setCombatInProcess(true)
+        // if (!autoCombat) {
+        //     setCombatInProcess(true)
+        // }
+        //setAutoCombat(!autoCombat)
     }
 
     const runAwayHandler = (): void => {
@@ -571,6 +577,7 @@ export const CatCombat = (props) => {
                 cooldowns={attackCooldownData}
                 onAttackHandler={onAttackHandler}
                 autoCombatHandler={autoCombatHandler}
+                autoCombat={autoCombat}
                 damageOverlay={damageOverlay}
                 staminaOverlay={staminaOverlay}
                 attackSelectedID={attackSelectedID}

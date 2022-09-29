@@ -9,7 +9,7 @@ export const attackSeed = [
     id: 1,
     name: "basic attack",
     type: "general",
-    power: 50,
+    power: 20,
     accuracy: 100,
     cooldown: 0,
     stamina: 0,

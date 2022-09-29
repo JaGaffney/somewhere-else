@@ -16,7 +16,6 @@ export const Armour = (props) => {
             }
         }
     }
-
     return (
         <div className="catcombat__armour">
 
@@ -34,7 +33,7 @@ export const Armour = (props) => {
                     color: handleDamageType(),
                 }}
             >
-                {props.damageOverlay && props.value > 0 ? props.damageOverlay : `-${props.damageOverlay}`}
+                {props.damageOverlay && props.damageOverlay}
             </div>
         </div>
     )

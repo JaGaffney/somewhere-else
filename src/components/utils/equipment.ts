@@ -80,11 +80,12 @@ export const calculateDamage = (
   if (effects.attack) {
     effectsAttack = effects.attack
   }
-
   // 2. Works out if attack hits or not
-  const accuracyRaiting = attackData.accuracy
+  const accuracyRaiting = attackData.accuracy - enemyStats.dodge
   const randomness = randomInteger(1, 99)
   let hit = randomness < accuracyRaiting
+
+  //console.log({ accuracyRaiting, hit })
   if (hit || attackData.accuracy === 0) {
     if (attackData.power > 0) {
       // 3. Works out the damage range of attack
@@ -112,14 +113,13 @@ export const calculateDamage = (
       // is this correct maths, prob not
       const defence = (preModifiers * critDamage) / enemyStats.defence / 100
       const damageDone = preModifiers * critDamage - defence
-      let defaultDamageDone = 0
+      let defaultDamageDone = 1
       if (damageDone) {
         defaultDamageDone = damageDone
       }
       damageData["attack"] = defaultDamageDone
       damageData["crit"] = critDamage
     }
-
     for (const effect in effects) {
       if (effect === "attack") {
       } else if (effects[effect]) {
@@ -129,6 +129,7 @@ export const calculateDamage = (
       }
     }
   }
+
   return damageData
 }
 

@@ -15,14 +15,12 @@ import { skillNames } from "./seed/skillNamesSeed"
 // such as skills, items, exp etc
 export class SkillData {
   combatSkill: Map<string, CombatSkill> = new Map()
-  statusSkill: Map<string, StatusSkill> = new Map()
   gatheringSkill: Map<string, GatheringSkill> = new Map()
   productionSkill: Map<string, any> = new Map()
 
   constructor() {
     this.createGatheringSkills()
     this.createCombatSkills()
-    this.createStatusSkills()
   }
 
   private createCombatSkills(): void {
@@ -31,12 +29,6 @@ export class SkillData {
     }
   }
 
-  private createStatusSkills(): void {
-    this.buildStatusSkill("health", health)
-    this.buildStatusSkill("stamina", stamina)
-    this.buildStatusSkill("armour", armour)
-    this.buildStatusSkill("divination", divination)
-  }
   private createProductionSkills(): void {}
 
   private createGatheringSkills(): void {
@@ -49,10 +41,7 @@ export class SkillData {
     const skillCreate = new CombatSkill(name, seed)
     this.combatSkill[name] = skillCreate
   }
-  private buildStatusSkill(name: string, seed: any): void {
-    const statusCreate = new StatusSkill(name, seed)
-    this.statusSkill[name] = statusCreate
-  }
+
   private buildGatheringSkill(name: string, icon: string, seed: any): void {
     const skillCreate = new GatheringSkill(name, icon, seed)
     this.gatheringSkill[name] = skillCreate
@@ -61,7 +50,6 @@ export class SkillData {
   getAllSkills() {
     const skillList = [
       this.getSkillsAsArray(this.combatSkill),
-      this.getSkillsAsArray(this.statusSkill),
       this.getSkillsAsArray(this.gatheringSkill),
     ]
     return skillList.flat()
@@ -78,9 +66,6 @@ export class SkillData {
   getAllCombatSkills() {
     return this.getSkillsAsArray(this.combatSkill)
   }
-  getAllStatusSkills() {
-    return this.getSkillsAsArray(this.statusSkill)
-  }
   getAllNoncombatSkills() {
     return this.getSkillsAsArray(this.gatheringSkill)
   }
@@ -93,8 +78,6 @@ export class SkillData {
         return this.productionSkill[name]
       case "combat":
         return this.combatSkill[name]
-      case "status":
-        return this.statusSkill[name]
       default:
         return []
     }
@@ -107,8 +90,6 @@ export class SkillData {
         return this.productionSkill[name].getIcon()
       case "combat":
         return this.combatSkill[name].getIcon()
-      case "status":
-        return this.statusSkill[name].getIcon()
       default:
         return ""
     }

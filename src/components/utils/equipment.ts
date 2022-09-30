@@ -86,7 +86,7 @@ export const calculateDamage = (
   let hit = randomness < accuracyRaiting
 
   //console.log({ accuracyRaiting, hit })
-  if (hit || attackData.accuracy === 0) {
+  if (hit || attackData.accuracy === 0 || damageDisplay) {
     if (attackData.power > 0) {
       // 3. Works out the damage range of attack
       const levelMultiplyer = (2 * jobLevel) / 5 + 2

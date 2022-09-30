@@ -151,10 +151,7 @@ export const CatCombat = (props) => {
             }
             if (combatInProcess) {
                 if (timer > speed) { // * 10
-                    console.log("Attacking")
-
                     if (props.combatData && props.playerData) {
-                        console.log("timer")
                         gameEngineStart()
                     }
                     setTimer(0)
@@ -235,7 +232,6 @@ export const CatCombat = (props) => {
                 jobLevelMultiplyer = jobLevel
             }
             // enemy stats are not being passed down, only defence
-            console.log(enemeyStats)
             damageData = calculateDamage(playerStats, enemeyStats.stats, attackData, jobLevelMultiplyer, false)
             handleExpGained(damageData.attack, attackData, playerDead(), playerTurn, props.skills, props.playerData)
 
@@ -581,6 +577,7 @@ export const CatCombat = (props) => {
                 damageOverlay={damageOverlay}
                 staminaOverlay={staminaOverlay}
                 attackSelectedID={attackSelectedID}
+                playerStats={playerStats}
             />
             {/* <ToastContainer
                 position="bottom-right"
@@ -601,6 +598,7 @@ export const CatCombat = (props) => {
                 staminaOverlay={staminaOverlay}
                 onDropInfoHandler={props.onDropInfoHandler}
                 attackSelectedID={enemyAttackSelectedID}
+                playerStats={playerStats}
             />
         </div >
     )

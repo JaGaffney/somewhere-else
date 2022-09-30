@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getBackgroundColor } from '../../../utils/color'
 
 import LEVEL from "../../../../images/combat/level.svg"
+import { calculateEnemyDamage } from '../../../utils/equipment'
 
 export const EnemyInfo = (props) => {
     const [enemyData, setEnemyData] = useState(null)
@@ -50,7 +51,7 @@ export const EnemyInfo = (props) => {
                                             <div className="attacks__button-stats">
                                                 <span className="attacks__button-stats-topLeft">{attackData.cooldown}</span>
                                                 <span className="attacks__button-stats-topRight">{attackData.stamina}</span>
-                                                <span className="attacks__button-stats-bottomRight">{attackData.maxDamage}</span>
+                                                <span className="attacks__button-stats-bottomRight">{calculateEnemyDamage(enemyData, props.playerStats, attackData).attack}</span>
                                                 {cooldownRemaining !== 0 && (<span className="attacks__button-stats-overlay">{cooldownRemaining}</span>)}
                                             </div>
                                         }

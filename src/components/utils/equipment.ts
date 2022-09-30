@@ -85,7 +85,6 @@ export const calculateDamage = (
   const randomness = randomInteger(1, 99)
   let hit = randomness < accuracyRaiting
 
-  //console.log({ accuracyRaiting, hit })
   if (hit || attackData.accuracy === 0 || damageDisplay) {
     if (attackData.power > 0) {
       // 3. Works out the damage range of attack
@@ -97,7 +96,7 @@ export const calculateDamage = (
       }
 
       const preModifiers =
-        (levelMultiplyer * damageRange * effectsAttack) / 50 + 2
+        (levelMultiplyer * damageRange * effectsAttack) / 100 + 2
 
       // if just displaying damage no need to show crits
       let crit = false
@@ -158,7 +157,7 @@ export const calculateEnemyDamage = (
 
   let damageRange = calaculateDamageRange(attackData.power)
   const preModifiers =
-    (levelMultiplyer * damageRange * enemyStats.stats.attack) / 50 + 2
+    (levelMultiplyer * damageRange * enemyStats.stats.attack) / 100 + 2
 
   let playerDefence = 1
   if (playerStats?.defence) {
@@ -173,8 +172,7 @@ export const calculateEnemyDamage = (
   if (damageDone) {
     defaultDamageDone = damageDone
   }
-  damageData["attack"] = defaultDamageDone
-  console.log("enemy data: ", damageData)
+  damageData["attack"] = Math.floor(defaultDamageDone)
   return damageData
 }
 

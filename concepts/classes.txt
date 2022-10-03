@@ -9,7 +9,6 @@ snares/slow - traps
 posion
 stamina regen 
 
-
 MAGE
 arcane spells
 cool down reduction
@@ -25,3 +24,6 @@ passive regen,
 armour
 low damage
 (tie into divination)
+
+GAMBLER
+only does damage based on crits

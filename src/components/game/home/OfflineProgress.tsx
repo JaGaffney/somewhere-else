@@ -53,7 +53,7 @@ export const OfflineProgress = (props) => {
             <div className="offlineProgression-gp settlement__stats-balance-items">
                 <h4>Experince gained</h4>
                 {props.playerData.offline && Object.keys(props.playerData.offline.exp).map((i, k) => {
-                    const icon = props.skills.getSkillIconByName("gathering", i)
+                    const icon = props.skills.getSkillIconByName("nonCombat", i)
 
                     return (
                         <div key={k}>

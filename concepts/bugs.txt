@@ -1,7 +1,0 @@
-to fix on thursday
-
-1. DONE - damage not working correclty
-2. DONE - Enemy damage is not showing on there attacks
-3. Enemy attacks info page is using player attack data
-4. DONE - enemy damage not working correctly
-5. DONE - player attacks not showing correct value

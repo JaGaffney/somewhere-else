@@ -1,14 +1,13 @@
 // @ts-nocheck
-// @ts-expect-error
-import FORESTRY from "../../../../images/sidepanel/forestry.svg"
-// @ts-expect-error
-import METALWORK from "../../../../images/sidepanel/metalwork.svg"
-// @ts-expect-error
-import SCHOLAR from "../../../../images/sidepanel/scholar.svg"
+import FORESTRY from "../../../../images/skill/forestry.svg"
+import MINING from "../../../../images/skill/mining.svg"
+import METALWORK from "../../../../images/skill/metalwork.svg"
+import SCHOLAR from "../../../../images/skill/scholar.svg"
 
 export const forestry = FORESTRY
-export const mining = METALWORK
+export const mining = MINING
 export const scholar = SCHOLAR
+export const metalwork = METALWORK
 
 import forestry_IMG_1 from "../../../../images/skill/forestry/bamboo.svg"
 import forestry_IMG_2 from "../../../../images/skill/forestry/beech.svg"
@@ -34,23 +33,23 @@ export const holy = forestry_IMG_9
 export const demonic = forestry_IMG_10
 export const god = forestry_IMG_11
 
-import METALWORK_IMG_1 from "../../../../images/skill/metalwork/stone.svg"
-import METALWORK_IMG_2 from "../../../../images/skill/metalwork/copper.svg"
-import METALWORK_IMG_3 from "../../../../images/skill/metalwork/tin.svg"
-import METALWORK_IMG_4 from "../../../../images/skill/metalwork/iron.svg"
-import METALWORK_IMG_5 from "../../../../images/skill/metalwork/coal.svg"
-import METALWORK_IMG_6 from "../../../../images/skill/metalwork/silver.svg"
-import METALWORK_IMG_7 from "../../../../images/skill/metalwork/gold.svg"
-import METALWORK_IMG_8 from "../../../../images/skill/metalwork/mithril.svg"
+import MINING_IMG_1 from "../../../../images/skill/mining/stone.svg"
+import MINING_IMG_2 from "../../../../images/skill/mining/copper.svg"
+import MINING_IMG_3 from "../../../../images/skill/mining/tin.svg"
+import MINING_IMG_4 from "../../../../images/skill/mining/iron.svg"
+import MINING_IMG_5 from "../../../../images/skill/mining/coal.svg"
+import MINING_IMG_6 from "../../../../images/skill/mining/silver.svg"
+import MINING_IMG_7 from "../../../../images/skill/mining/gold.svg"
+import MINING_IMG_8 from "../../../../images/skill/mining/mithril.svg"
 
-export const stone = METALWORK_IMG_1
-export const copper = METALWORK_IMG_2
-export const tin = METALWORK_IMG_3
-export const iron = METALWORK_IMG_4
-export const coal = METALWORK_IMG_5
-export const silver = METALWORK_IMG_6
-export const gold = METALWORK_IMG_7
-export const mithril = METALWORK_IMG_8
+export const stone = MINING_IMG_1
+export const copper = MINING_IMG_2
+export const tin = MINING_IMG_3
+export const iron = MINING_IMG_4
+export const coal = MINING_IMG_5
+export const silver = MINING_IMG_6
+export const gold = MINING_IMG_7
+export const mithril = MINING_IMG_8
 
 import SCHOLAR_IMG_1 from "../../../../images/skill/scholar/reading.svg"
 import SCHOLAR_IMG_2 from "../../../../images/skill/scholar/reading.svg"
@@ -62,3 +61,7 @@ import SCHOLAR_IMG_7 from "../../../../images/skill/scholar/reading.svg"
 import SCHOLAR_IMG_8 from "../../../../images/skill/scholar/reading.svg"
 
 export const reading = SCHOLAR_IMG_1
+
+import METALWORK_IMG_1 from "../../../../images/skill/metalwork/barbronze.svg"
+
+export const bronze = METALWORK_IMG_1

@@ -109,7 +109,7 @@ export const SidePanel = (props) => {
 
                             <div className="sidepanel__skill" data-cy="sidepanelJobs">
                                 <span className="sidepanel__skill-title" onClick={() => setShowSkills(!showSkills)}>Jobs {showSkills ? <FiEyeOff /> : <FiEye />}</span>
-                                {showSkills && props.skills.getAllNoncombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("gathering", i)} />)}
+                                {showSkills && props.skills.getAllNoncombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("nonCombat", i)} />)}
                             </div>
                         </>
                     )}

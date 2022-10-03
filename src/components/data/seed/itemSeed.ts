@@ -346,4 +346,14 @@ export const itemSeed = [
     equipmentStats: { attack: 4, defence: 1, weight: 1 },
     effect: "",
   },
+  {
+    id: 25,
+    itemType: "generic",
+    name: "bronze bar",
+    price: 10,
+    icon: skillIcon.bronze,
+    description: "a bar made out of tin and copper",
+    rarity: "COMMON",
+    consumeable: false,
+  },
 ]

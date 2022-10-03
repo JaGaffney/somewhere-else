@@ -14,8 +14,12 @@ export const getBackgroundColor = (color: string): string => {
         case ("forestry"): {
             return "var(--green700)";
         }
-        case ("metalwork"): {
+        case ("metalwork"):
+        case ("mining"): {
             return "var(--gray600)";
+        }
+        case ("scholar"): {
+            return "var(--violet900)";
         }
         case ("general"): {
             return "var(--violet700)";

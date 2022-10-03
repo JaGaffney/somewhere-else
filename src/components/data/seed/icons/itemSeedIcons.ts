@@ -61,3 +61,8 @@ export const logRed = LOG_RED
 export const logRedbrown = LOG_REDBROWN
 export const logUndead = LOG_UNDEAD
 export const logDemon = LOG_DEMON
+
+// Production icons
+import BAR_BRONZE from "../../../../images/skill/metalwork/barbronze.svg"
+
+export const barBronze = BAR_BRONZE

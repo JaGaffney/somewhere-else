@@ -5,6 +5,7 @@ export class SkillAction {
   manpower: number
   level: number
   icon: string
+  itemsRequired: Array<any>
   itemsReceived: Array<any>
   job: string
 
@@ -15,6 +16,7 @@ export class SkillAction {
     manpower: number,
     level: number,
     icon: string,
+    itemsRequired: Array<any>,
     itemsReceived: Array<any>,
     job: string
   ) {
@@ -24,6 +26,7 @@ export class SkillAction {
     this.manpower = manpower
     this.level = level
     this.icon = icon
+    this.itemsRequired = itemsRequired
     this.itemsReceived = itemsReceived
     this.job = job
   }

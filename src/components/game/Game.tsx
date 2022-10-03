@@ -11,10 +11,9 @@ import Combat from "./combat/Combat"
 import JobInfo from "./job/JobInfo"
 import Inventory from "./inventory/Inventory"
 
-
 import Actions from './skills/generics/Actions'
 import EXP from './skills/generics/EXP'
-
+import ProductionSkill from './skills/ProductionSkill'
 
 export const NonCombatSkill = (props) => {
   const [activeData, setActiveData] = useState(null)
@@ -22,11 +21,9 @@ export const NonCombatSkill = (props) => {
   useEffect(() => {
     if (props.skills) {
       if (props.skills.length !== 0) {
-        setActiveData(props.skills.getSkillByName("gathering", props.activePage))
+        setActiveData(props.skills.getSkillByName("nonCombat", props.activePage))
       }
     }
-
-
   }, [props.skills])
 
   return (
@@ -53,6 +50,8 @@ export const Game = props => {
       case "mining":
       case "scholar":
         return <NonCombatSkill skills={props.skills} activePage={props.activePage} />
+      case "metalwork":
+        return <ProductionSkill skills={props.skills} activePage={props.activePage} />
       case "loadout":
         return <Loadout />
       case "warrior":

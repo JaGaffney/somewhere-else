@@ -1,0 +1,11 @@
+to fix on monday
+
+DONE
+(+) DONE - damage not working correclty
+(+) DONE - Enemy damage is not showing on there attacks
+(+) DONE - enemy damage not working correctly
+(+) DONE - player attacks not showing correct value
+(+) DONE - new hp values 
+
+ONGOING
+(-) Enemy attacks info page is using player attack data

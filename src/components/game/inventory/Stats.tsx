@@ -58,6 +58,10 @@ export const Stats = (props) => {
 
     return (
         <div className="equipment__container-stats" data-cy="equipmentStats">
+            <StatValue
+                statType={"health"}
+                currentValue={props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp("health"))} getStatDifference={getStatDifference}
+            />
             {Object.keys(IEquipmentStatsKeys).map((i, k) => {
                 return (
                     <StatValue statType={[i]} currentValue={currentStats[i]} getStatDifference={getStatDifference} key={k} />

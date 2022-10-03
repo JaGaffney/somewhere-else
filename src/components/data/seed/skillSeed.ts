@@ -9,6 +9,7 @@ export const forestry = [
     time: 10.0,
     manpower: 1,
     icon: skillIcon.bamboo,
+    itemsRequired: [],
     itemsRecieved: [{ id: 22, qty: 1 }],
   },
   {
@@ -18,6 +19,7 @@ export const forestry = [
     time: 10.0,
     manpower: 1,
     icon: skillIcon.beech,
+    itemsRequired: [],
     itemsRecieved: [{ id: 2, qty: 1 }],
   },
   {
@@ -27,6 +29,7 @@ export const forestry = [
     time: 10.0,
     manpower: 1,
     icon: skillIcon.birch,
+    itemsRequired: [],
     itemsRecieved: [{ id: 3, qty: 1 }],
   },
   {
@@ -36,6 +39,7 @@ export const forestry = [
     time: 10.0,
     manpower: 1,
     icon: skillIcon.oak,
+    itemsRequired: [],
     itemsRecieved: [{ id: 4, qty: 1 }],
   },
   {
@@ -45,6 +49,7 @@ export const forestry = [
     time: 10.0,
     manpower: 1,
     icon: skillIcon.palm,
+    itemsRequired: [],
     itemsRecieved: [{ id: 5, qty: 1 }],
   },
   {
@@ -54,6 +59,7 @@ export const forestry = [
     time: 10.0,
     manpower: 1,
     icon: skillIcon.willow,
+    itemsRequired: [],
     itemsRecieved: [{ id: 6, qty: 1 }],
   },
   {
@@ -63,6 +69,7 @@ export const forestry = [
     time: 10.0,
     manpower: 1,
     icon: skillIcon.redwood,
+    itemsRequired: [],
     itemsRecieved: [{ id: 7, qty: 1 }],
   },
   {
@@ -72,6 +79,7 @@ export const forestry = [
     time: 10.0,
     manpower: 1,
     icon: skillIcon.undead,
+    itemsRequired: [],
     itemsRecieved: [{ id: 8, qty: 1 }],
   },
   {
@@ -81,6 +89,7 @@ export const forestry = [
     time: 10.0,
     manpower: 1,
     icon: skillIcon.holy,
+    itemsRequired: [],
     itemsRecieved: [{ id: 9, qty: 1 }],
   },
   {
@@ -90,6 +99,7 @@ export const forestry = [
     time: 10.0,
     manpower: 1,
     icon: skillIcon.demonic,
+    itemsRequired: [],
     itemsRecieved: [{ id: 10, qty: 1 }],
   },
   {
@@ -99,6 +109,7 @@ export const forestry = [
     time: 10.0,
     manpower: 99,
     icon: skillIcon.god,
+    itemsRequired: [],
     itemsRecieved: [{ id: 11, qty: 1 }],
   },
 ]
@@ -111,6 +122,7 @@ export const mining = [
     time: 10.0,
     manpower: 5,
     icon: skillIcon.stone,
+    itemsRequired: [],
     itemsRecieved: [{ id: 12, qty: 1 }],
   },
   {
@@ -120,6 +132,7 @@ export const mining = [
     time: 10.0,
     manpower: 10,
     icon: skillIcon.copper,
+    itemsRequired: [],
     itemsRecieved: [
       { id: 12, qty: 1 },
       { id: 13, qty: 1 },
@@ -132,6 +145,7 @@ export const mining = [
     time: 10.0,
     manpower: 10,
     icon: skillIcon.tin,
+    itemsRequired: [],
     itemsRecieved: [
       { id: 12, qty: 1 },
       { id: 14, qty: 1 },
@@ -144,6 +158,7 @@ export const mining = [
     time: 10.0,
     manpower: 20,
     icon: skillIcon.iron,
+    itemsRequired: [],
     itemsRecieved: [
       { id: 12, qty: 2 },
       { id: 15, qty: 1 },
@@ -156,6 +171,7 @@ export const mining = [
     time: 10.0,
     manpower: 20,
     icon: skillIcon.coal,
+    itemsRequired: [],
     itemsRecieved: [
       { id: 12, qty: 3 },
       { id: 16, qty: 1 },
@@ -168,6 +184,7 @@ export const mining = [
     time: 10.0,
     manpower: 20,
     icon: skillIcon.silver,
+    itemsRequired: [],
     itemsRecieved: [
       { id: 12, qty: 4 },
       { id: 17, qty: 1 },
@@ -180,6 +197,7 @@ export const mining = [
     time: 10.0,
     manpower: 20,
     icon: skillIcon.gold,
+    itemsRequired: [],
     itemsRecieved: [
       { id: 12, qty: 4 },
       { id: 18, qty: 1 },
@@ -192,6 +210,7 @@ export const mining = [
     time: 10.0,
     manpower: 20,
     icon: skillIcon.mithril,
+    itemsRequired: [],
     itemsRecieved: [
       { id: 12, qty: 10 },
       { id: 19, qty: 1 },
@@ -207,6 +226,7 @@ export const scholar = [
     time: 10.0,
     manpower: 1,
     icon: itemIcon.researchRed,
+    itemsRequired: [],
     itemsRecieved: [
       {
         id: 998,
@@ -221,6 +241,7 @@ export const scholar = [
     time: 10.0,
     manpower: 2,
     icon: itemIcon.researchGreen,
+    itemsRequired: [],
     itemsRecieved: [
       {
         id: 997,
@@ -235,6 +256,7 @@ export const scholar = [
     time: 10.0,
     manpower: 3,
     icon: itemIcon.researchBlue,
+    itemsRequired: [],
     itemsRecieved: [
       {
         id: 996,
@@ -249,6 +271,7 @@ export const scholar = [
     time: 10.0,
     manpower: 4,
     icon: itemIcon.researchYellow,
+    itemsRequired: [],
     itemsRecieved: [
       {
         id: 995,
@@ -263,9 +286,30 @@ export const scholar = [
     time: 10.0,
     manpower: 5,
     icon: itemIcon.researchPurple,
+    itemsRequired: [],
     itemsRecieved: [
       {
         id: 994,
+        qty: 1,
+      },
+    ],
+  },
+]
+export const metalwork = [
+  {
+    name: "bronze bar",
+    level: 1,
+    exp: 5,
+    time: 10.0,
+    manpower: 1,
+    icon: itemIcon.barBronze,
+    itemsRequired: [
+      { id: 13, qty: 1 },
+      { id: 14, qty: 1 },
+    ],
+    itemsRecieved: [
+      {
+        id: 25,
         qty: 1,
       },
     ],

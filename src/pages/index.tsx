@@ -121,6 +121,8 @@ const IndexPage = props => {
       props.playerData.offline.setTime(previousTime)
       // TODO: check if required level
 
+      // TODO: check if the correct items are in the bank
+
 
       if (costPerAction(props.playerData.getActiveManpower()) <= props.playerData.playerBank.getCoins()) {
         const amount = Math.round(deltaTime / actionTimeInMs)
@@ -131,25 +133,43 @@ const IndexPage = props => {
           const activeData = skillData.getActionDataBySkillID(task).filter((i => i !== undefined))[0]
           const activeWorkers = amount * Math.floor(props.playerData.settlement.tasks[task] / activeData.manpower)
 
-          // add items to bank
-          handleAddToBank(activeData, activeWorkers)
+          let requiredMaterials = true
+          if (activeData.itemsRequired.length !== 0) {
+            for (let i in activeData.itemsRequired) {
+              const item = activeData.itemsRequired[i]
+              const bankItem = props.playerData.playerBank.findItemInBank(item.id)
+              if (amount * item.qty > bankItem?.qty || bankItem === undefined) {
+                console.log("not enough materials")
+                requiredMaterials = false
+              }
+            }
+          }
 
-          // add exp
-          handleExp(activeData, activeWorkers, activeData.job)
+          if (requiredMaterials) {
+
+
+            // add items to bank
+            handleAddToBank(activeData, activeWorkers)
+
+            // take items from bank if applicable
+            handleRemoveFromBank(activeData, activeWorkers)
+
+            // add exp
+            handleExp(activeData, activeWorkers, activeData.job)
+
+            // salary cost
+            if (Object.keys(props.playerData.settlement.tasks).length > 0) {
+              const salaryCost = costPerAction(props.playerData.getActiveManpower()) * amount
+              props.playerData.playerBank.removeFromCoins(salaryCost)
+              props.playerData.offline.setSalary(salaryCost)
+            }
+
+
+          }
+
         }
 
-        // salary cost
-        if (Object.keys(props.playerData.settlement.tasks).length > 0) {
-          const salaryCost = costPerAction(props.playerData.getActiveManpower()) * amount
-          props.playerData.playerBank.removeFromCoins(salaryCost)
-          props.playerData.offline.setSalary(salaryCost)
-        }
 
-
-
-
-        // take items from bank if applicable
-        // handleRemoveFromBank(activeData, amount)
 
 
       }
@@ -225,14 +245,13 @@ const IndexPage = props => {
   }
 
   const handleRemoveFromBank = (activeData, amount: number): void => {
-    if (activeData.itemsRequired.length > 0) {
-      for (const item in activeData.itemsRequired) {
-        const qty = activeData.itemsRequired[item].qty * amount
-        props.playerData.playerBank.removeItemfromBank(activeData.itemsReceived[item].id, qty)
+    if (activeData.itemsRequired.length !== 0) {
+      for (let i in activeData.itemsRequired) {
+        const item = activeData.itemsRequired[i]
+        props.playerData.playerBank.removeItemfromBank(item.id, amount)
       }
     }
   }
-
 
   const handleExp = (activeData: SkillAction, amount: number, skill: string): void => {
     const expValue = activeData.exp * amount

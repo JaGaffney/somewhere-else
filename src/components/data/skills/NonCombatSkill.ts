@@ -3,17 +3,17 @@ import { Skill } from "./Skill"
 import { SkillAction } from "./SkillAction"
 
 // the subclass of skills that will contain all generic data regarding non combat skills
-export class GatheringSkill extends Skill {
+export class NonCombatSkill extends Skill {
   actions: Map<string, SkillAction> = new Map()
 
   constructor(name: string, icon: string, seedData: Array<object>) {
     super(name, icon)
-    this.createGatheringData(seedData)
+    this.createNonCombatData(seedData)
   }
 
-  createGatheringData(gatheringData: object): void {
-    for (const key in gatheringData) {
-      const val = gatheringData[key]
+  createNonCombatData(nonCombatskillData: object): void {
+    for (const key in nonCombatskillData) {
+      const val = nonCombatskillData[key]
       const action = new SkillAction(
         val.name,
         val.exp,
@@ -21,6 +21,7 @@ export class GatheringSkill extends Skill {
         val.manpower,
         val.level,
         val.icon,
+        val.itemsRequired,
         val.itemsRecieved,
         this.name
       )

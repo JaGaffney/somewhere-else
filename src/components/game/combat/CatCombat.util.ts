@@ -183,13 +183,26 @@ export const staminaHandler = (
 }
 
 export const getPlayerBaseHealth = (playerData): number => {
-  let retValue = 0
-  retValue = playerData.levelChecker.getLevelFromExp(
+  const level = playerData.levelChecker.getLevelFromExp(
     playerData.skillExp.getCurrentExp("health")
   )
-  if (retValue < 10) {
-    retValue = 10
-  }
+  // TODO: work out the maths
+  const baseValue = 50
+  const bonus = 10
+  const hpValue = ((2 * baseValue + bonus) * level) / 100 + level + 10
 
-  return retValue
+  return Math.ceil(hpValue)
+}
+
+export const getEnemyBaseHealth = (
+  enemyLevel: number,
+  enemyHealth: number
+): number => {
+  const level = enemyHealth
+  // TODO: work out the maths
+  const baseValue = 50
+  const bonus = enemyLevel
+  const hpValue = ((2 * baseValue + bonus) * level) / 100 + level + 10
+
+  return Math.ceil(hpValue)
 }

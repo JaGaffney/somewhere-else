@@ -76,7 +76,6 @@ export const CatCombat = (props) => {
         cooldown: false
     }) // not in use
 
-
     /**
      * Loads the players data everyturn, can handle for new gear/passives
      */
@@ -403,7 +402,7 @@ export const CatCombat = (props) => {
 
             // spawn "new" monster
             props.combatData.status.health.setCurrent(props.combatData.status.health.getBase())
-            props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getBase() + 100)
+            props.combatData.status.stamina.setCurrent(props.combatData.status.stamina.getBase())
             props.combatData.status.armour.setCurrent(props.combatData.status.armour.getBase())
 
 
@@ -536,7 +535,7 @@ export const CatCombat = (props) => {
 
 
         props.playerData.status.health.setCurrent(getPlayerBaseHealth(props.playerData))
-        props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase() + 100)
+        props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase() + 99)
         props.playerData.status.armour.setCurrent(props.playerData.status.armour.getBase())
         props.playerData.status.divination.setCurrent(props.playerData.status.divination.getBase())
     }

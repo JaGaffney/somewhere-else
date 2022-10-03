@@ -10,6 +10,7 @@ import { getBackgroundColor } from '../../utils/color'
 
 import * as icon from "../../data/seed/icons/statSeedIcon"
 import { mapSeed } from "../../data/seed/mapSeed"
+import { getEnemyBaseHealth } from './CatCombat.util';
 
 export const CatMap = (props) => {
     const [areaInfo, setAreaInfo] = useState(null)
@@ -19,16 +20,16 @@ export const CatMap = (props) => {
             const enemy = new CombatData(id)
             const values = {
                 health: {
-                    base: data.stats.health,
-                    current: data.stats.health
+                    base: getEnemyBaseHealth(data.level, data.stats.health),
+                    current: getEnemyBaseHealth(data.level, data.stats.health)
                 },
                 stamina: {
-                    base: data.stats.stamina,
-                    current: data.stats.stamina
+                    base: 100,
+                    current: 100
                 },
                 armour: {
-                    base: data.stats.defence,
-                    current: data.stats.defence
+                    base: data.stats.armour,
+                    current: data.stats.armour
                 },
                 divination: {
                     base: 1,

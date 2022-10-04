@@ -3,6 +3,7 @@ export class SkillAction {
   exp: number
   time: number
   manpower: number
+  category: string
   level: number
   icon: string
   itemsRequired: Array<any>
@@ -14,6 +15,7 @@ export class SkillAction {
     exp: number,
     time: number,
     manpower: number,
+    category: string,
     level: number,
     icon: string,
     itemsRequired: Array<any>,
@@ -24,6 +26,7 @@ export class SkillAction {
     this.exp = exp
     this.time = time
     this.manpower = manpower
+    this.category = category
     this.level = level
     this.icon = icon
     this.itemsRequired = itemsRequired

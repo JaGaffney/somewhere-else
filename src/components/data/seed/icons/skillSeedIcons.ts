@@ -52,16 +52,21 @@ export const gold = MINING_IMG_7
 export const mithril = MINING_IMG_8
 
 import SCHOLAR_IMG_1 from "../../../../images/skill/scholar/reading.svg"
-import SCHOLAR_IMG_2 from "../../../../images/skill/scholar/reading.svg"
-import SCHOLAR_IMG_3 from "../../../../images/skill/scholar/reading.svg"
-import SCHOLAR_IMG_4 from "../../../../images/skill/scholar/reading.svg"
-import SCHOLAR_IMG_5 from "../../../../images/skill/scholar/reading.svg"
-import SCHOLAR_IMG_6 from "../../../../images/skill/scholar/reading.svg"
-import SCHOLAR_IMG_7 from "../../../../images/skill/scholar/reading.svg"
-import SCHOLAR_IMG_8 from "../../../../images/skill/scholar/reading.svg"
 
 export const reading = SCHOLAR_IMG_1
 
-import METALWORK_IMG_1 from "../../../../images/skill/metalwork/barbronze.svg"
+import METALWORK_IMG_1 from "../../../../images/skill/metalwork/stonebrick.svg"
+import METALWORK_IMG_2 from "../../../../images/skill/metalwork/barbronze.svg"
+import METALWORK_IMG_3 from "../../../../images/skill/metalwork/bariron.svg"
+import METALWORK_IMG_4 from "../../../../images/skill/metalwork/barsteel.svg"
+import METALWORK_IMG_5 from "../../../../images/skill/metalwork/barsilver.svg"
+import METALWORK_IMG_6 from "../../../../images/skill/metalwork/bargold.svg"
+import METALWORK_IMG_7 from "../../../../images/skill/metalwork/barmithril.svg"
 
-export const bronze = METALWORK_IMG_1
+export const stoneBrick = METALWORK_IMG_1
+export const barBronze = METALWORK_IMG_2
+export const barIron = METALWORK_IMG_3
+export const barSteel = METALWORK_IMG_4
+export const barSilver = METALWORK_IMG_5
+export const barGold = METALWORK_IMG_6
+export const barMithril = METALWORK_IMG_7

@@ -19,6 +19,7 @@ export class NonCombatSkill extends Skill {
         val.exp,
         val.time,
         val.manpower,
+        val.category,
         val.level,
         val.icon,
         val.itemsRequired,

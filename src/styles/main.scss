@@ -105,7 +105,8 @@
   border-radius: 10px;
   transition: transform 0.2s;
   width: 13rem;
-  height: 18rem;
+  min-height: 18rem;
+  height: auto;
   background-color: var(--gray800);
   color: var(--gray200);
   box-shadow: var(--shadow500);
@@ -114,6 +115,10 @@
   border-left: var(--border);
   border-right: var(--border);
   border-bottom: var(--border);
+  h4 {
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
   &-buttons {
     width: 100%;
     display: flex;
@@ -174,6 +179,22 @@
     justify-content: center;
     text-transform: uppercase;
     gap: 0.2rem;
+  }
+  &-production {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px var(--gray800);
+    margin-bottom: 0.5rem;
+    span {
+      display: flex;
+      text-transform: capitalize;
+    }
+    img {
+      height: 1.5rem;
+      margin-right: 0.5rem;
+    }
   }
 }
 
@@ -440,6 +461,12 @@
   width: 100%;
   display: flex;
   gap: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px var(--gray800);
+  margin-bottom: 0.5rem;
   margin-top: 1rem;
   &-equipped {
     padding: 1rem 2rem 2rem 1rem;

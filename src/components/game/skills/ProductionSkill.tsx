@@ -22,7 +22,7 @@ export const ProductionSkill = (props) => {
                 (
                     <div>
                         <EXP />
-                        <Actions gather={activeData.gatheringName} skillData={activeData} />
+                        <Actions gather={activeData.gatheringName} skillData={activeData} production={true} />
                     </div>
                 ) : null
         ) : null

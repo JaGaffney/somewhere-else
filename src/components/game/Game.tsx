@@ -32,7 +32,7 @@ export const NonCombatSkill = (props) => {
         (
           <div>
             <EXP />
-            <Actions gather={activeData.gatheringName} skillData={activeData} />
+            <Actions gather={activeData.gatheringName} skillData={activeData} production={false} />
           </div>
         ) : null
     ) : null

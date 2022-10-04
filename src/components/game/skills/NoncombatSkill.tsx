@@ -22,7 +22,7 @@ export const NonCombatSkill = (props) => {
                         <EXP />
                         {/*
  // @ts-ignore */}
-                        <Actions gather={activeData.gatheringName} skillData={activeData} />
+                        <Actions gather={activeData.gatheringName} skillData={activeData} production={false} />
                     </div>
                 ) : null
         ) : null

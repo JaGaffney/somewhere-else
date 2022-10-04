@@ -8,22 +8,14 @@ export const Item = (props) => {
 
     const [manpower, setManpower] = useState<number>(props.playerData.settlement.tasks[props.id] || 0)
 
-    // const setActiveActionData = () => {
-    //     props.resetActionTime()
-    //     const page = props.activePage
-    //     const data = {
-    //         id: props.id,
-    //         skill: page
-    //     }
-
-    //     props.setActionTime(props.data.name, props.data.time, null, data)
-    // }
 
     const handleManpowerChange = (name: string, value: number): void => {
         props.playerData.settlement.updateTask(name, value)
         setManpower(manpower + value)
         props.setPlayerUpdated()
     }
+
+    console.log(props.data)
 
     return (
         <div className="action__item">
@@ -39,6 +31,29 @@ export const Item = (props) => {
                 <span className="action__item-level">Level {props.data.level}</span>
                 <span className="action__item-details">{props.data.exp} xp</span>
                 <span className="action__item-details"><FiClock /> {props.data.time} seconds</span>
+
+
+                {props.production && (
+                    <>
+                        <h4>Items required</h4>
+                        {props.data && props.data.itemsRequired.map((i, k) => {
+                            const data = props.itemData.getItemById(i.id)
+                            const bankItem = props.playerData.playerBank.findItemInBank(i.id)
+                            let itemInBank = "text__valid"
+                            if (bankItem === undefined || bankItem?.qty < i.qty * manpower) {
+                                itemInBank = "text__error"
+                            }
+                            return (
+                                <div className="action__item-production">
+                                    <span><img src={data.icon} alt="data.name" />{data.name}</span>
+                                    <span className={itemInBank}>{manpower === 0 ? i.qty : i.qty * manpower}</span>
+                                </div>
+                            )
+                        })
+                        }</>
+                )}
+
+                <h1>{props.production}</h1>
             </div>
 
         </div>
@@ -50,6 +65,7 @@ export const Item = (props) => {
 const mapStateToProps = (state) => ({
     activePage: state.engine.activePage,
     playerData: state.player.playerData,
+    itemData: state.items.itemData,
 })
 
 const mapDispatchToProps = {

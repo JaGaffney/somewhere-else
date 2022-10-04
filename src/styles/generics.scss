@@ -232,3 +232,10 @@
 span::first-letter {
   text-transform: capitalize;
 }
+
+.text__error {
+  color: var(--red500);
+}
+.text__valid {
+  color: var(--teal500);
+}

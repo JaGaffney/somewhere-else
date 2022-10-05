@@ -38,7 +38,7 @@ export const Item = (props) => {
                                 itemInBank = "text__error"
                             }
                             return (
-                                <div className="action__item-production">
+                                <div className="action__item-production" key={k}>
                                     <span><img src={data.icon} alt="data.name" />{data.name}</span>
                                     <span className={itemInBank}>{manpower === 0 ? i.qty : i.qty * manpower}</span>
                                 </div>

@@ -11,3 +11,4 @@ ONGOING
 (-) Enemy attacks info page is using player attack data
 (-) Unable to buy single research anymore
 (-) Research is being added to the bank
+(-) Items duplicated when you dont have enough to complete the full order can complete partial order

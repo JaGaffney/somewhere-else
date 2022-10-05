@@ -21,21 +21,28 @@ export const researchPurple = RESEARCH_PURPLE
 
 // Items
 // Weapons
-//import DAGGER_BONE from "../../../../images/items/weapons/dagger-bone.svg"
-import DAGGER_BONE from "../../../../images/items/weapons/dagger-bone.svg"
 import DAGGER_BRONZE from "../../../../images/items/weapons/dagger-bronze.svg"
 import DAGGER_IRON from "../../../../images/items/weapons/dagger-iron.svg"
 import DAGGER_STEEL from "../../../../images/items/weapons/dagger-steel.svg"
 
-export const daggerBone = DAGGER_BONE
 export const daggerBronze = DAGGER_BRONZE
 export const daggerIron = DAGGER_IRON
 export const daggerSteel = DAGGER_STEEL
 
 // Equipment
-import CHEST_ARMOUR_BRONZE from "../../../../images/items/equipment/chest-armour-bronze.svg"
+import ARMOUR_BRONZE_BOOTS from "../../../../images/items/equipment/bronze-boots.svg"
+import ARMOUR_BRONZE_CHEST from "../../../../images/items/equipment/bronze-chest.svg"
+import ARMOUR_BRONZE_GLOVES from "../../../../images/items/equipment/bronze-gloves.svg"
+import ARMOUR_BRONZE_HELMET from "../../../../images/items/equipment/bronze-helmet.svg"
+import ARMOUR_BRONZE_PLATELEGS from "../../../../images/items/equipment/bronze-platelegs.svg"
+import ARMOUR_BRONZE_SHIELD from "../../../../images/items/equipment/bronze-shield.svg"
 
-export const chestArmourBronze = CHEST_ARMOUR_BRONZE
+export const armourBronzeBoots = ARMOUR_BRONZE_BOOTS
+export const armourBronzeChest = ARMOUR_BRONZE_CHEST
+export const armourBronzeGloves = ARMOUR_BRONZE_GLOVES
+export const armourBronzeHelmet = ARMOUR_BRONZE_HELMET
+export const armourBronzePlatelegs = ARMOUR_BRONZE_PLATELEGS
+export const armourBronzeShield = ARMOUR_BRONZE_SHIELD
 
 // Skill Items
 import LOG_BROWN from "../../../../images/items/log-brown.svg"

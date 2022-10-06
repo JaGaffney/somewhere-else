@@ -9,8 +9,8 @@ export const Controls = (props) => {
 
 
             <div className="topPanel__controls-left">
-                <span>{props.playerData.playerBank.bankItems.size} / {props.playerData.playerBank.bankSpace}</span>
-                <span className="topPanel__controls-left-info">Bank Value {intToString(props.playerData.playerBank.getBankValue())} gp</span>
+                <span>{props.playerData.playerBank.totalItemsInBank()} / {props.playerData.playerBank.bankSpace}</span>
+                <span className="topPanel__controls-left-info">Bank Value {intToString(props.playerData.playerBank.getBankValue(props.itemData))} gp</span>
             </div>
 
             <div className="topPanel__controls-right">
@@ -28,6 +28,7 @@ export const Controls = (props) => {
 
 const mapStateToProps = (state) => ({
     playerData: state.player.playerData,
+    itemData: state.items.itemData
 })
 
 const mapDispatchToProps = {}

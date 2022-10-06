@@ -1,20 +1,18 @@
 import { Item } from "../../items/Item"
 export class Bankslot {
+  id: number
   qty: number
-  bankLocation: number
-  item: Item
 
-  constructor(qty: number, bankLocation: number, item: Item) {
+  constructor(id: number, qty: number) {
+    this.id = id
     this.qty = qty
-    this.bankLocation = bankLocation
-    this.item = item
   }
 
-  getItemTotalPrice(): number {
-    if (this.item) {
-      return this.item.price * this.qty
+  getItemTotalPrice(item): number {
+    if (item) {
+      return item.price * this.qty
     } else {
-      0
+      return 0
     }
   }
 }

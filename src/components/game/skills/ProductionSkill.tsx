@@ -17,6 +17,7 @@ export const ProductionSkill = (props) => {
         }
     }, [props.skills])
 
+
     return (
         props.skills.length !== 0 ? (
             activeData !== null ?

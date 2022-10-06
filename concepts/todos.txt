@@ -12,3 +12,14 @@ ONGOING
 (-) Unable to buy single research anymore
 (-) Research is being added to the bank
 (-) Items duplicated when you dont have enough to complete the full order can complete partial order
+
+
+
+bank
+(+) Set amount of space than can be increased but not decreased
+(+) Add/Remove/Display Items
+(+) If no space in bank item cant be added
+(+) Save data between sessions
+(+) amount of certain items in the bank will change a lot as items are used/gatherd etc
+(+) Quickly find the item in the bank with low amount of calls
+(+) Count all the items in the bank and creata (Total value) from the items inside the bank

@@ -2,8 +2,8 @@ import { Bankslot } from "./Bankslot"
 import { Item } from "../../items/Item"
 
 export class Bank {
-  bankItems: Map<number, Bankslot> = new Map()
   bankSpace: number = 10
+  bankItems: Array<Bankslot> = []
   coins: number = 0
   essence: number = 0
   research = {
@@ -80,30 +80,36 @@ export class Bank {
   }
 
   totalItemsInBank(): number {
-    return this.bankItems.size
+    return this.bankItems.length
   }
 
-  findItemInBank(itemId: number) {
-    return this.bankItems.get(itemId)
+  findItemInBank(itemID: number) {
+    for (let item in this.bankItems) {
+      if (this.bankItems[item].id === itemID) {
+        return this.bankItems[item]
+      }
+    }
+    return null
   }
 
-  addItemtoBank(itemId: number, qty: number, item: Item) {
-    let currentVal = this.findItemInBank(itemId)
-    if (currentVal === undefined) {
-      let newItem = new Bankslot(qty, 0, item)
-      this.bankItems.set(itemId, newItem)
+  addItemtoBank(itemID: number, qty: number) {
+    let currentVal = this.findItemInBank(itemID)
+    if (currentVal === null) {
+      let newItem = new Bankslot(itemID, qty)
+      // space in bank?
+      this.bankItems.push(newItem)
     } else {
       currentVal.qty += qty
     }
   }
 
-  removeItemfromBank(itemId: number, qty: number) {
-    let currentVal = this.findItemInBank(itemId)
-    if (currentVal !== undefined) {
+  removeItemfromBank(itemID: number, qty: number) {
+    let currentVal = this.findItemInBank(itemID)
+    if (currentVal !== null) {
       currentVal.qty -= qty
-    }
-    if (currentVal.qty === 0) {
-      this.bankItems.delete(itemId)
+      if (currentVal.qty === 0) {
+        this.bankItems.filter(i => i.id !== itemID)
+      }
     }
   }
 
@@ -112,10 +118,11 @@ export class Bank {
     this.addToCoins(amount * basePrice)
   }
 
-  getBankValue(): number {
+  getBankValue(itemData): number {
     let total = 0
-    for (const item of this.bankItems) {
-      total += item[1].getItemTotalPrice()
+    for (const slot of this.bankItems) {
+      const item = itemData.getItemById(slot.id)
+      total += slot.getItemTotalPrice(item)
     }
 
     return total

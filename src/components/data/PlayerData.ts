@@ -72,9 +72,9 @@ export class PlayerData {
   }
 
   // loads data once player is created
-  loadPlayerData(data, itemData): void {
+  loadPlayerData(data): void {
     this.loadSkillEXP(data.skillExp)
-    this.loadBank(data.playerBank, itemData)
+    this.loadBank(data.playerBank)
     this.loadSettlment(data.settlement)
     this.loadInventory(data.inventory)
     this.loadStatus(data.status)
@@ -90,13 +90,10 @@ export class PlayerData {
     }
   }
 
-  private loadBank(bankData, itemData): void {
+  private loadBank(bankData): void {
     this.playerBank.setCoins(bankData.coins)
     this.playerBank.setResearch(bankData.research)
-
-    let deserialized = new Map(JSON.parse(bankData.bankItems))
-    deserialized.forEach((k: any, v: any) => {
-      let item = itemData.getItemById(v)
+    bankData.bankItems.forEach((k: any, v: any) => {
       this.playerBank.addItemtoBank(v, k.qty)
     })
   }

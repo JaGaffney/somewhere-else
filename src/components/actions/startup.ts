@@ -88,15 +88,11 @@ export const saveAllDataToLocalStorage = (
   },
   actionTime
 ) => {
-  const playerData = {
-    ...playerBank,
-    bankItems: JSON.stringify([...playerBank.bankItems]),
-  }
   const skillData = skillExp.skillExp
 
   const data = {
     skillExp: skillData,
-    playerBank: playerData,
+    playerBank,
     passives,
     inventory,
     actionTime,

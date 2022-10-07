@@ -46,7 +46,7 @@ const IndexPage = props => {
     const dataFromStorage = onLoadDataFromLocalStorage()
 
     if (dataFromStorage !== null) {
-      playerData.loadPlayerData(dataFromStorage, itemData)
+      playerData.loadPlayerData(dataFromStorage)
     }
 
     // loads data into redux
@@ -196,6 +196,39 @@ const IndexPage = props => {
     return () => clearInterval(intervalRefresh);
   }, [props.skillData, props.actionTime, timer]);
 
+  const addToBankType = (type: string, id: number, qty: number, item) => {
+    const name = item.name.split(" ")[0]
+    let val = item.price * qty
+    switch (type) {
+      case ("RESEARCH"):
+        props.playerData.playerBank.addToResearch(name, qty)
+        props.playerData.offline.setItems(name, qty)
+        break;
+      case ("ESSENCE"):
+        console.log("essence being added")
+        props.playerData.playerBank.addToEssence(qty)
+        props.playerData.offline.setEssence(qty)
+        break;
+      case ("BANK"):
+        props.playerData.playerBank.addToCoins(val)
+        props.playerData.offline.setCoins(val)
+        break;
+      case ("COMMON"):
+        if (props.playerData.getSettingValue("autoSell")) {
+          if (!val) {
+            val = 1
+          }
+          props.playerData.playerBank.addToCoins(val)
+          props.playerData.offline.setCoins(val)
+        } else {
+          props.playerData.playerBank.addItemtoBank(id, qty, item)
+          props.playerData.offline.setItems(id, qty)
+        }
+      default:
+        break;
+    }
+  }
+
   const handleAddToBank = (activeData: SkillAction, amount: number): void => {
     if (activeData.itemsReceived.length > 0) {
       for (const value in activeData.itemsReceived) {
@@ -207,37 +240,8 @@ const IndexPage = props => {
           const id = activeData.itemsReceived[value].id
           const item = props.itemData.getItemById(id)
 
-          // handle none bank items 
-          // research cannot be sold
-          if (item.rarity === "RESEARCH") {
-            let name = item.name.split(" ")[0]
-            props.playerData.playerBank.addToResearch(name, qty)
-            props.playerData.offline.setItems(name, qty)
-          }
-          // essence cannot be sold
-          if (item.rarity === "ESSENCE") {
-            console.log("essence being added")
-            props.playerData.playerBank.addToEssence(qty)
-            props.playerData.offline.setEssence(qty)
-          }
-          if (item.rarity === "BANK") {
-            let val = item.price * qty
-            props.playerData.playerBank.addToCoins(val)
-            props.playerData.offline.setCoins(val)
-          }
-
           // handle items that are added to your bank
-          if (props.playerData.getSettingValue("autoSell")) {
-            let val = item.price * qty
-            if (!val) {
-              val = 1
-            }
-            props.playerData.playerBank.addToCoins(val)
-            props.playerData.offline.setCoins(val)
-          } else {
-            props.playerData.playerBank.addItemtoBank(id, qty, item)
-            props.playerData.offline.setItems(id, qty)
-          }
+          addToBankType(item.rarity, id, qty, item)
         }
       }
     }

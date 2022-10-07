@@ -10,8 +10,6 @@ export const Actions = (props) => {
         setEnoughManpower(props.playerData.getActiveManpower() < props.playerData.getManpower())
     }, [props.playerUpdated])
 
-    console.log(props.playerData.playerBank)
-
     return (
         <div className="actions">
             <div className="actions__generic actions__gather">

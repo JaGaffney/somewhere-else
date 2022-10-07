@@ -15,7 +15,7 @@ ONGOING
 
 
 
-bank
+BANK concept
 (+) Set amount of space than can be increased but not decreased
 (+) Add/Remove/Display Items
 (+) If no space in bank item cant be added

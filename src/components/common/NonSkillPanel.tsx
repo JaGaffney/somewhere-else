@@ -33,7 +33,7 @@ export const NonSkillPanel = (props) => {
                 <img className="skillpanel__icon" src={BANK} />
                 <span className={`skillpanel__name ${props.activePage === "bank" ? "skillpanel__name-active" : null}`}>Storage</span>
                 {props.playerData.length !== 0 && (
-                    <span className="skillpanel__level">{props.playerData.playerBank.totalItemsInBank()}{props.seperator} / {props.playerData.playerBank.getBankSpace() + props.playerData.research.getRepeatValue("capacity")}</span>
+                    <span className="skillpanel__level">{props.playerData.playerBank.totalItemsInBank()}{props.seperator} / {props.playerData.getTotalBankSpaceWithStorage()}</span>
                 )}
             </button>
 

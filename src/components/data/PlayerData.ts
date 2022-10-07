@@ -91,7 +91,6 @@ export class PlayerData {
   }
 
   private loadBank(bankData, itemData): void {
-    this.playerBank.setBankSpace(bankData.bankSpace)
     this.playerBank.setCoins(bankData.coins)
     this.playerBank.setResearch(bankData.research)
 
@@ -128,5 +127,10 @@ export class PlayerData {
 
   private loadSettings(data): void {
     this.settings = data
+  }
+
+  public getTotalBankSpaceWithStorage = () => {
+    const storageResearch = this.research.getRepeatValue("storage")
+    return this.playerBank.bankSpace + storageResearch
   }
 }

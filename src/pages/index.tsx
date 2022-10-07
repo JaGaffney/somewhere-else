@@ -201,8 +201,7 @@ const IndexPage = props => {
       for (const value in activeData.itemsReceived) {
 
         // wont add any more items if bank is full, but will allow for items to keep being stored
-        const maxBankSpace = props.playerData.playerBank.getBankSpace() + props.playerData.research.getRepeatValue("capacity")
-        if (props.playerData.playerBank.totalItemsInBank() + 1 < maxBankSpace) {
+        if (props.playerData.playerBank.totalItemsInBank() < props.playerData.getTotalBankSpaceWithStorage()) {
 
           const qty = (activeData.itemsReceived[value].qty * amount) * randomSucess() // adds random chance if applicable
           const id = activeData.itemsReceived[value].id

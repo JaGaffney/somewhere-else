@@ -16,12 +16,6 @@ export class Bank {
 
   constructor() {}
 
-  getBankSpace(): number {
-    return this.bankSpace
-  }
-  setBankSpace(value: number): void {
-    this.bankSpace = value
-  }
   getCoins(): number {
     return this.coins
   }

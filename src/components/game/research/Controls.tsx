@@ -32,8 +32,8 @@ export const Controls = (props) => {
         purple: researchPurple,
     }
 
-    const controlButtons = ["GLOBAL", "COMBAT", "JOB", "SKILL"]
-    console.log(props.playerData.playerBank)
+    const controlButtons = ["Global", "Combat", "Job"]
+
     return (
         <div className="topPanel topPanel__controls topPanel__marginBottom">
             <div className="topPanel__controls-left">
@@ -64,9 +64,9 @@ export const Controls = (props) => {
                     return (
                         <button
                             key={k}
-                            className={`generic__button ${props.researchFilter.includes(i) ? "generic__button-inactive " : "generic__button-active"}`}
-                            onClick={() => props.controlHandler(i)}>
-                            {i.toLocaleLowerCase()}
+                            className={`generic__button ${props.researchFilter.includes(i.toLocaleUpperCase()) ? "generic__button-inactive " : "generic__button-active"}`}
+                            onClick={() => props.controlHandler(i.toLocaleUpperCase())}>
+                            {i}
                         </button>
                     )
                 })}

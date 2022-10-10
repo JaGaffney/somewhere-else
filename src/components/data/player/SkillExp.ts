@@ -2,7 +2,6 @@ export class SkillEXP {
   skillExp: Map<string, number> = new Map()
 
   constructor(skillNames: Array<string>) {
-    this.setCurrentExp("health", 1358)
     this.createBaseSkills(skillNames)
   }
 

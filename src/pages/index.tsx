@@ -21,7 +21,7 @@ import { PlayerData } from "../components/data/PlayerData"
 
 // this will be loaded from local storage
 // @ts-ignore
-import backgroundImage from "../images/background/cat.jpg"
+import backgroundImage from "../images/background/crystal2.jpg"
 import { SkillAction } from "../components/data/skills/SkillAction"
 
 import { costPerAction } from "../components/utils/generic"
@@ -271,7 +271,16 @@ const IndexPage = props => {
   return (
     <Layout>
       <SEO title="somewhere else" />
-      <section className="main-panel" style={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+      <section
+        className="main-panel"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "inherit",
+          overflowY: "auto",
+          overflowX: "hidden"
+        }}
+      >
         {/* <Landing /> */}
         <Structure />
       </section>

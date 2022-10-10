@@ -33,7 +33,7 @@ export const Controls = (props) => {
     }
 
     const controlButtons = ["GLOBAL", "COMBAT", "JOB", "SKILL"]
-
+    console.log(props.playerData.playerBank)
     return (
         <div className="topPanel topPanel__controls topPanel__marginBottom">
             <div className="topPanel__controls-left">

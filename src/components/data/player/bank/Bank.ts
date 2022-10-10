@@ -1,5 +1,4 @@
 import { Bankslot } from "./Bankslot"
-import { Item } from "../../items/Item"
 
 export class Bank {
   bankSpace: number = 10
@@ -88,6 +87,7 @@ export class Bank {
 
   addItemtoBank(itemID: number, qty: number) {
     let currentVal = this.findItemInBank(itemID)
+    console.log(currentVal)
     if (currentVal === null) {
       let newItem = new Bankslot(itemID, qty)
       // space in bank?
@@ -101,8 +101,10 @@ export class Bank {
     let currentVal = this.findItemInBank(itemID)
     if (currentVal !== null) {
       currentVal.qty -= qty
-      if (currentVal.qty === 0) {
-        this.bankItems.filter(i => i.id !== itemID)
+      if (currentVal.qty <= 0) {
+        this.bankItems = this.bankItems.filter(
+          i => i.id !== itemID && i.id !== 0
+        )
       }
     }
   }

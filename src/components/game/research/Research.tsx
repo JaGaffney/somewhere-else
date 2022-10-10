@@ -80,10 +80,11 @@ export const Research = (props) => {
                 props.playerData.research.updateResearchRepeat(name, 1)
             } else {
                 props.playerData.research.updateResearchSingle(name, true)
+                setActiveResearch(null)
             }
 
             props.setPlayerUpdated()
-            setActiveResearch(null)
+
         }
     }
 

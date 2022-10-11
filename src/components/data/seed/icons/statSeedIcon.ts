@@ -20,6 +20,9 @@ import UNLOCKED from "../../../../images/stats/unlocked.svg"
 import ENFEEABLE from "../../../../images/stats/enfeeable.svg"
 import DAMAGE from "../../../../images/stats/damage.svg"
 import LEVEL from "../../../../images/stats/level.svg"
+import MANPOWER from "../../../../images/stats/manpower.svg"
+import TIME from "../../../../images/stats/time.svg"
+import XP from "../../../../images/stats/xp.svg"
 
 export const accuracy = ACCURACY
 export const armour = ARMOUR
@@ -42,3 +45,6 @@ export const enfeeable = ENFEEABLE
 export const unlocked = UNLOCKED
 export const damage = DAMAGE
 export const level = LEVEL
+export const manpower = MANPOWER
+export const time = TIME
+export const xp = XP

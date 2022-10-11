@@ -148,11 +148,13 @@
     border-top: solid 10px var(--amber500);
   }
   &-icon {
-    width: 6rem;
-    height: 6rem;
-    background-color: var(--gray900);
-    border-radius: 65% 35% 84% 16% / 47% 65% 35% 53%;
-    padding: 0;
+    img {
+      width: 6rem;
+      height: 6rem;
+      background-color: var(--gray900);
+      border-radius: 65% 35% 84% 16% / 47% 65% 35% 53%;
+      padding: 0;
+    }
   }
   &-content {
     text-align: center;
@@ -198,8 +200,43 @@
   }
 }
 .action__production {
-  min-height: 22rem;
-  height: 24rem;
+  min-height: 14rem;
+  height: auto;
+  width: auto;
+  max-width: 22rem;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  &-icon {
+    width: 40%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    img {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+  &-content {
+    width: 60%;
+  }
+  &-level {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    span {
+      display: flex;
+    }
+    img {
+      height: 1.5rem;
+      margin-right: 0.5rem;
+    }
+  }
 }
 
 .game__normal {

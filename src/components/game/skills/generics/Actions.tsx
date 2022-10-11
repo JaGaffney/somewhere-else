@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { validFilterQuery } from '../../../utils/generic'
 
 import Item from "./Item"
+import ItemProduction from './ItemProduction'
 
 export const Actions = (props) => {
     const [enoughManpower, setEnoughManpower] = useState(props.playerData.getActiveManpower() < props.playerData.getManpower())
@@ -19,12 +20,12 @@ export const Actions = (props) => {
                         if (props.activeCategory) {
                             if (props.skillData.actions[i].category === props.activeCategory) {
                                 if (validFilterQuery(i, props.search)) {
-                                    return <Item key={k} data={props.skillData.actions[i]} id={i} enoughManpower={enoughManpower} production={props.production} />
+                                    return <ItemProduction key={k} data={props.skillData.actions[i]} id={i} enoughManpower={enoughManpower} />
                                 }
                             }
                         } else {
                             return (
-                                <Item key={k} data={props.skillData.actions[i]} id={i} enoughManpower={enoughManpower} production={props.production} />
+                                <Item key={k} data={props.skillData.actions[i]} id={i} enoughManpower={enoughManpower} />
                             )
                         }
                     })}

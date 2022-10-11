@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { setActionTime, resetActionTime, setPlayerUpdated } from "../../../actions/api"
 
-import { FiClock } from "react-icons/fi";
-
 export const Item = (props) => {
     const [manpower, setManpower] = useState<number>(props.playerData.settlement.tasks[props.id] || 0)
 
@@ -25,28 +23,6 @@ export const Item = (props) => {
                 <span className="action__item-level">Manpower {props.data.manpower}</span>
                 <span className="action__item-level">Level {props.data.level}</span>
                 <span className="action__item-details">{props.data.exp} xp</span>
-                <span className="action__item-details"><FiClock /> {props.data.time} seconds</span>
-
-                {props.production && (
-                    <>
-                        <h4>Items required</h4>
-                        {props.data && props.data.itemsRequired.map((i, k) => {
-                            const data = props.itemData.getItemById(i.id)
-                            const bankItem = props.playerData.playerBank.findItemInBank(i.id)
-                            let itemInBank = "text__valid"
-                            if (bankItem === undefined || bankItem?.qty < i.qty * manpower) {
-                                itemInBank = "text__error"
-                            }
-                            return (
-                                <div className="action__item-production" key={k}>
-                                    <span><img src={data.icon} alt="data.name" />{data.name}</span>
-                                    <span className={itemInBank}>{manpower === 0 ? i.qty : i.qty * manpower}</span>
-                                </div>
-                            )
-                        })
-                        }
-                    </>
-                )}
             </div>
         </div>
     )

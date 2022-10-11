@@ -554,6 +554,22 @@ export const metalwork = [
     ],
   },
   {
+    name: "bronze sword",
+    level: 20,
+    exp: 10,
+    time: 10.0,
+    manpower: 1,
+    category: "1",
+    icon: itemIcon.swordBronze,
+    itemsRequired: [{ id: 26, qty: 5 }],
+    itemsRecieved: [
+      {
+        id: 39,
+        qty: 1,
+      },
+    ],
+  },
+  {
     name: "iron dagger",
     level: 20,
     exp: 10,
@@ -564,7 +580,7 @@ export const metalwork = [
     itemsRequired: [{ id: 27, qty: 6 }],
     itemsRecieved: [
       {
-        id: 39,
+        id: 40,
         qty: 1,
       },
     ],

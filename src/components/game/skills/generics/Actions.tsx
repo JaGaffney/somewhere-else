@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { validFilterQuery } from '../../../utils/generic'
 
 import Item from "./Item"
 
@@ -17,8 +18,9 @@ export const Actions = (props) => {
                     {Object.keys(props.skillData.actions).map((i, k) => {
                         if (props.activeCategory) {
                             if (props.skillData.actions[i].category === props.activeCategory) {
-
-                                return <Item key={k} data={props.skillData.actions[i]} id={i} enoughManpower={enoughManpower} production={props.production} />
+                                if (validFilterQuery(i, props.search)) {
+                                    return <Item key={k} data={props.skillData.actions[i]} id={i} enoughManpower={enoughManpower} production={props.production} />
+                                }
                             }
                         } else {
                             return (

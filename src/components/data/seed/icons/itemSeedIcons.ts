@@ -24,10 +24,20 @@ export const researchPurple = RESEARCH_PURPLE
 import DAGGER_BRONZE from "../../../../images/items/weapons/dagger-bronze.svg"
 import DAGGER_IRON from "../../../../images/items/weapons/dagger-iron.svg"
 import DAGGER_STEEL from "../../../../images/items/weapons/dagger-steel.svg"
+import DAGGER_MITHRIL from "../../../../images/items/weapons/dagger-mithril.svg"
+import SWORD_BRONZE from "../../../../images/items/weapons/sword-bronze.svg"
+import SWORD_IRON from "../../../../images/items/weapons/sword-iron.svg"
+import SWORD_STEEL from "../../../../images/items/weapons/sword-steel.svg"
+import SWORD_MITHRIL from "../../../../images/items/weapons/sword-mithril.svg"
 
 export const daggerBronze = DAGGER_BRONZE
 export const daggerIron = DAGGER_IRON
 export const daggerSteel = DAGGER_STEEL
+export const daggerMithril = DAGGER_MITHRIL
+export const swordBronze = SWORD_BRONZE
+export const swordIron = SWORD_IRON
+export const swordSteel = SWORD_STEEL
+export const swordMithril = SWORD_MITHRIL
 
 // Equipment
 import ARMOUR_BRONZE_BOOTS from "../../../../images/items/equipment/bronze-boots.svg"

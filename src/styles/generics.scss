@@ -13,6 +13,9 @@
 .topPanel__marginBottom {
   margin-bottom: 1.5rem;
 }
+.topPanel__marginTop {
+  margin-top: 1.5rem;
+}
 
 .topPanel__controls {
   display: flex;
@@ -169,7 +172,7 @@
   padding: 0.5rem 1rem;
   margin: 0.3rem;
   border: none;
-  border-radius: 7px;
+  border-radius: 4px;
   border: var(--border);
   &:hover {
     transform: translateY(-2px);
@@ -211,6 +214,14 @@
   cursor: pointer;
   gap: 0.1rem;
   margin-right: 1rem;
+}
+.generic__button-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    margin-right: 0.3rem;
+  }
 }
 
 .fadeOut {

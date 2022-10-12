@@ -6,7 +6,7 @@ export const forestry = [
     name: "bamboo",
     level: 1,
     exp: 25,
-    time: 10.0,
+
     manpower: 1,
     category: "default",
     icon: skillIcon.bamboo,
@@ -17,7 +17,7 @@ export const forestry = [
     name: "beech tree",
     level: 10,
     exp: 35,
-    time: 10.0,
+
     manpower: 1,
     category: "default",
     icon: skillIcon.beech,
@@ -28,7 +28,7 @@ export const forestry = [
     name: "birch tree",
     level: 20,
     exp: 55,
-    time: 10.0,
+
     manpower: 1,
     category: "default",
     icon: skillIcon.birch,
@@ -39,7 +39,7 @@ export const forestry = [
     name: "oak tree",
     level: 30,
     exp: 68,
-    time: 10.0,
+
     manpower: 1,
     category: "default",
     icon: skillIcon.oak,
@@ -50,7 +50,7 @@ export const forestry = [
     name: "palm tree",
     level: 40,
     exp: 100,
-    time: 10.0,
+
     manpower: 1,
     category: "default",
     icon: skillIcon.palm,
@@ -61,7 +61,7 @@ export const forestry = [
     name: "willow tree",
     level: 50,
     exp: 125,
-    time: 10.0,
+
     manpower: 1,
     category: "default",
     icon: skillIcon.willow,
@@ -72,7 +72,7 @@ export const forestry = [
     name: "redwood tree",
     level: 60,
     exp: 175,
-    time: 10.0,
+
     manpower: 1,
     category: "default",
     icon: skillIcon.redwood,
@@ -83,7 +83,7 @@ export const forestry = [
     name: "undead tree",
     level: 70,
     exp: 220,
-    time: 10.0,
+
     manpower: 1,
     category: "default",
     icon: skillIcon.undead,
@@ -94,7 +94,7 @@ export const forestry = [
     name: "tree of life",
     level: 80,
     exp: 300,
-    time: 10.0,
+
     manpower: 1,
     category: "default",
     icon: skillIcon.holy,
@@ -105,7 +105,7 @@ export const forestry = [
     name: "demonic tree",
     level: 90,
     exp: 380,
-    time: 10.0,
+
     manpower: 1,
     category: "default",
     icon: skillIcon.demonic,
@@ -116,7 +116,7 @@ export const forestry = [
     name: "god tree",
     level: 99,
     exp: 0,
-    time: 10.0,
+
     manpower: 99,
     category: "default",
     icon: skillIcon.god,
@@ -130,7 +130,7 @@ export const mining = [
     name: "stone",
     level: 1,
     exp: 25,
-    time: 10.0,
+
     manpower: 5,
     category: "default",
     icon: skillIcon.stone,
@@ -141,7 +141,7 @@ export const mining = [
     name: "copper",
     level: 10,
     exp: 100,
-    time: 10.0,
+
     manpower: 5,
     category: "default",
     icon: skillIcon.copper,
@@ -155,7 +155,7 @@ export const mining = [
     name: "tin",
     level: 10,
     exp: 100,
-    time: 10.0,
+
     manpower: 5,
     category: "default",
     icon: skillIcon.tin,
@@ -169,7 +169,7 @@ export const mining = [
     name: "iron",
     level: 20,
     exp: 200,
-    time: 10.0,
+
     manpower: 5,
     category: "default",
     icon: skillIcon.iron,
@@ -183,7 +183,7 @@ export const mining = [
     name: "coal",
     level: 30,
     exp: 300,
-    time: 10.0,
+
     manpower: 5,
     category: "default",
     icon: skillIcon.coal,
@@ -197,7 +197,7 @@ export const mining = [
     name: "silver",
     level: 30,
     exp: 400,
-    time: 10.0,
+
     manpower: 5,
     category: "default",
     icon: skillIcon.silver,
@@ -211,7 +211,7 @@ export const mining = [
     name: "gold",
     level: 50,
     exp: 400,
-    time: 10.0,
+
     manpower: 5,
     category: "default",
     icon: skillIcon.gold,
@@ -225,7 +225,7 @@ export const mining = [
     name: "mithril",
     level: 40,
     exp: 500,
-    time: 10.0,
+
     manpower: 5,
     category: "default",
     icon: skillIcon.mithril,
@@ -242,7 +242,7 @@ export const scholar = [
     name: "experimentation I",
     level: 1,
     exp: 5,
-    time: 10.0,
+
     manpower: 1,
     category: "default",
     icon: itemIcon.researchRed,
@@ -258,7 +258,7 @@ export const scholar = [
     name: "experimentation II",
     level: 1,
     exp: 25,
-    time: 10.0,
+
     manpower: 2,
     category: "default",
     icon: itemIcon.researchGreen,
@@ -274,7 +274,7 @@ export const scholar = [
     name: "experimentation III",
     level: 1,
     exp: 25,
-    time: 10.0,
+
     manpower: 3,
     category: "default",
     icon: itemIcon.researchBlue,
@@ -290,7 +290,7 @@ export const scholar = [
     name: "experimentation IV",
     level: 1,
     exp: 25,
-    time: 10.0,
+
     manpower: 4,
     category: "default",
     icon: itemIcon.researchYellow,
@@ -306,7 +306,7 @@ export const scholar = [
     name: "experimentation V",
     level: 1,
     exp: 25,
-    time: 10.0,
+
     manpower: 5,
     category: "default",
     icon: itemIcon.researchPurple,
@@ -324,7 +324,7 @@ export const metalwork = [
     name: "stone block",
     level: 1,
     exp: 5,
-    time: 10.0,
+
     manpower: 1,
     category: "resource",
     icon: skillIcon.stoneBrick,
@@ -340,7 +340,7 @@ export const metalwork = [
     name: "bronze bar",
     level: 10,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "resource",
     icon: skillIcon.barBronze,
@@ -359,7 +359,7 @@ export const metalwork = [
     name: "iron bar",
     level: 20,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "resource",
     icon: skillIcon.barIron,
@@ -375,7 +375,7 @@ export const metalwork = [
     name: "steel bar",
     level: 30,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "resource",
     icon: skillIcon.barSteel,
@@ -394,7 +394,7 @@ export const metalwork = [
     name: "silver bar",
     level: 30,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "resource",
     icon: skillIcon.barSteel,
@@ -410,7 +410,7 @@ export const metalwork = [
     name: "gold bar",
     level: 50,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "resource",
     icon: skillIcon.barGold,
@@ -426,7 +426,7 @@ export const metalwork = [
     name: "mithril bar",
     level: 40,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "resource",
     icon: skillIcon.barMithril,
@@ -445,7 +445,7 @@ export const metalwork = [
     name: "bronze dagger",
     level: 10,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "1",
     icon: itemIcon.daggerBronze,
@@ -461,7 +461,7 @@ export const metalwork = [
     name: "bronze helmet",
     level: 11,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzeHelmet,
@@ -477,7 +477,7 @@ export const metalwork = [
     name: "bronze boots",
     level: 12,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzeBoots,
@@ -493,7 +493,7 @@ export const metalwork = [
     name: "bronze gloves",
     level: 14,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzeGloves,
@@ -509,7 +509,7 @@ export const metalwork = [
     name: "bronze platelegs",
     level: 16,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzePlatelegs,
@@ -525,7 +525,7 @@ export const metalwork = [
     name: "bronze platebody",
     level: 18,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzeChest,
@@ -541,7 +541,7 @@ export const metalwork = [
     name: "bronze shield",
     level: 19,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzeShield,
@@ -557,7 +557,7 @@ export const metalwork = [
     name: "bronze sword",
     level: 20,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "1",
     icon: itemIcon.swordBronze,
@@ -573,7 +573,7 @@ export const metalwork = [
     name: "iron dagger",
     level: 20,
     exp: 10,
-    time: 10.0,
+
     manpower: 1,
     category: "2",
     icon: itemIcon.daggerIron,

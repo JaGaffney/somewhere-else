@@ -87,7 +87,6 @@ export class Bank {
 
   addItemtoBank(itemID: number, qty: number) {
     let currentVal = this.findItemInBank(itemID)
-    console.log(currentVal)
     if (currentVal === null) {
       let newItem = new Bankslot(itemID, qty)
       // space in bank?

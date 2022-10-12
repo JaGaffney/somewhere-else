@@ -1,7 +1,6 @@
 export class SkillAction {
   name: string
   exp: number
-  time: number
   manpower: number
   category: string
   level: number
@@ -13,7 +12,6 @@ export class SkillAction {
   constructor(
     name: string,
     exp: number,
-    time: number,
     manpower: number,
     category: string,
     level: number,
@@ -24,7 +22,6 @@ export class SkillAction {
   ) {
     this.name = name
     this.exp = exp
-    this.time = time
     this.manpower = manpower
     this.category = category
     this.level = level

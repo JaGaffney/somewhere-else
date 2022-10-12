@@ -17,7 +17,6 @@ export class NonCombatSkill extends Skill {
       const action = new SkillAction(
         val.name,
         val.exp,
-        val.time,
         val.manpower,
         val.category,
         val.level,

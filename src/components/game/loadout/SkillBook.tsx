@@ -21,7 +21,7 @@ export const SkillBook = (props) => {
   }
 
   return (
-    <div className="attacks__container">
+    <div className={`attacks__container ${props.cssOverride ? props.cssOverride : ""}`}>
       {[...props.attackData.attacks.keys()].map((i, k) => {
         const attackData = props.attackData.getAttackById(i)
         const currentLevel = props.playerData.levelChecker.getLevelFromExp(props.playerData.skillExp.getCurrentExp(attackData.type.toLowerCase()))

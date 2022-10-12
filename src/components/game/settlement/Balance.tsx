@@ -13,7 +13,7 @@ export const Balance = (props) => {
                 <div className="settlement__stats-balance-items">
                     <h4>Experience gained</h4>
                     {Object.keys(props.exp).map((i, k) => {
-                        const icon = props.skills.getSkillIconByName("gathering", i)
+                        const icon = props.skills.nonCombatSkill[i].icon
                         return (
                             <div key={k}>
                                 <span><img src={icon} />{i}</span>

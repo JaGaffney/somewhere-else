@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getBackgroundColor } from '../../utils/color'
 
+import * as icon from "../../data/seed/icons/statSeedIcon"
+
 export const PassiveInfo = (props) => {
     return (
         <div className="attackloadout__info catcombat__description-info" data-cy="passiveAndSkillsInformation">
@@ -15,28 +17,22 @@ export const PassiveInfo = (props) => {
                 </span>
 
                 <span className="attacksloadout__stats-description">
-                    Job
+                    Class
                     <span style={{ color: getBackgroundColor(props.selectedPassive ? props.selectedPassive.job : "default") }}>
                         {props.selectedPassive && props.selectedPassive.job.toLowerCase()}
                     </span>
                 </span>
                 <span className="attacksloadout__stats-description">
-                    Unlocked
+                    <span><img src={icon.unlocked} />unlocked</span>
                     <span>
                         level {props.selectedPassive && props.selectedPassive.levelRequired}
                     </span>
                 </span>
-                {/* <span className="attacksloadout__stats-description">
-                    Rarity
-                    <span style={{ color: getRarityColor(props.selectedPassive ? props.selectedPassive.job : "default") }}>
-                        {props.selectedPassive && props.selectedPassive.rarity}
-                    </span>
-                </span> */}
                 <span className="attacksloadout__stats-description">
                     {props.selectedPassive && Object.keys(props.selectedPassive.effect).map((i, k) => {
                         return (
                             <div className="attacksloadout__stats-description" key={k}>
-                                {i}
+                                <span><img src={icon[i]} />{i}</span>
                                 <span>
                                     {props.selectedPassive.effect[i]}
                                 </span>

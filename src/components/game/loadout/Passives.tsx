@@ -28,7 +28,7 @@ export const Passives = (props) => {
     }
 
     return (
-        <div className="attacks__container">
+        <div className={`attacks__container ${props.cssOverride ? props.cssOverride : ""}`}>
             {[...props.passiveData.passives.keys()].map((id: string, k) => {
                 if (id !== null) {
                     const passive = props.passiveData.getPassiveById(id)

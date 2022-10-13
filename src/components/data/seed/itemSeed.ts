@@ -33,7 +33,7 @@ export const itemSeed = [
     price: 0,
     icon: itemIcon.tribute,
     description: "",
-    rarity: "ESSENCE",
+    rarity: "TRIBUTE",
     consumeable: false,
   },
   {

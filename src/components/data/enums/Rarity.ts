@@ -5,4 +5,5 @@ export enum Rarity {
   EPIC = "EPIC",
   BANK = "BANK",
   RESEARCH = "RESEARCH",
+  TRIBUTE = "TRIBUTE",
 }

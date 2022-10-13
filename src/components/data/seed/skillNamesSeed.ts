@@ -19,4 +19,8 @@ export const skillNames = {
     name: SkillsEnum.METALWORK,
     icon: icon.metalwork,
   },
+  hunter: {
+    name: SkillsEnum.HUNTER,
+    icon: icon.hunter,
+  },
 }

@@ -3,11 +3,13 @@ import FORESTRY from "../../../../images/skill/forestry.svg"
 import MINING from "../../../../images/skill/mining.svg"
 import METALWORK from "../../../../images/skill/metalwork.svg"
 import SCHOLAR from "../../../../images/skill/scholar.svg"
+import HUNTER from "../../../../images/skill/hunter.svg"
 
 export const forestry = FORESTRY
 export const mining = MINING
 export const scholar = SCHOLAR
 export const metalwork = METALWORK
+export const hunter = HUNTER
 
 import forestry_IMG_1 from "../../../../images/skill/forestry/bamboo.svg"
 import forestry_IMG_2 from "../../../../images/skill/forestry/beech.svg"
@@ -70,3 +72,19 @@ export const barSteel = METALWORK_IMG_4
 export const barSilver = METALWORK_IMG_5
 export const barGold = METALWORK_IMG_6
 export const barMithril = METALWORK_IMG_7
+
+import HUNTER_IMG_1 from "../../../../images/skill/hunter/rat.svg"
+import HUNTER_IMG_2 from "../../../../images/skill/hunter/finch.svg"
+import HUNTER_IMG_3 from "../../../../images/skill/hunter/duck.svg"
+import HUNTER_IMG_4 from "../../../../images/skill/hunter/rabbit.svg"
+import HUNTER_IMG_5 from "../../../../images/skill/hunter/sheep.svg"
+import HUNTER_IMG_6 from "../../../../images/skill/hunter/cow.svg"
+import HUNTER_IMG_7 from "../../../../images/skill/hunter/raven.svg"
+
+export const rat = HUNTER_IMG_1
+export const finch = HUNTER_IMG_2
+export const duck = HUNTER_IMG_3
+export const rabbit = HUNTER_IMG_4
+export const sheep = HUNTER_IMG_5
+export const cow = HUNTER_IMG_6
+export const raven = HUNTER_IMG_7

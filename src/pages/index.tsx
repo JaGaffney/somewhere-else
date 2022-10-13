@@ -199,12 +199,13 @@ const IndexPage = props => {
   const addToBankType = (type: string, id: number, qty: number, item) => {
     const name = item.name.split(" ")[0]
     let val = item.price * qty
+
     switch (type) {
       case ("RESEARCH"):
         props.playerData.playerBank.addToResearch(name, qty)
         props.playerData.offline.setItems(name, qty)
         break;
-      case ("ESSENCE"):
+      case ("TRIBUTE"):
         console.log("tribute being added")
         props.playerData.playerBank.addToTribute(qty)
         props.playerData.offline.setTribute(qty)
@@ -235,7 +236,6 @@ const IndexPage = props => {
 
         // wont add any more items if bank is full, but will allow for items to keep being stored
         if (props.playerData.playerBank.totalItemsInBank() < props.playerData.getTotalBankSpaceWithStorage()) {
-
           const qty = (activeData.itemsReceived[value].qty * amount) * randomSucess() // adds random chance if applicable
           const id = activeData.itemsReceived[value].id
           const item = props.itemData.getItemById(id)

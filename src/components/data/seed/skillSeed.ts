@@ -916,3 +916,111 @@ export const metalwork = [
     ],
   },
 ]
+
+export const hunter = [
+  {
+    name: "rat",
+    level: 1,
+    exp: 15,
+    manpower: 1,
+    category: "default",
+    icon: skillIcon.rat,
+    itemsRequired: [],
+    itemsRecieved: [
+      {
+        id: 999,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "finch",
+    level: 10,
+    exp: 25,
+    manpower: 1,
+    category: "default",
+    icon: skillIcon.finch,
+    itemsRequired: [],
+    itemsRecieved: [
+      {
+        id: 999,
+        qty: 2,
+      },
+    ],
+  },
+  {
+    name: "duck",
+    level: 20,
+    exp: 40,
+    manpower: 1,
+    category: "default",
+    icon: skillIcon.duck,
+    itemsRequired: [],
+    itemsRecieved: [
+      {
+        id: 999,
+        qty: 3,
+      },
+    ],
+  },
+  {
+    name: "rabbit",
+    level: 30,
+    exp: 55,
+    manpower: 1,
+    category: "default",
+    icon: skillIcon.rabbit,
+    itemsRequired: [],
+    itemsRecieved: [
+      {
+        id: 999,
+        qty: 4,
+      },
+    ],
+  },
+  {
+    name: "sheep",
+    level: 40,
+    exp: 70,
+    manpower: 1,
+    category: "default",
+    icon: skillIcon.sheep,
+    itemsRequired: [],
+    itemsRecieved: [
+      {
+        id: 999,
+        qty: 5,
+      },
+    ],
+  },
+  {
+    name: "cow",
+    level: 50,
+    exp: 85,
+    manpower: 1,
+    category: "default",
+    icon: skillIcon.cow,
+    itemsRequired: [],
+    itemsRecieved: [
+      {
+        id: 999,
+        qty: 6,
+      },
+    ],
+  },
+  {
+    name: "raven",
+    level: 60,
+    exp: 100,
+    manpower: 1,
+    category: "default",
+    icon: skillIcon.raven,
+    itemsRequired: [],
+    itemsRecieved: [
+      {
+        id: 999,
+        qty: 7,
+      },
+    ],
+  },
+]

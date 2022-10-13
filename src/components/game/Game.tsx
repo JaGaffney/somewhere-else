@@ -49,6 +49,7 @@ export const Game = props => {
       case "forestry":
       case "mining":
       case "scholar":
+      case "hunter":
         return <NonCombatSkill skills={props.skills} activePage={props.activePage} />
       case "metalwork":
         return <ProductionSkill skills={props.skills} activePage={props.activePage} />

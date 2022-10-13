@@ -4,7 +4,7 @@ export class Offline {
   exp: Object = {}
   items: Object = {}
   time: number = 0
-  essence: number = 0
+  tribute: number = 0
 
   constructor() {}
 
@@ -13,7 +13,7 @@ export class Offline {
     this.coins = 0
     this.exp = {}
     this.items = {}
-    this.essence = 0
+    this.tribute = 0
     //this.time = 0
   }
 
@@ -23,8 +23,8 @@ export class Offline {
   public setCoins(value: number): void {
     this.coins = value
   }
-  public setEssence(value: number): void {
-    this.essence = value
+  public setTribute(value: number): void {
+    this.tribute = value
   }
   public setExp(key, value): void {
     this.exp[key] = value

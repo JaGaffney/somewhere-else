@@ -4,7 +4,7 @@ export class Bank {
   bankSpace: number = 10
   bankItems: Array<Bankslot> = []
   coins: number = 0
-  essence: number = 0
+  tribute: number = 0
   research = {
     red: 0,
     green: 0,
@@ -29,18 +29,18 @@ export class Bank {
       this.coins -= value
     }
   }
-  getEssence(): number {
-    return this.essence
+  getTribute(): number {
+    return this.tribute
   }
-  setEssence(value: number): void {
-    this.essence = value
+  setTribute(value: number): void {
+    this.tribute = value
   }
-  addToEssence(value: number): void {
-    this.essence += value
+  addToTribute(value: number): void {
+    this.tribute += value
   }
-  removeFromEssence(value: number): void {
-    if (value <= this.essence) {
-      this.essence -= value
+  removeFromTribute(value: number): void {
+    if (value <= this.tribute) {
+      this.tribute -= value
     }
   }
 

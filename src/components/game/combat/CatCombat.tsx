@@ -429,7 +429,7 @@ export const CatCombat = (props) => {
     const handleLoot = (data) => {
         const coins = data.drops.coins
         const drops = data.drops.drops
-        const essence = data.drops.essence
+        const tribute = data.drops.tribute
         const randomNumber = randomInteger(1, 100)
 
         // coins
@@ -445,8 +445,8 @@ export const CatCombat = (props) => {
         props.playerData.playerBank.addItemtoBank(drops[0].id, drops[0].qty, item)
         notifyWithImage(`+ ${drops[0].qty} ${item.name}`, item.icon)
 
-        // essence
-        props.playerData.playerBank.addToEssence(essence)
+        // tribute
+        props.playerData.playerBank.addToTribute(tribute)
 
     }
 

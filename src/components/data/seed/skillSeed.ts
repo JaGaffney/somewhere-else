@@ -241,7 +241,7 @@ export const scholar = [
   {
     name: "experimentation I",
     level: 1,
-    exp: 5,
+    exp: 15,
 
     manpower: 1,
     category: "default",
@@ -257,7 +257,7 @@ export const scholar = [
   {
     name: "experimentation II",
     level: 1,
-    exp: 25,
+    exp: 30,
 
     manpower: 2,
     category: "default",
@@ -273,7 +273,7 @@ export const scholar = [
   {
     name: "experimentation III",
     level: 1,
-    exp: 25,
+    exp: 45,
 
     manpower: 3,
     category: "default",
@@ -289,7 +289,7 @@ export const scholar = [
   {
     name: "experimentation IV",
     level: 1,
-    exp: 25,
+    exp: 50,
 
     manpower: 4,
     category: "default",
@@ -305,7 +305,7 @@ export const scholar = [
   {
     name: "experimentation V",
     level: 1,
-    exp: 25,
+    exp: 65,
 
     manpower: 5,
     category: "default",
@@ -324,7 +324,6 @@ export const metalwork = [
     name: "stone block",
     level: 1,
     exp: 5,
-
     manpower: 1,
     category: "resource",
     icon: skillIcon.stoneBrick,
@@ -340,7 +339,6 @@ export const metalwork = [
     name: "bronze bar",
     level: 10,
     exp: 10,
-
     manpower: 1,
     category: "resource",
     icon: skillIcon.barBronze,
@@ -358,8 +356,7 @@ export const metalwork = [
   {
     name: "iron bar",
     level: 20,
-    exp: 10,
-
+    exp: 20,
     manpower: 1,
     category: "resource",
     icon: skillIcon.barIron,
@@ -374,8 +371,7 @@ export const metalwork = [
   {
     name: "steel bar",
     level: 30,
-    exp: 10,
-
+    exp: 30,
     manpower: 1,
     category: "resource",
     icon: skillIcon.barSteel,
@@ -393,15 +389,14 @@ export const metalwork = [
   {
     name: "silver bar",
     level: 30,
-    exp: 10,
-
+    exp: 75,
     manpower: 1,
     category: "resource",
     icon: skillIcon.barSteel,
-    itemsRequired: [{ id: 17, qty: 1 }],
+    itemsRequired: [{ id: 17, qty: 5 }],
     itemsRecieved: [
       {
-        id: 29,
+        id: 31,
         qty: 1,
       },
     ],
@@ -409,12 +404,11 @@ export const metalwork = [
   {
     name: "gold bar",
     level: 50,
-    exp: 10,
-
+    exp: 160,
     manpower: 1,
     category: "resource",
     icon: skillIcon.barGold,
-    itemsRequired: [{ id: 18, qty: 1 }],
+    itemsRequired: [{ id: 18, qty: 10 }],
     itemsRecieved: [
       {
         id: 30,
@@ -425,8 +419,7 @@ export const metalwork = [
   {
     name: "mithril bar",
     level: 40,
-    exp: 10,
-
+    exp: 40,
     manpower: 1,
     category: "resource",
     icon: skillIcon.barMithril,
@@ -445,7 +438,6 @@ export const metalwork = [
     name: "bronze dagger",
     level: 10,
     exp: 10,
-
     manpower: 1,
     category: "1",
     icon: itemIcon.daggerBronze,
@@ -460,8 +452,7 @@ export const metalwork = [
   {
     name: "bronze helmet",
     level: 11,
-    exp: 10,
-
+    exp: 20,
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzeHelmet,
@@ -476,8 +467,7 @@ export const metalwork = [
   {
     name: "bronze boots",
     level: 12,
-    exp: 10,
-
+    exp: 20,
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzeBoots,
@@ -492,8 +482,7 @@ export const metalwork = [
   {
     name: "bronze gloves",
     level: 14,
-    exp: 10,
-
+    exp: 30,
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzeGloves,
@@ -508,8 +497,7 @@ export const metalwork = [
   {
     name: "bronze platelegs",
     level: 16,
-    exp: 10,
-
+    exp: 40,
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzePlatelegs,
@@ -524,8 +512,7 @@ export const metalwork = [
   {
     name: "bronze platebody",
     level: 18,
-    exp: 10,
-
+    exp: 50,
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzeChest,
@@ -540,8 +527,7 @@ export const metalwork = [
   {
     name: "bronze shield",
     level: 19,
-    exp: 10,
-
+    exp: 60,
     manpower: 1,
     category: "1",
     icon: itemIcon.armourBronzeShield,
@@ -556,8 +542,7 @@ export const metalwork = [
   {
     name: "bronze sword",
     level: 20,
-    exp: 10,
-
+    exp: 50,
     manpower: 1,
     category: "1",
     icon: itemIcon.swordBronze,
@@ -572,15 +557,360 @@ export const metalwork = [
   {
     name: "iron dagger",
     level: 20,
-    exp: 10,
-
+    exp: 20,
     manpower: 1,
     category: "2",
     icon: itemIcon.daggerIron,
-    itemsRequired: [{ id: 27, qty: 6 }],
+    itemsRequired: [{ id: 27, qty: 1 }],
     itemsRecieved: [
       {
         id: 40,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "iron helmet",
+    level: 21,
+    exp: 40,
+    manpower: 1,
+    category: "2",
+    icon: itemIcon.armourIronHelmet,
+    itemsRequired: [{ id: 27, qty: 2 }],
+    itemsRecieved: [
+      {
+        id: 41,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "iron boots",
+    level: 22,
+    exp: 40,
+    manpower: 1,
+    category: "2",
+    icon: itemIcon.armourIronBoots,
+    itemsRequired: [{ id: 27, qty: 2 }],
+    itemsRecieved: [
+      {
+        id: 42,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "iron gloves",
+    level: 24,
+    exp: 60,
+    manpower: 1,
+    category: "2",
+    icon: itemIcon.armourIronGloves,
+    itemsRequired: [{ id: 27, qty: 3 }],
+    itemsRecieved: [
+      {
+        id: 43,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "iron platelegs",
+    level: 26,
+    exp: 80,
+    manpower: 1,
+    category: "2",
+    icon: itemIcon.armourIronPlatelegs,
+    itemsRequired: [{ id: 27, qty: 4 }],
+    itemsRecieved: [
+      {
+        id: 44,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "iron platebody",
+    level: 28,
+    exp: 100,
+    manpower: 1,
+    category: "2",
+    icon: itemIcon.armourIronChest,
+    itemsRequired: [{ id: 27, qty: 5 }],
+    itemsRecieved: [
+      {
+        id: 45,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "iron shield",
+    level: 29,
+    exp: 120,
+    manpower: 1,
+    category: "2",
+    icon: itemIcon.armourIronShield,
+    itemsRequired: [{ id: 27, qty: 6 }],
+    itemsRecieved: [
+      {
+        id: 46,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "iron sword",
+    level: 30,
+    exp: 100,
+    manpower: 1,
+    category: "2",
+    icon: itemIcon.swordIron,
+    itemsRequired: [{ id: 27, qty: 5 }],
+    itemsRecieved: [
+      {
+        id: 47,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "steel dagger",
+    level: 30,
+    exp: 30,
+    manpower: 1,
+    category: "3",
+    icon: itemIcon.daggerSteel,
+    itemsRequired: [{ id: 28, qty: 1 }],
+    itemsRecieved: [
+      {
+        id: 48,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "steel helmet",
+    level: 31,
+    exp: 60,
+    manpower: 1,
+    category: "3",
+    icon: itemIcon.armourSteelHelmet,
+    itemsRequired: [{ id: 28, qty: 2 }],
+    itemsRecieved: [
+      {
+        id: 49,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "steel boots",
+    level: 32,
+    exp: 60,
+    manpower: 1,
+    category: "3",
+    icon: itemIcon.armourSteelBoots,
+    itemsRequired: [{ id: 28, qty: 2 }],
+    itemsRecieved: [
+      {
+        id: 50,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "steel gloves",
+    level: 34,
+    exp: 90,
+    manpower: 1,
+    category: "3",
+    icon: itemIcon.armourSteelGloves,
+    itemsRequired: [{ id: 28, qty: 3 }],
+    itemsRecieved: [
+      {
+        id: 51,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "steel platelegs",
+    level: 36,
+    exp: 120,
+    manpower: 1,
+    category: "3",
+    icon: itemIcon.armourSteelPlatelegs,
+    itemsRequired: [{ id: 28, qty: 4 }],
+    itemsRecieved: [
+      {
+        id: 52,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "steel platebody",
+    level: 38,
+    exp: 150,
+    manpower: 1,
+    category: "3",
+    icon: itemIcon.armourSteelChest,
+    itemsRequired: [{ id: 28, qty: 5 }],
+    itemsRecieved: [
+      {
+        id: 53,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "steel shield",
+    level: 39,
+    exp: 180,
+    manpower: 1,
+    category: "3",
+    icon: itemIcon.armourSteelShield,
+    itemsRequired: [{ id: 28, qty: 6 }],
+    itemsRecieved: [
+      {
+        id: 54,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "steel sword",
+    level: 40,
+    exp: 150,
+    manpower: 1,
+    category: "3",
+    icon: itemIcon.swordSteel,
+    itemsRequired: [{ id: 28, qty: 5 }],
+    itemsRecieved: [
+      {
+        id: 55,
+        qty: 1,
+      },
+    ],
+  },
+
+  {
+    name: "mithril dagger",
+    level: 40,
+    exp: 40,
+    manpower: 1,
+    category: "4",
+    icon: itemIcon.daggerMithril,
+    itemsRequired: [{ id: 31, qty: 1 }],
+    itemsRecieved: [
+      {
+        id: 56,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "mithril helmet",
+    level: 41,
+    exp: 80,
+    manpower: 1,
+    category: "4",
+    icon: itemIcon.armourMithrilHelmet,
+    itemsRequired: [{ id: 31, qty: 2 }],
+    itemsRecieved: [
+      {
+        id: 57,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "mithril boots",
+    level: 42,
+    exp: 80,
+    manpower: 1,
+    category: "4",
+    icon: itemIcon.armourMithrilBoots,
+    itemsRequired: [{ id: 31, qty: 2 }],
+    itemsRecieved: [
+      {
+        id: 58,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "mithril gloves",
+    level: 44,
+    exp: 120,
+    manpower: 1,
+    category: "4",
+    icon: itemIcon.armourMithrilGloves,
+    itemsRequired: [{ id: 31, qty: 3 }],
+    itemsRecieved: [
+      {
+        id: 59,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "mithril platelegs",
+    level: 46,
+    exp: 160,
+    manpower: 1,
+    category: "4",
+    icon: itemIcon.armourMithrilPlatelegs,
+    itemsRequired: [{ id: 31, qty: 4 }],
+    itemsRecieved: [
+      {
+        id: 60,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "mithril platebody",
+    level: 48,
+    exp: 200,
+    manpower: 1,
+    category: "4",
+    icon: itemIcon.armourMithrilChest,
+    itemsRequired: [{ id: 31, qty: 5 }],
+    itemsRecieved: [
+      {
+        id: 61,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "mithril shield",
+    level: 49,
+    exp: 240,
+    manpower: 1,
+    category: "4",
+    icon: itemIcon.armourMithrilShield,
+    itemsRequired: [{ id: 31, qty: 6 }],
+    itemsRecieved: [
+      {
+        id: 62,
+        qty: 1,
+      },
+    ],
+  },
+  {
+    name: "mithril sword",
+    level: 50,
+    exp: 200,
+    manpower: 1,
+    category: "4",
+    icon: itemIcon.swordMithril,
+    itemsRequired: [{ id: 31, qty: 5 }],
+    itemsRecieved: [
+      {
+        id: 63,
         qty: 1,
       },
     ],

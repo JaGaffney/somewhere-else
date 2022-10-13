@@ -22,7 +22,7 @@ export class EnemyData {
       const drops = new Drops(
         coins,
         enemySeed[key].drops,
-        enemySeed[key].essence
+        enemySeed[key].tribute
       )
       this.enemies.set(
         enemySeed[key].id,

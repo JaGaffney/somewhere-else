@@ -5,11 +5,11 @@ export class Drops {
     chance: 100,
   }
   drops: Array<object> = [{}] // id, qty, rate
-  essence: number
+  tribute: number
 
-  constructor(coins: object, drops: Array<object>, essence: number) {
+  constructor(coins: object, drops: Array<object>, tribute: number) {
     this.coins = coins
     this.drops = drops
-    this.essence = essence
+    this.tribute = tribute
   }
 }

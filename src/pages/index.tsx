@@ -205,9 +205,9 @@ const IndexPage = props => {
         props.playerData.offline.setItems(name, qty)
         break;
       case ("ESSENCE"):
-        console.log("essence being added")
-        props.playerData.playerBank.addToEssence(qty)
-        props.playerData.offline.setEssence(qty)
+        console.log("tribute being added")
+        props.playerData.playerBank.addToTribute(qty)
+        props.playerData.offline.setTribute(qty)
         break;
       case ("BANK"):
         props.playerData.playerBank.addToCoins(val)

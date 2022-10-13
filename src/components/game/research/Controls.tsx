@@ -14,7 +14,7 @@ import {
     researchYellow,
     researchPurple,
 } from "../../data/seed/icons/itemSeedIcons"
-import ESSENCE from "../../../images/items/essence.svg"
+import ESSENCE from "../../../images/items/tribute.svg"
 
 
 export const Controls = (props) => {
@@ -48,9 +48,9 @@ export const Controls = (props) => {
                 <div className="topPanel__controls-left-icons">
                     <span></span>
                 </div>
-                <div className="topPanel__controls-left-icons" data-tip={"Essence"}>
+                <div className="topPanel__controls-left-icons" data-tip={"Tribute"}>
                     <img src={ESSENCE} />
-                    <span>{props.playerData.playerBank.getEssence()}</span>
+                    <span>{props.playerData.playerBank.getTribute()}</span>
                 </div>
 
 

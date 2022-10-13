@@ -1,10 +1,10 @@
 // @ts-nocheck
 // BANK
 import GP from "../../../../images/items/coins.svg"
-import ESSENCE from "../../../../images/items/essence.svg"
+import ESSENCE from "../../../../images/items/tribute.svg"
 
 export const gp = GP
-export const essence = ESSENCE
+export const tribute = ESSENCE
 
 // RESEARCH
 import RESEARCH_RED from "../../../../images/research/researchRed.svg"
@@ -47,12 +47,54 @@ import ARMOUR_BRONZE_HELMET from "../../../../images/items/equipment/bronze-helm
 import ARMOUR_BRONZE_PLATELEGS from "../../../../images/items/equipment/bronze-platelegs.svg"
 import ARMOUR_BRONZE_SHIELD from "../../../../images/items/equipment/bronze-shield.svg"
 
+import ARMOUR_IRON_BOOTS from "../../../../images/items/equipment/iron-boots.svg"
+import ARMOUR_IRON_CHEST from "../../../../images/items/equipment/iron-chest.svg"
+import ARMOUR_IRON_GLOVES from "../../../../images/items/equipment/iron-gloves.svg"
+import ARMOUR_IRON_HELMET from "../../../../images/items/equipment/iron-helmet.svg"
+import ARMOUR_IRON_PLATELEGS from "../../../../images/items/equipment/iron-platelegs.svg"
+import ARMOUR_IRON_SHIELD from "../../../../images/items/equipment/iron-shield.svg"
+
+import ARMOUR_STEEL_BOOTS from "../../../../images/items/equipment/steel-boots.svg"
+import ARMOUR_STEEL_CHEST from "../../../../images/items/equipment/steel-chest.svg"
+import ARMOUR_STEEL_GLOVES from "../../../../images/items/equipment/steel-gloves.svg"
+import ARMOUR_STEEL_HELMET from "../../../../images/items/equipment/steel-helmet.svg"
+import ARMOUR_STEEL_PLATELEGS from "../../../../images/items/equipment/steel-platelegs.svg"
+import ARMOUR_STEEL_SHIELD from "../../../../images/items/equipment/steel-shield.svg"
+
+import ARMOUR_MITHRIL_BOOTS from "../../../../images/items/equipment/mithril-boots.svg"
+import ARMOUR_MITHRIL_CHEST from "../../../../images/items/equipment/mithril-chest.svg"
+import ARMOUR_MITHRIL_GLOVES from "../../../../images/items/equipment/mithril-gloves.svg"
+import ARMOUR_MITHRIL_HELMET from "../../../../images/items/equipment/mithril-helmet.svg"
+import ARMOUR_MITHRIL_PLATELEGS from "../../../../images/items/equipment/mithril-platelegs.svg"
+import ARMOUR_MITHRIL_SHIELD from "../../../../images/items/equipment/mithril-shield.svg"
+
 export const armourBronzeBoots = ARMOUR_BRONZE_BOOTS
 export const armourBronzeChest = ARMOUR_BRONZE_CHEST
 export const armourBronzeGloves = ARMOUR_BRONZE_GLOVES
 export const armourBronzeHelmet = ARMOUR_BRONZE_HELMET
 export const armourBronzePlatelegs = ARMOUR_BRONZE_PLATELEGS
 export const armourBronzeShield = ARMOUR_BRONZE_SHIELD
+
+export const armourIronBoots = ARMOUR_IRON_BOOTS
+export const armourIronChest = ARMOUR_IRON_CHEST
+export const armourIronGloves = ARMOUR_IRON_GLOVES
+export const armourIronHelmet = ARMOUR_IRON_HELMET
+export const armourIronPlatelegs = ARMOUR_IRON_PLATELEGS
+export const armourIronShield = ARMOUR_IRON_SHIELD
+
+export const armourSteelBoots = ARMOUR_STEEL_BOOTS
+export const armourSteelChest = ARMOUR_STEEL_CHEST
+export const armourSteelGloves = ARMOUR_STEEL_GLOVES
+export const armourSteelHelmet = ARMOUR_STEEL_HELMET
+export const armourSteelPlatelegs = ARMOUR_STEEL_PLATELEGS
+export const armourSteelShield = ARMOUR_STEEL_SHIELD
+
+export const armourMithrilBoots = ARMOUR_MITHRIL_BOOTS
+export const armourMithrilChest = ARMOUR_MITHRIL_CHEST
+export const armourMithrilGloves = ARMOUR_MITHRIL_GLOVES
+export const armourMithrilHelmet = ARMOUR_MITHRIL_HELMET
+export const armourMithrilPlatelegs = ARMOUR_MITHRIL_PLATELEGS
+export const armourMithrilShield = ARMOUR_MITHRIL_SHIELD
 
 // Skill Items
 import LOG_BROWN from "../../../../images/items/log-brown.svg"

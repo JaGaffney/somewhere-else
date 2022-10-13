@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 // @ts-ignore
 import COINS from "../../../../images/items/coins.svg"
-import ESSENCE from "../../../../images/items/essence.svg"
+import ESSENCE from "../../../../images/items/tribute.svg"
 
 export const Drop = (props) => {
     return (
@@ -20,8 +20,8 @@ export const Drop = (props) => {
                         <span><strong>{props.dropData.drops.coins.min}</strong> - <strong>{props.dropData.drops.coins.max}</strong><i><b> gp </b></i> </span>
                     </div>
                     <div className="dropData-lootItem">
-                        <img src={ESSENCE} alt="essence" />
-                        <span><strong>{props.dropData.drops.essence} <b>x</b> </strong>essence</span>
+                        <img src={ESSENCE} alt="tribute" />
+                        <span><strong>{props.dropData.drops.tribute} <b>x</b> </strong>tribute</span>
                     </div>
                 </div>
 

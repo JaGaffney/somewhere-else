@@ -23,10 +23,9 @@ export const Farming = (props) => {
         let i = 0
         for (var x = 1; x <= 10; x++) {
             for (var y = 1; y <= 10; y++) {
-                let time = new Date().getTime()
                 temp[i] = {
-                    seed: randomInteger(1, 10),
-                    planted: time,
+                    seed: null,
+                    planted: null,
                     watered: false,
                     x, y
                 }
@@ -41,18 +40,18 @@ export const Farming = (props) => {
     const [activeTool, setActiveTool] = useState<ToolEnum>(ToolEnum.CHECK)
 
 
-    const farmingHandler = (data) => {
+    const farmingHandler = (key) => {
         switch (activeTool) {
             case ToolEnum.CHECK:
-                console.log(tempData[data])
+                console.log(tempData[key])
                 break;
-
             case ToolEnum.CUT:
-
                 break;
-
             case ToolEnum.WATER:
-                setTempData({ ...tempData, data: { ...tempData[data], watered: true } })
+                setTempData({ ...tempData, [key]: { ...tempData[key], watered: true } })
+                break;
+            case ToolEnum.PLANT:
+                setTempData({ ...tempData, [key]: { ...tempData[key], planted: new Date().getTime(), seed: 1 } })
                 break;
 
             default:

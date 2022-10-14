@@ -686,21 +686,28 @@
 /// Farming
 /// ////////////////////
 .farming {
-  width: 100%;
+  width: auto;
   display: grid;
   grid-template-columns: repeat(1fr, 10);
   grid-template-rows: repeat(1fr, 10);
-  gap: 0rem;
+  gap: 1rem;
   background-color: var(--gray900);
   border: var(--border);
   border-radius: 4px;
+  padding: 2rem;
   &-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    width: 6rem;
     img {
-      height: 5rem;
+      height: 100%;
       width: 100%;
       background-color: var(--amber900);
-      border-radius: 65% 35% 84% 16% / 47% 65% 35% 53%;
+      border-radius: 8%;
       padding: 0;
+      margin: auto;
     }
   }
 }

@@ -7,7 +7,7 @@ import { ToolEnum } from '../Farming'
 
 export const ToolControls = (props) => {
     return (
-        <div className="topPanel topPanel__controls topPanel__marginTop">
+        <div className="topPanel topPanel__controls topPanel__marginTop topPanel__marginBottom">
             <div className="topPanel__controls-left">
                 <button className={`generic__button generic__button-primary generic__button-flex ${props.activeTool === ToolEnum.CHECK ? "generic__button-active" : ""}`} onClick={() => props.setActiveTool(ToolEnum.CHECK)}> <img src={skillIcon[ToolEnum.CHECK]} alt="divination" /><span>{ToolEnum.CHECK}</span></button>
                 <button className={`generic__button generic__button-primary generic__button-flex ${props.activeTool === ToolEnum.PLANT ? "generic__button-active" : ""}`} onClick={() => props.setActiveTool(ToolEnum.PLANT)}> <img src={skillIcon[ToolEnum.PLANT]} alt="passives" /><span>{ToolEnum.PLANT}</span></button>

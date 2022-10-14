@@ -14,6 +14,7 @@ import Inventory from "./inventory/Inventory"
 import Actions from './skills/generics/Actions'
 import EXP from './skills/generics/EXP'
 import ProductionSkill from './skills/ProductionSkill'
+import Farming from './skills/Farming'
 
 export const NonCombatSkill = (props) => {
   const [activeData, setActiveData] = useState(null)
@@ -53,6 +54,8 @@ export const Game = props => {
         return <NonCombatSkill skills={props.skills} activePage={props.activePage} />
       case "metalwork":
         return <ProductionSkill skills={props.skills} activePage={props.activePage} />
+      case "farming":
+        return <Farming activePage={props.activePage} />
       case "loadout":
         return <Loadout />
       case "warrior":

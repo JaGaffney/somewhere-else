@@ -23,4 +23,8 @@ export const skillNames = {
     name: SkillsEnum.HUNTER,
     icon: icon.hunter,
   },
+  farming: {
+    name: SkillsEnum.FARMING,
+    icon: icon.farming,
+  },
 }

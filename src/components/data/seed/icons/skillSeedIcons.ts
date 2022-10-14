@@ -4,12 +4,14 @@ import MINING from "../../../../images/skill/mining.svg"
 import METALWORK from "../../../../images/skill/metalwork.svg"
 import SCHOLAR from "../../../../images/skill/scholar.svg"
 import HUNTER from "../../../../images/skill/hunter.svg"
+import FARMING from "../../../../images/skill/farming.svg"
 
 export const forestry = FORESTRY
 export const mining = MINING
 export const scholar = SCHOLAR
 export const metalwork = METALWORK
 export const hunter = HUNTER
+export const farming = FARMING
 
 import forestry_IMG_1 from "../../../../images/skill/forestry/bamboo.svg"
 import forestry_IMG_2 from "../../../../images/skill/forestry/beech.svg"
@@ -88,3 +90,19 @@ export const rabbit = HUNTER_IMG_4
 export const sheep = HUNTER_IMG_5
 export const cow = HUNTER_IMG_6
 export const raven = HUNTER_IMG_7
+
+import FARMING_IMG_1 from "../../../../images/skill/farming/check.svg"
+import FARMING_IMG_2 from "../../../../images/skill/farming/cut.svg"
+import FARMING_IMG_3 from "../../../../images/skill/farming/water.svg"
+import FARMING_IMG_4 from "../../../../images/skill/farming/plant.svg"
+import FARMING_IMG_5 from "../../../../images/skill/farming/cull.svg"
+import FARMING_IMG_6 from "../../../../images/skill/farming/harvest.svg"
+import FARMING_IMG_7 from "../../../../images/skill/farming/grass.svg"
+
+export const check = FARMING_IMG_1
+export const cut = FARMING_IMG_2
+export const water = FARMING_IMG_3
+export const plant = FARMING_IMG_4
+export const cull = FARMING_IMG_5
+export const harvest = FARMING_IMG_6
+export const grass = FARMING_IMG_7

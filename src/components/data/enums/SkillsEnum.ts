@@ -5,4 +5,5 @@ export enum SkillsEnum {
   SCHOLAR = "scholar",
   METALWORK = "metalwork",
   HUNTER = "hunter",
+  FARMING = "farming",
 }

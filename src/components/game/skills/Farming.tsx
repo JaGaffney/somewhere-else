@@ -27,6 +27,7 @@ export const Farming = (props) => {
                     seed: null,
                     planted: null,
                     watered: false,
+                    overgrown: true,
                     x, y
                 }
                 i++
@@ -46,12 +47,17 @@ export const Farming = (props) => {
                 console.log(tempData[key])
                 break;
             case ToolEnum.CUT:
+                setTempData({ ...tempData, [key]: { ...tempData[key], overgrown: false } })
+                break;
                 break;
             case ToolEnum.WATER:
                 setTempData({ ...tempData, [key]: { ...tempData[key], watered: true } })
                 break;
             case ToolEnum.PLANT:
                 setTempData({ ...tempData, [key]: { ...tempData[key], planted: new Date().getTime(), seed: 1 } })
+                break;
+            case ToolEnum.CULL:
+                setTempData({ ...tempData, [key]: { ...tempData[key], planted: null, seed: null, watered: null, overgrown: true } })
                 break;
 
             default:
@@ -63,6 +69,16 @@ export const Farming = (props) => {
     useEffect(() => {
         setTempData(generateTempData())
     }, [])
+
+    const getCorrectIcon = (data) => {
+        if (data.overgrown) {
+            return skillIcon.grass
+        } else if (data.seed !== null) {
+            return skillIcon.plant
+        } else {
+            return skillIcon.hole
+        }
+    }
 
     console.log(tempData)
     return (
@@ -80,7 +96,8 @@ export const Farming = (props) => {
                             key={k}
                             onClick={() => farmingHandler(i)}
                         >
-                            <img src={skillIcon.grass}
+
+                            <img src={getCorrectIcon(tempData[i])}
                                 style={{ backgroundColor: tempData[i].watered ? "var(--amber900)" : "var(--amber200)" }}
                             />
                         </div>

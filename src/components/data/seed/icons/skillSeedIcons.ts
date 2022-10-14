@@ -98,6 +98,7 @@ import FARMING_IMG_4 from "../../../../images/skill/farming/plant.svg"
 import FARMING_IMG_5 from "../../../../images/skill/farming/cull.svg"
 import FARMING_IMG_6 from "../../../../images/skill/farming/harvest.svg"
 import FARMING_IMG_7 from "../../../../images/skill/farming/grass.svg"
+import FARMING_IMG_8 from "../../../../images/skill/farming/hole.svg"
 
 export const check = FARMING_IMG_1
 export const cut = FARMING_IMG_2
@@ -106,3 +107,4 @@ export const plant = FARMING_IMG_4
 export const cull = FARMING_IMG_5
 export const harvest = FARMING_IMG_6
 export const grass = FARMING_IMG_7
+export const hole = FARMING_IMG_8

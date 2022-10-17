@@ -52,12 +52,7 @@ export const AttackInfo = (props) => {
                             <span>{props.selectedSkill && props.attackData.getAttackById(props.selectedSkill).stamina + props.playerStats?.weight >= 0 ? props.attackData.getAttackById(props.selectedSkill).stamina + props.playerStats?.weight : props.attackData.getAttackById(props.selectedSkill).stamina}
                             </span>
                         </span>
-                        <span className="attacksloadout__stats-description" style={{ color: "var(--green600)" }}>
-                            <span><img src={icon.speed} />speed</span>
-                            <span>
-                                0
-                            </span>
-                        </span>
+
                         <span className="attacksloadout__stats-description">
                             {props.selectedSkill && Object.keys(props.attackData.getAttackById(props.selectedSkill).effect).map((i, k) => {
                                 return (

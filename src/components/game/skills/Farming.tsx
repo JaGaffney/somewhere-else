@@ -47,14 +47,23 @@ export const Farming = (props) => {
                 console.log(tempData[key])
                 break;
             case ToolEnum.CUT:
-                setTempData({ ...tempData, [key]: { ...tempData[key], overgrown: false } })
-                break;
+                if (tempData[key].overgrown !== false) {
+                    setTempData({ ...tempData, [key]: { ...tempData[key], overgrown: false } })
+                    // add tiny bits of exp
+                }
                 break;
             case ToolEnum.WATER:
-                setTempData({ ...tempData, [key]: { ...tempData[key], watered: true } })
+                if (tempData[key].watered !== true) {
+                    setTempData({ ...tempData, [key]: { ...tempData[key], watered: true } })
+                    // add tiny bits of exp
+                }
                 break;
             case ToolEnum.PLANT:
-                setTempData({ ...tempData, [key]: { ...tempData[key], planted: new Date().getTime(), seed: 1 } })
+                if (tempData[key].planted === null) {
+                    // need to get the seed data from somewhere
+                    setTempData({ ...tempData, [key]: { ...tempData[key], planted: new Date().getTime(), seed: 1 } })
+                    // add a tiny bit of exp
+                }
                 break;
             case ToolEnum.CULL:
                 setTempData({ ...tempData, [key]: { ...tempData[key], planted: null, seed: null, watered: null, overgrown: true } })

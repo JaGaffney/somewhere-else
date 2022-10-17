@@ -701,6 +701,11 @@
     justify-content: center;
     height: 4rem;
     width: 6rem;
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-2px);
+    }
+
     img {
       height: 100%;
       width: 100%;

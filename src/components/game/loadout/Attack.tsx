@@ -31,7 +31,7 @@ export const Attack = (props) => {
                 <div className="attacks__button-stats">
                     <span data-cy="cooldown" className="attacks__button-stats-topLeft">{props.attackData.getAttackById(props.attackID).cooldown}</span>
                     <span data-cy="stamina" className="attacks__button-stats-topRight">{props.attackData.getAttackById(props.attackID).stamina}</span>
-                    <span data-cy="damage" className="attacks__button-stats-bottomRight">{props.attackData.getAttackById(props.attackID).maxDamage}</span>
+                    <span data-cy="damage" className="attacks__button-stats-bottomRight">{props.attackData.getAttackById(props.attackID).power}</span>
                 </div>
             }
         </button>

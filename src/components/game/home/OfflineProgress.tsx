@@ -26,8 +26,6 @@ export const OfflineProgress = (props) => {
         }
     }, [props.playerUpdated])
 
-
-    // TODO: get this working
     return (
         <div className="generic__container offlineProgression">
             <h3>Heres what your settlement has produced since you have been away! </h3>
@@ -44,34 +42,40 @@ export const OfflineProgress = (props) => {
                     <span><img src={COINS} alt="salary" />Salary</span>
                     <span className="offlineProgression-gp-negative offlineProgression-gp-value">-{props.playerData.offline && intToString(props.playerData.offline.salary)}</span>
                 </div>
-                {/* <div>
-                    <span><img src={COINS} alt="total" />Total</span>
-                    <span className={`offlineProgression-gp-value ${props.playerData.offline && props.playerData.offline.coins - props.playerData.offline.salary > 0 ? "offlineProgression-gp-positive" : "offlineProgression-gp-negative"}`}>{props.playerData.offline && intToString(props.playerData.offline.coins - props.playerData.offline.salary)}</span>
-                </div> */}
             </div>
 
             <div className="offlineProgression-gp settlement__stats-balance-items">
-                <h4>Experince gained</h4>
+                <h4>Experince</h4>
                 {props.playerData.offline && Object.keys(props.playerData.offline.exp).map((i, k) => {
                     const icon = props.skills.getSkillIconByName("nonCombat", i)
-
+                    let color = "offlineProgression-gp-negative"
+                    if (props.playerData.offline.exp[i] > 0) {
+                        color = "offlineProgression-gp-positive"
+                    }
                     return (
                         <div key={k}>
                             <span><img src={icon && icon} />{i}</span>
-                            <span className="offlineProgression-gp-value">{intToString(props.playerData.offline.exp[i])}</span>
+                            <span className={`offlineProgression-gp-value ${color}`}>{intToString(props.playerData.offline.exp[i])}</span>
                         </div>
                     )
                 })}
             </div>
             <div className="offlineProgression-gp settlement__stats-balance-items">
-                <h4>Items gained</h4>
+                <h4>Items</h4>
                 {props.playerData.offline && Object.keys(props.playerData.offline.items).map((i, k) => {
                     const qty = props.playerData.offline.items[i]
                     const data = props.itemData.getItemById(parseInt(i))
+                    let color = "offlineProgression-gp-negative"
+                    if (qty > 0) {
+                        color = "offlineProgression-gp-positive"
+                    }
+                    if (qty === 0) {
+                        color = ""
+                    }
                     return (
                         <div key={k}>
                             <span><img src={data && data.icon} />{data && data.name}</span>
-                            <span className="offlineProgression-gp-value">{qty && qty}</span>
+                            <span className={`offlineProgression-gp-value ${color}`}>{qty && qty}</span>
                         </div>
                     )
                 })}

@@ -664,6 +664,7 @@
     justify-content: center;
     align-items: center;
     background-color: var(--gray900);
+    text-transform: capitalize;
     span {
       width: 100%;
     }
@@ -677,8 +678,8 @@
       text-align: right;
     }
     img {
-      height: 1rem;
-      margin-right: 0.2rem;
+      height: 1.3rem;
+      margin-right: 0.5rem;
     }
   }
 }

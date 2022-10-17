@@ -252,6 +252,7 @@ const IndexPage = props => {
       for (let i in activeData.itemsRequired) {
         const item = activeData.itemsRequired[i]
         props.playerData.playerBank.removeItemfromBank(item.id, amount)
+        props.playerData.offline.setItems(item.id, -amount)
       }
     }
   }

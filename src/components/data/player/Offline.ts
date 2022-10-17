@@ -18,21 +18,25 @@ export class Offline {
   }
 
   public setSalary(value: number): void {
-    this.salary = value
+    this.salary = this.salary + value
   }
   public setCoins(value: number): void {
-    this.coins = value
+    this.coins = this.coins + value
   }
   public setTribute(value: number): void {
-    this.tribute = value
+    this.tribute = this.tribute + value
   }
-  public setExp(key, value): void {
+  public setExp(key: string, value: number): void {
     this.exp[key] = value
   }
-  public setItems(key, value): void {
-    this.items[key] = value
+  public setItems(key: number, value: number): void {
+    if (this.items[key]) {
+      this.items[key] = this.items[key] + value
+    } else {
+      this.items[key] = value
+    }
   }
-  public setTime(value): void {
+  public setTime(value: number): void {
     this.time = value
   }
 }

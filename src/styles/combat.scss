@@ -163,7 +163,17 @@
         padding: 0.5rem 0;
         padding-left: 1rem;
         border: solid 3px transparent;
+        img {
+          height: 2rem;
+          width: 2rem;
+          margin-right: 0.5rem;
+        }
       }
+    }
+    &-single {
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
     }
   }
   &-rotationActive {

@@ -285,7 +285,6 @@
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 1rem;
-    height: auto;
     width: 100%;
   }
   &-singleItem {
@@ -507,14 +506,12 @@
 /// Inventory
 ////////////////////////////
 .equipment__container {
+  min-height: 31rem;
   width: 100%;
   display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
   gap: 1rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: solid 1px var(--gray800);
   margin-bottom: 0.5rem;
   margin-top: 1rem;
   &-equipped {
@@ -522,13 +519,13 @@
     background-color: var(--gray800);
     width: auto;
     min-width: 22rem;
-    min-height: 20rem;
     height: 100%;
     display: grid;
     grid-template-columns: 33% 33% 33%;
     grid-template-rows: 25% 25% 25% 25%;
     place-items: center;
     gap: 0.5rem;
+    border: var(--border);
     &-slot {
       height: 7rem;
       width: 7rem;
@@ -609,17 +606,21 @@
   &-equipment {
     background-color: var(--gray800);
     width: 60%;
+    min-height: 100%;
   }
 
   &-stats {
-    background-color: var(--gray800);
+    height: 100%;
     max-width: 13rem;
+    background-color: var(--gray800);
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: fit-content;
+
     padding: 1rem;
+    border: var(--border);
     &-single {
       margin: 1rem;
       padding: 1rem;

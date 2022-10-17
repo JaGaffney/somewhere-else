@@ -9,9 +9,9 @@ export const Equipment = (props: { playerData, itemData, search: string, activeE
         <div className="equipment__container-equipment" data-cy="equipmentStorage">
             <div className="bank__items">
                 <div className="bank__items-inner">
-                    {[...props.playerData.playerBank.bankItems.keys()].map((id, k) => {
+                    {props.playerData.playerBank.bankItems.map((i, k) => {
+                        const id = i.id
                         const data = props.itemData.getItemById(id)
-
                         if (data.itemType !== "equipment") {
                             return null
                         }
@@ -25,7 +25,7 @@ export const Equipment = (props: { playerData, itemData, search: string, activeE
                                         id={id}
                                         name={data.name}
                                         icon={data.icon}
-                                        qty={props.playerData.playerBank.bankItems.get(id).qty}
+                                        qty={props.playerData.playerBank.findItemInBank(id).qty}
                                         itemData={data}
                                         bankItemSelectedHandler={props.onItemSelectedHandler}
                                         setActiveItemID={props.setActiveItemID}

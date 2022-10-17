@@ -81,8 +81,6 @@ export const Inventory = (props: { playerData, setPlayerUpdated: any }) => {
                 <Equipment activeEquipmentSlot={activeEquipmentSlot} onItemSelectedHandler={onItemSelectedHandler} setActiveItemID={setActiveItemID} handleItemEquipStatus={handleItemEquipStatus} search={search} />
                 <Stats activeEquipmentSlot={activeEquipmentSlot} activeEquipmentItemID={activeEquipmentItemID} />
             </div>
-
-
         </div>
     )
 }

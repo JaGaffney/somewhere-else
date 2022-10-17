@@ -250,3 +250,9 @@ span::first-letter {
 .text__valid {
   color: var(--teal500);
 }
+
+.generic__container {
+  background-color: var(--gray800);
+  width: 100%;
+  border: var(--border);
+}

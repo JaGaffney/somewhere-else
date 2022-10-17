@@ -6,4 +6,5 @@ export enum ClassesEnum {
   CLERIC = "cleric",
   SUMMONER = "summoner",
   GAMBLER = "gambler",
+  ASSASSIN = "assassin",
 }

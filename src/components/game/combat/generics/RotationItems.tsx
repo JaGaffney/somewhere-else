@@ -46,7 +46,7 @@ export const RotationItems = (props) => {
 
                 if (!props.editable) {
                     return (
-                        <li key={k}>{k + 1} - {name}</li>
+                        <li key={k}><span>{k + 1}</span><span className="catcombat__description-rotation-single">{name !== "" ? <img src={attackData.icon} /> : null} {name}</span></li>
                     )
                 } else {
                     return (
@@ -56,7 +56,9 @@ export const RotationItems = (props) => {
                             onDragOver={dragOver}
                             onDragEnter={dragEnter}
                             onDragLeave={dragLeave}
-                            onDrop={(e) => attackDrop(e, k)}>{k + 1} - {name}</li>
+                            onDrop={(e) => attackDrop(e, k)}>
+                            <span>{k + 1}</span><span className="catcombat__description-rotation-single">{name !== "" ? <img src={attackData.icon} /> : null}  {name}</span>
+                        </li>
                     )
                 }
             })}

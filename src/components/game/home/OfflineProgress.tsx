@@ -29,7 +29,7 @@ export const OfflineProgress = (props) => {
 
     // TODO: get this working
     return (
-        <div className="equipment__container-equipment offlineProgression">
+        <div className="generic__container offlineProgression">
             <h3>Heres what your settlement has produced since you have been away! </h3>
             <p>{time} ago</p>
 

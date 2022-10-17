@@ -106,7 +106,7 @@ export const researchSingular = [
     type: ResearchType.Combat,
   },
   {
-    name: "summoner",
+    name: "assassin",
     cost: {
       gp: 10000,
       researchPoints: {
@@ -114,13 +114,10 @@ export const researchSingular = [
         green: 1000,
         blue: 5000000,
       },
-      other: {
-        1: 100,
-        2: 21,
-      },
+      other: {},
     },
-    icon: icon_class.icon_magician,
-    description: "Unlocks the summoner class",
+    icon: icon_class.icon_assassin,
+    description: "Unlocks the assassin class",
     type: ResearchType.Combat,
   },
   {

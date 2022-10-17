@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 export const News = (props) => {
     return (
-        <div className="equipment__container-equipment">
+        <div className="generic__container">
             <div className="offlineProgression-gp settlement__stats-balance-items">
                 <h4>Recent news</h4>
             </div>

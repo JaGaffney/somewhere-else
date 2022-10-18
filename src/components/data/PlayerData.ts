@@ -93,6 +93,7 @@ export class PlayerData {
   private loadBank(bankData): void {
     this.playerBank.setCoins(bankData.coins)
     this.playerBank.setResearch(bankData.research)
+    this.playerBank.setTribute(bankData.tribute)
     bankData.bankItems.forEach(({ id, qty }) => {
       this.playerBank.addItemtoBank(id, qty)
     })

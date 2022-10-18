@@ -30,17 +30,18 @@ export class Bank {
     }
   }
   getTribute(): number {
-    return this.tribute
+    return parseFloat(this.tribute.toFixed(2))
   }
   setTribute(value: number): void {
-    this.tribute = value
+    this.tribute = parseFloat(value.toFixed(2))
   }
   addToTribute(value: number): void {
-    this.tribute += value
+    this.tribute += parseFloat(value.toFixed(2))
   }
   removeFromTribute(value: number): void {
-    if (value <= this.tribute) {
-      this.tribute -= value
+    const val = parseFloat(value.toFixed(2))
+    if (val <= this.tribute) {
+      this.tribute -= val
     }
   }
 

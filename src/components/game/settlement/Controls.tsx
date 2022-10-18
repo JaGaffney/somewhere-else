@@ -5,6 +5,12 @@ import { setPlayerUpdated } from '../../actions/api'
 
 import { costPerAction, intToString } from '../../utils/generic'
 
+// @ts-ignore
+import COINS from "../../../images/items/coins.svg"
+// @ts-ignore
+import TRIBUTE from "../../../images/items/tribute.svg"
+
+
 export const Controls = (props) => {
     const [manpowerCost, setManpowerCost] = useState<number>(props.playerData.levelChecker.level[props.playerData.getManpower()])
 
@@ -35,7 +41,16 @@ export const Controls = (props) => {
         <div className="topPanel topPanel__controls" data-cy="settlementControls">
             <div className="topPanel__controls-left" data-cy="settlementControls-manpower">
                 <span>{props.playerData.getActiveManpower()} / {props.playerData.getManpower()} Manpower</span>
-                <span className="topPanel__controls-left-info">Salary: {costPerAction(props.playerData.getActiveManpower())} GP</span>
+                <div className="topPanel__controls-left-infoContainer">
+                    <span className="topPanel__controls-left-info ">
+                        <img src={COINS} />
+                        <span>-{costPerAction(props.playerData.getActiveManpower())}GP</span>
+                    </span>
+                    <span className="topPanel__controls-left-info">
+                        <img src={TRIBUTE} />
+                        <span style={{}}>-{parseFloat((props.playerData.getActiveManpower() * 0.08).toFixed(2))}</span>
+                    </span>
+                </div>
             </div>
 
 

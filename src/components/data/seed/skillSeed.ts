@@ -929,7 +929,7 @@ export const hunter = [
     itemsRecieved: [
       {
         id: 999,
-        qty: 1,
+        qty: 0.25,
       },
     ],
   },
@@ -944,7 +944,7 @@ export const hunter = [
     itemsRecieved: [
       {
         id: 999,
-        qty: 2,
+        qty: 0.5,
       },
     ],
   },
@@ -959,7 +959,7 @@ export const hunter = [
     itemsRecieved: [
       {
         id: 999,
-        qty: 3,
+        qty: 0.75,
       },
     ],
   },
@@ -974,7 +974,7 @@ export const hunter = [
     itemsRecieved: [
       {
         id: 999,
-        qty: 4,
+        qty: 1,
       },
     ],
   },
@@ -989,7 +989,7 @@ export const hunter = [
     itemsRecieved: [
       {
         id: 999,
-        qty: 5,
+        qty: 1.25,
       },
     ],
   },
@@ -1004,7 +1004,7 @@ export const hunter = [
     itemsRecieved: [
       {
         id: 999,
-        qty: 6,
+        qty: 1.5,
       },
     ],
   },
@@ -1019,7 +1019,7 @@ export const hunter = [
     itemsRecieved: [
       {
         id: 999,
-        qty: 7,
+        qty: 1.75,
       },
     ],
   },

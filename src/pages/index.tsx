@@ -133,6 +133,13 @@ const IndexPage = props => {
           const activeData = skillData.getActionDataBySkillID(task).filter((i => i !== undefined))[0]
           const activeWorkers = amount * Math.floor(props.playerData.settlement.tasks[task] / activeData.manpower)
 
+          const workerTributeCost = parseFloat((activeWorkers * 0.08).toFixed(2))
+          const currentTribute = parseFloat((props.playerData.playerBank.tribute - workerTributeCost).toFixed(2))
+          let tributeCost = 1
+          if (currentTribute <= 0) {
+            tributeCost = 2
+          }
+
           let requiredMaterials = true
           if (activeData.itemsRequired.length !== 0) {
             for (let i in activeData.itemsRequired) {
@@ -146,22 +153,24 @@ const IndexPage = props => {
           }
 
           if (requiredMaterials) {
-
+            const activeWorkerWithTribute = activeWorkers / tributeCost > 0 ? activeWorkers / tributeCost : 1
 
             // add items to bank
-            handleAddToBank(activeData, activeWorkers)
+            handleAddToBank(activeData, activeWorkerWithTribute)
 
             // take items from bank if applicable
-            handleRemoveFromBank(activeData, activeWorkers)
+            handleRemoveFromBank(activeData, activeWorkerWithTribute)
 
             // add exp
-            handleExp(activeData, activeWorkers, activeData.job)
+            handleExp(activeData, activeWorkerWithTribute, activeData.job)
 
             // salary cost
             if (Object.keys(props.playerData.settlement.tasks).length > 0) {
               const salaryCost = costPerAction(props.playerData.getActiveManpower()) * amount
               props.playerData.playerBank.removeFromCoins(salaryCost)
+              props.playerData.playerBank.removeFromTribute(workerTributeCost)
               props.playerData.offline.setSalary(salaryCost)
+              props.playerData.offline.setTribute(-workerTributeCost)
             }
 
 
@@ -202,8 +211,8 @@ const IndexPage = props => {
 
     switch (type) {
       case ("RESEARCH"):
-        props.playerData.playerBank.addToResearch(name, qty)
-        props.playerData.offline.setItems(name, qty)
+        props.playerData.playerBank.addToResearch(name, Math.ceil(qty))
+        props.playerData.offline.setItems(name, Math.ceil(qty))
         break;
       case ("TRIBUTE"):
         console.log("tribute being added")
@@ -222,8 +231,8 @@ const IndexPage = props => {
           props.playerData.playerBank.addToCoins(val)
           props.playerData.offline.setCoins(val)
         } else {
-          props.playerData.playerBank.addItemtoBank(id, qty, item)
-          props.playerData.offline.setItems(id, qty)
+          props.playerData.playerBank.addItemtoBank(id, Math.ceil(qty), item)
+          props.playerData.offline.setItems(id, Math.ceil(qty))
         }
       default:
         break;
@@ -251,16 +260,16 @@ const IndexPage = props => {
     if (activeData.itemsRequired.length !== 0) {
       for (let i in activeData.itemsRequired) {
         const item = activeData.itemsRequired[i]
-        props.playerData.playerBank.removeItemfromBank(item.id, amount)
-        props.playerData.offline.setItems(item.id, -amount)
+        props.playerData.playerBank.removeItemfromBank(item.id, Math.ceil(amount))
+        props.playerData.offline.setItems(item.id, Math.ceil(-amount))
       }
     }
   }
 
   const handleExp = (activeData: SkillAction, amount: number, skill: string): void => {
     const expValue = activeData.exp * amount
-    props.playerData.setSkillExp(skill, expValue)
-    props.playerData.offline.setExp(skill, expValue)
+    props.playerData.setSkillExp(skill, Math.ceil(expValue))
+    props.playerData.offline.setExp(skill, Math.ceil(expValue))
   }
 
   const handleReset = (): void => {

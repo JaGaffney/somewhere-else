@@ -21,6 +21,7 @@
   display: flex;
   justify-content: space-between;
   //text-transform: capitalize;
+
   &-left {
     width: auto;
     max-width: 70%;
@@ -41,6 +42,18 @@
       width: 100%;
       font-size: 0.7rem;
       color: var(--gray500);
+    }
+    &-infoContainer {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 1rem;
+      span {
+        width: auto;
+        display: flex;
+        gap: 0.3rem;
+      }
     }
     &-icons {
       display: flex;

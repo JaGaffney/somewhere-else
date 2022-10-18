@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import { intToString, convertSecondsToReadableString } from "../../utils/generic"
 
 // @ts-ignore
-import COINS from "../../../images/sidepanel/coins.svg"
+import COINS from "../../../images/items/coins.svg"
+// @ts-ignore
+import TRIBUTE from "../../../images/items/tribute.svg"
 
 export const OfflineProgress = (props) => {
     const [time, setTime] = useState("")
@@ -62,6 +64,12 @@ export const OfflineProgress = (props) => {
             </div>
             <div className="offlineProgression-gp settlement__stats-balance-items">
                 <h4>Items</h4>
+                {props.playerData.offline &&
+                    <div>
+                        <span><img src={TRIBUTE} />Tribute</span>
+                        <span className={`offlineProgression-gp-value ${props.playerData.offline.tribute > 0 ? "offlineProgression-gp-positive" : "offlineProgression-gp-negative"}`}>{intToString(props.playerData.offline.tribute)}</span>
+                    </div>
+                }
                 {props.playerData.offline && Object.keys(props.playerData.offline.items).map((i, k) => {
                     const qty = props.playerData.offline.items[i]
                     const data = props.itemData.getItemById(parseInt(i))

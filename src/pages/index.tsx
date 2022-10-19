@@ -80,11 +80,6 @@ const IndexPage = props => {
       retValue = retValue - tempValue
     }
 
-    // if (Object.keys(props.playerData.research.repeat).includes("efficiency")) {
-    //   let tempValue = retValue * (props.playerData.research.repeat["efficiency"] / 100)
-    //   retValue = retValue - tempValue
-    // }
-
     if (retValue <= 1) {
       retValue = 1
     }
@@ -153,7 +148,7 @@ const IndexPage = props => {
           }
 
           if (requiredMaterials) {
-            const activeWorkerWithTribute = activeWorkers / tributeCost > 0 ? activeWorkers / tributeCost : 1
+            const activeWorkerWithTribute = activeWorkers / tributeCost > 0 ? activeWorkers / tributeCost : 0
 
             // add items to bank
             handleAddToBank(activeData, activeWorkerWithTribute)
@@ -201,7 +196,7 @@ const IndexPage = props => {
         setTimer(0)
       }
 
-    }, 1000);
+    }, 500);
     return () => clearInterval(intervalRefresh);
   }, [props.skillData, props.actionTime, timer]);
 

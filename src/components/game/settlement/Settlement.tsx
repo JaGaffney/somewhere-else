@@ -5,6 +5,7 @@ import { useTour } from "@reactour/tour"
 import Controls from "./Controls"
 import Stats from "./Stats"
 import Assignments from "./Assignments"
+import Progression from "../skills/generics/Progression"
 
 
 export const Settlement = props => {
@@ -43,9 +44,27 @@ export const Settlement = props => {
             },
         ]);
     }, []);
+
+
+    const realTimeCalc = (): number => {
+        let retValue = 10
+
+        if (props.playerData.research.repeat["efficiency"]) {
+            let tempValue = retValue * (props.playerData.research.repeat["efficiency"] / 100)
+            retValue = retValue - tempValue
+        }
+
+        if (retValue <= 1) {
+            retValue = 1
+        }
+
+        return retValue
+    }
+
     return (
         <div className="game__normal">
-            <Controls />
+            <Controls realTimeCalc={realTimeCalc} />
+            <Progression realTimeCalc={realTimeCalc} />
             <div className="settlement__actions">
                 <Assignments />
                 <Stats />

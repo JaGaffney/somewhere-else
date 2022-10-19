@@ -14,7 +14,7 @@ import {
     researchYellow,
     researchPurple,
 } from "../../data/seed/icons/itemSeedIcons"
-import ESSENCE from "../../../images/items/tribute.svg"
+import TRIBUTE from "../../../images/items/tribute.svg"
 
 
 export const Controls = (props) => {
@@ -49,7 +49,7 @@ export const Controls = (props) => {
                     <span></span>
                 </div>
                 <div className="topPanel__controls-left-icons" data-tip={"Tribute"}>
-                    <img src={ESSENCE} />
+                    <img src={TRIBUTE} />
                     <span>{props.playerData.playerBank.getTribute()}</span>
                 </div>
 

@@ -101,18 +101,12 @@
   }
 }
 
-.exp {
+.timer {
+  width: 100%;
+  background-color: var(--gray800);
+  box-shadow: var(--shadow500);
+  border-radius: 0 0 4px 4px;
   border: var(--border);
-  &__level {
-    padding: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    //text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    font-weight: 900;
-  }
   &__progressbar {
     height: 1rem;
     width: 100%;
@@ -127,19 +121,13 @@
       top: 0;
       height: 1rem;
       width: 100%;
-      border-radius: 10px;
-      background-color: var(--green500);
+      border-radius: 4px;
+      background-color: var(--green800);
       transform: scaleX(0);
       transform-origin: top left;
-      transition: transform 0.3s ease-in;
+      transition: transform 0.4s ease-in;
       will-change: transform;
     }
-  }
-  &__required {
-    padding: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
   }
 }
 

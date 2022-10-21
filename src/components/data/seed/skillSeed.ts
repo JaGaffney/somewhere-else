@@ -197,7 +197,6 @@ export const mining = [
     name: "silver",
     level: 30,
     exp: 400,
-
     manpower: 5,
     category: "default",
     icon: skillIcon.silver,
@@ -208,24 +207,9 @@ export const mining = [
     ],
   },
   {
-    name: "gold",
-    level: 50,
-    exp: 400,
-
-    manpower: 5,
-    category: "default",
-    icon: skillIcon.gold,
-    itemsRequired: [],
-    itemsRecieved: [
-      { id: 12, qty: 4 },
-      { id: 18, qty: 1 },
-    ],
-  },
-  {
     name: "mithril",
     level: 40,
     exp: 500,
-
     manpower: 5,
     category: "default",
     icon: skillIcon.mithril,
@@ -233,6 +217,19 @@ export const mining = [
     itemsRecieved: [
       { id: 12, qty: 10 },
       { id: 19, qty: 1 },
+    ],
+  },
+  {
+    name: "gold",
+    level: 50,
+    exp: 400,
+    manpower: 5,
+    category: "default",
+    icon: skillIcon.gold,
+    itemsRequired: [],
+    itemsRecieved: [
+      { id: 12, qty: 4 },
+      { id: 18, qty: 1 },
     ],
   },
 ]
@@ -402,21 +399,6 @@ export const metalwork = [
     ],
   },
   {
-    name: "gold bar",
-    level: 50,
-    exp: 160,
-    manpower: 1,
-    category: "resource",
-    icon: skillIcon.barGold,
-    itemsRequired: [{ id: 18, qty: 10 }],
-    itemsRecieved: [
-      {
-        id: 30,
-        qty: 1,
-      },
-    ],
-  },
-  {
     name: "mithril bar",
     level: 40,
     exp: 40,
@@ -434,6 +416,22 @@ export const metalwork = [
       },
     ],
   },
+  {
+    name: "gold bar",
+    level: 50,
+    exp: 160,
+    manpower: 1,
+    category: "resource",
+    icon: skillIcon.barGold,
+    itemsRequired: [{ id: 18, qty: 10 }],
+    itemsRecieved: [
+      {
+        id: 30,
+        qty: 1,
+      },
+    ],
+  },
+
   {
     name: "bronze dagger",
     level: 10,

@@ -167,23 +167,13 @@ const IndexPage = props => {
               props.playerData.offline.setSalary(salaryCost)
               props.playerData.offline.setTribute(-workerTributeCost)
             }
-
-
           }
-
         }
-
-
-
-
       }
-
       // reset value to current time
       handleReset()
     }
-
   }
-
 
   useEffect(() => {
     const intervalRefresh = setInterval(() => {

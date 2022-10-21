@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import { useTour } from "@reactour/tour"
 
@@ -9,6 +9,7 @@ import Progression from "../skills/generics/Progression"
 
 
 export const Settlement = props => {
+    const [tributeCost, setTributeCost] = useState(parseFloat((props.playerData.getActiveManpower() * 0.08).toFixed(2)))
     const { setSteps, setCurrentStep } = useTour();
 
     useEffect(() => {
@@ -45,6 +46,11 @@ export const Settlement = props => {
         ]);
     }, []);
 
+    useEffect(() => {
+        setTributeCost(parseFloat((props.playerData.getActiveManpower() * 0.08).toFixed(2)))
+    }, [props.playerUpdated])
+
+
 
     const realTimeCalc = (): number => {
         let retValue = 10
@@ -63,11 +69,11 @@ export const Settlement = props => {
 
     return (
         <div className="game__normal">
-            <Controls realTimeCalc={realTimeCalc} />
+            <Controls realTimeCalc={realTimeCalc} tributeCost={tributeCost} />
             <Progression realTimeCalc={realTimeCalc} />
             <div className="settlement__actions">
                 <Assignments />
-                <Stats />
+                <Stats tributeCost={tributeCost} />
             </div>
 
         </div>
@@ -78,6 +84,7 @@ const mapStateToProps = state => ({
     playerData: state.player.playerData,
     itemData: state.items.itemData,
     activePage: state.skills.activePage,
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = {}

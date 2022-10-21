@@ -48,7 +48,7 @@ export const Controls = (props) => {
                     </span>
                     <span className="topPanel__controls-left-info">
                         <img src={TRIBUTE} />
-                        <span style={{}}>-{parseFloat((props.playerData.getActiveManpower() * 0.08).toFixed(2))}</span>
+                        <span style={{}}>-{props.tributeCost}</span>
                     </span>
                     <span className="topPanel__controls-left-info">
                         <span style={{}}>every {props.realTimeCalc()} seconds</span>

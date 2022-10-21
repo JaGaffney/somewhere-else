@@ -70,7 +70,7 @@ export const Stats = (props) => {
 
     return (
         <div className="settlement__stats" data-cy="settlementStats">
-            <Balance title={"Income"} data={income} cash={incomeCash} exp={exp} />
+            <Balance title={"Income"} data={income} cash={incomeCash} exp={exp} tributeCost={props.tributeCost} />
             <Balance title={"Cost"} data={outcome} cash={outcomeCash} />
         </div>
     )

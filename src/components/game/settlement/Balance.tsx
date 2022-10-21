@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 
 // @ts-ignore
 import COINS from "../../../images/sidepanel/coins.svg"
 
 export const Balance = (props) => {
+    const tributeCalc = (): boolean => {
+        if (props.tributeCost > props.playerData.playerBank.getTribute()) {
+            return false
+        }
+        return true
+    }
+
+    const [tributeDeduction, setTributeDeduction] = useState(tributeCalc())
+
+    useEffect(() => {
+        setTributeDeduction(tributeCalc())
+    }, [props.playerUpdated])
+
+
     return (
         <div className="settlement__stats-balance">
             <h2>{props.title}</h2>
@@ -31,7 +45,11 @@ export const Balance = (props) => {
                         return (
                             <div key={k}>
                                 <span><img src={data.icon} />{data.name}</span>
-                                <span>{i.qty}</span>
+                                <span> {tributeDeduction ? i.qty : (<>
+                                    {i.qty > 1 ? i.qty / 2 : 1}
+                                    <span className="offlineProgression-gp-negative"> (-50%)
+                                    </span></>
+                                )}</span>
                             </div>
                         )
                     })}
@@ -51,6 +69,8 @@ export const Balance = (props) => {
 const mapStateToProps = (state) => ({
     itemData: state.items.itemData,
     skills: state.skills.skillData,
+    playerData: state.player.playerData,
+    playerUpdated: state.engine.playerUpdated
 })
 
 const mapDispatchToProps = {}

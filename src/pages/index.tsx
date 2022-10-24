@@ -197,7 +197,7 @@ const IndexPage = props => {
     switch (type) {
       case ("RESEARCH"):
         props.playerData.playerBank.addToResearch(name, Math.ceil(qty))
-        props.playerData.offline.setItems(name, Math.ceil(qty))
+        props.playerData.offline.setItems(name, Math.ceil(qty), "itemsReceived")
         break;
       case ("TRIBUTE"):
         console.log("tribute being added")
@@ -217,7 +217,7 @@ const IndexPage = props => {
           props.playerData.offline.setCoins(val)
         } else {
           props.playerData.playerBank.addItemtoBank(id, Math.ceil(qty), item)
-          props.playerData.offline.setItems(id, Math.ceil(qty))
+          props.playerData.offline.setItems(id, Math.ceil(qty), "itemsReceived")
         }
       default:
         break;
@@ -246,7 +246,7 @@ const IndexPage = props => {
       for (let i in activeData.itemsRequired) {
         const item = activeData.itemsRequired[i]
         props.playerData.playerBank.removeItemfromBank(item.id, Math.ceil(amount))
-        props.playerData.offline.setItems(item.id, Math.ceil(-amount))
+        props.playerData.offline.setItems(item.id, Math.ceil(amount), "itemsUsed")
       }
     }
   }

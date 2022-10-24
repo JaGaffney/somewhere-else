@@ -52,7 +52,6 @@ export const AttackLoadout = (props) => {
                             {props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout) && Object.keys(props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks).map((id, k) => {
                                 const attackID: number = props.playerData.loadout.getLoadoutByNumber(props.playerData.loadout.activeLoadout).equippedAttacks[id]
                                 const attackData = props.attackData.getAttackById(attackID)
-                                console.log(attackData)
                                 const slot: number = k + 1
                                 return (
                                     <div className="attackloadout__equipped-slot"

@@ -28,6 +28,27 @@ export const OfflineProgress = (props) => {
         }
     }, [props.playerUpdated])
 
+    const getColor = (value) => {
+        let color = "offlineProgression-gp-negative"
+        if (value > 0) {
+            color = "offlineProgression-gp-positive"
+        }
+        if (value === 0) {
+            color = ""
+        }
+        return color
+    }
+
+    const itemUsed = (value: number) => {
+        if (value) {
+            return (
+                <span className="offlineProgression-gp-value offlineProgression-gp-negative">(-{value})</span>
+            )
+        } else {
+            return null
+        }
+    }
+
     return (
         <div className="generic__container offlineProgression">
             <h3>Heres what your settlement has produced since you have been away! </h3>
@@ -47,17 +68,13 @@ export const OfflineProgress = (props) => {
             </div>
 
             <div className="offlineProgression-gp settlement__stats-balance-items">
-                <h4>Experince</h4>
+                <h4>Experience</h4>
                 {props.playerData.offline && Object.keys(props.playerData.offline.exp).map((i, k) => {
                     const icon = props.skills.getSkillIconByName("nonCombat", i)
-                    let color = "offlineProgression-gp-negative"
-                    if (props.playerData.offline.exp[i] > 0) {
-                        color = "offlineProgression-gp-positive"
-                    }
                     return (
                         <div key={k}>
                             <span><img src={icon && icon} />{i}</span>
-                            <span className={`offlineProgression-gp-value ${color}`}>{intToString(props.playerData.offline.exp[i])}</span>
+                            <span className={`offlineProgression-gp-value ${getColor(props.playerData.offline.exp[i])}`}>{intToString(props.playerData.offline.exp[i])}</span>
                         </div>
                     )
                 })}
@@ -70,22 +87,36 @@ export const OfflineProgress = (props) => {
                         <span className={`offlineProgression-gp-value ${props.playerData.offline.tribute > 0 ? "offlineProgression-gp-positive" : "offlineProgression-gp-negative"}`}>{intToString(props.playerData.offline.tribute)}</span>
                     </div>
                 }
-                {props.playerData.offline && Object.keys(props.playerData.offline.items).map((i, k) => {
-                    const qty = props.playerData.offline.items[i]
+
+                {props.playerData.offline && Object.keys(props.playerData.offline.items.itemsReceived).map((i, k) => {
+                    const qtyGained = props.playerData.offline.items.itemsReceived[i]
                     const data = props.itemData.getItemById(parseInt(i))
-                    let color = "offlineProgression-gp-negative"
-                    if (qty > 0) {
-                        color = "offlineProgression-gp-positive"
-                    }
-                    if (qty === 0) {
-                        color = ""
+
+                    let itemRemoved;
+                    if (Object.keys(props.playerData.offline.items.itemsUsed).includes(i)) {
+                        itemRemoved = parseInt(props.playerData.offline.items.itemsUsed[i])
                     }
                     return (
                         <div key={k}>
                             <span><img src={data && data.icon} />{data && data.name}</span>
-                            <span className={`offlineProgression-gp-value ${color}`}>{qty && qty}</span>
+                            <span className={`offlineProgression-gp-value ${getColor(qtyGained)}`}>{qtyGained && qtyGained} {itemUsed(itemRemoved)}</span>
                         </div>
                     )
+                })}
+                {props.playerData.offline && Object.keys(props.playerData.offline.items.itemsUsed).map((i, k) => {
+                    if (Object.keys(props.playerData.offline.items.itemsReceived).includes(i)) {
+                        return null
+                    } else {
+
+                        const qtyGained = props.playerData.offline.items.itemsUsed[i]
+                        const data = props.itemData.getItemById(parseInt(i))
+                        return (
+                            <div key={k}>
+                                <span><img src={data && data.icon} />{data && data.name}</span>
+                                <span className={`offlineProgression-gp-value ${getColor(-qtyGained)}`}>{qtyGained && -qtyGained}</span>
+                            </div>
+                        )
+                    }
                 })}
             </div>
         </div >

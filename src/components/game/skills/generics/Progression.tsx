@@ -4,14 +4,9 @@ import { connect } from 'react-redux'
 export const Progression = (props) => {
     const [activeData, setActiveData] = useState(0)
 
-
-
-
     useEffect(() => {
         setActiveData(props.realTimeCalc())
-        console.log("got here")
     }, [props.deltaTime])
-
 
     function normalize(val: number, max: number) {
         const value = (val - 0) / (max - 0) * 100

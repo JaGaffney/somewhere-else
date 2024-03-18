@@ -645,8 +645,8 @@
 .farming {
   width: auto;
   display: grid;
-  grid-template-columns: repeat(1fr, 10);
-  grid-template-rows: repeat(1fr, 10);
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
   gap: 1rem;
   background-color: var(--gray900);
   border: var(--border);
@@ -656,8 +656,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 4rem;
-    width: 6rem;
+    max-height: 4rem;
+    max-width: 6rem;
+    height: 5vh;
+    width: 5vw;
     cursor: pointer;
     &:hover {
       transform: translateY(-2px);

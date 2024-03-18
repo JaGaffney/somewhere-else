@@ -60,7 +60,7 @@ export const CatMap = (props) => {
                 })
                 }
             </div> */}
-            <div style={{ width: "75%" }}>
+            <div className="map__container-section">
 
                 <div className="map__areas">
                     {mapSeed && mapSeed.map((i, k) => {

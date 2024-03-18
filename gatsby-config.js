@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `somewhere-else`,
+    title: `mog-friends`,
     description: `idle game.`,
-    author: `Jon Gaffney`,
+    author: `Jon`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `wordit`,
-        short_name: `wordit`,
+        name: `mog-friends`,
+        short_name: `mog-friends`,
         start_url: `/`,
         background_color: `#181e2a`,
         theme_color: `#181e2a`,

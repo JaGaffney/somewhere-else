@@ -1,9 +1,9 @@
 {
-  "name": "somewhere-else",
+  "name": "mog-friends",
   "private": true,
-  "description": "Starter Application.",
+  "description": "idle game for mog friends.",
   "version": "0.1.0",
-  "author": "Jon Gaffney",
+  "author": "Jon",
   "dependencies": {
     "@reactour/tour": "^3.0.0",
     "fetch-mock": "^9.11.0",

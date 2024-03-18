@@ -1,5 +1,6 @@
 .topPanel {
-  height: 5rem;
+  min-height: 5rem;
+  height: auto;
   width: 100%;
   background-color: var(--gray800);
   box-sizing: var(--shadow900);

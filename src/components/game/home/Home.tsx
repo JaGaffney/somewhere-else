@@ -48,8 +48,8 @@ export const Home = (props) => {
     return (
         <div className="game__normal">
             <div className="topPanel topPanel__controls">
-                <div className="topPanel__controls-left">
-                    <span onClick={() => setIsOpen(true)}>not sure what to do, click here to get started</span>
+                <div className="topPanel__controls-left" style={{ cursor: "pointer" }} onClick={() => setIsOpen(true)}>
+                    <span >not sure what to do, click the <strong>?</strong> on any page to get started</span>
                     <span className="topPanel__controls-left-info"></span>
                 </div>
             </div>

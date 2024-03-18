@@ -2,12 +2,71 @@
 }
 
 @media only screen and (max-width: 1200px) {
+  .structure__container {
+    grid-template-columns: 0% 1fr;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .header__container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    &-title,
+    &-info {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  .topPanel {
+    width: auto;
+  }
+  .topPanel__controls {
+    padding: 0.5rem;
+  }
+  .combatSkill__container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .home__container,
+  .topPanel__controls,
+  .settlement__actions,
+  .bank__container,
+  .catcombat__container,
+  .map__container,
+  .map__enemy-stats,
+  .equipment__container {
+    flex-wrap: wrap;
+  }
+  .generic__container,
+  .header__container-info,
+  .topPanel__controls-left,
+  .topPanel__controls-right,
+  .settlement__assignments,
+  .settlement__stats,
+  .bank__items,
+  .bank__details,
+  .catcombat__section,
+  .map__container-section,
+  .map__areas-area,
+  .map__info,
+  .equipment__container-equipped,
+  .equipment__container-equipment,
+  .equipment__container-stats {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 
 @media only screen and (max-width: 800px) {
   .main-panel {
     width: 100%;
     border-radius: 0;
+  }
+  .structure__container {
+    grid-template-columns: 0% 1fr;
   }
 }
 

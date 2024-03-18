@@ -41,7 +41,7 @@ export const Farming = (props) => {
     const [activeTool, setActiveTool] = useState<ToolEnum>(ToolEnum.CHECK)
 
 
-    const farmingHandler = (key) => {
+    const farmingHandler = (key: number) => {
         switch (activeTool) {
             case ToolEnum.CHECK:
                 console.log(tempData[key])

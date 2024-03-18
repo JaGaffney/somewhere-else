@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { useTour } from '@reactour/tour'
 import { FiHelpCircle } from "react-icons/fi";
@@ -9,7 +9,9 @@ import { getTextColor, getBackgroundColor } from '../utils/color'
 export const Header = (props) => {
     const { setIsOpen } = useTour()
 
+
     // TEMP Debug mode
+    const debug = false
     const healTesting = () => {
         props.playerData.status.health.setCurrent(props.playerData.status.health.getBase())
         props.playerData.status.stamina.setCurrent(props.playerData.status.stamina.getBase() + 100)
@@ -40,14 +42,15 @@ export const Header = (props) => {
 
 
                 <span>{props.activePage}</span>
-                <div>
-                    <span>Debug Mode</span>
-                    <button onClick={healTesting}>Heal player</button>
-                    <button onClick={killPlayer}>Kill player</button>
-                    <button onClick={killTesting}>Kill</button>
-                    <button onClick={addStuff}>Add stuff</button>
+                {debug && (
+                    <div>
+                        <span>Debug Mode</span>
+                        <button onClick={healTesting}>Heal player</button>
+                        <button onClick={killPlayer}>Kill player</button>
+                        <button onClick={killTesting}>Kill</button>
+                        <button onClick={addStuff}>Add stuff</button>
 
-                </div>
+                    </div>)}
                 <div>
                     <button onClick={() => setIsOpen(true)} className="generic__button-icon" data-cy="helpToggle" style={{ background: getBackgroundColor(props.activePage), color: getTextColor(props.activePage) }}><FiHelpCircle /></button>
                 </div>

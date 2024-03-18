@@ -87,44 +87,48 @@ export const SidePanel = (props) => {
 
 
     return (
-        <aside className="sidepanel__wrapper">
-            <div className="sidepanel__container" data-cy="sidepanel">
+        <>
+            {props.hamburgerMenu && (
+                <aside className="sidepanel__wrapper">
+                    <div className="sidepanel__container" data-cy="sidepanel">
 
-                <NonSkillPanel />
+                        <NonSkillPanel />
 
-                {props.skills.length !== 0 &&
-                    (
-                        <>
-                            <div className="sidepanel__skill" data-cy="sidepanelClasses">
-                                <span className="sidepanel__skill-title" onClick={() => setShowCombat(!showCombat)}>Classes {showCombat ? <FiEyeOff /> : <FiEye />}</span>
-                                {showCombat && getValidCombatSkills().length !== 0 ? (
-                                    getValidCombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("combat", i)} />))
-                                    : (
-                                        <button className="skillpanel" onClick={() => props.setActivePage("research")}>
-                                            <img className="skillpanel__icon" src={LOCKED} />
-                                            <span className="skillpanel__name">Locked</span>
-                                        </button>
-                                    )}
-                            </div>
+                        {props.skills.length !== 0 &&
+                            (
+                                <>
+                                    <div className="sidepanel__skill" data-cy="sidepanelClasses">
+                                        <span className="sidepanel__skill-title" onClick={() => setShowCombat(!showCombat)}>Classes {showCombat ? <FiEyeOff /> : <FiEye />}</span>
+                                        {showCombat && getValidCombatSkills().length !== 0 ? (
+                                            getValidCombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("combat", i)} />))
+                                            : (
+                                                <button className="skillpanel" onClick={() => props.setActivePage("research")}>
+                                                    <img className="skillpanel__icon" src={LOCKED} />
+                                                    <span className="skillpanel__name">Locked</span>
+                                                </button>
+                                            )}
+                                    </div>
 
-                            <div className="sidepanel__skill" data-cy="sidepanelJobs">
-                                <span className="sidepanel__skill-title" onClick={() => setShowSkills(!showSkills)}>Jobs {showSkills ? <FiEyeOff /> : <FiEye />}</span>
-                                {showSkills && props.skills.getAllNoncombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("nonCombat", i)} />)}
-                            </div>
-                        </>
-                    )}
+                                    <div className="sidepanel__skill" data-cy="sidepanelJobs">
+                                        <span className="sidepanel__skill-title" onClick={() => setShowSkills(!showSkills)}>Jobs {showSkills ? <FiEyeOff /> : <FiEye />}</span>
+                                        {showSkills && props.skills.getAllNoncombatSkills().map((i, k: number) => <SkillPanel key={k} skillName={i} skillLevelTotal={99} seperator={" / "} icon={props.skills.getSkillIconByName("nonCombat", i)} />)}
+                                    </div>
+                                </>
+                            )}
 
-                <div className="sidepanel__skill" data-cy="sidepanelLogs">
-                    <span className="sidepanel__skill-title" onClick={() => setShowLogs(!showLogs)}>Logs {showLogs ? <FiEyeOff /> : <FiEye />}</span>
-                    {showLogs && Object.keys(tempLogs).map((i, k) => <SkillPanel key={k} skillName={tempLogs[i].name} icon={tempLogs[i].icon} />)}
-                </div>
+                        <div className="sidepanel__skill" data-cy="sidepanelLogs">
+                            <span className="sidepanel__skill-title" onClick={() => setShowLogs(!showLogs)}>Logs {showLogs ? <FiEyeOff /> : <FiEye />}</span>
+                            {showLogs && Object.keys(tempLogs).map((i, k) => <SkillPanel key={k} skillName={tempLogs[i].name} icon={tempLogs[i].icon} />)}
+                        </div>
 
-                <div className="sidepanel__skill" data-cy="sidepanelOther">
-                    <span className="sidepanel__skill-title" onClick={() => setShowOther(!showOther)}>Other {showOther ? <FiEyeOff /> : <FiEye />}</span>
-                    {showOther && Object.keys(tempOther).map((i, k) => <SkillPanel key={k} skillName={tempOther[i].name} icon={tempOther[i].icon} />)}
-                </div>
-            </div>
-        </aside>
+                        <div className="sidepanel__skill" data-cy="sidepanelOther">
+                            <span className="sidepanel__skill-title" onClick={() => setShowOther(!showOther)}>Other {showOther ? <FiEyeOff /> : <FiEye />}</span>
+                            {showOther && Object.keys(tempOther).map((i, k) => <SkillPanel key={k} skillName={tempOther[i].name} icon={tempOther[i].icon} />)}
+                        </div>
+                    </div>
+                </aside>
+            )}
+        </>
     )
 }
 
@@ -132,7 +136,8 @@ export const SidePanel = (props) => {
 const mapStateToProps = (state) => ({
     skills: state.skills.skillData,
     playerData: state.player.playerData,
-    playerUpdated: state.engine.playerUpdated
+    playerUpdated: state.engine.playerUpdated,
+    hamburgerMenu: state.engine.hamburgerMenu,
 })
 
 const mapDispatchToProps = {

@@ -42,3 +42,10 @@ export const setActiveEquipmentDrag = data => dispatch => {
     payload: data,
   })
 }
+
+export const setHamburgerMenu = (menu: boolean) => dispatch => {
+  return dispatch({
+    type: "SET_ACTIVE_MENU",
+    payload: menu,
+  })
+}

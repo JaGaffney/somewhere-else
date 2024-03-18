@@ -3,14 +3,28 @@
 
 @media only screen and (max-width: 1200px) {
   .structure__container {
-    grid-template-columns: 0% 1fr;
+    grid-template-columns: 100%;
+  }
+  .game__container {
+    grid-column: 1;
+    overflow: hidden;
+  }
+  .sidepanel__wrapper {
+    z-index: 15;
+    max-width: 500px;
+    border-right: solid 3px var(--blue900);
+    box-shadow: 10px 0 5px -2px var(--blue700);
+  }
+  .header__container {
+    &-hamburger {
+      display: block;
+    }
   }
 }
 
 @media only screen and (max-width: 1000px) {
   .header__container {
     display: flex;
-    flex-wrap: wrap;
     padding: 0;
     &-title,
     &-info {
@@ -32,12 +46,14 @@
 
   .home__container,
   .topPanel__controls,
+  .topPanel__controls-right,
   .settlement__actions,
   .bank__container,
   .catcombat__container,
   .map__container,
   .map__enemy-stats,
-  .equipment__container {
+  .equipment__container,
+  .settlement__jobs {
     flex-wrap: wrap;
   }
   .generic__container,
@@ -64,9 +80,6 @@
   .main-panel {
     width: 100%;
     border-radius: 0;
-  }
-  .structure__container {
-    grid-template-columns: 0% 1fr;
   }
 }
 

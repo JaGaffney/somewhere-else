@@ -6,6 +6,7 @@ const initialState = {
   playerUpdated: false,
   combatData: null,
   activeEquipmentDrag: null,
+  hamburgerMenu: false,
 }
 
 const actionTimeHandler = (oldTime: number) => {
@@ -68,6 +69,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         activeEquipmentDrag: action.payload,
+      }
+    case "SET_ACTIVE_MENU":
+      return {
+        ...state,
+        hamburgerMenu: action.payload,
       }
     default:
       return state

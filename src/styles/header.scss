@@ -10,11 +10,15 @@
     justify-content: center;
   }
   &-info {
+    background-color: var(--violet800);
     text-transform: capitalize;
     grid-column: 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
+  }
+  &-hamburger {
+    display: none;
   }
 }

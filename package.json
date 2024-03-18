@@ -1,8 +1,8 @@
 {
-  "name": "mog-friends",
+  "name": "somewhere-else",
   "private": true,
-  "description": "idle game for mog friends.",
-  "version": "0.1.0",
+  "description": "idle game called somewhere else.",
+  "version": "0.2.0",
   "author": "Jon",
   "dependencies": {
     "@reactour/tour": "^3.0.0",

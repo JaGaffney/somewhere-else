@@ -1,13 +1,45 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useTour } from '@reactour/tour'
-import { FiHelpCircle } from "react-icons/fi";
+import { FiHelpCircle, FiMenu } from "react-icons/fi";
 
-import { setActivePage } from '../actions/api';
+import { setActivePage, setHamburgerMenu } from '../actions/api';
 import { getTextColor, getBackgroundColor } from '../utils/color'
+
+
+function getWindowDimensions() {
+    const { innerWidth: width, } = window;
+    return {
+        width
+    };
+}
+
+function useWindowDimensions() {
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+    useEffect(() => {
+        function handleResize() {
+            setWindowDimensions(getWindowDimensions());
+        }
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return windowDimensions;
+}
 
 export const Header = (props) => {
     const { setIsOpen } = useTour()
+    const { width } = useWindowDimensions();
+
+    useEffect(() => {
+        if (width > 1200) {
+            props.setHamburgerMenu(true)
+        } else {
+            props.setHamburgerMenu(false)
+        }
+    }, [width]);
 
 
     // TEMP Debug mode
@@ -35,9 +67,14 @@ export const Header = (props) => {
         props.playerData.playerBank.addToCoins(1000000)
     }
 
+
+
+
     return (
         <div className="header__container">
-            <div className="header__container-title"><span onClick={() => props.setActivePage(null)}>Somewhere else</span></div>
+            <div className="header__container-title" style={{ background: getBackgroundColor(props.activePage), color: getTextColor(props.activePage) }}>
+                <span onClick={() => props.setActivePage(null)}>Somewhere else</span>
+            </div>
             <div className="header__container-info" style={{ background: getBackgroundColor(props.activePage), color: getTextColor(props.activePage) }}>
 
 
@@ -51,8 +88,15 @@ export const Header = (props) => {
                         <button onClick={addStuff}>Add stuff</button>
 
                     </div>)}
+
+
+
                 <div>
-                    <button onClick={() => setIsOpen(true)} className="generic__button-icon" data-cy="helpToggle" style={{ background: getBackgroundColor(props.activePage), color: getTextColor(props.activePage) }}><FiHelpCircle /></button>
+                    <button onClick={() => setIsOpen(true)} className="generic__button-icon" data-cy="helpToggle"><FiHelpCircle /></button>
+                </div>
+
+                <div className="header__container-hamburger">
+                    <button onClick={() => props.setHamburgerMenu(!props.hamburgerMenu)} className="generic__button-icon"><FiMenu /></button>
                 </div>
 
             </div>
@@ -66,10 +110,11 @@ const mapStateToProps = (state) => ({
     activePage: state.engine.activePage,
     combatData: state.engine.combatData,
     playerData: state.player.playerData,
+    hamburgerMenu: state.engine.hamburgerMenu,
 })
 
 const mapDispatchToProps = {
-    setActivePage
+    setActivePage, setHamburgerMenu
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

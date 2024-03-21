@@ -8,10 +8,15 @@ import { getTextColor, getBackgroundColor } from '../utils/color'
 
 
 function getWindowDimensions() {
-    const { innerWidth: width, } = window;
-    return {
-        width
-    };
+    if (typeof window !== "undefined") {
+        const { innerWidth: width, } = window;
+        return {
+            width
+        };
+    } else {
+        return 1200
+    }
+
 }
 
 function useWindowDimensions() {
@@ -21,9 +26,13 @@ function useWindowDimensions() {
         function handleResize() {
             setWindowDimensions(getWindowDimensions());
         }
+        if (typeof window !== "undefined") {
+            window.addEventListener('resize', handleResize);
 
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }
+
+
     }, []);
 
     return windowDimensions;
